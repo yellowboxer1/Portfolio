@@ -12,7 +12,7 @@ export default function Header() {
       <div className="max-w-[1920px] mx-auto px-6 md:px-12 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <span className="text-2xl font-light tracking-wider">
+          <span className="text-2xl font-medium tracking-wider">
             <span className="font-medium">Gunho</span>
             <span className="text-xs align-super ml-0.5 text-white/60">park</span>
           </span>
@@ -95,29 +95,29 @@ export default function Header() {
             <div>
               <Link
                 href="/about"
-                className="block text-sm font-medium text-white/80 hover:text-white py-2"
+                className="block text-sm font-semibold text-white/80 hover:text-white py-2"
               >
                 ABOUT US
               </Link>
               <div className="pl-4 space-y-2 mt-2">
-                <Link href="/about/company" className="block text-sm text-white/60 hover:text-white py-1">
+                <Link href="/about/company" className="block text-sm font-semibold text-white/60 hover:text-white py-1">
                   COMPANY
                 </Link>
-                <Link href="/about/history" className="block text-sm text-white/60 hover:text-white py-1">
+                <Link href="/about/history" className="block text-sm font-semibold text-white/60 hover:text-white py-1">
                   HISTORY
                 </Link>
-                <Link href="/about/partners" className="block text-sm text-white/60 hover:text-white py-1">
+                <Link href="/about/partners" className="block text-sm font-semibold text-white/60 hover:text-white py-1">
                   PARTNERS
                 </Link>
               </div>
             </div>
-            <Link href="/works" className="block text-sm font-medium text-white/80 hover:text-white py-2">
+            <Link href="/works" className="block text-sm font-semibold text-white/80 hover:text-white py-2">
               WORKS
             </Link>
-            <Link href="/news" className="block text-sm font-medium text-white/80 hover:text-white py-2">
+            <Link href="/news" className="block text-sm font-semibold text-white/80 hover:text-white py-2">
               NEWS
             </Link>
-            <Link href="/contact" className="block text-sm font-medium text-white/80 hover:text-white py-2">
+            <Link href="/contact" className="block text-sm font-semibold text-white/80 hover:text-white py-2">
               CONTACT
             </Link>
           </nav>

@@ -50,7 +50,7 @@ const strengths: Strength[] = [
     title: "STRATEGY",
     subtitle: "방향을 설계하는 기획력",
     description:
-      "‘무엇을 만들 것인가’보다 ‘왜 만들어야 하는가’를 기준으로 판단합니다. 시장의 결핍을 파고들어 비즈니스 모델로 치환하는 전략적 사고는 입사 후 30억 규모의 대형 프로젝트 수주라는 확실한 결과로 이어졌습니다. 데이터와 사용자 흐름을 기반으로, 사업의 성패를 결정짓는 단단한 방향을 설계합니다.",
+      "‘무엇을 만들 것인가’보다 ‘왜 만들어야 하는가’를 기준으로 판단합니다. 시장의 결핍을 파고들어 비즈니스 모델로 치환하는 전략적 사고는 입사 후 30억 규모의 대형 프로젝트 수주라는 확실한 결과로 이어졌습니다. 데이터와 사용자를 기반으로, 사업의 성패를 결정짓는 단단한 방향을 설계합니다.",
   },
   {
     id: 2,
@@ -398,6 +398,9 @@ export default function Strengths() {
           {strengths.map((strength, index) => {
             const isActive = activeId === strength.id;
 
+            const firstLine = strength.description.split(". ")[0];
+            const restText = strength.description.slice(firstLine.length + 2);
+
             return (
               <li
                 key={strength.id}
@@ -444,13 +447,31 @@ export default function Strengths() {
 
                     <p
                       className={cn(
-                        "max-w-3xl text-base md:text-lg lg:text-xl leading-[1.9] break-keep transition-all duration-700",
+                        "max-w-[817px] md:tracking-[-0.02em] font-medium text-base md:text-lg lg:text-xl leading-[1.9] break-keep transition-all duration-700",
                         isActive
-                          ? "text-white/88 translate-y-0 opacity-100"
-                          : "text-white/28 translate-y-1 opacity-70"
+                          ? "translate-y-0 opacity-100"
+                          : "translate-y-1 opacity-70"
                       )}
                     >
-                      {strength.description}
+                      {/* 첫 줄 */}
+                      <span
+                        className={cn(
+                          "block",
+                          isActive ? "text-white/90" : "text-white/40"
+                        )}
+                      >
+                        {firstLine}.
+                      </span>
+
+                      {/* 나머지 (자동 줄바꿈 유지) */}
+                      <span
+                        className={cn(
+                          "block",
+                          isActive ? "text-white/65" : "text-white/40"
+                        )}
+                      >
+                        {restText}
+                      </span>
                     </p>
                   </div>
                 </div>

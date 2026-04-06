@@ -36,6 +36,7 @@ export default function Hero() {
   const [date, setDate] = useState("");
   const [introWordIndex, setIntroWordIndex] = useState(0);
   const [isIntroFinal, setIsIntroFinal] = useState(false);
+  const [finalReveal, setFinalReveal] = useState(false);
 
   useEffect(() => {
     const updateTime = () => {
@@ -119,7 +120,7 @@ export default function Hero() {
     let currentIndex = 0;
     let cycleCount = 0;
 
-    const fastInterval = setInterval(() => {
+    const wordInterval = setInterval(() => {
       currentIndex += 1;
 
       if (currentIndex >= introTitles.length - 1) {
@@ -129,17 +130,25 @@ export default function Hero() {
 
       setIntroWordIndex(currentIndex);
 
-      if (cycleCount >= 5) {
-        clearInterval(fastInterval);
+      // 2번만 순환 후 마지막 이름 노출
+      if (cycleCount >= 2) {
+        clearInterval(wordInterval);
 
         setTimeout(() => {
           setIntroWordIndex(introTitles.length - 1);
-          setIsIntroFinal(true);
-        }, 120);
-      }
-    }, 160);
 
-    return () => clearInterval(fastInterval);
+          setTimeout(() => {
+            setIsIntroFinal(true);
+
+            setTimeout(() => {
+              setFinalReveal(true);
+            }, 520);
+          }, 520);
+        }, 520);
+      }
+    }, 700);
+
+    return () => clearInterval(wordInterval);
   }, []);
 
   useEffect(() => {
@@ -147,7 +156,6 @@ export default function Hero() {
       if (!video) return;
 
       if (index === videoIndex) {
-        // 활성 비디오만 재생
         if (video.currentTime > 0.05 && !video.paused) return;
 
         video.currentTime = 0;
@@ -156,7 +164,6 @@ export default function Hero() {
           playPromise.catch(() => {});
         }
       } else {
-        // 비활성 비디오는 멈춤
         video.pause();
       }
     });
@@ -174,11 +181,13 @@ export default function Hero() {
   const headlineOpacity = clamp((progress - 0.1) / 0.38, 0, 1);
 
   const videoStyle = useMemo(() => {
+    // 시작부터 중앙 기준
     const startLeft = 50;
-    const startTop = 81.5;
-    const startScale = 0.25;
+    const startTop = 80;
+    const startScale = 0.24;
 
-    const endLeft = 76;
+    // 전개 후에도 중앙축 기준에서 우측으로 자연스럽게 이동
+    const endLeft = 74;
     const endTop = 50;
     const endScale = 1;
 
@@ -200,7 +209,7 @@ export default function Hero() {
 
     return {
       opacity: headlineOpacity,
-      transform: `translate3d(0, ${y}px, 0) scale(${scale})`,
+      transform: `translate3d(0%, ${y}px, 0) scale(${scale})`,
     };
   }, [headlineOpacity]);
 
@@ -223,10 +232,12 @@ export default function Hero() {
     };
   }, [progress]);
 
+  const finalChars = "박 건 호".split("");
+
   return (
     <section ref={sectionRef} className="relative h-[200vh] bg-black">
       <div className="sticky top-0 h-screen overflow-hidden bg-black">
-        {/* 인트로 가이드 라인 */}
+        {/* Intro guide lines */}
         <div
           className="pointer-events-none absolute inset-0 z-10 grid [grid-template-rows:repeat(11,minmax(0,0fr))]"
           style={{ opacity: introOpacity * 0.45 }}
@@ -241,77 +252,112 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* 1페이지 인트로 */}
+        {/* Intro page */}
         <div
-          className="absolute inset-0 z-30 grid [grid-template-rows:repeat(11,minmax(0,1fr))] px-6 md:px-12"
+          className="absolute inset-0 z-30 grid w-full [grid-template-rows:repeat(11,minmax(0,1fr))]"
           style={{ opacity: introOpacity }}
         >
-          <div className="row-start-5 row-end-6 mx-5 flex items-center justify-between gap-4 md:mx-20 lg:mx-30 xl:mx-40">
-            <div className="font-mono text-sm font-medium tracking-wider text-white/80 md:text-base">
-              {time}
-            </div>
+          <div className="row-start-5 row-end-6 flex items-center">
+            <div className="mx-auto grid w-full max-w-[1440px] grid-cols-[85px_minmax(0,1fr)_85px] items-center gap-4 px-4 md:px-12 lg:px-20 xl:px-24">
+              <div className="text-left font-mono text-[12px] font-medium tracking-wider whitespace-nowrap text-white/80 md:text-sm lg:text-base">
+                {time}
+              </div>
 
-            <div className="relative flex h-[48px] w-[220px] items-center justify-center overflow-hidden text-center sm:h-[56px] sm:w-[280px] md:h-[72px] md:w-[420px]">
-              <div
-                key={introTitles[introWordIndex]}
-                className={`absolute inset-0 flex items-center justify-center whitespace-nowrap text-white animate-intro-word ${
-                  isIntroFinal
-                    ? "text-[28px] font-semibold tracking-[0.28em] sm:text-[34px] md:text-[56px]"
-                    : "text-[18px] font-medium tracking-[0.02em] sm:text-[22px] md:text-[40px]"
-                }`}
-              >
-                {introTitles[introWordIndex]}
+              <div className="relative flex h-[48px] min-w-0 items-center justify-center overflow-hidden text-center sm:h-[56px] md:h-[64px] lg:h-[72px]">
+                {!isIntroFinal &&
+                  introTitles.map((word, index) => {
+                    const isActive = index === introWordIndex;
+
+                    return (
+                      <div
+                        key={word}
+                        className={`absolute inset-0 flex items-center justify-center whitespace-nowrap text-white transition-all duration-[1000ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,opacity,filter] ${
+                          isActive
+                            ? "opacity-100 translate-y-0 scale-100 blur-0"
+                            : "opacity-0 -translate-y-[8px] scale-[0.992] blur-[6px]"
+                        } text-[18px] font-medium tracking-[0.02em] sm:text-[20px] md:text-[26px] lg:text-[34px] xl:text-[39px]`}
+                      >
+                        {word}
+                      </div>
+                    );
+                  })}
+
+                {isIntroFinal && (
+                  <div className="absolute inset-0 flex items-center justify-center whitespace-nowrap text-white">
+                    {finalChars.map((char, index) => (
+                      <span
+                        key={`${char}-${index}`}
+                        className={`inline-block text-[18px] font-semibold transition-all duration-[1400ms] ease-[cubic-bezier(0.19,1,0.22,1)] will-change-[transform,opacity,filter] sm:text-[20px] md:text-[26px] lg:text-[34px] xl:text-[39px] ${
+                          finalReveal
+                            ? "opacity-100 translate-y-0 scale-100 blur-0"
+                            : "opacity-0 translate-y-[8px] scale-100 blur-[6px]"
+                        } ${char === " " ? "w-[0.28em]" : ""}`}
+                        style={{
+                          transitionDelay: `${index * 220}ms`,
+                          letterSpacing: "0.02em",
+                        }}
+                      >
+                        {char === " " ? "\u00A0" : char}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="text-right font-mono font-medium text-[12px] tracking-wider whitespace-nowrap text-white/80 md:text-sm lg:text-base">
+                {date}
               </div>
             </div>
-
-            <div className="font-mono text-sm tracking-wider text-white/80 md:text-base">
-              {date}
-            </div>
           </div>
 
-          <div className="row-start-11 row-end-12 flex flex-col items-center justify-center pb-4">
-            <span className="mb-3 text-xs uppercase tracking-[0.24em] text-white/70">
-              Scroll
-            </span>
-            <div className="flex h-10 items-start overflow-hidden">
-              <div className="animate-scroll-line w-px bg-white/60" />
+          {/* Scroll indicator - 하단 row 안에서 중앙정렬 */}
+          <div className="row-start-11 row-end-12 flex items-end justify-center">
+            <div className="flex flex-col items-center justify-center pb-4 md:pb-5">
+              <span className="mb-3 text-xs uppercase tracking-[0.24em] text-white/70">
+                Scroll
+              </span>
+              <div className="flex h-10 items-start justify-center overflow-hidden">
+                <div className="animate-scroll-line w-px bg-white/60" />
+              </div>
             </div>
           </div>
         </div>
 
-        {/* 2페이지 메인 타이포 */}
+        {/* Main headline page */}
         <div
-          className="absolute inset-0 z-20 flex flex-col items-center justify-center px-6 text-center"
+          className="absolute inset-0 z-20 flex items-center justify-center px-6"
           style={headlineWrapStyle}
         >
-          <div style={headlineInnerStyle}>
+          <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center justify-center text-center">
+            <div style={headlineInnerStyle}>
+              <p
+                className="font-semibold leading-[1.05] text-white
+                text-[40px] sm:text-[52px] md:text-[64px] lg:text-[84px] xl:text-[110px]"
+              >
+                PLANNING
+                <br />
+                USER EXPERIENCES
+                <br />
+                FROM A TO Z
+              </p>
+            </div>
+
             <p
-              className="font-semibold leading-[1.05] text-white
-              text-[48px] sm:text-[60px] md:text-[72px] lg:text-[84px] xl:text-[110px]"
+              className="mt-8 max-w-[800px] text-base leading-relaxed text-white/70 md:text-lg lg:text-xl break-keep"
+              style={paragraphStyle}
             >
-              PLANNING
-              <br />
-              USER EXPERIENCES
-              <br />
-              FROM A TO Z
+              서비스 기획부터 R&D 사업기획까지 전 과정을 책임지는 PM 박건호입니다.
+              <br /> 
+              기획에서 끝내지 않고, 직접 실행하고 결과로 증명합니다.
             </p>
           </div>
-
-          <p
-            className="mt-8 max-w-[600px] text-sm leading-relaxed text-white/70 md:text-base lg:text-[18px]"
-            style={paragraphStyle}
-          >
-            서비스 기획부터 R&amp;D 사업기획까지 전 과정을 책임지는 PM 박건호입니다.
-            <br />
-            기획에서 끝내지 않고, 직접 실행하고 결과로 증명합니다.
-          </p>
         </div>
 
-        {/* VIDEO OBJECT */}
+        {/* Video object */}
         <div
           className="absolute z-0 h-[320px] w-[260px] bg-transparent will-change-transform
                      sm:h-[380px] sm:w-[300px]
-                     md:h-[440px] md:w-[380px]
+                     md:h-[420px] md:w-[340px]
                      lg:h-[520px] lg:w-[460px]"
           style={videoStyle}
         >
@@ -325,8 +371,10 @@ export default function Hero() {
               playsInline
               preload="metadata"
               onEnded={index === videoIndex ? handleVideoEnded : undefined}
-              className={`absolute inset-0 h-full w-full object-cover bg-transparent transition-opacity duration-700 ${
-                videoIndex === index ? "opacity-90 md:opacity-100" : "opacity-0"
+              className={`absolute inset-0 h-full w-full object-cover bg-transparent transition-all duration-[1200ms] ease-in-out ${
+                videoIndex === index
+                  ? "opacity-60 md:opacity-80 scale-100"
+                  : "opacity-0 scale-[1.03]"
               }`}
             >
               <source src={src} type="video/mp4" />
