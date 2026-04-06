@@ -607,7 +607,7 @@ body {
 /* 2. 카드 본체 - 여기서 모든 사이즈를 결정합니다 */
 .spiral-gallery-card {
   position: relative;
-  width: clamp(19rem, 22vw, 22rem); /* 기존보다 너비를 좁게 설정 */
+  width: clamp(28.4rem, 26vw, 31.2rem); /* 기존보다 너비를 좁게 설정 */
   aspect-ratio: 0.72 / 1; /* 더 날렵한 비율 */
   transform-style: preserve-3d;
   transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -669,7 +669,7 @@ body {
 .back-content {
   width: 100%;
   height: 100%;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.034), rgba(255, 255, 255, 0));
 }
 
 /* 4. 카드 내부 콘텐츠 레이아웃 */
@@ -781,8 +781,8 @@ body {
 
   .spiral-gallery-card {
     /* 태블릿: 화면에 적절한 크기 유지 */
-    width: clamp(18rem, 22vw, 21rem);
-    aspect-ratio: 0.78 / 1;
+    width: clamp(20rem, 36vw, 23rem);
+    aspect-ratio: 0.75 / 1;
   }
 
   .gallery-link {
@@ -791,15 +791,10 @@ body {
 }
 
 @media (max-width: 640px) {
-  .spiral-gallery-card {
-    width: clamp(15rem, 25vw, 17rem);
-    aspect-ratio: 0.75 / 1;
-  }
-
-  .spiral-gallery-card {
-    /* 모바일: 한 화면에 카드가 눈에 띄게 조절 */
-    width: clamp(16rem, 30vw, 18rem);
+  .spiralgallery-card {
+    width: clamp(11.5rem, 48vw, 19.2rem);
     border-radius: 20px;
+    aspect-ratio: 0.75 / 1;
   }
 
   .spiral-gallery-front,

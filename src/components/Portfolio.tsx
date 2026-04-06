@@ -12,7 +12,7 @@ type PortfolioItem = {
   image: string;
   category: string;
   role: string;
-  meta: string;   
+  meta: string;
   summary: string;
 };
 
@@ -111,40 +111,237 @@ type SpiralConfig = {
 };
 
 function getSpiralConfig(width: number): SpiralConfig {
-  if (width <= 640) {
-    return { radius: 550, itemShift: 30, sliceCount: 12, scale: 1, baseZ: -210, itemLeftOffset: -96, containerMinHeight: 920, topOffset: 86 };
+  if (width <= 768) {
+    return {
+      radius: 620,
+      itemShift: 24,
+      sliceCount: 12,
+      scale: 0.96,
+      baseZ: -340,
+      itemLeftOffset: -96,
+      containerMinHeight: 920,
+      topOffset: 86,
+    };
   }
   if (width <= 1024) {
-    return { radius: 550, itemShift: 34, sliceCount: 12, scale: 1, baseZ: -350, itemLeftOffset: -128, containerMinHeight: 1120, topOffset: 42 };
+    return {
+      radius: 640,
+      itemShift: 50,
+      sliceCount: 11,
+      scale: 0.94,
+      baseZ: -350,
+      itemLeftOffset: -128,
+      containerMinHeight: 700,
+      topOffset: 60,
+    };
   }
-  return { radius: 700, itemShift: 42, sliceCount: 12, scale: 1, baseZ: -550, itemLeftOffset: -170, containerMinHeight: 1500, topOffset: 30 };
+  return {
+    radius: 800,
+    itemShift: 80,
+    sliceCount: 10,
+    scale: 0.92,
+    baseZ: -420,
+    itemLeftOffset: -200,
+    containerMinHeight: 860,
+    topOffset: 150,
+  };
 }
 
-function easeOutCubic(t: number) { return 1 - Math.pow(1 - t, 3); }
+function easeOutCubic(t: number) {
+  return 1 - Math.pow(1 - t, 3);
+}
+
+function MobileCarousel() {
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const totalCount = portfolioItems.length;
+
+  const scrollByCard = useCallback((direction: "prev" | "next") => {
+    const el = scrollerRef.current;
+    if (!el) return;
+
+    const cardWidth = el.clientWidth * 0.86 + 16; // min-w-[86%] + gap-4
+    const nextIndex =
+      direction === "next"
+        ? Math.min(currentIndex + 1, totalCount - 1)
+        : Math.max(currentIndex - 1, 0);
+
+    el.scrollTo({
+      left: nextIndex * cardWidth,
+      behavior: "smooth",
+    });
+
+    setCurrentIndex(nextIndex);
+  }, [currentIndex, totalCount]);
+
+  const handleScroll = useCallback(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+
+    const cardWidth = el.clientWidth * 0.86 + 16;
+    const index = Math.round(el.scrollLeft / cardWidth);
+    const safeIndex = Math.max(0, Math.min(index, totalCount - 1));
+
+    if (safeIndex !== currentIndex) {
+      setCurrentIndex(safeIndex);
+    }
+  }, [currentIndex, totalCount]);
+
+  return (
+    <div className="relative -mx-6 px-6 pb-24 md:hidden">
+      <div
+        ref={scrollerRef}
+        onScroll={handleScroll}
+        className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        aria-label="Portfolio mobile carousel"
+      >
+        {portfolioItems.map((item) => (
+          <Link
+            key={item.id}
+            href={`/portfolio/${item.slug}`}
+            className="group relative min-w-[86%] snap-center overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04]"
+          >
+            <div
+              className="relative aspect-[4/5.6] bg-cover bg-center"
+              style={{ backgroundImage: `url('${item.image}')` }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/5" />
+
+              <div className="absolute inset-x-0 bottom-0 p-5">
+                <span className="text-[11px] uppercase tracking-[0.22em] text-white/60">
+                  {item.category}
+                </span>
+
+                <h3 className="mt-2 text-[20px] font-semibold leading-[1.35] text-white">
+                  {item.title}
+                </h3>
+
+                <div className="mt-3 flex flex-col gap-1">
+                  <p className="text-sm text-white/78">{item.role}</p>
+                  <p className="text-sm text-white/58">{item.meta}</p>
+                </div>
+
+                <p className="mt-3 text-sm leading-relaxed text-white/70">
+                  {item.summary}
+                </p>
+
+                <div className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-white">
+                  <span>Selected Works</span>
+                  <svg
+                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      {currentIndex > 0 && (
+        <button
+          type="button"
+          aria-label="Previous portfolio"
+          onClick={() => scrollByCard("prev")}
+          className="absolute left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/55 text-white backdrop-blur-md transition active:scale-[0.96]"
+        >
+          <svg
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+      )}
+
+      {currentIndex < totalCount - 1 && (
+        <button
+          type="button"
+          aria-label="Next portfolio"
+          onClick={() => scrollByCard("next")}
+          className="absolute right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/55 text-white backdrop-blur-md transition active:scale-[0.96]"
+        >
+          <svg
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
+      )}
+    </div>
+  );
+}
 
 const SpiralContent = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const galleryRef = useRef<HTMLDivElement | null>(null);
   const frameRef = useRef<number | null>(null);
   const resizeTimerRef = useRef<number | null>(null);
-  const dragRef = useRef({ isDragging: false, startX: 0, lastX: 0, moved: false });
-  const motionRef = useRef({ currentAngle: 200, velocity: 0, isVisible: false, introPlayed: false, autoRotateEnabled: false, hoveredIndex: null as number | null });
+  const dragRef = useRef({
+    isDragging: false,
+    startX: 0,
+    lastX: 0,
+    moved: false,
+  });
+  const motionRef = useRef({
+    currentAngle: 200,
+    velocity: 0,
+    isVisible: false,
+    introPlayed: false,
+    autoRotateEnabled: false,
+    hoveredIndex: null as number | null,
+  });
+
+  const [viewportWidth, setViewportWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 1440
+  );
 
   const [config, setConfig] = useState<SpiralConfig>(() =>
     getSpiralConfig(typeof window !== "undefined" ? window.innerWidth : 1440)
   );
 
+  const isMobile = viewportWidth <= 640;
   const duplicatedItems = useMemo(() => [...portfolioItems, ...portfolioItems], []);
   const angleUnit = 360 / config.sliceCount;
+
   const containerHeight = useMemo(() => {
-    return Math.max(duplicatedItems.length * config.itemShift + 720 + config.topOffset, config.containerMinHeight);
+    return Math.max(
+      duplicatedItems.length * config.itemShift + 720 + config.topOffset,
+      config.containerMinHeight
+    );
   }, [duplicatedItems.length, config.itemShift, config.containerMinHeight, config.topOffset]);
 
   const applyGalleryTransform = useCallback(() => {
     const gallery = galleryRef.current;
-    if (!gallery) return;
+    if (!gallery || isMobile) return;
+
     gallery.style.transform = `translateZ(${config.baseZ}px) translateY(${config.topOffset}px) rotateY(${motionRef.current.currentAngle}deg) scale(${config.scale})`;
-  }, [config.baseZ, config.topOffset, config.scale]);
+  }, [config.baseZ, config.topOffset, config.scale, isMobile]);
 
   const stopDragging = useCallback(() => {
     dragRef.current.isDragging = false;
@@ -153,94 +350,148 @@ const SpiralContent = () => {
   }, []);
 
   const startLoop = useCallback(() => {
+    if (isMobile) return;
+
     const tick = () => {
       const motion = motionRef.current;
       const drag = dragRef.current;
       const isFrontHovered = motion.hoveredIndex !== null;
+
       if (!drag.isDragging) {
         if (Math.abs(motion.velocity) > 0.003) {
           motion.currentAngle += motion.velocity;
           motion.velocity *= 0.95;
         } else if (motion.autoRotateEnabled && motion.isVisible) {
-          motion.currentAngle += isFrontHovered ? 0.008 : 0.024;
+          motion.currentAngle -= isFrontHovered ? 0.008 : 0.024;
         }
       }
+
       applyGalleryTransform();
       frameRef.current = requestAnimationFrame(tick);
     };
+
     if (frameRef.current) cancelAnimationFrame(frameRef.current);
     frameRef.current = requestAnimationFrame(tick);
-  }, [applyGalleryTransform]);
+  }, [applyGalleryTransform, isMobile]);
 
   const playIntroAnimation = useCallback(() => {
-    if (motionRef.current.introPlayed) return;
+    if (isMobile || motionRef.current.introPlayed) return;
+
     motionRef.current.introPlayed = true;
     const startAngle = 200;
     const endAngle = -34;
     const duration = 1800;
     const startTime = performance.now();
+
     const animate = (time: number) => {
       const progress = Math.min((time - startTime) / duration, 1);
       const eased = easeOutCubic(progress);
+
       motionRef.current.currentAngle = startAngle + (endAngle - startAngle) * eased;
       applyGalleryTransform();
-      if (progress < 1) frameRef.current = requestAnimationFrame(animate);
-      else { motionRef.current.autoRotateEnabled = true; startLoop(); }
+
+      if (progress < 1) {
+        frameRef.current = requestAnimationFrame(animate);
+      } else {
+        motionRef.current.autoRotateEnabled = true;
+        startLoop();
+      }
     };
+
     if (frameRef.current) cancelAnimationFrame(frameRef.current);
     frameRef.current = requestAnimationFrame(animate);
-  }, [applyGalleryTransform, startLoop]);
+  }, [applyGalleryTransform, startLoop, isMobile]);
 
-  const handlePointerDown = useCallback((clientX: number) => {
-    dragRef.current.isDragging = true;
-    dragRef.current.startX = clientX;
-    dragRef.current.lastX = clientX;
-    dragRef.current.moved = false;
-    motionRef.current.hoveredIndex = null;
-  }, []);
+  const handlePointerDown = useCallback(
+    (clientX: number) => {
+      if (isMobile) return;
 
-  const handlePointerMove = useCallback((clientX: number) => {
-    if (!dragRef.current.isDragging) return;
-    const deltaX = clientX - dragRef.current.lastX;
-    const deltaAngle = deltaX * 0.42;
-    if (Math.abs(clientX - dragRef.current.startX) > 6) dragRef.current.moved = true;
-    motionRef.current.currentAngle += deltaAngle;
-    motionRef.current.velocity = deltaAngle * 0.28;
-    dragRef.current.lastX = clientX;
-    applyGalleryTransform();
-  }, [applyGalleryTransform]);
+      dragRef.current.isDragging = true;
+      dragRef.current.startX = clientX;
+      dragRef.current.lastX = clientX;
+      dragRef.current.moved = false;
+      motionRef.current.hoveredIndex = null;
+    },
+    [isMobile]
+  );
+
+  const handlePointerMove = useCallback(
+    (clientX: number) => {
+      if (isMobile || !dragRef.current.isDragging) return;
+
+      const deltaX = clientX - dragRef.current.lastX;
+      const deltaAngle = deltaX * 0.42;
+
+      if (Math.abs(clientX - dragRef.current.startX) > 6) {
+        dragRef.current.moved = true;
+      }
+
+      motionRef.current.currentAngle += deltaAngle;
+      motionRef.current.velocity = deltaAngle * 0.28;
+      dragRef.current.lastX = clientX;
+
+      applyGalleryTransform();
+    },
+    [applyGalleryTransform, isMobile]
+  );
 
   useEffect(() => {
     const handleResize = () => {
       if (resizeTimerRef.current) window.clearTimeout(resizeTimerRef.current);
-      resizeTimerRef.current = window.setTimeout(() => setConfig(getSpiralConfig(window.innerWidth)), 160);
+
+      resizeTimerRef.current = window.setTimeout(() => {
+        const width = window.innerWidth;
+        setViewportWidth(width);
+        setConfig(getSpiralConfig(width));
+      }, 160);
     };
-    const observer = new IntersectionObserver(([entry]) => {
-      motionRef.current.isVisible = entry.isIntersecting;
-      if (entry.isIntersecting && !motionRef.current.introPlayed) playIntroAnimation();
-    }, { threshold: 0.15 });
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        motionRef.current.isVisible = entry.isIntersecting;
+
+        if (entry.isIntersecting && !motionRef.current.introPlayed && !isMobile) {
+          playIntroAnimation();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
     if (sectionRef.current) observer.observe(sectionRef.current);
     window.addEventListener("resize", handleResize);
+
     return () => {
       observer.disconnect();
       window.removeEventListener("resize", handleResize);
     };
-  }, [playIntroAnimation]);
+  }, [playIntroAnimation, isMobile]);
 
   useEffect(() => {
+    if (isMobile) {
+      if (frameRef.current) cancelAnimationFrame(frameRef.current);
+      return;
+    }
+
     applyGalleryTransform();
-    if (motionRef.current.introPlayed) startLoop();
-    return () => { if (frameRef.current) cancelAnimationFrame(frameRef.current); };
-  }, [applyGalleryTransform, startLoop]);
+
+    if (motionRef.current.introPlayed) {
+      startLoop();
+    }
+
+    return () => {
+      if (frameRef.current) cancelAnimationFrame(frameRef.current);
+    };
+  }, [applyGalleryTransform, startLoop, isMobile]);
 
   useEffect(() => {
+    if (isMobile) return;
+
     const onMouseMove = (e: MouseEvent) => handlePointerMove(e.clientX);
     const onMouseUp = () => stopDragging();
     const onTouchMove = (e: TouchEvent) => {
       if (!dragRef.current.isDragging) return;
       handlePointerMove(e.touches[0].clientX);
     };
-    
     const onTouchEnd = () => stopDragging();
     const onTouchCancel = () => stopDragging();
     const onWindowBlur = () => stopDragging();
@@ -263,12 +514,16 @@ const SpiralContent = () => {
       window.removeEventListener("blur", onWindowBlur);
       document.removeEventListener("mouseleave", onMouseLeaveWindow);
     };
-  }, [handlePointerMove, stopDragging]);
+  }, [handlePointerMove, stopDragging, isMobile]);
+
+  if (isMobile) {
+    return <MobileCarousel />;
+  }
 
   return (
     <div
       ref={sectionRef as React.RefObject<HTMLDivElement>}
-      className="container spiral-gallery-container"
+      className="container spiral-gallery-container hidden md:block"
       style={{ height: `${containerHeight}px` }}
       onMouseDown={(e) => handlePointerDown(e.clientX)}
       onTouchStart={(e) => handlePointerDown(e.touches[0].clientX)}
@@ -292,42 +547,65 @@ const SpiralContent = () => {
                 zIndex: Math.round(z + 1000),
               } as CSSProperties}
             >
-              <div className="spiral-gallery-card" style={{ transform: `rotateY(${itemAngle}deg)` }}>
+              <div
+                className="spiral-gallery-card"
+                style={{ transform: `rotateY(${itemAngle}deg)` }}
+              >
                 <div
                   className="spiral-gallery-front"
-                  style={{ 
+                  style={{
                     backgroundImage: `url('${item.image}')`,
                   }}
-                  onMouseEnter={() => { motionRef.current.hoveredIndex = index; }}
-                  onMouseLeave={() => { if (motionRef.current.hoveredIndex === index) motionRef.current.hoveredIndex = null; }}
+                  onMouseEnter={() => {
+                    motionRef.current.hoveredIndex = index;
+                  }}
+                  onMouseLeave={() => {
+                    if (motionRef.current.hoveredIndex === index) {
+                      motionRef.current.hoveredIndex = null;
+                    }
+                  }}
                 >
                   <Link
                     href={`/portfolio/${item.slug}`}
                     className="gallery-link"
-                    onClick={(e) => { if (dragRef.current.moved) e.preventDefault(); }}
+                    onClick={(e) => {
+                      if (dragRef.current.moved) e.preventDefault();
+                    }}
                   >
                     <div className="spiral-gallery-item-txt">
-                      <span className="spiral-gallery-category">
-                        {item.category}
-                      </span>
+                      <span className="spiral-gallery-category">{item.category}</span>
                       <h3>{item.title}</h3>
+
                       <div className="spiral-gallery-info">
                         <p className="spiral-gallery-role">{item.role}</p>
                         <p className="spiral-gallery-meta">{item.meta}</p>
                       </div>
-                      <p className="spiral-gallery-summary">
-                        {item.summary}
-                      </p>
+
+                      <p className="spiral-gallery-summary">{item.summary}</p>
                     </div>
+
                     <div className="spiral-gallery-cta">
                       <span>Selected Works</span>
-                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      <svg
+                        className="h-4 w-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
                       </svg>
                     </div>
                   </Link>
                 </div>
-                <div className="spiral-gallery-back" aria-hidden="true"><div className="back-content" /></div>
+
+                <div className="spiral-gallery-back" aria-hidden="true">
+                  <div className="back-content" />
+                </div>
               </div>
             </div>
           );
@@ -344,19 +622,37 @@ const DynamicSpiral = dynamic(() => Promise.resolve(SpiralContent), {
 
 export default function Portfolio() {
   return (
-    <section className="relative overflow-hidden bg-black px-6 pt-24 md:px-12 md:pt-32">
-      <div className="mx-auto mb-16 flex max-w-7xl flex-col justify-between gap-6 md:flex-row md:items-end">
+      <section className="relative overflow-hidden bg-black px-6 pt-24 pb-24 md:px-12 md:pt-32 md:pb-0">      <div className="mx-auto mb-16 flex max-w-7xl flex-col justify-between gap-6 md:flex-row md:items-end">
         <div>
-          <span className="mb-4 block text-sm uppercase tracking-widest text-white/50">Portfolio</span>
-          <h2 className="text-4xl font-semibold leading-tight text-white md:text-5xl">Selected Works</h2>
+          <span className="mb-4 block text-sm uppercase tracking-widest text-white/50">
+            Portfolio
+          </span>
+          <h2 className="text-4xl font-semibold leading-tight text-white md:text-5xl">
+            Selected Works
+          </h2>
         </div>
-        <Link href="/works" className="group inline-flex w-fit items-center gap-3 rounded-full border border-white/20 px-6 py-3 transition-all hover:border-white/40 hover:bg-white/5">
+
+        <Link
+          href="/works"
+          className="group inline-flex w-fit items-center gap-3 rounded-full border border-white/20 px-6 py-3 transition-all hover:border-white/40 hover:bg-white/5"
+        >
           <span className="text-sm font-medium text-white">View More</span>
-          <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          <svg
+            className="h-5 w-5 transition-transform group-hover:translate-x-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M14 5l7 7m0 0l-7 7m7-7H3"
+            />
           </svg>
         </Link>
       </div>
+
       <DynamicSpiral />
     </section>
   );
