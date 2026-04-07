@@ -1,0 +1,111 @@
+.child {
+    position: absolute;
+    top: 159px;
+    left: 92px;
+    border-radius: 50%;
+    background-color: var(--color-violet);
+    width: 38px;
+    height: 38px;
+}
+.persona {
+    position: absolute;
+    top: 159px;
+    left: 106px;
+    font-size: 29px;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    font-family: var(--font-noto-sans);
+    color: var(--color-white);
+}
+.span {
+    color: var(--color-white);
+    font-family: var(--font-noto-sans-kr);
+    font-weight: 600;
+}
+.b {
+    position: absolute;
+    top: 248px;
+    left: 106px;
+    font-size: 35px;
+    font-family: var(--font-noto-sans-kr);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--color-violet);
+}
+.p {
+    margin: 0;
+    font-weight: 350;
+    font-family: var(--font-noto-sans-kr);
+    color: var(--color-white);
+}
+.div1 {
+    position: absolute;
+    top: 313px;
+    left: 111px;
+    font-size: 18px;
+    letter-spacing: -0.03em;
+    line-height: 34px;
+    font-family: var(--font-noto-sans);
+    color: var(--color-white);
+}
+.groupChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 561px;
+    height: 1407.2px;
+}
+.needs {
+    position: absolute;
+    top: 687px;
+    left: 101px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 34px;
+}
+.vectorParent {
+    position: absolute;
+    top: 432px;
+    left: 0px;
+    width: 561px;
+    height: 1407.2px;
+    text-align: center;
+    font-size: 60px;
+    color: var(--color-violet);
+    font-family: var(--font-noto-sans);
+}
+.groupIcon {
+    position: absolute;
+    top: 561px;
+    left: 387px;
+    width: 1185px;
+    height: 250px;
+    object-fit: cover;
+}
+.maskGroupIcon {
+    position: absolute;
+    top: 1011px;
+    left: 465px;
+    width: 1258.24px;
+    height: 250px;
+    object-fit: contain;
+}
+.maskGroupIcon1 {
+    position: absolute;
+    top: 1461px;
+    left: 370px;
+    width: 1143px;
+    height: 250px;
+    object-fit: cover;
+}
+.div {
+    width: 100%;
+    position: relative;
+    background-color: #070503;
+    height: 1910px;
+    overflow: hidden;
+    text-align: left;
+    font-size: var(--font-size-2xl);
+    color: var(--color-darkgray);
+    font-family: var(--font-noto-sans-kr);
+}

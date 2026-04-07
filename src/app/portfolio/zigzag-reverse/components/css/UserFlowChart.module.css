@@ -1,0 +1,74 @@
+.wireframeIcon {
+    position: absolute;
+    top: 1540px;
+    left: 0px;
+    width: 1920px;
+    height: 3027px;
+    object-fit: cover;
+}
+.image302Icon {
+    position: absolute;
+    top: 2px;
+    left: 0px;
+    width: 1920px;
+    height: 1484px;
+    object-fit: cover;
+}
+.userFlowchartChild {
+    position: absolute;
+    top: 159px;
+    left: 92px;
+    border-radius: 50%;
+    background-color: var(--color-violet);
+    width: 38px;
+    height: 38px;
+}
+.userFlowchart1 {
+    position: absolute;
+    top: 159px;
+    left: 106px;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+}
+.span {
+    color: var(--color-white);
+}
+.b {
+    position: absolute;
+    top: 245px;
+    left: 106px;
+    font-size: 35px;
+    letter-spacing: -0.03em;
+    color: var(--color-violet);
+}
+.p {
+    margin: 0;
+}
+.div {
+    position: absolute;
+    top: 313px;
+    left: 111px;
+    font-size: 18px;
+    letter-spacing: -0.03em;
+    line-height: 34px;
+}
+.flowIcon {
+    position: absolute;
+    top: 509px;
+    left: 106px;
+    width: 1610px;
+    height: 908px;
+    object-fit: cover;
+}
+.userFlowchart {
+    width: 100%;
+    position: relative;
+    background-color: #070503;
+    height: 4567px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 29px;
+    color: var(--color-white);
+    font-family: var(--font-noto-sans);
+}
+

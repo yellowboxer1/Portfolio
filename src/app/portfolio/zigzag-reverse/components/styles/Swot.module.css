@@ -1,0 +1,459 @@
+.swotChild {
+    position: absolute;
+    top: 870px;
+    left: 118px;
+    border-radius: 30px;
+    background-color: #161616CC;
+    border: 2px solid var(--color-dimgray-200);
+    box-sizing: border-box;
+    width: 1684px;
+    height: 900px;
+}
+.frameChild {
+    width: 2px;
+    position: relative;
+    border-right: 2px dashed var(--color-gray-300);
+    box-sizing: border-box;
+    height: 557px;
+}
+.lineParent {
+    position: absolute;
+    top: 0px;
+    left: 83px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 85px;
+}
+.frameChild10 {
+    align-self: stretch;
+    position: relative;
+    border-top: 2px dashed var(--color-gray-300);
+    box-sizing: border-box;
+    height: 2px;
+}
+.lineGroup {
+    position: absolute;
+    top: 69px;
+    left: 0px;
+    width: 1202px;
+    color:#252525;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 71px;
+}
+.frameParent {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1202px;
+    height: 555px;
+}
+.swotInner {
+    position: absolute;
+    top: 1043px;
+    left: 359px;
+    width: 1202px;
+    height: 555px;
+}
+.swotItem {
+    position: absolute;
+    top: 1038px;
+    left: 361px;
+    width: 1197px;
+    height: 564px;
+}
+.ellipseDiv {
+    position: absolute;
+    top: 159px;
+    left: 92px;
+    border-radius: 50%;
+    background-color: var(--color-violet);
+    width: 38px;
+    height: 38px;
+}
+.swotPositioning {
+    position: absolute;
+    top: 159px;
+    left: 106px;
+    font-size: 29px;
+    letter-spacing: -0.03em;
+    font-family: var(--font-noto-sans);
+    font-weight: 600;
+    text-align: left;
+}
+.span {
+    color: var(--color-white);
+}
+.aiContainer {
+    position: absolute;
+    top: 248px;
+    left: 106px;
+    font-size: 35px;
+    letter-spacing: -0.03em;
+    font-family: var(--font-noto-sans-kr);
+    font-weight: 600;
+    text-align: left;
+    color: var(--color-violet);
+}
+.groupChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-xl);
+    background-color: #161616CC;
+    border: 2px solid var(--color-dimgray-200);
+    box-sizing: border-box;
+    width: 340px;
+    height: 333px;
+}
+.strength {
+    position: absolute;
+    top: 45px;
+    left: 103px;
+    font-family: var(--font-noto-sans);
+    font-weight: 900;
+    line-height: 150%;
+    font-weight: 900;
+}
+.ai {
+    margin-bottom: 0px;
+}
+.z1 {
+    color: var(--color-darkgray);
+}
+.aiZ {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    padding-left: var(--padding-2xl);
+}
+.aiContainer1 {
+    position: absolute;
+    top: 148px;
+    left: 48px;
+    font-size: var(--font-size-base);
+    line-height: 200%;
+}
+.rectangleParent {
+    width: 340px;
+    position: relative;
+    height: 333px;
+}
+.weakness {
+    position: absolute;
+    top: 45px;
+    left: 91px;
+    font-family: var(--font-noto-sans);
+    font-weight: 900;
+    line-height: 150%;
+    font-weight: 900;
+}
+.mauContainer {
+    position: absolute;
+    top: 148px;
+    left: 55px;
+    font-size: var(--font-size-base);
+    line-height: 200%;
+}
+.opportunity {
+    position: absolute;
+    top: 45px;
+    left: 77px;
+    font-family: var(--font-noto-sans);
+    font-weight: 900;
+    line-height: 150%;
+    font-weight: 900;
+}
+.aiContainer2 {
+    position: absolute;
+    top: 148px;
+    left: 79px;
+    font-size: var(--font-size-base);
+    line-height: 200%;
+}
+.threat {
+    position: absolute;
+    top: 45px;
+    left: 120px;
+    font-family: var(--font-noto-sans);
+    font-weight: 900;
+    line-height: 150%;
+    font-weight: 900;
+}
+.groupParent {
+    position: absolute;
+    top: 446px;
+    left: 118px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 108px;
+    text-align: left;
+    font-size: var(--font-size-11xl);
+    font-family: var(--font-noto-sans-kr);
+}
+.p {
+    margin: 0;
+}
+.div1 {
+    position: absolute;
+    top: 313px;
+    left: 111px;
+    font-size: 18px;
+    letter-spacing: -0.03em;
+    font-family: var(--font-noto-sans-kr);
+    font-weight: 350;
+    line-height: 34px;
+    text-align: left;
+}
+.div2 {
+    position: absolute;
+    top: 0px;
+    left: 19px;
+    font-family: var(--font-noto-sans-kr);
+    line-height: 34px;
+}
+.systemDriven {
+    position: absolute;
+    top: 31px;
+    left: 0px;
+    line-height: 34px;
+    color: var(--color-dimgray-100);
+}
+.parent {
+    position: absolute;
+    top: 1288px;
+    left: 204px;
+    width: 135px;
+    height: 65px;
+    color: var(--color-lightgray);
+}
+.div3 {
+    position: absolute;
+    top: 0px;
+    left: 7px;
+    font-family: var(--font-noto-sans-kr);
+    line-height: 34px;
+}
+.group {
+    position: absolute;
+    top: 1288px;
+    left: 1603px;
+    width: 111px;
+    height: 65px;
+    color: var(--color-lightgray);
+}
+.div4 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-family: var(--font-noto-sans-kr);
+    line-height: 34px;
+}
+.basic {
+    position: absolute;
+    top: 31px;
+    left: 3px;
+    line-height: 34px;
+    color: var(--color-dimgray-100);
+}
+.container {
+    position: absolute;
+    top: 952px;
+    left: 932px;
+    width: 56px;
+    height: 65px;
+    color: var(--color-lightgray);
+}
+.parent1 {
+    position: absolute;
+    top: 1641px;
+    left: 925px;
+    width: 69px;
+    height: 65px;
+    color: var(--color-lightgray);
+}
+
+/* 상태 아이콘 컨테이너 */
+.statusContainer {
+    position: absolute;
+    top: 1059px;
+    left: 1182px;
+    width: 321px;
+    height: 321px;
+}
+
+/* 메인 상태 아이콘 (고정) */
+.statusIcon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 321px;
+    height: 321px;
+    z-index: 400;
+}
+
+/* 빛 효과 (애니메이션) */
+.lightEffect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 321px;
+    height: 321px;
+    z-index: 300;
+    opacity: 0.7;
+    animation: light 6s infinite alternate;
+}
+
+/* 빛 애니메이션 정의 */
+@keyframes light {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 1.0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+}
+
+.groupIcon {
+    position: absolute;
+    top: 1818px;
+    left: 921px;
+    width: 73px;
+    height: 76px;
+}
+.swotChild1 {
+    position: absolute;
+    top: 1932.5px;
+    left: 194.5px;
+    filter: blur(4px);
+    border-radius: var(--br-79xl);
+    border: 15px solid rgba(234, 156, 224, 0.5);
+    box-sizing: border-box;
+    width: 1526px;
+    height: 211px;
+}
+.swotChild2 {
+    position: absolute;
+    top: 1938.5px;
+    left: 200.5px;
+    border-radius: var(--br-79xl);
+    border: 1.5px solid #f498e9;
+    box-sizing: border-box;
+    width: 1514px;
+    height: 199px;
+}
+.span10 {
+    font-weight: 100;
+}
+.txt {
+    width: 100%;
+}
+.div6 {
+    position: absolute;
+    top: 1894px;
+    left: 219px;
+    font-size: 42px;
+    letter-spacing: -0.03em;
+    line-height: 34px;
+    display: flex;
+    align-items: center;
+    width: 1481px;
+    height: 255px;
+    font-family: var(--font-noto-sans-kr);
+}
+.log {
+    position: absolute;
+    top: 1945px;
+    left: 219px;
+    font-size: var(--font-size-base);
+    letter-spacing: -0.03em;
+    line-height: 34px;
+    font-family: var(--font-noto-sans-kr);
+    color: #747474;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1481px;
+    height: 255px;
+}
+.img1Icon {
+    position: absolute;
+    top: 1177px;
+    left: 1300px;
+    border-radius: var(--br-xl);
+    width: 86px;
+    height: 86px;
+    object-fit: cover;
+    z-index: 500;
+}
+.icon {
+    position: absolute;
+    top: 1380px;
+    left: 1223px;
+    width: 76px;
+    height: 76px;
+    object-fit: cover;
+}
+.icon1 {
+    position: absolute;
+    top: 1070px;
+    left: 1097px;
+    width: 76px;
+    height: 76px;
+    object-fit: cover;
+}
+.icon2 {
+    position: absolute;
+    top: 1288px;
+    left: 796px;
+    width: 76px;
+    height: 76px;
+    object-fit: cover;
+}
+.icon3 {
+    position: absolute;
+    top: 1084px;
+    left: 616px;
+    width: 76px;
+    height: 76px;
+    object-fit: cover;
+}
+.w1Icon {
+    position: absolute;
+    top: 1496px;
+    left: 564px;
+    width: 76px;
+    height: 76px;
+    object-fit: cover;
+}
+.icon4 {
+    position: absolute;
+    top: 1545px;
+    left: 518px;
+    width: 76px;
+    height: 76px;
+    object-fit: cover;
+}
+.swot {
+    width: 100%;
+    position: relative;
+    background-color: #070503;
+    height: 2160px;
+    overflow: hidden;
+    text-align: center;
+    font-size: var(--font-size-xl);
+    color: var(--color-white);
+    font-family: var(--font-noto-sans);
+}

@@ -606,7 +606,7 @@ body {
   width: clamp(28.4rem, 26vw, 31.2rem);
   aspect-ratio: 0.72 / 1;
   transform-style: preserve-3d;
-  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .spiral-gallery-front,
@@ -633,7 +633,7 @@ body {
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.2) 40%,
+    rgba(0, 0, 0, 0.3) 30%,
     rgba(0, 0, 0, 0.85) 75%,
     rgba(0, 0, 0, 0.98) 100%
   );
@@ -646,12 +646,12 @@ body {
   inset: 0;
   background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.14), transparent 38%);
   opacity: 0;
-  transition: opacity 0.35s ease;
+  transition: opacity 0.4s ease;
   z-index: 1;
 }
 
 .spiral-gallery-card:hover .spiral-gallery-front::after {
-  opacity: 1;
+  opacity: 0.85;
 }
 
 .spiral-gallery-back {
@@ -681,7 +681,10 @@ body {
 .spiral-gallery-item-txt {
   transform: translateY(8px);
   opacity: 0.98;
-  transition: transform 0.42s ease, opacity 0.42s ease;
+  transform: translateY(15px);
+  transition: 
+  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+  opacity 0.7s ease;
 }
 
 .spiral-gallery-card:hover .spiral-gallery-item-txt {
@@ -724,11 +727,11 @@ body {
   opacity: 0;
   max-height: 0;
   overflow: hidden;
-  transform: translateY(10px);
-  transition:
-    opacity 0.32s ease,
-    transform 0.32s ease,
-    max-height 0.42s ease;
+  transition: 
+  opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+  transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+  max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(20px);
 }
 
 .spiral-gallery-card:hover .spiral-gallery-extra {
@@ -922,3 +925,156 @@ body {
   word-break: keep-all;
   overflow-wrap: normal;
 }
+
+/* =========================================================
+   Portfolio Background Layers
+========================================================= */
+
+.portfolio-bg-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Layer 1: uploaded gradient image, but only as soft color atmosphere */
+.portfolio-bg-image {
+  position: absolute;
+  inset: -12%;
+  background-image: url("/gallery_bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 58% center;
+  opacity: 0.38;
+  filter: blur(78px) saturate(118%);
+  transform: scale(1.2);
+  will-change: transform, opacity, filter;
+}
+
+/* Layer 2: soft depth glows */
+.portfolio-bg-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 22% 32%,
+      rgba(120, 180, 255, 0.16),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 78% 24%,
+      rgba(255, 255, 255, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 82% 62%,
+      rgba(110, 150, 255, 0.16),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 64% 74%,
+      rgba(255, 130, 210, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 38% 78%,
+      rgba(80, 140, 255, 0.10),
+      transparent 34%
+    );
+  filter: blur(70px);
+  opacity: 0.72;
+  transform: scale(1.06);
+}
+
+/* Layer 3: vignette for focus */
+.portfolio-bg-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.25) 22%,
+      rgba(0, 0, 0, 0.08) 48%,
+      rgba(0, 0, 0, 0.25) 74%,
+      rgba(0, 0, 0, 0.8) 100%
+    ),
+    radial-gradient(
+      circle at center,
+      transparent 42%,
+      rgba(0, 0, 0, 0.18) 78%,
+      rgba(0, 0, 0, 0.42) 100%
+    );
+}
+
+/* subtle motion */
+@keyframes portfolioBgFloat {
+  0% {
+    transform: scale(1.22) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.25) translate3d(0, -18px, 0);
+  }
+  100% {
+    transform: scale(1.22) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes portfolioGlowShift {
+  0% {
+    transform: scale(1.06) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate3d(-10px, 10px, 0);
+  }
+  100% {
+    transform: scale(1.06) translate3d(0, 0, 0);
+  }
+}
+
+.portfolio-bg-image {
+  animation: portfolioBgFloat 18s ease-in-out infinite;
+}
+
+.portfolio-bg-glow {
+  animation: portfolioGlowShift 22s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .portfolio-bg-image {
+    opacity: 0.5;
+    filter: blur(60px);
+  }
+
+  .portfolio-bg-glow {
+    opacity: 0.82;
+    filter: blur(58px);
+  }
+
+  .portfolio-bg-vignette {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.90) 0%,
+        rgba(0, 0, 0, 0.42) 24%,
+        rgba(0, 0, 0, 0.18) 50%,
+        rgba(0, 0, 0, 0.42) 76%,
+        rgba(0, 0, 0, 0.94) 100%
+      ),
+      radial-gradient(
+        circle at center,
+        transparent 40%,
+        rgba(0, 0, 0, 0.30) 76%,
+        rgba(0, 0, 0, 0.56) 100%
+      );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-bg-image,
+  .portfolio-bg-glow {
+    animation: none !important;
+  }
+}
+

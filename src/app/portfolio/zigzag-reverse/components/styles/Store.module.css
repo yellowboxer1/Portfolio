@@ -1,0 +1,61 @@
+.image325Icon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1920px;
+    height: 1169px;
+    object-fit: cover;
+}
+.p {
+    margin: 0;
+}
+.div {
+    position: absolute;
+    top: 362px;
+    left: 0px;
+    letter-spacing: -0.03em;
+    font-weight: 350;
+    line-height: 34px;
+}
+.div1 {
+    position: absolute;
+    top: 128px;
+    left: 0px;
+    font-size: 30px;
+    letter-spacing: -0.03em;
+    font-family: var(--font-noto-sans);
+}
+.store1Icon {
+    position: absolute;
+    top: 0px;
+    left: 638px;
+    width: 1018px;
+    height: 1044px;
+    object-fit: cover;
+}
+.parent {
+    position: absolute;
+    top: 125px;
+    left: 148px;
+    width: 1656px;
+    height: 1044px;
+}
+.storeSave {
+    position: absolute;
+    top: 328px;
+    left: 148px;
+    width: 547px;
+    height: 74px;
+    object-fit: cover;
+}
+.store {
+    width: 100%;
+    position: relative;
+    height: 1169px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 18px;
+    color: var(--color-white);
+    font-family: var(--font-noto-sans-kr);
+}
+

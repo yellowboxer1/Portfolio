@@ -1,0 +1,16 @@
+/*
+  Optional token scope to avoid leaking legacy :root values globally.
+  Import this in ZigzagReverseExperience.tsx only if you move styles out of src/index.css.
+*/
+
+[data-project='zigzag-reverse'] {
+  --font-noto-sans: 'Noto Sans';
+  --font-noto-sans-kr: 'Noto Sans KR';
+  --font-inter: Inter;
+  --font-bacasime-antique: 'Bacasime Antique';
+  --font-noto-sans1: 'Noto Sans Display';
+
+  --color-gray-600: #070503;
+  --color-white: #eee;
+  --color-dimgray: #525252;
+}

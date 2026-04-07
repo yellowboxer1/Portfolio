@@ -25,7 +25,8 @@ const portfolioItems: PortfolioItem[] = [
     category: "AI B2B SaaS",
     role: "PM · Service Planner",
     meta: "2026.04ㅣ누적 투자 10억 원",
-    summary: "가중 적합도 알고리즘 기반 매칭 엔진 총괄 및 특허 출원, 디딤돌 R&D 및 청년창업사관학교 수주",
+    summary:
+      "가중 적합도 알고리즘 기반 매칭 엔진 총괄 및 특허 출원, 디딤돌 R&D 및 청년창업사관학교 수주",
   },
   {
     id: 2,
@@ -35,7 +36,8 @@ const portfolioItems: PortfolioItem[] = [
     category: "AI Mobility",
     role: "Founder · Lead Planner",
     meta: "2026.01ㅣ2천만 원",
-    summary: "YOLOv8 실시간 객체 인식 및 Voice-All-In-One 기능 개발 총괄, 부산 공공빅데이터 활용 창업경진대회 우수상",
+    summary:
+      "YOLOv8 실시간 객체 인식 및 Voice-All-In-One 기능 개발 총괄, 부산 공공빅데이터 활용 창업경진대회 우수상",
   },
   {
     id: 3,
@@ -45,7 +47,8 @@ const portfolioItems: PortfolioItem[] = [
     category: "Product Strategy",
     role: "UX Strategy · Analysis",
     meta: "2025.04",
-    summary: "커머스 플랫폼 인터페이스 구조 분석 및 사용자 경험 최적화를 위한 시스템 역기획 수행",
+    summary:
+      "커머스 플랫폼 인터페이스 구조 분석 및 사용자 경험 최적화를 위한 시스템 역기획 수행",
   },
   {
     id: 4,
@@ -55,7 +58,8 @@ const portfolioItems: PortfolioItem[] = [
     category: "R&D Strategy",
     meta: "2023.10ㅣ15억 원",
     role: "PM",
-    summary: "빅데이터 기반 1인가구 돌봄 서비스 기획 및 운영, 스마트빌리지 보급 및 확산 사업 우수사례 선정 '장관상 수상",
+    summary:
+      "빅데이터 기반 1인가구 돌봄 서비스 기획 및 운영, 스마트빌리지 보급 및 확산 사업 우수사례 선정 '장관상 수상",
   },
   {
     id: 5,
@@ -65,27 +69,30 @@ const portfolioItems: PortfolioItem[] = [
     category: "R&D Strategy",
     role: "PM",
     meta: "2023.09ㅣ9억 6천만 원",
-    summary: "홀몸 노인 라이프로그 ADL 추출 및 행동 분석 기획, 특허 출원 등 R&D 과제 전주기 운영 관리, 과기부 우수과제 선정",
+    summary:
+      "홀몸 노인 라이프로그 ADL 추출 및 행동 분석 기획, 특허 출원 등 R&D 과제 전주기 운영 관리, 과기부 우수과제 선정",
   },
   {
     id: 6,
     slug: "smart-city-challenge",
     title: "2021 스마트시티 챌린지 사업",
-    image: "/sc.png",
+    image: "/sc1.png",
     category: "Smart Mobility",
     role: "Service Planner",
     meta: "2023.07ㅣ29억 5,410만 원(총 사업비:300억)",
-    summary: "부산 도시철도 내 교통약자 배리어 프리 실내 내비게이션 구축 실무 및 교통약자 데이터 분석",
+    summary:
+      "부산 도시철도 내 교통약자 배리어 프리 실내 내비게이션 구축 실무 및 교통약자 데이터 분석",
   },
   {
     id: 7,
     slug: "la-premiere",
     title: "프리미어리그 승부 예측 서비스 앱 La Premiere",
-    image: "la.png",
+    image: "la1.png",
     category: "Service App",
     role: "Service Planner",
     meta: "2024.03",
-    summary: "스포츠 빅데이터를 활용한 승부 예측 로직 설계 및 사용자 서비스 인터페이스 기획",
+    summary:
+      "스포츠 빅데이터를 활용한 승부 예측 로직 설계 및 사용자 서비스 인터페이스 기획",
   },
   {
     id: 8,
@@ -95,8 +102,9 @@ const portfolioItems: PortfolioItem[] = [
     category: "Regional Strategy",
     role: "Strategy Planner",
     meta: "2022.01ㅣ4억 2천만 원(총 사업비 172억)",
-    summary: "지역 자산 및 민간조직을 활용한 지역 특화 산업 고도화 및 발전 전략 수립 총괄",
-  }
+    summary:
+      "지역 자산 및 민간조직을 활용한 지역 특화 산업 고도화 및 발전 전략 수립 총괄",
+  },
 ];
 
 type SpiralConfig = {
@@ -123,10 +131,11 @@ function getSpiralConfig(width: number): SpiralConfig {
       topOffset: 86,
     };
   }
+
   if (width <= 1024) {
     return {
-      radius: 640,
-      itemShift: 50,
+      radius: 635,
+      itemShift: 45,
       sliceCount: 11,
       scale: 0.92,
       baseZ: -350,
@@ -135,12 +144,13 @@ function getSpiralConfig(width: number): SpiralConfig {
       topOffset: 60,
     };
   }
+
   return {
-    radius: 800,
-    itemShift: 80,
+    radius: 790,
+    itemShift: 72,
     sliceCount: 10,
     scale: 0.9,
-    baseZ: -400,
+    baseZ: -390,
     itemLeftOffset: -200,
     containerMinHeight: 860,
     topOffset: 150,
@@ -157,75 +167,90 @@ function MobileCarousel() {
 
   const totalCount = portfolioItems.length;
 
-  const scrollByCard = useCallback((direction: "prev" | "next") => {
-    const el = scrollerRef.current;
-    if (!el) return;
+  const scrollByCard = useCallback(
+    (direction: "prev" | "next") => {
+      const el = scrollerRef.current;
+      if (!el) return;
 
-    const cardWidth = el.clientWidth * 0.86 + 16; // min-w-[86%] + gap-4
-    const nextIndex =
-      direction === "next"
-        ? Math.min(currentIndex + 1, totalCount - 1)
-        : Math.max(currentIndex - 1, 0);
+      const nextIndex =
+        direction === "next"
+          ? Math.min(currentIndex + 1, totalCount - 1)
+          : Math.max(currentIndex - 1, 0);
 
-    el.scrollTo({
-      left: nextIndex * cardWidth,
-      behavior: "smooth",
-    });
+      const target = el.children[nextIndex] as HTMLElement | undefined;
+      if (!target) return;
 
-    setCurrentIndex(nextIndex);
-  }, [currentIndex, totalCount]);
+      target.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      });
+
+      setCurrentIndex(nextIndex);
+    },
+    [currentIndex, totalCount]
+  );
 
   const handleScroll = useCallback(() => {
     const el = scrollerRef.current;
     if (!el) return;
 
-    const cardWidth = el.clientWidth * 0.86 + 16;
-    const index = Math.round(el.scrollLeft / cardWidth);
-    const safeIndex = Math.max(0, Math.min(index, totalCount - 1));
+    const children = Array.from(el.children) as HTMLElement[];
+    if (!children.length) return;
 
-    if (safeIndex !== currentIndex) {
-      setCurrentIndex(safeIndex);
+    const containerRect = el.getBoundingClientRect();
+    const containerCenter = containerRect.left + containerRect.width / 2;
+
+    let closestIndex = 0;
+    let minDistance = Number.POSITIVE_INFINITY;
+
+    children.forEach((child, index) => {
+      const rect = child.getBoundingClientRect();
+      const childCenter = rect.left + rect.width / 2;
+      const distance = Math.abs(childCenter - containerCenter);
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    if (closestIndex !== currentIndex) {
+      setCurrentIndex(closestIndex);
     }
-  }, [currentIndex, totalCount]);
+  }, [currentIndex]);
 
   return (
-    <div className="relative -mx-6 px-6 pb-24 md:hidden">
+    <div className="relative -mx-6 px-4 pb-24 md:hidden">
       <div
         ref={scrollerRef}
         onScroll={handleScroll}
-        className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         aria-label="Portfolio mobile carousel"
       >
         {portfolioItems.map((item) => (
           <Link
             key={item.id}
             href={`/portfolio/${item.slug}`}
-            className="group relative min-w-[86%] snap-center overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04]"
+            className="group relative min-w-[92%] snap-center overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04]"
           >
             <div
-              className="relative aspect-[4/5.6] bg-cover bg-center"
+              className="relative aspect-[4/6.15] bg-cover bg-center"
               style={{ backgroundImage: `url('${item.image}')` }}
             >
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/5" />
 
-              <div className="absolute inset-x-0 bottom-0 p-5 mobile-card-content">
-                
-                <span className="mobile-card-category">
-                  {item.category}
-                </span>
+              <div className="mobile-card-content absolute inset-x-0 bottom-0 p-5">
+                <span className="mobile-card-category">{item.category}</span>
 
-                <h3 className="mobile-card-title">
-                  {item.title}
-                </h3>
+                <h3 className="mobile-card-title">{item.title}</h3>
 
                 <div className="mobile-card-info">
                   <p className="mobile-card-role">{item.role}</p>
                   <p className="mobile-card-meta">{item.meta}</p>
                 </div>
 
-                <p className="mobile-card-summary">
-                  {item.summary}
-                </p>
+                <p className="mobile-card-summary">{item.summary}</p>
               </div>
             </div>
           </Link>
@@ -237,7 +262,7 @@ function MobileCarousel() {
           type="button"
           aria-label="Previous portfolio"
           onClick={() => scrollByCard("prev")}
-          className="absolute left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/55 text-white backdrop-blur-md transition active:scale-[0.96]"
+          className="absolute left-1 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/55 text-white backdrop-blur-md transition active:scale-[0.96]"
         >
           <svg
             className="h-5 w-5"
@@ -260,7 +285,7 @@ function MobileCarousel() {
           type="button"
           aria-label="Next portfolio"
           onClick={() => scrollByCard("next")}
-          className="absolute right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/55 text-white backdrop-blur-md transition active:scale-[0.96]"
+          className="absolute right-1 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/55 text-white backdrop-blur-md transition active:scale-[0.96]"
         >
           <svg
             className="h-5 w-5"
@@ -292,6 +317,7 @@ const SpiralContent = () => {
     lastX: 0,
     moved: false,
   });
+
   const motionRef = useRef({
     currentAngle: 200,
     velocity: 0,
@@ -318,7 +344,12 @@ const SpiralContent = () => {
       duplicatedItems.length * config.itemShift + 720 + config.topOffset,
       config.containerMinHeight
     );
-  }, [duplicatedItems.length, config.itemShift, config.containerMinHeight, config.topOffset]);
+  }, [
+    duplicatedItems.length,
+    config.itemShift,
+    config.containerMinHeight,
+    config.topOffset,
+  ]);
 
   const applyGalleryTransform = useCallback(() => {
     const gallery = galleryRef.current;
@@ -371,7 +402,8 @@ const SpiralContent = () => {
       const progress = Math.min((time - startTime) / duration, 1);
       const eased = easeOutCubic(progress);
 
-      motionRef.current.currentAngle = startAngle + (endAngle - startAngle) * eased;
+      motionRef.current.currentAngle =
+        startAngle + (endAngle - startAngle) * eased;
       applyGalleryTransform();
 
       if (progress < 1) {
@@ -421,7 +453,9 @@ const SpiralContent = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (resizeTimerRef.current) window.clearTimeout(resizeTimerRef.current);
+      if (resizeTimerRef.current) {
+        window.clearTimeout(resizeTimerRef.current);
+      }
 
       resizeTimerRef.current = window.setTimeout(() => {
         const width = window.innerWidth;
@@ -529,16 +563,21 @@ const SpiralContent = () => {
                 left: `${config.itemLeftOffset}px`,
                 transform: `translateX(${x}px) translateZ(${z}px) translateY(${y}px)`,
                 zIndex: Math.round(z + 1000),
-              } as CSSProperties}
+              }}
             >
               <div
                 className="spiral-gallery-card"
-                style={{ transform: `rotateY(${itemAngle}deg)` }}
+                style={{ 
+                  transform: `rotateY(${itemAngle}deg) ${motionRef.current.hoveredIndex === index ? 'translateY(-15px) scale(1.02)' : ''}`,
+                  transition: 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)' // 더 쫀득한 애니메이션
+                }}
               >
                 <div
                   className="spiral-gallery-front"
-                  style={{
+                  style={{ 
                     backgroundImage: `url('${item.image}')`,
+                    filter: motionRef.current.hoveredIndex !== null && motionRef.current.hoveredIndex !== index ? 'brightness(0.5) blur(2px)' : 'none',
+                    transition: 'filter 0.4s ease'
                   }}
                   onMouseEnter={() => {
                     motionRef.current.hoveredIndex = index;
@@ -557,14 +596,15 @@ const SpiralContent = () => {
                     }}
                   >
                     <div className="spiral-gallery-item-txt">
-                    <div className="spiral-gallery-main">
-                      <span className="spiral-gallery-category">{item.category}</span>
-                      <h3>{item.title}</h3>
-                      <p className="spiral-gallery-role">{item.role}</p>
-                    </div>
+                      <div className="spiral-gallery-main">
+                        <span className="spiral-gallery-category">
+                          {item.category}
+                        </span>
+                        <h3>{item.title}</h3>
+                        <p className="spiral-gallery-role">{item.role}</p>
+                      </div>
 
                       <div className="spiral-gallery-extra">
-
                         <div className="spiral-gallery-info">
                           <p className="spiral-gallery-meta">{item.meta}</p>
                         </div>
@@ -611,38 +651,49 @@ const DynamicSpiral = dynamic(() => Promise.resolve(SpiralContent), {
 
 export default function Portfolio() {
   return (
-      <section className="relative overflow-hidden bg-black px-6 pt-24 pb-24 md:px-12 md:pt-32 md:pb-0">      <div className="mx-auto mb-16 flex max-w-7xl flex-col justify-between gap-6 md:flex-row md:items-end">
-        <div>
-          <span className="mb-4 block text-sm uppercase tracking-widest text-white/50">
-            Portfolio
-          </span>
-          <h2 className="text-4xl font-semibold leading-tight text-white md:text-5xl">
-            Selected Works
-          </h2>
-        </div>
-
-        <Link
-          href="/works"
-          className="group inline-flex w-fit items-center gap-3 rounded-full border border-white/20 px-6 py-3 transition-all hover:border-white/40 hover:bg-white/5"
-        >
-          <span className="text-sm font-medium text-white">View More</span>
-          <svg
-            className="h-5 w-5 transition-transform group-hover:translate-x-1"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M14 5l7 7m0 0l-7 7m7-7H3"
-            />
-          </svg>
-        </Link>
+    <section className="relative overflow-hidden bg-black px-6 pt-24 pb-24 md:px-12 md:pt-32 md:pb-0">
+      {/* Background Layers */}
+      <div className="portfolio-bg-wrap" aria-hidden="true">
+        <div className="portfolio-bg-image" />
+        <div className="portfolio-bg-glow" />
+        <div className="portfolio-bg-vignette" />
       </div>
 
-      <DynamicSpiral />
+      {/* Foreground Content */}
+      <div className="relative z-10">
+        <div className="mx-auto mb-16 flex max-w-7xl flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <span className="mb-4 block text-sm uppercase tracking-widest text-white/50">
+              Portfolio
+            </span>
+            <h2 className="text-4xl font-semibold leading-tight text-white md:text-5xl">
+              Selected Works
+            </h2>
+          </div>
+
+          <Link
+            href="/works"
+            className="group inline-flex w-fit items-center gap-3 rounded-full border border-white/20 px-6 py-3 transition-all hover:border-white/40 hover:bg-white/5"
+          >
+            <span className="text-sm font-medium text-white">View More</span>
+            <svg
+              className="h-5 w-5 transition-transform group-hover:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+          </Link>
+        </div>
+
+        <DynamicSpiral />
+      </div>
     </section>
   );
 }

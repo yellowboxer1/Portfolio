@@ -1,0 +1,224 @@
+.onboardingPageChild {
+    position: absolute;
+    top: 2658px;
+    left: 0px;
+    background-color: #fff;
+    width: 1920px;
+    height: 3741px;
+}
+.group10000039271 {
+    position: absolute;
+    top: 2957px;
+    left: 395px;
+    width: 503px;
+    height: 3454px;
+    object-fit: cover;
+}
+.image324Icon {
+    position: absolute;
+    top: 1079px;
+    left: 0px;
+    width: 1920px;
+    height: 1579px;
+    object-fit: cover;
+}
+.p {
+    margin: 0;
+}
+.aiContainer {
+    position: absolute;
+    top: 234px;
+    left: 0px;
+    letter-spacing: -0.03em;
+    line-height: 34px;
+    font-weight: 350;
+}
+.div {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 30px;
+    letter-spacing: -0.03em;
+    font-family: var(--font-noto-sans);
+}
+.aiParent {
+    position: absolute;
+    top: 1742px;
+    left: 148px;
+    width: 617px;
+    height: 336px;
+    font-size: 18px;
+    color: var(--color-white);
+}
+.onboardingPage1 {
+    position: absolute;
+    top: 1814px;
+    left: 148px;
+    width: 758px;
+    height: 100px;
+    object-fit: cover;
+}
+.image321Icon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1920px;
+    height: 1079px;
+    object-fit: cover;
+}
+.image323 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 1920px;
+    height: 1079px;
+}
+.onboardingVideo {
+    position: absolute;
+    top: 13px;
+    left: 18px;
+    border-radius: var(--br-41xl);
+    width: 380px;
+    height: 824px;
+    object-fit: cover;
+}
+.image48Icon {
+    position: absolute;
+    top: 13px;
+    left: 18px;
+    border-radius: var(--br-41xl);
+    width: 380px;
+    height: 824px;
+    object-fit: cover;
+}
+.image50 {
+    position: absolute;
+    top: 13px;
+    left: 18px;
+    border-radius: var(--br-41xl);
+    background: linear-gradient(-5.99deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.02));
+    width: 378px;
+    height: 824px;
+}
+.icon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 414px;
+    height: 849px;
+    object-fit: cover;
+}
+.image48Parent {
+    position: absolute;
+    top: 605px;
+    left: 744px;
+    width: 414px;
+    height: 849px;
+}
+.image336Icon {
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    width: 388px;
+    height: 824px;
+    object-fit: cover;
+}
+.image501 {
+    position: absolute;
+    top: 13px;
+    left: 18px;
+    border-radius: var(--br-41xl);
+    width: 378px;
+    height: 824px;
+}
+.image336Parent {
+    position: absolute;
+    top: 2203px;
+    left: 416px;
+    width: 414px;
+    height: 849px;
+}
+.image502 {
+    position: absolute;
+    top: 13px;
+    left: 18px;
+    border-radius: var(--br-41xl);
+    background: linear-gradient(-5.99deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.01));
+    width: 378px;
+    height: 824px;
+}
+.imageParent {
+    position: absolute;
+    top: 2366px;
+    left: 1103px;
+    width: 414px;
+    height: 849px;
+}
+.onboardingMain {
+    position: absolute;
+    top: 2416px;
+    left: 359px;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: inline-block;
+    width: 196px;
+    height: 59px;
+    color: #FF3390;
+    transform:  rotate(-90deg);
+    transform-origin: 0 0;
+}
+.bodySize {
+    position: absolute;
+    top: 3156px;
+    left: 1046px;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: inline-block;
+    width: 102px;
+    height: 59px;
+    color: #FF3390;
+    font-family: var(--font-noto-sans-kr);
+    transform:  rotate(-90deg);
+    transform-origin: 0 0;
+}
+.skinType {
+    position: absolute;
+    top: 3614px;
+    left: 1046px;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: inline-block;
+    width: 101px;
+    height: 59px;
+    color: #FF3390;
+    font-family: var(--font-noto-sans-kr);
+    transform:  rotate(-90deg);
+    transform-origin: 0 0;
+}
+.group10000039281 {
+    position: absolute;
+    top: 3477px;
+    left: 1079px;
+    width: 503px;
+    height: 2621px;
+    object-fit: cover;
+}
+.group10000039211 {
+    position: absolute;
+    top: 199px;
+    left: 687px;
+    width: 529px;
+    height: 240px;
+    object-fit: cover;
+}
+.onboardingPage {
+    width: 100%;
+    position: relative;
+    height: 6397px;
+    text-align: left;
+    font-size: var(--font-size-xl);
+    color: var(--main);
+    font-family: var(--font-noto-sans-kr);
+}
+

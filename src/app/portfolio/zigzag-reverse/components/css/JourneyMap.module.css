@@ -1,0 +1,586 @@
+.journeyMapChild {
+    position: absolute;
+    top: 420px;
+    left: 96px;
+    border-radius: 30px;
+    background-color: rgba(22, 22, 22, 0.8);
+    border: 2px solid #4f4f4f;
+    box-sizing: border-box;
+    width: 1751px;
+    height: 900px;
+}
+.journeyMapItem {
+    position: absolute;
+    top: 159px;
+    left: 92px;
+    border-radius: 50%;
+    background-color: var(--color-violet);
+    width: 38px;
+    height: 38px;
+}
+.customerJourneyMap {
+    position: absolute;
+    top: 159px;
+    left: 106px;
+    font-size: var(--font-size-10xl);
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    font-family: var(--font-noto-sans);
+    text-align: left;
+}
+.span {
+    color: var(--color-violet);
+}
+.b {
+    position: absolute;
+    top: 248px;
+    left: 106px;
+    font-size: 35px;
+    color: var(--color-white);
+    font-family: var(--font-noto-sans-kr);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    text-align: left;
+}
+.neechJourney {
+    position: absolute;
+    top: 313px;
+    left: 106px;
+    font-size: 18px;
+    letter-spacing: -0.03em;
+    font-weight: 350;
+    line-height: 34px;
+    text-align: left;
+}
+.journeyMapInner {
+    position: absolute;
+    top: 441px;
+    left: 124px;
+    width: 1692px;
+    height: 112px;
+}
+.p {
+    margin: 0;
+}
+.div {
+    position: absolute;
+    top: 1149px;
+    left: 436px;
+    letter-spacing: -0.03em;
+    line-height: 34px;
+}
+.uiUx {
+    position: absolute;
+    top: 1132px;
+    left: 980px;
+    letter-spacing: -0.03em;
+    line-height: 34px;
+}
+.div1 {
+    position: absolute;
+    top: 1132px;
+    left: 716px;
+    letter-spacing: -0.03em;
+    line-height: 34px;
+}
+.div2 {
+    position: absolute;
+    top: 38px;
+    left: 319px;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    width: 209px;
+}
+.div3 {
+    position: absolute;
+    top: 38px;
+    left: 609px;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 192px;
+}
+.div4 {
+    position: absolute;
+    top: 38px;
+    left: 874px;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 226px;
+}
+.div5 {
+    position: absolute;
+    top: 38px;
+    left: 1193px;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 153px;
+}
+.div6 {
+    position: absolute;
+    top: 38px;
+    left: 1471px;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 169px;
+}
+.groupChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-right: 1px solid var(--color-darkgray);
+    border-bottom: 1px solid var(--color-darkgray);
+    box-sizing: border-box;
+    width: 282px;
+    height: 112px;
+}
+.groupItem {
+    position: absolute;
+    top: 0px;
+    left: 282px;
+    border-right: 1px solid var(--color-darkgray);
+    border-bottom: 1px solid var(--color-darkgray);
+    box-sizing: border-box;
+    width: 282px;
+    height: 112px;
+}
+.groupInner {
+    position: absolute;
+    top: 0px;
+    left: 564px;
+    border-right: 1px solid var(--color-darkgray);
+    border-bottom: 1px solid var(--color-darkgray);
+    box-sizing: border-box;
+    width: 282px;
+    height: 112px;
+}
+.rectangleDiv {
+    position: absolute;
+    top: 0px;
+    left: 846px;
+    border-right: 1px solid var(--color-darkgray);
+    border-bottom: 1px solid var(--color-darkgray);
+    box-sizing: border-box;
+    width: 282px;
+    height: 112px;
+}
+.groupChild1 {
+    position: absolute;
+    top: 0px;
+    left: 1128px;
+    border-right: 1px solid var(--color-darkgray);
+    border-bottom: 1px solid var(--color-darkgray);
+    box-sizing: border-box;
+    width: 282px;
+    height: 112px;
+}
+.groupChild2 {
+    position: absolute;
+    top: 0px;
+    left: 1410px;
+    border-bottom: 1px solid var(--color-darkgray);
+    box-sizing: border-box;
+    width: 282px;
+    height: 112px;
+}
+.frameChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-right: 1px solid var(--color-darkgray);
+    border-bottom: 1px solid var(--color-darkgray);
+    box-sizing: border-box;
+    width: 282px;
+    height: 158px;
+}
+.frameItem {
+    position: absolute;
+    top: 0px;
+    left: 282px;
+    border-right: 1px solid var(--color-darkgray);
+    border-bottom: 1px solid var(--color-darkgray);
+    box-sizing: border-box;
+    width: 282px;
+    height: 158px;
+}
+.frameInner {
+    position: absolute;
+    top: 0px;
+    left: 564px;
+    border-right: 1px solid var(--color-darkgray);
+    border-bottom: 1px solid var(--color-darkgray);
+    box-sizing: border-box;
+    width: 282px;
+    height: 158px;
+}
+.frameChild1 {
+    position: absolute;
+    top: 0px;
+    left: 846px;
+    border-right: 1px solid var(--color-darkgray);
+    border-bottom: 1px solid var(--color-darkgray);
+    box-sizing: border-box;
+    width: 282px;
+    height: 158px;
+}
+.frameChild2 {
+    position: absolute;
+    top: 0px;
+    left: 1128px;
+    border-right: 1px solid var(--color-darkgray);
+    border-bottom: 1px solid var(--color-darkgray);
+    box-sizing: border-box;
+    width: 282px;
+    height: 158px;
+}
+.frameChild3 {
+    position: absolute;
+    top: 0px;
+    left: 1410px;
+    border-bottom: 1px solid var(--color-darkgray);
+    box-sizing: border-box;
+    width: 282px;
+    height: 158px;
+}
+.div7 {
+    position: absolute;
+    top: 45px;
+    left: 322px;
+    letter-spacing: -0.03em;
+    line-height: 34px;
+}
+.div8 {
+    position: absolute;
+    top: 45px;
+    left: 610px;
+    letter-spacing: -0.03em;
+    line-height: 34px;
+}
+.div9 {
+    position: absolute;
+    top: 45px;
+    left: 921px;
+    letter-spacing: -0.03em;
+    line-height: 34px;
+}
+.div10 {
+    position: absolute;
+    top: 45px;
+    left: 1211px;
+    letter-spacing: -0.03em;
+    line-height: 34px;
+}
+.div11 {
+    position: absolute;
+    top: 45px;
+    left: 1484px;
+    letter-spacing: -0.03em;
+    line-height: 34px;
+}
+.rectangleParent {
+    position: absolute;
+    top: 111px;
+    left: 0px;
+    width: 1692px;
+    height: 158px;
+    font-size: var(--font-size-xl);
+}
+.frameChild4 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-right: 1px solid var(--color-darkgray);
+    box-sizing: border-box;
+    width: 282px;
+    height: 168px;
+}
+.frameChild5 {
+    position: absolute;
+    top: 0px;
+    left: 282px;
+    border-right: 1px solid var(--color-darkgray);
+    box-sizing: border-box;
+    width: 282px;
+    height: 168px;
+}
+.frameChild6 {
+    position: absolute;
+    top: 0px;
+    left: 564px;
+    border-right: 1px solid var(--color-darkgray);
+    box-sizing: border-box;
+    width: 282px;
+    height: 168px;
+}
+.frameChild7 {
+    position: absolute;
+    top: 0px;
+    left: 846px;
+    border-right: 1px solid var(--color-darkgray);
+    box-sizing: border-box;
+    width: 282px;
+    height: 168px;
+}
+.frameChild8 {
+    position: absolute;
+    top: 0px;
+    left: 1128px;
+    border-right: 1px solid var(--color-darkgray);
+    box-sizing: border-box;
+    width: 282px;
+    height: 168px;
+}
+.frameChild9 {
+    position: absolute;
+    top: 0px;
+    left: 1410px;
+    width: 282px;
+    height: 168px;
+}
+.div12 {
+    position: absolute;
+    top: 33px;
+    left: 1145px;
+    letter-spacing: -0.03em;
+    line-height: 34px;
+}
+.aiContainer {
+    position: absolute;
+    top: 33px;
+    left: 1416px;
+    letter-spacing: -0.03em;
+    line-height: 34px;
+}
+.rectangleGroup {
+    position: absolute;
+    top: 670px;
+    left: 0px;
+    width: 1692px;
+    height: 168px;
+    font-size: var(--font-size-xl);
+}
+.frameChild11 {
+    position: absolute;
+    top: 158px;
+    left: 0px;
+    border-right: 1px solid var(--color-darkgray);
+    border-bottom: 1px solid var(--color-darkgray);
+    box-sizing: border-box;
+    width: 282px;
+    height: 243px;
+}
+.frameChild17 {
+    position: absolute;
+    top: 157px;
+    left: 281px;
+    width: 1411px;
+    height: 82px;
+}
+.frameChild18 {
+    position: absolute;
+    top: 238px;
+    left: 281px;
+    border-top: 1px dashed var(--color-darkgray);
+    border-bottom: 1px dashed var(--color-darkgray);
+    box-sizing: border-box;
+    width: 1411px;
+    height: 82px;
+}
+.frameChild19 {
+    position: absolute;
+    top: 319px;
+    left: 281px;
+    border-bottom: 1px solid var(--color-darkgray);
+    box-sizing: border-box;
+    width: 1411px;
+    height: 82px;
+}
+.rectangleContainer {
+    position: absolute;
+    top: 269px;
+    left: 0px;
+    width: 1692px;
+    height: 158px;
+}
+.p27 {
+    margin: 0;
+    color: var(--color-violet);
+}
+.div13 {
+    position: absolute;
+    top: 28px;
+    left: 609px;
+    letter-spacing: -0.03em;
+    line-height: 34px;
+}
+.div14 {
+    position: absolute;
+    top: 28px;
+    left: 863px;
+    letter-spacing: -0.03em;
+    line-height: 34px;
+}
+.frameDiv {
+    position: absolute;
+    top: 269px;
+    left: 0px;
+    width: 1692px;
+    height: 158px;
+    font-size: var(--font-size-xl);
+}
+.div15 {
+    position: absolute;
+    top: 314px;
+    left: 310px;
+    font-size: var(--font-size-xl);
+    letter-spacing: -0.03em;
+    line-height: 34px;
+}
+.div16 {
+    position: absolute;
+    top: 314px;
+    left: 1165px;
+    font-size: var(--font-size-xl);
+    letter-spacing: -0.03em;
+    line-height: 34px;
+}
+.div17 {
+    position: absolute;
+    top: 297px;
+    left: 1462px;
+    font-size: var(--font-size-xl);
+    letter-spacing: -0.03em;
+    line-height: 34px;
+}
+.journey {
+    position: absolute;
+    top: 36px;
+    left: 29px;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    font-family: var(--font-noto-sans);
+    text-align: left;
+    display: flex;
+    align-items: center;
+    width: 99px;
+}
+.action {
+    position: absolute;
+    top: 170px;
+    left: 29px;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    font-family: var(--font-noto-sans);
+    text-align: left;
+}
+.emotion {
+    position: absolute;
+    top: 517px;
+    left: 29px;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    font-family: var(--font-noto-sans);
+    text-align: left;
+}
+.solution {
+    position: absolute;
+    top: 734px;
+    left: 29px;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    font-family: var(--font-noto-sans);
+    color: var(--color-violet);
+    text-align: left;
+}
+.painPoint {
+    position: absolute;
+    top: 329px;
+    left: 29px;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    font-family: var(--font-noto-sans);
+    color: var(--color-violet);
+    text-align: left;
+}
+.parent {
+    position: absolute;
+    top: 446px;
+    left: 126px;
+    width: 1692px;
+    height: 838px;
+    font-size: var(--font-size-10xl);
+}
+.groupIcon {
+    position: absolute;
+    top: 959px;
+    left: 536px;
+    width: 1152px;
+    height: 157px;
+}
+.div18 {
+    position: absolute;
+    top: 40px;
+    left: 6px;
+    letter-spacing: -0.03em;
+    line-height: 34px;
+}
+.div19 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: var(--font-size-11xl);
+    font-family: var(--font-inter);
+    color: var(--color-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+}
+.group {
+    position: absolute;
+    top: 879px;
+    left: 322px;
+    width: 50px;
+    height: 74px;
+}
+.container {
+    position: absolute;
+    top: 957px;
+    left: 322px;
+    width: 50px;
+    height: 74px;
+}
+.groupDiv {
+    position: absolute;
+    top: 1034px;
+    left: 322px;
+    width: 50px;
+    height: 74px;
+}
+.journeyMap {
+    width: 100%;
+    position: relative;
+    background-color: #070503;
+    height: 1469px;
+    overflow: hidden;
+    text-align: center;
+    font-size: var(--font-size-xl);
+    color: var(--color-white);
+    font-family: var(--font-noto-sans-kr);
+}
+

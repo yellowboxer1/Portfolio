@@ -1,0 +1,118 @@
+.imageFx141 {
+    position: absolute;
+    top: 28px;
+    left: 371px;
+    width: 1441px;
+    height: 1179px;
+    object-fit: cover;
+}
+.zigzag {
+    margin: 0;
+}
+.zigzagMobileAppTxtContainer {
+    width: 100%;
+}
+.zigzagMobileApp {
+    position: absolute;
+    top: 351px;
+    left: 131px;
+    line-height: 120px;
+    display: flex;
+    align-items: center;
+    width: 714px;
+    height: 200px;
+}
+.main4Child {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 1920px;
+    height: 1208px;
+}
+.zigzagContainer {
+    position: absolute;
+    top: 796px;
+    left: 1417px;
+    font-size: 18px;
+    letter-spacing: -0.03em;
+    line-height: 30px;
+    font-family: var(--font-noto-sans-kr);
+    font-weight: 350;
+    display: flex;
+    align-items: center;
+    width: 400px;
+}
+.contents {
+    position: absolute;
+    top: 81.5px;
+    left: 1865px;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    line-height: 30px;
+    font-weight: 500;
+    font-family: var(--font-inter);
+    transform:  rotate(90deg);
+    transform-origin: 0 0;
+}
+.main4Item {
+    position: absolute;
+    top: 35px;
+    left: 1838px;
+    width: 24px;
+    height: 16px;
+}
+.main4Inner {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1920px;
+    height: 1138.5px;
+}
+.moblieAppDesign {
+    position: absolute;
+    top: 743px;
+    left: 1417px;
+    font-size: 32px;
+    line-height: 30px;
+    font-weight: 600;
+    font-family: var(--font-noto-sans);
+    display: flex;
+    align-items: center;
+    width: 400px;
+}
+.groupIcon {
+    position: absolute;
+    top: 784px;
+    left: 854px;
+    width: 211px;
+    height: 166.3px;
+}
+.image57Icon {
+    position: absolute;
+    top: 939px;
+    left: 1417px;
+    width: 364px;
+    height: 49px;
+    object-fit: cover;
+}
+.bi1Icon {
+    position: absolute;
+    top: 81px;
+    left: 131px;
+    width: 175px;
+    height: 61px;
+    overflow: hidden;
+}
+.main4 {
+    width: 100%;
+    position: relative;
+    background-color: #000;
+    height: 1208px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 100px;
+    color: var(--color-white);
+    font-family: var(--font-bacasime-antique);
+}
+
