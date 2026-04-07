@@ -20,7 +20,7 @@ const portfolioItems: PortfolioItem[] = [
   {
     id: 1,
     slug: "partnerit",
-    title: "[B2B] AI 기반 정부지원사업 매칭 서비스 및 기업 전주기 관리 통합 솔루션 파트너잇",
+    title: "AI 기반 지원사업 매칭 서비스 파트너잇",
     image: "/partnerit.png",
     category: "AI B2B SaaS",
     role: "PM · Service Planner",
@@ -30,7 +30,7 @@ const portfolioItems: PortfolioItem[] = [
   {
     id: 2,
     slug: "gachigagae",
-    title: "[B2C] AI 및 빅데이터 기반 시각장애인 보행보조 서비스 가치가개",
+    title: "AI 기반 시각장애인 보행보조 서비스 가치가개",
     image: "/gati.png",
     category: "AI Mobility",
     role: "Founder · Lead Planner",
@@ -40,7 +40,7 @@ const portfolioItems: PortfolioItem[] = [
   {
     id: 3,
     slug: "zigzag-reverse",
-    title: "[개인 프로젝트] 커머스 플랫폼 지그재그(ZigZag) 서비스 리뉴얼 및 역기획",
+    title: "커머스 플랫폼 지그재그(ZigZag) 서비스 리뉴얼",
     image: "/zigzag.png",
     category: "Product Strategy",
     role: "UX Strategy · Analysis",
@@ -50,7 +50,7 @@ const portfolioItems: PortfolioItem[] = [
   {
     id: 4,
     slug: "smart-village",
-    title: "[과기부] 2023 스마트 빌리지 지원사업",
+    title: "2023 스마트 빌리지 지원사업",
     image: "bell.png",
     category: "R&D Strategy",
     meta: "2023.10ㅣ15억 원",
@@ -60,7 +60,7 @@ const portfolioItems: PortfolioItem[] = [
   {
     id: 5,
     slug: "rnd-commercialization",
-    title: "[과기부] 공공조달 연계 실증·사업화 R&D 지원 사업",
+    title: "공공조달 연계 실증·사업화 R&D 지원 사업",
     image: "/msit.png",
     category: "R&D Strategy",
     role: "PM",
@@ -70,7 +70,7 @@ const portfolioItems: PortfolioItem[] = [
   {
     id: 6,
     slug: "smart-city-challenge",
-    title: "[국토부] 2021 스마트시티 챌린지 사업",
+    title: "2021 스마트시티 챌린지 사업",
     image: "/sc.png",
     category: "Smart Mobility",
     role: "Service Planner",
@@ -80,7 +80,7 @@ const portfolioItems: PortfolioItem[] = [
   {
     id: 7,
     slug: "la-premiere",
-    title: "[개인 프로젝트] 프리미어리그 승부 예측 서비스 앱 La Premiere",
+    title: "프리미어리그 승부 예측 서비스 앱 La Premiere",
     image: "la.png",
     category: "Service App",
     role: "Service Planner",
@@ -90,7 +90,7 @@ const portfolioItems: PortfolioItem[] = [
   {
     id: 8,
     slug: "public-regional-planning",
-    title: "[기타 프로젝트] 국책 과제 수행 및 지역 개발·도시 재생 프로젝트",
+    title: "국책 과제 수행 및 지역 개발·도시 재생 프로젝트",
     image: "https://ext.same-assets.com/334974529/2583647890.jpeg",
     category: "Regional Strategy",
     role: "Strategy Planner",
@@ -116,7 +116,7 @@ function getSpiralConfig(width: number): SpiralConfig {
       radius: 620,
       itemShift: 24,
       sliceCount: 12,
-      scale: 0.96,
+      scale: 0.94,
       baseZ: -340,
       itemLeftOffset: -96,
       containerMinHeight: 920,
@@ -128,7 +128,7 @@ function getSpiralConfig(width: number): SpiralConfig {
       radius: 640,
       itemShift: 50,
       sliceCount: 11,
-      scale: 0.94,
+      scale: 0.92,
       baseZ: -350,
       itemLeftOffset: -128,
       containerMinHeight: 700,
@@ -139,8 +139,8 @@ function getSpiralConfig(width: number): SpiralConfig {
     radius: 800,
     itemShift: 80,
     sliceCount: 10,
-    scale: 0.92,
-    baseZ: -420,
+    scale: 0.9,
+    baseZ: -400,
     itemLeftOffset: -200,
     containerMinHeight: 860,
     topOffset: 150,
@@ -208,40 +208,24 @@ function MobileCarousel() {
             >
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/5" />
 
-              <div className="absolute inset-x-0 bottom-0 p-5">
-                <span className="text-[11px] uppercase tracking-[0.22em] text-white/60">
+              <div className="absolute inset-x-0 bottom-0 p-5 mobile-card-content">
+                
+                <span className="mobile-card-category">
                   {item.category}
                 </span>
 
-                <h3 className="mt-2 text-[20px] font-semibold leading-[1.35] text-white">
+                <h3 className="mobile-card-title">
                   {item.title}
                 </h3>
 
-                <div className="mt-3 flex flex-col gap-1">
-                  <p className="text-sm text-white/78">{item.role}</p>
-                  <p className="text-sm text-white/58">{item.meta}</p>
+                <div className="mobile-card-info">
+                  <p className="mobile-card-role">{item.role}</p>
+                  <p className="mobile-card-meta">{item.meta}</p>
                 </div>
 
-                <p className="mt-3 text-sm leading-relaxed text-white/70">
+                <p className="mobile-card-summary">
                   {item.summary}
                 </p>
-
-                <div className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-white">
-                  <span>Selected Works</span>
-                  <svg
-                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
-                </div>
               </div>
             </div>
           </Link>
@@ -325,7 +309,7 @@ const SpiralContent = () => {
     getSpiralConfig(typeof window !== "undefined" ? window.innerWidth : 1440)
   );
 
-  const isMobile = viewportWidth <= 640;
+  const isMobile = viewportWidth <= 768;
   const duplicatedItems = useMemo(() => [...portfolioItems, ...portfolioItems], []);
   const angleUnit = 360 / config.sliceCount;
 
@@ -573,32 +557,37 @@ const SpiralContent = () => {
                     }}
                   >
                     <div className="spiral-gallery-item-txt">
+                    <div className="spiral-gallery-main">
                       <span className="spiral-gallery-category">{item.category}</span>
                       <h3>{item.title}</h3>
-
-                      <div className="spiral-gallery-info">
-                        <p className="spiral-gallery-role">{item.role}</p>
-                        <p className="spiral-gallery-meta">{item.meta}</p>
-                      </div>
-
-                      <p className="spiral-gallery-summary">{item.summary}</p>
+                      <p className="spiral-gallery-role">{item.role}</p>
                     </div>
 
-                    <div className="spiral-gallery-cta">
-                      <span>Selected Works</span>
-                      <svg
-                        className="h-4 w-4"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"
-                        />
-                      </svg>
+                      <div className="spiral-gallery-extra">
+
+                        <div className="spiral-gallery-info">
+                          <p className="spiral-gallery-meta">{item.meta}</p>
+                        </div>
+
+                        <p className="spiral-gallery-summary">{item.summary}</p>
+
+                        <div className="spiral-gallery-cta">
+                          <span>Selected Works</span>
+                          <svg
+                            className="h-4 w-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M17 8l4 4m0 0l-4 4m4-4H3"
+                            />
+                          </svg>
+                        </div>
+                      </div>
                     </div>
                   </Link>
                 </div>
