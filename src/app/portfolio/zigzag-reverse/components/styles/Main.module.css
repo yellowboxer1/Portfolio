@@ -2,387 +2,247 @@
 .main4Responsive {
     position: relative;
     width: 100%;
-    overflow: hidden;
-    background-color: #000;
-
-    --scale: 1;
-
-    /* 화면 기준 증가량 */
-    --portrait-offset-screen: 0px;
-
-    /* main4 내부 좌표계 기준 증가량 */
-    --portrait-offset-local: 0px;
-
     min-height: 100vh;
-    height: max(100dvh, calc(1208px * var(--scale) + var(--portrait-offset-screen)));
-}
-
-.main4 {
+    overflow: hidden;
+    background: #000;
+  }
+  
+  .main4 {
+    position: relative;
+    width: 100%;
+    min-height: 1108px;
+    background: #000;
+    overflow: hidden;
+    text-align: left;
+    color: var(--color-white);
+  }
+  
+  /* 1920 기준 내부 아트보드 (중앙 고정 프레임) */
+  .main4InnerFrame {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1920px;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none; /* 빈 공간 클릭 시 뒤쪽 요소 방해 방지 */
+  }
+  
+  /* 프레임 내부 요소 자연스러운 이동을 위한 트랜지션 추가 */
+  .main4InnerFrame > * {
+    pointer-events: auto;
+    transition: transform 0.4s ease-out; 
+  }
+  
+  /* 배경 이미지 (스케일 줄지 않고 양옆만 잘리도록 중앙 고정) */
+  .imageFx141 {
     position: absolute;
     top: 0;
     left: 50%;
-    width: 1920px;
-    min-width: 1920px;
-    min-height: 1208px;
-    height: 1500px;
-    background-color: #000;
-    overflow: hidden;
-    text-align: left;
-    font-size: 100px;
-    color: var(--color-white);
-    font-family: var(--font-bacasime-antique);
-    transform: translateX(-50%) scale(var(--scale));
-    transform-origin: top center;
-}
-
-/* 이미지 및 배경 */
-.imageFx141 {
-    position: absolute;
-    top: 28px;
-    left: 371px;
-    width: 1441px;
-    height: 1179px;
-    object-fit: cover;
-    z-index: 1;
-    translate: 0 var(--portrait-offset-local);
-}
-
-.main4Child {
-    position: absolute;
-    top: 0;
-    left: 0;
+    transform: translateX(-50%);
     width: 1920px;
     height: 1208px;
-    background-color: rgba(0, 0, 0, 0.2);
-    z-index: 2;
-    translate: 0 var(--portrait-offset-local);
-}
-
-/* 왼쪽 메인 텍스트 */
-.zigzagMobileApp {
+    object-fit: cover;
+    z-index: 1;
+  }
+  
+  /* 오버레이 */
+  .main4Child {
     position: absolute;
-    top: 351px;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 2;
+  }
+  
+  /* vector-4 디자인 (스케일 유지, 중앙 정렬) */
+  .main4Inner {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    width: 1920px;
+    height: 1138.5px;
+    z-index: 2;
+  }
+  
+  /* 좌측 타이틀 */
+  .zigzagMobileApp {
+    position: absolute;
     left: 131px;
+    top: 351px;
     width: 714px;
     height: 200px;
-    line-height: 120px;
     display: flex;
     align-items: center;
-    z-index: 3;
-    translate: 0 var(--portrait-offset-local);
-}
-
-.zigzag {
+    font-family: var(--font-bacasime-antique);
+    font-size: 100px;
+    line-height: 120px;
+    color: #fff;
+  }
+  
+  .zigzag {
     margin: 0;
-}
-
-.zigzagMobileAppTxtContainer {
+  }
+  
+  .zigzagMobileAppTxtContainer {
     width: 100%;
-}
-
-/* =========================
-   오토레이아웃 컨테이너 (우측 콘텐츠)
-========================= */
-.rightContentArea {
+  }
+  
+  /* 우측 콘텐츠 */
+  .rightContentArea {
     position: absolute;
-    top: 743px;
     left: 1417px;
+    top: 743px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    z-index: 3;
-    transition: left 0.3s ease;
-    translate: 0 var(--portrait-offset-local);
-}
-
-/* 내부 요소들 */
-.moblieAppDesign {
+  }
+  
+  .moblieAppDesign {
     font-size: 32px;
     line-height: 1.15;
     font-weight: 600;
     font-family: var(--font-noto-sans);
-}
-
-.zigzagContainer {
+    color: #fff;
+  }
+  
+  .zigzagContainer {
     width: 400px;
     font-size: 18px;
+    line-height: 30px;
     letter-spacing: -0.03em;
-    line-height: 1.65;
     font-family: var(--font-noto-sans-kr);
     font-weight: 350;
-}
-
-.image57Icon {
+    color: #fff;
+  }
+  
+  .image57Icon {
     width: 364px;
     height: 49px;
     object-fit: cover;
-}
-
-/* 기타 데코레이션 */
-.contents {
+  }
+  
+  /* 데코 */
+  .contents {
     position: absolute;
-    top: 81.5px;
     left: 1865px;
+    top: 81.5px;
     font-size: 16px;
-    letter-spacing: -0.02em;
     line-height: 30px;
+    letter-spacing: -0.02em;
     font-weight: 500;
     font-family: var(--font-inter);
+    color: #fff;
     transform: rotate(90deg);
     transform-origin: 0 0;
-    z-index: 3;
-    translate: 0 var(--portrait-offset-local);
-}
-
-.main4Item {
+  }
+  
+  .main4Item {
     position: absolute;
-    top: 35px;
     left: 1838px;
+    top: 35px;
     width: 24px;
     height: 16px;
-    z-index: 3;
-    translate: 0 var(--portrait-offset-local);
-}
-
-.main4Inner {
+  }
+  
+  .groupIcon {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 1920px;
-    height: 1138.5px;
-    z-index: 2;
-    translate: 0 var(--portrait-offset-local);
-}
-
-.bi1Icon {
-    position: absolute;
-    top: 81px;
-    left: 131px;
-    width: 175px;
-    height: 61px;
-    z-index: 3;
-    /* BI는 고정 */
-}
-
-.groupIcon {
-    position: absolute;
-    top: 784px;
     left: 854px;
+    top: 784px;
     width: 211px;
     height: 166.3px;
-    z-index: 3;
-    translate: 0 var(--portrait-offset-local);
+  }
+  
+  .bi1Icon {
+    position: absolute;
+    left: 131px;
+    top: 81px;
+    width: 175px;
+    height: 61px;
+  }
+  
+/* ==========================================================
+   구간 1: 1920px ~ 1720px (좌우 100씩 감소 / 각 50px씩 이동)
+   ========================================================== */
+@media (max-width: 1920px) {
+  .bi1Icon, .zigzagMobileApp {
+    /* 1920(0px) -> 1720(50px) 이동 */
+    transform: translateX(calc((1920px - 100vw) * 0.25));
+  }
+  .rightContentArea, .contents, .main4Item {
+    /* 1920(0px) -> 1720(-50px) 이동 */
+    transform: translateX(calc((1920px - 100vw) * -0.25));
+  }
 }
 
-/* =========================
-   1760px 미만: 축소 시작 및 레이아웃 이동
-========================= */
-@media (max-width: 1759px) {
-    .main4Responsive {
-        --scale: calc(100vw / 1760px);
-        height: max(100dvh, calc(1208px * var(--scale) + var(--portrait-offset-screen)));
-    }
-
-    .rightContentArea {
-        transform: translateX(-10%);
-    }
+/* ==========================================================
+   구간 2: 1720px ~ 1520px (좌우 100씩 추가 감소 / 각 100px 추가 이동 = 합산 150px)
+   ========================================================== */
+@media (max-width: 1720px) {
+  .bi1Icon, .zigzagMobileApp {
+    /* 기존 50px + (현재 줄어든 폭 * 0.5) = 1520px일 때 딱 150px가 됨 */
+    transform: translateX(calc(50px + (1720px - 100vw) * 0.5));
+  }
+  .rightContentArea, .contents, .main4Item {
+    transform: translateX(calc(-50px - (1720px - 100vw) * 0.5));
+  }
+  .groupIcon {
+    /* 1720에서 1520으로 갈수록 서서히 사라짐 */
+    opacity: calc(1 - (1720px - 100vw) / 200);
+  }
 }
 
-/* =========================
-   1667px ~ 1280px: 역스케일 적용
-========================= */
-@media (max-width: 1667px) and (min-width: 1280px) {
-    .rightContentArea {
-        transform: scale(calc(1 / var(--scale))) translateX(-15%);
-        transform-origin: left top;
-    }
+/* ==========================================================
+   구간 3: 1520px ~ 1350px (이동값 150px 고정 + 비율로 크기 감소)
+   ========================================================== */
+@media (max-width: 1520px) {
+  .bi1Icon, .zigzagMobileApp {
+    transform: translateX(150px); /* 150px 이동 고정 */
+  }
+  .rightContentArea, .contents, .main4Item {
+    transform: translateX(-150px); /* -150px 이동 고정 */
+  }
+  .groupIcon {
+    display: none; /* 1520부터 완전 제거 */
+  }
+  
+  /* 사진 및 배경 비율 축소 시작 */
+  .imageFx141 {
+    /* 1520px 너비에서 1350px 너비까지 화면에 맞춰 서서히 축소 */
+    width: calc(100% + (1520px - 100vw) * 0.2); 
+    min-width: 100%;
+    height: auto;
+  }
+  
+  .main4InnerFrame {
+    /* 프레임 자체가 뷰포트에 맞춰 비율대로 줄어드는 느낌을 줌 */
+    width: 100vw;
+    min-width: 1350px; 
+  }
 }
 
-/* =========================
-   1280px ~ 768px: 역스케일 적용
-========================= */
-@media (max-width: 1279px) and (min-width: 768px) {
-    .rightContentArea {
-        transform: scale(calc(0.92 / var(--scale))) translateX(-40%);
-        transform-origin: left top;
-    }
-
-    .groupIcon {
-        display: none;
-    }
-
-    .imageFx141 {
-        transform: translateX(-15%);
-    }
-}
-
-/* =========================
-   767px 이하: 모바일 레이아웃
-========================= */
-@media (max-width: 767px) {
-    .main4Responsive {
-        --scale: clamp(0.42, calc(100vw / 900px), 0.74);
-        height: max(100dvh, calc(1208px * var(--scale) + var(--portrait-offset-screen)));
-    }
-
-    .groupIcon {
-        display: none;
-    }
-
-    .main4 {
-        left: 0;
-        transform: scale(var(--scale));
-        transform-origin: top left;
-    }
-
-    .rightContentArea {
-        left: 60px;
-        top: 680px;
-        gap: 25px;
-        transform: none !important;
-    }
-
-    .imageFx141 {
-        transform: translateX(-54%);
-    }
-
-    .zigzagMobileApp {
-        top: 258px;
-        left: 60px;
-        width: 860px;
-        line-height: 1.02;
-    }
-
-    .moblieAppDesign {
-        font-size: 42px;
-    }
-
-    .zigzagContainer {
-        font-size: 24px;
-        width: 720px;
-        color: rgba(255, 255, 255, 0.8);
-    }
-
-    .bi1Icon {
-        top: 70px;
-        left: 60px;
-        width: 190px;
-    }
-    .main4Inner {
-        transform: translateX(8%);
-        transform: translateY(4%);  
-        scale : 1.03;
-        opacity: 0.6;
-    }
-
-    .contents,
-    .main4Item,
-    .image57Icon {
-        display: none;
-    }
-}
-
-/* =========================
-   560px 이하
-========================= */
-@media (max-width: 560px) {
-    .main4Responsive {
-        --scale: clamp(0.34, calc(100vw / 980px), 0.58);
-        height: max(100dvh, calc(1208px * var(--scale) + var(--portrait-offset-screen)));
-    }
-
-    .rightContentArea {
-        left: 70px;
-        top: 650px;
-    }
-
-    .zigzagMobileApp {
-        top: 240px;
-        left: 70px;
-        width: 760px;
-    }
-
-    .moblieAppDesign {
-        font-size: 50px;
-    }
-
-    .zigzagContainer {
-        font-size: 28px;
-        width: 620px;
-    }
-
-    .bi1Icon {
-        top: 60px;
-        left: 70px;
-        width: 170px;
-    }
-}
-
-/* =========================
-   390px 이하
-========================= */
-@media (max-width: 390px) {
-    .main4Responsive {
-        --scale: clamp(0.32, calc(100vw / 1100px), 0.46);
-        height: max(100dvh, calc(1208px * var(--scale) + var(--portrait-offset-screen)));
-    }
-
-    .rightContentArea {
-        left: 58px;
-        top: 635px;
-    }
-
-    .zigzagMobileApp {
-        top: 228px;
-        left: 38px;
-        width: 700px;
-    }
-
-    .moblieAppDesign {
-        font-size: 46px;
-    }
-
-    .zigzagContainer {
-        font-size: 25px;
-        width: 560px;
-    }
-
-    .bi1Icon {
-        left: 58px;
-        width: 160px;
-    }
-}
-
-/* =========================
-   세로가 더 긴 뷰포트:
-   bi1 제외 요소들을 아래로 내리고,
-   부모 높이도 같이 늘려서 잘림 방지
-========================= */
-@media (max-aspect-ratio: 1 / 1) {
-    .main4Responsive {
-        --portrait-offset-screen: max(0px, calc(100dvh - (1207px * var(--scale))));
-        --portrait-offset-local: calc(var(--portrait-offset-screen) / var(--scale));
-        height: max(100dvh, calc(1208px * var(--scale) + var(--portrait-offset-screen)));
-    }
-}
-
-/* =========================
-   모바일 세로형에서는 offset을 더 약하게
-========================= */
-@media (max-width: 767px) and (max-aspect-ratio: 1 / 1) {
-    .main4Responsive {
-        --portrait-offset-screen: max(0px, calc(100dvh - (1207px * var(--scale))));
-        --portrait-offset-local: calc(var(--portrait-offset-screen) / var(--scale));
-        height: max(100dvh, calc(1208px * var(--scale) + var(--portrait-offset-screen)));
-    }
-}
-
-/* =========================
-   아주 세로가 긴 화면에서 안전장치
-========================= */
-@media (max-width: 767px) and (min-height: 900px) and (max-aspect-ratio: 1 / 1) {
-    .main4Responsive {
-        --portrait-offset-screen: max(0px, calc((100dvh - (1208px * var(--scale))) * 0.18));
-        --portrait-offset-local: calc(var(--portrait-offset-screen) / var(--scale));
-    }
+/* ==========================================================
+   최종: 1350px 이하 (모든 수치 고정)
+   ========================================================== */
+@media (max-width: 1350px) {
+  .main4 {
+    min-width: 1350px; /* 더 이상 줄어들지 않도록 최소 너비 고정 */
+  }
+  .main4InnerFrame {
+    width: 1350px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .bi1Icon, .zigzagMobileApp {
+    transform: translateX(150px);
+  }
+  .rightContentArea, .contents, .main4Item {
+    transform: translateX(-150px);
+  }
+  .imageFx141 {
+    width: 1350px; /* 1350px일 때의 크기로 고정 */
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
