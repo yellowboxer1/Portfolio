@@ -1,16 +1,77 @@
-/*
-  Optional token scope to avoid leaking legacy :root values globally.
-  Import this in ZigzagReverseExperience.tsx only if you move styles out of src/index.css.
-*/
+@import url('https://fonts.googleapis.com/css2?family=Bacasime+Antique:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;350;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@100..900&display=swap');
 
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root,
 [data-project='zigzag-reverse'] {
+  /* Fonts */
   --font-noto-sans: 'Noto Sans';
   --font-noto-sans-kr: 'Noto Sans KR';
   --font-inter: Inter;
   --font-bacasime-antique: 'Bacasime Antique';
   --font-noto-sans1: 'Noto Sans Display';
 
+  /* font sizes */
+  --font-size-mini: 15px;
+  --font-size-base: 16px;
+  --font-size-mid: 17px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 21px;
+  --font-size-5xl: 24px;
+  --font-size-6xl: 25px;
+  --font-size-7xl: 26px;
+  --font-size-10xl: 29px;
+  --font-size-11xl: 30px;
+  --font-size-16xl: 35px;
+
+  /* Colors */
+  --color-crimson: #ef4444;
+  --color-darkgray-100: #a7a7a7;
+  --color-darkgray-200: #9a9a9a;
+  --color-darkgray: #9a9a9a;
+  --color-darkslategray: #484848;
+  --color-deeppink: #ff3390;
+  --color-dimgray-100: #595959;
+  --color-dimgray-200: #4f4f4f;
+  --color-gainsboro: #ddd;
+  --color-gray-100: #949494;
+  --color-gray-200: #777;
+  --color-gray-300: #252525;
+  --color-gray-400: #1a1a1a;
+  --color-gray-500: #101010;
   --color-gray-600: #070503;
+  --color-gray-700: rgba(22, 22, 22, 0.8);
+  --color-black-100: #141414;
+  --color-black-200: #1d1d1d;
+  --color-hotpink-100: #ff5bb1;
+  --color-lightgray: #cacaca;
+  --color-mistyrose: #ffe7e6;
+  --color-pink-100: #ffc2e1;
+  --color-plum-100: #ea95c1;
+  --color-silver: #b6b6b6;
+  --color-violet: #f56ee4;
   --color-white: #eee;
   --color-dimgray: #525252;
+
+  /* Paddings */
+  --padding-2xl: 21px;
+
+  /* Border radiuses */
+  --br-7xs: 6px;
+  --br-5xs: 8px;
+  --br-2xs: 11px;
+  --br-mid: 17px;
+  --br-xl: 20px;
+  --br-9xl: 28px;
+  --br-22xl: 41px;
+  --br-79xl: 98px;
+  --br-41xl: 60px;
 }

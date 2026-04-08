@@ -19,8 +19,8 @@ const OnboardingPage = () => {
 	return (
 	<div className={styles.onboardingPage}>
 	<div className={styles.onboardingPageChild} />
-	<img className={styles.group10000039271} alt="" src={g3927} />
-	<img className={styles.image324Icon} alt="" src={i324} />
+	<img className={styles.group10000039271} src={g3927} />
+	<img className={styles.image324Icon} src={i324} />
 	<div className={styles.aiParent}>
 	<div className={styles.aiContainer}>
 	<p className={styles.p}>{`사용자 경험의 첫 단계인 온보딩 페이지에서는 개인화 요소를 최우선으로 설계했습니다. `}</p>
@@ -29,30 +29,30 @@ const OnboardingPage = () => {
 	</div>
 	<div className={styles.div}>01</div>
 	</div>
-	<img className={styles.onboardingPage1} alt="" src={OnboardingPage1} />
-	<img className={styles.image321Icon} alt="" src={i321} />
+	<img className={styles.onboardingPage1} src={OnboardingPage1} />
+	<img className={styles.image321Icon} src={i321} />
 	<div className={styles.image323} />
 	<div className={styles.image48Parent}>
-	<video className={styles.image48Icon} alt="" src={all} autoPlay muted loop playsInline />
+	<video className={styles.image48Icon} src={all} autoPlay muted loop playsInline />
 	<div className={styles.image50} />
-	<img className={styles.icon} alt="" src={i49} />
+	<img className={styles.icon} src={i49} />
 	</div>
 	<div className={styles.image336Parent}>
-	<img className={styles.image336Icon} alt="" src={i336} />
+	<img className={styles.image336Icon} src={i336} />
 	<div className={styles.image501} />
-	<img className={styles.icon} alt="" src={i49} />
+	<img className={styles.icon} src={i49} />
 	</div>
 	<div className={styles.imageParent}>
-	<img className={styles.image48Icon} alt="" src={i01} />
+	<img className={styles.image48Icon} src={i01} />
 	<video className={styles.onboardingVideo} src={video} autoPlay muted loop playsInline />
-	<img className={styles.icon} alt="" src={i49} />
+	<img className={styles.icon} src={i49} />
 	<div className={styles.image502} />
 	</div>
 	<div className={styles.onboardingMain}>Onboarding, Main</div>
 	<div className={styles.bodySize}>body size</div>
 	<div className={styles.skinType}>skin type</div>
-	<img className={styles.group10000039281} alt="" src={g3928} />
-	<img className={styles.group10000039211} alt="" src={g3921} />
+	<img className={styles.group10000039281} src={g3928} />
+	<img className={styles.group10000039211} src={g3921} />
 	</div>);
 	};
 	export default OnboardingPage;
