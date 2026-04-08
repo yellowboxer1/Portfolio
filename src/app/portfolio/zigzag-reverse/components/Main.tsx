@@ -15,7 +15,7 @@ const Main = () => {
   return (
     <section className={styles.main4Responsive}>
       <div className={styles.main4}>
-        <img className={styles.imageFx141} src={imageFx141} alt="" />
+        <img className={styles.imageFx141} src={imageFx141} />
         <div className={styles.zigzagMobileApp}>
           <span className={styles.zigzagMobileAppTxtContainer}>
             <p className={styles.zigzag}>ZIGZAG</p>
@@ -34,13 +34,13 @@ const Main = () => {
               <p className={styles.zigzag}>이전보다 더 강화된 브랜드 경험을 선사합니다.</p>
             </span>
           </div>
-          <img className={styles.image57Icon} src={image57} alt="" />
+          <img className={styles.image57Icon} src={image57} />
         </div>
 
         <div className={styles.contents}>Contents</div>
-        <img className={styles.main4Item} src={vector3} alt="" />
-        <img className={styles.main4Inner} src={vector4} alt="" />
-        <img className={styles.groupIcon} src={group1} alt="" />
+        <img className={styles.main4Item} src={vector3} />
+        <img className={styles.main4Inner} src={vector4} />
+        <img className={styles.groupIcon} src={group1} />
         <img className={styles.bi1Icon} src={bi1} alt="Zigzag BI" />
       </div>
     </section>

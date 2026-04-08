@@ -13,14 +13,14 @@ const Overview = () => {
   return (
     <div className={styles.div}>
     <div className={styles.image48Parent}>
-    <img className={styles.image48Icon} alt="" src={image48} />
+    <img className={styles.image48Icon} src={image48} />
     <div className={styles.image50} />
-    <img className={styles.icon} alt="" src={image49} />
+    <img className={styles.icon} src={image49} />
     </div>
     <div className={styles.imageParent}>
-    <img className={styles.image48Icon} alt="" src={image50} />
+    <img className={styles.image48Icon} src={image50} />
     <div className={styles.image50} />
-    <img className={styles.icon} alt="" src={image49} />
+    <img className={styles.icon} src={image49} />
     </div>
     <div className={styles.child} />
     <div className={styles.overview}>Overview</div>
@@ -41,7 +41,7 @@ const Overview = () => {
     <div className={styles.item} />
     <div className={styles.inner} />
     <div className={styles.ellipseDiv} />
-    <img className={styles.vectorIcon} alt="" src={vector6} />
+    <img className={styles.vectorIcon} src={vector6} />
     <div className={styles.contents}>Contents</div>
     <div className={styles.service}>Service</div>
     <div className={styles.product}>Product</div>

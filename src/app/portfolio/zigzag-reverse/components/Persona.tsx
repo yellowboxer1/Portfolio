@@ -23,12 +23,12 @@ const Persona = () => {
         <p className={styles.p}>또한 지그재그를 이용하면서 겪는 불편한 점을 담고, 사용자들의 행동 분석을 키워드로 도출하였습니다.</p>
       </div>
       <div className={styles.vectorParent}>
-        <img className={styles.groupChild} alt="" src={g39} />
+        <img className={styles.groupChild} src={g39} />
         <b className={styles.needs}>Needs</b>
       </div>
-      <img className={styles.groupIcon} alt="" src={p1} />
-      <img className={styles.maskGroupIcon} alt="" src={p2} />
-      <img className={styles.maskGroupIcon1} alt="" src={p3} />
+      <img className={styles.groupIcon} src={p1} />
+      <img className={styles.maskGroupIcon} src={p2} />
+      <img className={styles.maskGroupIcon1} src={p3} />
     </div>
   );
 };

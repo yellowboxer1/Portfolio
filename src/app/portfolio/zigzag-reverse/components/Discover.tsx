@@ -21,10 +21,10 @@ const Discover = () => {
   	return (
     		<div className={styles.discover}>
       			<div className={styles.discoverChild} />
-      			<img className={styles.epick3x1Icon} alt="" src={epick} />
-      			<img className={styles.detail1Icon} alt="" src={detail} />
-      			<img className={styles.talkLounge3x1} alt="" src={talkLounge} />
-      			<img className={styles.imageFx101} alt="" src={image1} />
+      			<img className={styles.epick3x1Icon} src={epick} />
+      			<img className={styles.detail1Icon} src={detail} />
+      			<img className={styles.talkLounge3x1} src={talkLounge} />
+      			<img className={styles.imageFx101} src={image1} />
       			<div className={styles.discoverItem} />
       			<div className={styles.parent}>
         				<div className={styles.div}>
@@ -33,23 +33,23 @@ const Discover = () => {
         				</div>
         				<div className={styles.div1}>04</div>
       			</div>
-      			<img className={styles.discoverAll3x1} alt="" src={discoverall} />
+      			<img className={styles.discoverAll3x1} src={discoverall} />
       			<div className={styles.imageParent}>
-        				<img className={styles.imageIcon} alt="" src={category} />
+        				<img className={styles.imageIcon} src={category} />
         				<div className={styles.image50} />
-        				<img className={styles.icon} alt="" src={frame} />
+        				<img className={styles.icon} src={frame} />
       			</div>
       			<div className={styles.imageGroup}>
-        				<video className={styles.imageIcon1} alt="" src={video1} autoPlay muted loop playsInline />
-        				<img className={styles.icon} alt="" src={frame} />
+        				<video className={styles.imageIcon1} src={video1} autoPlay muted loop playsInline />
+        				<img className={styles.icon} src={frame} />
         				<div className={styles.image50} />
       			</div>
-      			<img className={styles.discoverInner} alt="" src={vec01} />
-      			<img className={styles.vectorIcon} alt="" src={vec02} />
-      			<img className={styles.discoverChild1} alt="" src={v03} />
-      			<img className={styles.groupIcon} alt="" src={g35} />
-      			<img className={styles.discoverChild2} alt="" src={g35}  />
-      			<img className={styles.discoverChild3} alt="" src={g35}  />
+      			<img className={styles.discoverInner} src={vec01} />
+      			<img className={styles.vectorIcon} src={vec02} />
+      			<img className={styles.discoverChild1} src={v03} />
+      			<img className={styles.groupIcon} src={g35} />
+      			<img className={styles.discoverChild2} src={g35}  />
+      			<img className={styles.discoverChild3} src={g35}  />
       			<div className={styles.epickMain}>
         				<span className={styles.epick}>{`EPICK `}</span>
         				<span>MAIN</span>
@@ -79,8 +79,8 @@ const Discover = () => {
           					<p className={styles.p}> 완벽한 핏을 바로 추천해드려요</p>
           					</div>
           					<div className={styles.imageContainer}>
-            						<video className={styles.imageIcon1} alt="" src={video2} autoPlay muted loop playsInline />
-            						<img className={styles.icon} alt="" src={frame} />
+            						<video className={styles.imageIcon1} src={video2} autoPlay muted loop playsInline />
+            						<img className={styles.icon} src={frame} />
             						<div className={styles.image50} />
           					</div>
           					</div>);

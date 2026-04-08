@@ -8,7 +8,7 @@ const DesignGuide1 = withBasePath('/portfolio/zigzag-reverse/assets/image/Design
 const DesignGuide = () => {
     return (
           <div className={styles.designGuide}>
-                <img className={styles.designGuideIcon} alt="" src={DesignGuide1} />
+                <img className={styles.designGuideIcon} src={DesignGuide1} />
           </div>);
 };
 

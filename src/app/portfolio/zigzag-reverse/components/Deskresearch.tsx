@@ -36,7 +36,7 @@ const Deskresearch = ({ vector22 = 'Vector 22.svg' }: DeskresearchProps) => {
       {/* 첫 번째 페이지 */}
       <div style={{ width: '100vw', height: '100vh', flexShrink: 0 }}>
       <div className={styles.div1}>
-          <img className={styles.imageFx81} alt="" src={imageFx81} />
+          <img className={styles.imageFx81} src={imageFx81} />
           <div className={styles.imageFx82} />
           <div className={styles.child} />
           <div className={styles.background}>Background</div>
@@ -81,18 +81,18 @@ const Deskresearch = ({ vector22 = 'Vector 22.svg' }: DeskresearchProps) => {
           <div className={styles.frameChild5} />
           <div className={styles.frameChild6} />
           </div>
-          <img className={styles.item} alt="" src={vector2} />
+          <img className={styles.item} src={vector2} />
           <div className={styles.imageParent}>
-          <img className={styles.imageIcon} alt="" src={zigzag} />
-          <img className={styles.imageIcon} alt="" src={musinsa} />
-          <img className={styles.imageIcon} alt="" src={ably} />
-          <img className={styles.imageIcon} alt="" src={kream} />
-          <img className={styles.imageIcon} alt="" src={a4910} />
-          <img className={styles.imageIcon} alt="" src={posty} />
-          <img className={styles.imageIcon} alt="" src={a29} />
-          <img className={styles.imageIcon} alt="" src={shein} />
-          <img className={styles.imageIcon} alt="" src={uniqlo} />
-          <img className={styles.imageIcon} alt="" src={wconcept} />
+          <img className={styles.imageIcon} src={zigzag} />
+          <img className={styles.imageIcon} src={musinsa} />
+          <img className={styles.imageIcon} src={ably} />
+          <img className={styles.imageIcon} src={kream} />
+          <img className={styles.imageIcon} src={a4910} />
+          <img className={styles.imageIcon} src={posty} />
+          <img className={styles.imageIcon} src={a29} />
+          <img className={styles.imageIcon} src={shein} />
+          <img className={styles.imageIcon} src={uniqlo} />
+          <img className={styles.imageIcon} src={wconcept} />
           </div>
           <div className={styles.group}>
           <b className={styles.b1}>브랜드 기획 상품이 많아요</b>
@@ -113,14 +113,14 @@ const Deskresearch = ({ vector22 = 'Vector 22.svg' }: DeskresearchProps) => {
           </b>
           <div className={styles.inner} />
           <b className={styles.b6}>왜 지그재그를 사용하나요?</b>
-          <img className={styles.vectorIcon} alt="" src={vector22} />
+          <img className={styles.vectorIcon} src={vector22} />
         </div>
       </div>
       
       {/* 두 번째 페이지 */}
       <div style={{ width: '100vw', height: '100vh', flexShrink: 0 }}>
         <div className={styles.div10}>
-          <img className={styles.imageFx81} alt="" src={imageFx81} />
+          <img className={styles.imageFx81} src={imageFx81} />
           <div className={styles.imageFx821} />
           <div className={styles.bParent}>
           <div className={styles.b7}>4.5B</div>
@@ -134,7 +134,7 @@ const Deskresearch = ({ vector22 = 'Vector 22.svg' }: DeskresearchProps) => {
           <div className={styles.child} />
           <div className={styles.background}>Background</div>
           <div className={styles.frameParent}>
-          <img className={styles.vectorParent} alt="" src={group7} />
+          <img className={styles.vectorParent} src={group7} />
           </div>
           <div className={styles.mauContainer}>
           <p className={styles.p}>여전히 높은 신규 유입을 기록하고 있지만,</p>
@@ -160,13 +160,13 @@ const Deskresearch = ({ vector22 = 'Vector 22.svg' }: DeskresearchProps) => {
           <span className={styles.span2}>명</span>
           </p>
           </b>
-          <img className={styles.groupIcon} alt="" src={group8} />
+          <img className={styles.groupIcon} src={group8} />
           <div className={styles.groupParent}>
           <div className={styles.container}>
           <div className={styles.div12}>1위</div>
           <div className={styles.div13}>에이블리</div>
           <div className={styles.div14}>317,396명</div>
-          <img className={styles.imageIcon10} alt="" src={ably1} />
+          <img className={styles.imageIcon10} src={ably1} />
           <div className={styles.groupChild8} />
           <div className={styles.div15}>39.94%</div>
           </div>
@@ -174,7 +174,7 @@ const Deskresearch = ({ vector22 = 'Vector 22.svg' }: DeskresearchProps) => {
           <div className={styles.div12}>2위</div>
           <div className={styles.div13}>무신사</div>
           <div className={styles.div18}>186,850명</div>
-          <img className={styles.imageIcon10} alt="" src={musinsa1} />
+          <img className={styles.imageIcon10} src={musinsa1} />
           <div className={styles.groupChild8} />
           <div className={styles.div19}>23.51%</div>
           </div>
@@ -182,7 +182,7 @@ const Deskresearch = ({ vector22 = 'Vector 22.svg' }: DeskresearchProps) => {
           <div className={styles.div12}>3위</div>
           <div className={styles.div13}>29CM</div>
           <div className={styles.div21}>56,934명</div>
-          <img className={styles.imageIcon10} alt="" src={a291} />
+          <img className={styles.imageIcon10} src={a291} />
           <div className={styles.groupChild8} />
           <div className={styles.div19}>7.16%</div>
           </div>
@@ -190,7 +190,7 @@ const Deskresearch = ({ vector22 = 'Vector 22.svg' }: DeskresearchProps) => {
           <div className={styles.div12}>4위</div>
           <div className={styles.div13}>퀸잇</div>
           <div className={styles.div14}>55,991명</div>
-          <img className={styles.imageIcon10} alt="" src={queen} />
+          <img className={styles.imageIcon10} src={queen} />
           <div className={styles.groupChild8} />
           <div className={styles.div19}>7.05%</div>
           </div>
@@ -198,7 +198,7 @@ const Deskresearch = ({ vector22 = 'Vector 22.svg' }: DeskresearchProps) => {
           <div className={styles.div12}>5위</div>
           <div className={styles.div13}>브랜디</div>
           <div className={styles.div21}>38,106명</div>
-          <img className={styles.imageIcon10} alt="" src={brendy} />
+          <img className={styles.imageIcon10} src={brendy} />
           <div className={styles.groupChild8} />
           <div className={styles.div19}>4.80%</div>
           </div>
@@ -206,7 +206,7 @@ const Deskresearch = ({ vector22 = 'Vector 22.svg' }: DeskresearchProps) => {
           <div className={styles.div12}>6위</div>
           <div className={styles.div13}>KREAM</div>
           <div className={styles.div21}>35,985명</div>
-          <img className={styles.imageIcon10} alt="" src={kream1} />
+          <img className={styles.imageIcon10} src={kream1} />
           <div className={styles.groupChild8} />
           <div className={styles.div19}>4.53%</div>
           </div>
@@ -215,7 +215,7 @@ const Deskresearch = ({ vector22 = 'Vector 22.svg' }: DeskresearchProps) => {
           <div className={styles.div13}>W컨셉</div>
           <div className={styles.div21}>33,246명</div>
           <div className={styles.div36}>{`참고 : 경쟁앱 간 중복 이탈자가 발생할 수 있습니다. `}</div>
-          <img className={styles.imageIcon10} alt="" src={wconcept1} />
+          <img className={styles.imageIcon10} src={wconcept1} />
           <div className={styles.groupChild8} />
           <div className={styles.div19}>4.18%</div>
             </div>

@@ -15,12 +15,12 @@ const Problem = () => {
       <div className={styles.problemSolution1}>{`Problem & Solution`}</div>
       <div className={styles.div}>표본의 불만사항을 찾은 뒤 그에 따른 해결방안을 정리했습니다.</div>
       <div className={styles.adobeExpressFile51Parent}>
-        <img className={styles.adobeExpressFile51} alt="" src={adobe} />
-        <img className={styles.ellipseParent} alt="" src={g44} />
+        <img className={styles.adobeExpressFile51} src={adobe} />
+        <img className={styles.ellipseParent} src={g44} />
       </div>
                  
-      <img className={styles.ellipseGroup} alt="" src={g45} />
-      <img className={styles.problemSolutionItem} alt="" src={g43} />
+      <img className={styles.ellipseGroup} src={g45} />
+      <img className={styles.problemSolutionItem} src={g43} />
     </div>
   );
 };

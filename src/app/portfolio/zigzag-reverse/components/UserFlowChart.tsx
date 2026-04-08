@@ -9,8 +9,8 @@ const wireframe = withBasePath('/portfolio/zigzag-reverse/assets/image/wireframe
 const UserFlowChart = () => {
   	return (
     		<div className={styles.userFlowchart}>
-      			<img className={styles.wireframeIcon} alt="" src={wireframe} />
-      			<img className={styles.image302Icon} alt="" src={image302} />
+      			<img className={styles.wireframeIcon} src={wireframe} />
+      			<img className={styles.image302Icon} src={image302} />
     		</div>);
 };
 

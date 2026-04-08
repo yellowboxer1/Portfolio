@@ -19,17 +19,17 @@ const Home = () => {
     return (
     <div className={styles.home}>
     <div className={styles.homeChild} />
-    <img className={styles.homeItem} alt="" src={v38} />
-    <img className={styles.homeInner} alt="" src={g35} />
-    <img className={styles.searchIcon} alt="" src={search} />
-    <img className={styles.image325Icon} alt="" src={i324} />
+    <img className={styles.homeItem} src={v38} />
+    <img className={styles.homeInner} src={g35} />
+    <img className={styles.searchIcon} src={search} />
+    <img className={styles.image325Icon} src={i324} />
     <div className={styles.main1Parent}>
-    <video  className={styles.main1Icon} alt="" src={main} autoPlay muted loop playsInline />
+    <video  className={styles.main1Icon} src={main} autoPlay muted loop playsInline />
     <div className={styles.image50} />
-    <img className={styles.icon} alt="" src={i49} />
+    <img className={styles.icon} src={i49} />
     </div>
-    <img className={styles.beautyIcon} alt="" src={beauty} />
-    <img className={styles.vectorIcon} alt="" src={v37} />
+    <img className={styles.beautyIcon} src={beauty} />
+    <img className={styles.vectorIcon} src={v37} />
     <div className={styles.styleForYouContainer}>
     <span className={styles.style}>{`STYLE `}</span>
     <span>FOR YOU</span>
@@ -48,8 +48,8 @@ const Home = () => {
     <p className={styles.p}>뷰티 영역을 독립적인 메뉴로 분리하고,</p>
     <p className={styles.p}>더욱 직관적인 접근성과 풍부한 콘텐츠를 제공합니다.</p>
     </div>
-    <img className={styles.groupIcon} alt="" src={g35} />
-    <img className={styles.favorIcon} alt="" src={favor} />
+    <img className={styles.groupIcon} src={g35} />
+    <img className={styles.favorIcon} src={favor} />
     <div className={styles.parent}>
     <div className={styles.div2}>
     <p className={styles.p}>2030세대는 다른 세대에 비해 개인의 취향, 자기 만족을 중요하게 생각합니다.</p>
@@ -57,7 +57,7 @@ const Home = () => {
     <p className={styles.p}>추천받을 수 있습니다.</p>
     </div>
     <div className={styles.div3}>02</div>
-    <img className={styles.homeForYou} alt="" src={homeForYou} />
+    <img className={styles.homeForYou} src={homeForYou} />
     </div>
     </div>);
     };

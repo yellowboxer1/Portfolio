@@ -159,13 +159,13 @@ const Swot = () => {
       {/* 상태 아이콘 컨테이너 */}
       <div className={styles.statusContainer}>
         {/* 메인 아이콘 (고정) */}
-        <img className={styles.statusIcon} alt="" src={statusIcon} />
+        <img className={styles.statusIcon} src={statusIcon} />
         
         {/* 빛 효과 (애니메이션) */}
-        <img className={styles.lightEffect} alt="" src={lightIcon} />
+        <img className={styles.lightEffect} src={lightIcon} />
       </div>
       
-      <img className={styles.groupIcon} alt="" src={group8} />
+      <img className={styles.groupIcon} src={group8} />
       <div className={styles.swotChild1} />
       <div className={styles.swotChild2} />
       <div className={styles.div6}>
@@ -176,13 +176,13 @@ const Swot = () => {
         </span>
       </div>
       <div className={styles.log}>마이페이지에서 내 체형을 쉽게 편집하고, 내 체형 및 취향을 기반으로 더욱 정교한 추천과 일간 Log로 매일 변하는 스타일링 팁을 확인</div>
-      <img className={styles.img1Icon} alt="" src={zigzag} />
-      <img className={styles.icon} alt="" src={musinsa} />
-      <img className={styles.icon1} alt="" src={ably} />
-      <img className={styles.icon2} alt="" src={a29} />
-      <img className={styles.icon3} alt="" src={brandy} />
-      <img className={styles.w1Icon} alt="" src={wc} />
-      <img className={styles.icon4} alt="" src={kream} />
+      <img className={styles.img1Icon} src={zigzag} />
+      <img className={styles.icon} src={musinsa} />
+      <img className={styles.icon1} src={ably} />
+      <img className={styles.icon2} src={a29} />
+      <img className={styles.icon3} src={brandy} />
+      <img className={styles.w1Icon} src={wc} />
+      <img className={styles.icon4} src={kream} />
     </div>
   );
 };
