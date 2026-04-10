@@ -15,23 +15,30 @@ const Main = () => {
   return (
     <section className={styles.main4Responsive}>
       <div className={styles.main4}>
-        {/* --- 배경 영역 (1920 기준 중앙 정렬) --- */}
-        <img className={styles.imageFx141} src={imageFx141} />
-        <div className={styles.main4Child} />
-        <img className={styles.main4Inner} src={vector4} />
+        {/* 배경 이미지 (최하단 고정 및 스케일 제어용) */}
+        <img className={styles.imageFx141} src={imageFx141} alt="Background" />
 
-        {/* --- 콘텐츠 영역 (1920 기준 중앙 고정 프레임) --- */}
+        {/* Vector 4 (스케일 유지, 양옆 크롭) */}
+        <img className={styles.main4Inner} src={vector4} alt="Vector Graphic" />
+
+        {/* 중앙 기준 절대 프레임 (모든 콘텐츠는 이 안에서 이동) */}
         <div className={styles.main4InnerFrame}>
+          {/* 좌측 콘텐츠 */}
+          <img className={styles.bi1Icon} src={bi1} alt="BI" />
           <div className={styles.zigzagMobileApp}>
             <span className={styles.zigzagMobileAppTxtContainer}>
               <p className={styles.zigzag}>ZIGZAG</p>
               <p className={styles.zigzag}>MOBILE APP</p>
             </span>
           </div>
+                  
+          {/* 오버레이 딤 처리 */}
+          <div className={styles.main4Child} />
+        
 
+          {/* 우측 콘텐츠 */}
           <div className={styles.rightContentArea}>
             <div className={styles.moblieAppDesign}>Moblie App Design</div>
-
             <div className={styles.zigzagContainer}>
               <span className={styles.zigzagMobileAppTxtContainer}>
                 <p className={styles.zigzag}>복잡도를 줄이고 콘텐츠의 집중도를 높여</p>
@@ -40,13 +47,13 @@ const Main = () => {
                 <p className={styles.zigzag}>이전보다 더 강화된 브랜드 경험을 선사합니다.</p>
               </span>
             </div>
-            <img className={styles.image57Icon} src={image57} />
+            <img className={styles.image57Icon} src={image57} alt="App Image" />
           </div>
 
+          {/* 데코 요소들 */}
           <div className={styles.contents}>Contents</div>
-          <img className={styles.main4Item} src={vector3} />
-          <img className={styles.groupIcon} src={group1} />
-          <img className={styles.bi1Icon} src={bi1} alt="Zigzag BI" />
+          <img className={styles.main4Item} src={vector3} alt="Decoration" />
+          <img className={styles.groupIcon} src={group1} alt="Group Decoration" />
         </div>
       </div>
     </section>

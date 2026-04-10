@@ -1,248 +1,506 @@
-/* 기본 컨테이너 */
-.main4Responsive {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    overflow: hidden;
-    background: #000;
-  }
-  
-  .main4 {
-    position: relative;
-    width: 100%;
-    min-height: 1108px;
-    background: #000;
-    overflow: hidden;
-    text-align: left;
-    color: var(--color-white);
-  }
-  
-  /* 1920 기준 내부 아트보드 (중앙 고정 프레임) */
-  .main4InnerFrame {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1920px;
-    height: 100%;
-    z-index: 3;
-    pointer-events: none; /* 빈 공간 클릭 시 뒤쪽 요소 방해 방지 */
-  }
-  
-  /* 프레임 내부 요소 자연스러운 이동을 위한 트랜지션 추가 */
-  .main4InnerFrame > * {
-    pointer-events: auto;
-    transition: transform 0.4s ease-out; 
-  }
-  
-  /* 배경 이미지 (스케일 줄지 않고 양옆만 잘리도록 중앙 고정) */
-  .imageFx141 {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1920px;
-    height: 1208px;
-    object-fit: cover;
-    z-index: 1;
-  }
-  
-  /* 오버레이 */
-  .main4Child {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.2);
-    z-index: 2;
-  }
-  
-  /* vector-4 디자인 (스케일 유지, 중앙 정렬) */
-  .main4Inner {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 0;
-    width: 1920px;
-    height: 1138.5px;
-    z-index: 2;
-  }
-  
-  /* 좌측 타이틀 */
-  .zigzagMobileApp {
-    position: absolute;
-    left: 131px;
-    top: 351px;
-    width: 714px;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    font-family: var(--font-bacasime-antique);
-    font-size: 100px;
-    line-height: 120px;
-    color: #fff;
-  }
-  
-  .zigzag {
-    margin: 0;
-  }
-  
-  .zigzagMobileAppTxtContainer {
-    width: 100%;
-  }
-  
-  /* 우측 콘텐츠 */
-  .rightContentArea {
-    position: absolute;
-    left: 1417px;
-    top: 743px;
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .moblieAppDesign {
-    font-size: 32px;
-    line-height: 1.15;
-    font-weight: 600;
-    font-family: var(--font-noto-sans);
-    color: #fff;
-  }
-  
-  .zigzagContainer {
-    width: 400px;
-    font-size: 18px;
-    line-height: 30px;
-    letter-spacing: -0.03em;
-    font-family: var(--font-noto-sans-kr);
-    font-weight: 350;
-    color: #fff;
-  }
-  
-  .image57Icon {
-    width: 364px;
-    height: 49px;
-    object-fit: cover;
-  }
-  
-  /* 데코 */
-  .contents {
-    position: absolute;
-    left: 1865px;
-    top: 81.5px;
-    font-size: 16px;
-    line-height: 30px;
-    letter-spacing: -0.02em;
-    font-weight: 500;
-    font-family: var(--font-inter);
-    color: #fff;
-    transform: rotate(90deg);
-    transform-origin: 0 0;
-  }
-  
-  .main4Item {
-    position: absolute;
-    left: 1838px;
-    top: 35px;
-    width: 24px;
-    height: 16px;
-  }
-  
-  .groupIcon {
-    position: absolute;
-    left: 854px;
-    top: 784px;
-    width: 211px;
-    height: 166.3px;
-  }
-  
-  .bi1Icon {
-    position: absolute;
-    left: 131px;
-    top: 81px;
-    width: 175px;
-    height: 61px;
-  }
-  
 /* ==========================================================
-   구간 1: 1920px ~ 1720px (좌우 100씩 감소 / 각 50px씩 이동)
-   ========================================================== */
-@media (max-width: 1920px) {
-  .bi1Icon, .zigzagMobileApp {
-    /* 1920(0px) -> 1720(50px) 이동 */
+   기본 레이아웃 및 1920px 초기 상태
+========================================================== */
+.main4Responsive {
+  position: relative;
+  width: 100%;
+  min-height: 1108px;
+  overflow: hidden;
+  background: #000;
+}
+
+.main4 {
+  position: relative;
+  width: 100%;
+  min-height: 1108px;
+  background: #000;
+  overflow: hidden;
+  text-align: left;
+  color: #fff;
+}
+
+/* 1920 기준 내부 프레임 */
+.main4InnerFrame {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1920px;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+/* 배경 이미지 */
+.imageFx141 {
+  position: absolute;
+  left: 50%;
+  bottom: -100px;
+  width: 1920px;
+  height: 1208px;
+  transform: translateX(-50%);
+  object-fit: cover;
+  object-position: bottom;
+  z-index: 1;
+}
+
+.main4Child {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+/* vector-4 계열: 스케일 금지 / 좌우 여백만 조정 */
+.main4Inner {
+  position: absolute;
+  left: 50%;
+  top: -1374px;
+  width: 1920px;
+  height: 3840px;
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ==========================================================
+   콘텐츠 기본 위치 (1920 기준)
+========================================================== */
+.bi1Icon {
+  position: absolute;
+  left: 131px;
+  top: 81px;
+  width: 175px;
+  height: 61px;
+  z-index: 99;
+  transform-origin: top left;
+}
+
+.zigzagMobileApp {
+  position: absolute;
+  left: 131px;
+  top: 351px;
+  width: 714px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  font-family: 'Bacasime Antique', serif;
+  font-size: 100px;
+  line-height: 120px;
+  color: #fff;
+  transform-origin: top left;
+}
+
+.zigzag {
+  margin: 0;
+}
+
+.zigzagMobileAppTxtContainer {
+  width: 100%;
+}
+
+.rightContentArea {
+  position: absolute;
+  left: 1417px;
+  top: 743px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 4;
+  transform-origin: top left;
+}
+
+.moblieAppDesign {
+  font-size: 32px;
+  line-height: 1.15;
+  font-weight: 600;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.zigzagContainer {
+  width: 400px;
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: -0.03em;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+}
+
+.image57Icon {
+  width: 364px;
+  height: 49px;
+  object-fit: cover;
+}
+
+.contents {
+  position: absolute;
+  left: 1868px;
+  top: 120px;
+  font-size: 16px;
+  line-height: 30px;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  transform: rotate(90deg);
+  transform-origin: 0 0;
+}
+
+.main4Item {
+  position: absolute;
+  left: 1838px;
+  top: 81px;
+  width: 24px;
+  height: 16px;
+}
+
+.groupIcon {
+  position: absolute;
+  left: 854px;
+  top: 784px;
+  width: 211px;
+  height: 166.3px;
+  z-index: 4;
+}
+
+/* ==========================================================
+   1구간: 1920 초과/기준
+========================================================== */
+@media (min-width: 1921px) {
+  .main4Responsive,
+  .main4 {
+    min-height: 1108px;
+  }
+}
+
+/* ==========================================================
+   2구간: 1920 ~ 1720
+   - 크기 변화 없음
+   - 좌측 그룹: +0 → +50
+   - 우측 그룹: -0 → -50
+   - vector-4는 스케일 금지, 프레임 여백만 감소
+========================================================== */
+@media (min-width: 1721px) and (max-width: 1920px) {
+  .main4Responsive,
+  .main4 {
+    min-height: 1108px;
+  }
+
+  .main4InnerFrame,
+  .main4Inner {
+    width: 1920px;
+  }
+
+  .bi1Icon,
+  .zigzagMobileApp {
     transform: translateX(calc((1920px - 100vw) * 0.25));
   }
-  .rightContentArea, .contents, .main4Item {
-    /* 1920(0px) -> 1720(-50px) 이동 */
+
+  .rightContentArea,
+  .groupIcon,
+  .main4Item {
     transform: translateX(calc((1920px - 100vw) * -0.25));
   }
+
+  .contents {
+    transform: translateX(calc((1920px - 100vw) * -0.25)) rotate(90deg);
+  }
+
+  .imageFx141 {
+    width: 1920px;
+    height: 1208px;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 /* ==========================================================
-   구간 2: 1720px ~ 1520px (좌우 100씩 추가 감소 / 각 100px 추가 이동 = 합산 150px)
-   ========================================================== */
-@media (max-width: 1720px) {
-  .bi1Icon, .zigzagMobileApp {
-    /* 기존 50px + (현재 줄어든 폭 * 0.5) = 1520px일 때 딱 150px가 됨 */
+   3구간: 1720 ~ 1520
+   - 좌측 그룹: +50 → +150
+   - 우측 그룹: -50 → -150
+   - groupIcon 제거
+   - imageFX: 1920x1208 -> 1696.7x1067.51
+   - 하단 기준 정렬 유지
+========================================================== */
+@media (min-width: 1521px) and (max-width: 1720px) {
+  .main4Responsive,
+  .main4 {
+    min-height: 1108px;
+  }
+
+  .groupIcon {
+    display: none;
+  }
+
+  .bi1Icon,
+  .zigzagMobileApp {
     transform: translateX(calc(50px + (1720px - 100vw) * 0.5));
   }
-  .rightContentArea, .contents, .main4Item {
+
+  .rightContentArea,
+  .main4Item {
     transform: translateX(calc(-50px - (1720px - 100vw) * 0.5));
   }
-  .groupIcon {
-    /* 1720에서 1520으로 갈수록 서서히 사라짐 */
-    opacity: calc(1 - (1720px - 100vw) / 200);
+
+  .contents {
+    transform: translateX(calc(-50px - (1720px - 100vw) * 0.5)) rotate(90deg);
+  }
+
+  .imageFx141 {
+    width: calc(1696.7px + (1920 - 1696.7) * ((100vw - 1520px) / 200));
+    height: calc(1067.51px + (1208 - 1067.51) * ((100vw - 1520px) / 200));
+    left: 50%;
+    bottom: -100px;
+    transform: translateX(-50%);
+  }
+
+  .main4InnerFrame,
+  .main4Inner {
+    width: 1920px;
   }
 }
 
 /* ==========================================================
-   구간 3: 1520px ~ 1350px (이동값 150px 고정 + 비율로 크기 감소)
-   ========================================================== */
-@media (max-width: 1520px) {
-  .bi1Icon, .zigzagMobileApp {
-    transform: translateX(150px); /* 150px 이동 고정 */
-  }
-  .rightContentArea, .contents, .main4Item {
-    transform: translateX(-150px); /* -150px 이동 고정 */
-  }
+   4구간: 1520 ~ 1350
+   - 프레임 오프셋을 계산하여 좌측 요소를 화면 90px 지점에 고정
+   - 우측 영역은 자연스럽게 축소되며 이동
+========================================================== */
+@media (min-width: 1351px) and (max-width: 1520px) {
   .groupIcon {
-    display: none; /* 1520부터 완전 제거 */
+    display: none;
+  }
+
+  .main4Responsive,
+  .main4 {
+    min-height: 1108px;
+  }
+
+  .groupIcon,
+  .contents,
+  .main4Item {
+    display: none;
+  }
+
+  /* 프레임은 여전히 중앙 유지 */
+  .main4InnerFrame,
+  .main4Inner {
+    width: 1920px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .imageFx141 {
+    /* 너비와 높이 계산식은 유지 */
+    width: calc(1506.94px + (1696.7 - 1506.94) * ((100vw - 1350px) / 170));
+    height: calc(948.12px + (1067.51 - 948.12) * ((100vw - 1350px) / 170));
+    
+    /* 위치 기준 통일: 50% 중앙 정렬 */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* 1350px에 가까워질수록 bottom이 0에 수렴하도록 */
+    bottom: calc(0px + (-100 - 0) * ((100vw - 1350px) / 170));
+    object-fit: cover;
+  }
+
+  /* [좌측 고정 핵심] 
+     (1920-100vw)/2 지점이 화면의 왼쪽 끝입니다. 
+     여기에 90px을 더하면 화면 너비가 변해도 브라우저 왼쪽 벽에서 항상 90px 거리를 유지합니다. 
+  */
+  .bi1Icon {
+    left: calc(281px + (1520px - 100vw) * 0.5);
+    top: calc(81px - (1520px - 100vw) * 0.08);
+    transform: scale(calc(0.86 + (1 - 0.86) * ((100vw - 1350px) / 170px)));
   }
   
-  /* 사진 및 배경 비율 축소 시작 */
+  .zigzagMobileApp {
+    left: calc(281px + (1520px - 100vw) * 0.5);
+    top: calc(351px - (1520px - 100vw) * 0.08);
+    transform: scale(calc(0.82 + (1 - 0.82) * ((100vw - 1350px) / 170px)));
+  }
+
+  /* 우측 콘텐츠는 1520px 시점의 위치(1267px 근처)에서 
+     1350px 시점의 위치(프레임 보정값 + 이동값)로 부드럽게 연결 
+  */
+  .rightContentArea {
+    left: calc(1267px - (1520px - 100vw) * 0.95);
+    top: calc(743px - (1520px - 100vw) * 0.1);
+    transform: scale(calc(0.86 + (1 - 0.86) * ((100vw - 1350px) / 170px)));
+  }
+}
+
+/* ==========================================================
+   5구간: 1350 ~ 583
+========================================================== */
+@media (min-width: 584px) and (max-width: 1350px) {
+  .main4Responsive,
+  .main4 {
+    min-height: 1108px;
+  }
+
+  .groupIcon,
+  .contents,
+  .main4Item {
+    display: none;
+  }
+
+  .main4InnerFrame,
+  .main4Inner {
+    width: 1920px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .imageFx141 {
-    /* 1520px 너비에서 1350px 너비까지 화면에 맞춰 서서히 축소 */
-    width: calc(100% + (1520px - 100vw) * 0.2); 
-    min-width: 100%;
+    position: absolute;
+    width: 1506.94px;
+    height: 948.12px;
+    left: 50%;
+    bottom: 0;
+
+    /* 핵심: left를 건드리지 말고 translateX만 추가 보정 */
+    transform: translateX(
+      calc(
+        -50% - ((1350px - 100vw) / 767px) * 320px
+      )
+    );
+
+    object-fit: cover;
+    object-position: bottom;
+    max-width: none;
+  }
+
+  .bi1Icon {
+    left: calc((1920px - 100vw) / 2 + 80px);
+    top: 90px;
+    width: calc(112px + (150.5 - 112) * ((100vw - 583px) / 767));
+    height: auto;
+    transform: none;
+  }
+
+  .zigzagMobileApp {
+    left: calc((1920px - 100vw) / 2 + 80px);
+    top: 333px;
+    width: calc(500px + (585.5 - 500) * ((100vw - 583px) / 767));
+    height: auto;
+    font-size: calc(72px + (82 - 72) * ((100vw - 583px) / 767));
+    line-height: calc(82px + (98.4 - 82) * ((100vw - 583px) / 767));
+    transform: none;
+  }
+
+  /* 💡 수정됨: left 위치 배율 조정 (1015.5px -> 730.5px) */
+  .rightContentArea {
+    left: calc(
+      (1920px - 100vw) / 2 + 80px + (730.5px * ((100vw - 583px) / 767px))
+    );
+    top: calc(736px + (726px - 736px) * ((100vw - 583px) / 767px));
+    width: calc(320px + (344px - 320px) * ((100vw - 583px) / 767px));
+    transform: none;
+  }
+
+  /* 💡 수정됨: 시작 폰트/이미지 사이즈를 이전 구간의 scale(0.86) 적용 값으로 변경 */
+  .moblieAppDesign {
+    /* 기존 32px -> 1350px에서 27.5px (32 * 0.86) 로 자연스럽게 연결 */
+    font-size: calc(25px + (27.5px - 25px) * ((100vw - 583px) / 767px));
+  }
+
+  .zigzagContainer {
+    width: 100%;
+    /* 기존 18px -> 1350px에서 15.5px (18 * 0.86) */
+    font-size: calc(15px + (15.5px - 15px) * ((100vw - 583px) / 767px));
+    /* 기존 30px -> 1350px에서 25.8px (30 * 0.86) */
+    line-height: calc(24px + (25.8px - 24px) * ((100vw - 583px) / 767px));
+  }
+
+  .image57Icon {
+    /* 기존 364px -> 1350px에서 313px (364 * 0.86) */
+    width: calc(280px + (313px - 280px) * ((100vw - 583px) / 767px));
     height: auto;
   }
-  
-  .main4InnerFrame {
-    /* 프레임 자체가 뷰포트에 맞춰 비율대로 줄어드는 느낌을 줌 */
-    width: 100vw;
-    min-width: 1350px; 
-  }
 }
 
 /* ==========================================================
-   최종: 1350px 이하 (모든 수치 고정)
-   ========================================================== */
-@media (max-width: 1350px) {
+   6구간: 583 미만 (모바일)
+   - 583px 기준 최종 레이아웃을 전체 동일 비율 축소
+========================================================== */
+@media (max-width: 583px) {
+  .main4Responsive {
+    height: calc(100vw * (1108px / 583px));
+    min-height: 0;
+  }
+
   .main4 {
-    min-width: 1350px; /* 더 이상 줄어들지 않도록 최소 너비 고정 */
+    width: 583px;
+    height: 1108px;
+    min-height: 0;
+    transform: scale(calc(100vw / 583px));
+    transform-origin: top left;
+    position: relative;
+    overflow: hidden;
   }
-  .main4InnerFrame {
-    width: 1350px;
+
+  .main4InnerFrame,
+  .main4Inner {
+    width: 1920px;
     left: 50%;
     transform: translateX(-50%);
   }
-  .bi1Icon, .zigzagMobileApp {
-    transform: translateX(150px);
+
+  .groupIcon,
+  .contents,
+  .main4Item {
+    display: none;
   }
-  .rightContentArea, .contents, .main4Item {
-    transform: translateX(-150px);
-  }
+
   .imageFx141 {
-    width: 1350px; /* 1350px일 때의 크기로 고정 */
+    position: absolute;
+    width: 1506.94px;
+    height: 948.12px;
     left: 50%;
-    transform: translateX(-50%);
+    bottom: 0;
+    transform: translateX(calc(-50% - 320px));
+    object-fit: cover;
+    object-position: bottom;
+    max-width: none;
+  }
+
+  .bi1Icon {
+    left: calc((1920px - 593px) / 2 + 80px);
+    top: 90px;
+    width: 112px;
+    height: auto;
+    transform: none;
+  }
+
+  .zigzagMobileApp {
+    left: calc((1920px - 583px) / 2 + 80px);
+    top: 333px;
+    width: 500px;
+    height: auto;
+    font-size: 72px;
+    line-height: 82px;
+    transform: none;
+  }
+
+  .rightContentArea {
+    left: calc((1920px - 583px) / 2 + 80px);
+    top: 736px;
+    width: 320px;
+    transform: none;
+  }
+
+  .moblieAppDesign {
+    font-size: 25px;
+  }
+
+  .zigzagContainer {
+    width: 100%;
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .image57Icon {
+    width: 280px;
+    height: auto;
   }
 }
