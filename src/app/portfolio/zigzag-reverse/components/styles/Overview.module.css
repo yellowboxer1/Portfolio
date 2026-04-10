@@ -1,169 +1,17 @@
-.image48Icon {
-    position: absolute;
-    top: 13px;
-    left: 18px;
-    border-radius: var(--br-41xl);
-    width: 378px;
-    height: 824px;
-    object-fit: cover;
-}
-.image50 {
-    position: absolute;
-    top: 13px;
-    left: 18px;
-    border-radius: var(--br-41xl);
-    background: linear-gradient(-5.99deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1));
-    width: 378px;
-    height: 824px;
-}
-.icon {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 414px;
-    height: 849px;
-    object-fit: cover;
-}
-.image48Parent {
-    position: absolute;
-    top: 129px;
-    left: 1395px;
-    width: 414px;
-    height: 849px;
-}
-.imageParent {
-    position: absolute;
-    top: 129px;
-    left: 886px;
-    width: 414px;
-    height: 849px;
-}
-.child {
-    position: absolute;
-    top: 159px;
-    left: 92px;
-    border-radius: 50%;
-    background-color: #f56ee4;
-    width: 38px;
-    height: 38px;
-}
-.overview {
-    position: absolute;
-    top: 159px;
-    left: 106px;
-    letter-spacing: -0.03em;
-    font-weight: 600;
-}
-.b {
-    position: absolute;
-    top: 251px;
-    left: 106px;
-    letter-spacing: -0.03em;
-    font-family: var(--font-noto-sans-kr);
-    font-weight: 600;
-}
-.strategy {
-    position: absolute;
-    top: 781px;
-    left: 106px;
-    letter-spacing: -0.03em;
-    font-weight: 600;
-}
-.p {
-    margin: 0;
-}
-.p1 {
-    margin: 0;
-    white-space: pre-wrap;
-}
-.aiContainer1 {
-    width: 100%;
-}
-.aiContainer {
-    position: absolute;
-    top: 323px;
-    left: 106px;
-    font-size: var(--font-size-lg);
-    letter-spacing: -0.03em;
-    line-height: 34px;
-    font-family: var(--font-noto-sans-kr);
-    display: flex;
-    align-items: center;
-    font-weight: 350;
-    width: 604px;
-}
-.aiContainer2 {
-    position: absolute;
-    top: 849px;
-    left: 106px;
-    font-size: var(--font-size-lg);
-    letter-spacing: -0.03em;
-    line-height: 34px;
-    font-family: var(--font-noto-sans-kr);
-    font-weight: 350;
-}
-.item {
-    position: absolute;
-    top: 515px;
-    left: 106px;
-    border-radius: 50%;
-    border: 1px solid #ffc2e1;
-    box-sizing: border-box;
-    width: 149px;
-    height: 149px;
-}
-.inner {
-    position: absolute;
-    top: 515px;
-    left: 230px;
-    border-radius: 50%;
-    border: 1px solid #ffc2e1;
-    box-sizing: border-box;
-    width: 149px;
-    height: 149px;
-}
-.ellipseDiv {
-    position: absolute;
-    top: 515px;
-    left: 457px;
-    border-radius: 50%;
-    border: 1px solid #ffc2e1;
-    box-sizing: border-box;
-    width: 149px;
-    height: 149px;
-}
-.vectorIcon {
-    position: absolute;
-    top: 585px;
-    left: 413px;
-    width: 10px;
-    height: 10px;
-}
-.contents {
-    position: absolute;
-    top: 576px;
-    left: 141px;
-    font-size: var(--font-size-xl);
-    letter-spacing: -0.03em;
-    font-weight: 600;
-}
-.service {
-    position: absolute;
-    top: 576px;
-    left: 273px;
-    font-size: var(--font-size-xl);
-    letter-spacing: -0.03em;
-    font-weight: 600;
-}
-.product {
-    position: absolute;
-    top: 576px;
-    left: 497px;
-    font-size: var(--font-size-xl);
-    letter-spacing: -0.03em;
-    font-weight: 600;
-}
+/* ========================================================
+   기본 변수
+======================================================== */
 .div {
+    --left-start: 106px;
+    --top-left-group: 159px;
+    --phone-top: 129px;
+    --phone-w: 414px;
+    --phone-h: 849px;
+    --phone-gap-min: 80px;
+    --phone-right-margin: 49px;
+    --left-max-width: 604px;
+    --circle-width: 606px;
+  
     width: 100%;
     position: relative;
     background-color: #1a1a1a;
@@ -173,5 +21,451 @@
     font-size: var(--font-size-10xl);
     color: var(--color-white);
     font-family: var(--font-noto-sans);
-}
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+  
+  /* ========================================================
+     좌측 그룹
+  ======================================================== */
+  .leftGroup {
+    position: absolute;
+    top: var(--top-left-group);
+    left: var(--left-start);
+    width: var(--left-max-width);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .headerGroup {
+    position: relative;
+    height: 38px;
+  }
+  
+  .child {
+    position: absolute;
+    top: 0;
+    left: -14px;
+    border-radius: 50%;
+    background-color: #f56ee4;
+    width: 38px;
+    height: 38px;
+  }
+  
+  .overview {
+    position: relative;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+    line-height: 38px;
+  }
+  
+  .b {
+    margin-top: 54px;
+    width: 100%;
+    max-width: 604px;
+    letter-spacing: -0.03em;
+    font-family: var(--font-noto-sans-kr);
+    font-weight: 600;
+    line-height: 1.45;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  
+  .p {
+    margin: 0;
+  }
+  
+  .aiContainer1 {
+    width: 100%;
+  }
+  
+  .aiContainer {
+    margin-top: 28px;
+    width: 100%;
+    max-width: 604px;
+    min-width: 0;
+    font-size: var(--font-size-lg);
+    letter-spacing: -0.03em;
+    line-height: 34px;
+    font-family: var(--font-noto-sans-kr);
+    display: flex;
+    align-items: flex-start;
+    font-weight: 400;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  
+  /* ========================================================
+     원형 아이템 영역
+  ======================================================== */
+  .circleArea {
+    position: relative;
+    width: 100%;
+    max-width: var(--circle-width);
+    height: calc(149px * var(--circle-scale, 1));
+    margin-top: 90px;
+    --gap: clamp(2px, calc((100% - 436px) / 2), 34px);
+    transform-origin: top left;
+  }
+  
+  .item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    border: 1px solid #ffc2e1;
+    box-sizing: border-box;
+    width: 149px;
+    height: 149px;
+  }
+  
+  .inner {
+    position: absolute;
+    top: 0;
+    left: 124px;
+    border-radius: 50%;
+    border: 1px solid #ffc2e1;
+    box-sizing: border-box;
+    width: 149px;
+    height: 149px;
+  }
+  
+  /* vectorIcon 위치: .inner 끝나는 지점(273px) + 동적 gap */
+  .vectorIcon {
+    position: absolute;
+    top: 70px;
+    left: calc(273px + var(--gap));
+    width: 10px;
+    height: 10px;
+  }
+  
+  /* ellipseDiv 위치: vectorIcon 시작점 + 10px(아이콘 너비) + 동적 gap */
+  .ellipseDiv {
+    position: absolute;
+    top: 0;
+    left: calc(283px + 2 * var(--gap));
+    border-radius: 50%;
+    border: 1px solid #ffc2e1;
+    box-sizing: border-box;
+    width: 149px;
+    height: 149px;
+  }
+  
+  /* 텍스트들 (contents와 service는 앞쪽 원에 속하므로 고정) */
+  .contents {
+    position: absolute;
+    top: 61px;
+    left: 35px;
+    font-size: var(--font-size-xl);
+    letter-spacing: -0.03em;
+    font-weight: 600;
+  }
+  
+  .service {
+    position: absolute;
+    top: 61px;
+    left: 167px;
+    font-size: var(--font-size-xl);
+    letter-spacing: -0.03em;
+    font-weight: 600;
+  }
+  
+  /* product 위치: ellipseDiv와 함께 움직여야 하므로 동적 계산 (+40px 오프셋) */
+  .product {
+    position: absolute;
+    top: 61px;
+    left: calc(323px + 2 * var(--gap)); /* 283 + 40 */
+    font-size: var(--font-size-xl);
+    letter-spacing: -0.03em;
+    font-weight: 600;
+  }
+  
+  /* ========================================================
+     전략 영역
+  ======================================================== */
+  .strategyGroup {
+    margin-top: 117px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  
+  .strategy {
+    letter-spacing: -0.03em;
+    font-weight: 600;
+  }
+  
+  .aiContainer2 {
+    font-size: var(--font-size-lg);
+    letter-spacing: -0.03em;
+    line-height: 34px;
+    font-family: var(--font-noto-sans-kr);
+    font-weight: 400;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  
+  /* ========================================================
+     폰 영역 - 데스크톱 원본 유지
+  ======================================================== */
+  .phoneStage {
+    position: absolute;
+    top: var(--phone-top);
+    left: 886px;
+    width: 923px;
+    height: var(--phone-h);
+  }
+  
+  .image48Parent {
+    position: absolute;
+    top: 0;
+    left: 509px;
+    width: var(--phone-w);
+    height: var(--phone-h);
+  }
+  
+  .imageParent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--phone-w);
+    height: var(--phone-h);
+  }
+  
+  .image48Icon {
+    position: absolute;
+    top: 13px;
+    left: 18px;
+    border-radius: var(--br-41xl);
+    width: 378px;
+    height: 824px;
+    object-fit: cover;
+  }
+  
+  .image50 {
+    position: absolute;
+    top: 13px;
+    left: 18px;
+    border-radius: var(--br-41xl);
+    background: linear-gradient(-5.99deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1));
+    width: 378px;
+    height: 824px;
+  }
+  
+  .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 414px;
+    height: 849px;
+    object-fit: cover;
+  }
+  
+  /* ========================================================
+     페이드 애니메이션
+  ======================================================== */
+  @keyframes fade-1 {
+    0%, 45% { opacity: 0; }
+    55%, 95% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  @keyframes fade-2 {
+    0%, 45% { opacity: 1; }
+    55%, 95% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  /* ========================================================
+     1440 이하: 폰 1개 위치로 합쳐짐 시작
+  ======================================================== */
+  @media (max-width: 1440px) {
+    .phoneStage {
+      left: calc(100vw - var(--phone-w) - var(--phone-right-margin));
+      width: var(--phone-w);
+    }
+  
+    .image48Parent,
+    .imageParent {
+      left: 0;
+    }
+  
+    .fadePhone1 {
+      animation: fade-1 6s infinite ease-in-out;
+    }
+  
+    .fadePhone2 {
+      animation: fade-2 6s infinite ease-in-out;
+    }
+  }
+  
+  @media (max-width: 1303px) and (min-width: 1101px) {
+    .leftGroup {
+      width: calc(
+        100vw
+        - var(--left-start)
+        - var(--phone-gap-min)
+        - var(--phone-w)
+        - var(--phone-right-margin)
+      );
+    }
+  
+    .b,
+    .aiContainer {
+      width: 100%;
+      max-width: none;
+      min-width: 0;
+    }
+  
+    .phoneStage {
+      left: calc(100vw - var(--phone-w) - var(--phone-right-margin));
+      width: var(--phone-w);
+    }
+  
+    .image48Parent,
+    .imageParent {
+      left: 0;
+    }
+  
+    .circleArea {
+      width: min(var(--circle-width), 100%);
+    }
+  }
 
+  @media (max-width: 1100px) and (min-width: 1001px) {
+    .leftGroup {
+      width: var(--left-max-width);
+    }
+  
+    .b,
+    .aiContainer {
+      width: 100%;
+      max-width: 458px;
+      min-width: 0;
+    }
+  
+    .phoneStage {
+      left: 638px; /* 1101px 시점 위치 고정 */
+      width: var(--phone-w);
+    }
+  
+    .image48Parent,
+    .imageParent {
+      left: 0;
+    }
+  
+    .circleArea {
+      width: var(--circle-width);
+      max-width: 458px;
+    }
+  }
+  
+/* ========================================================
+   1000 이하
+   - 최상위 div에 좌우 패딩 16px 추가하여 최소 마진 확보
+======================================================== */
+@media (max-width: 1000px) {
+    .div {
+      height: auto;
+      /* 기존 0에서 16px로 변경, box-sizing을 추가하여 크기 초과 방지 */
+      padding: 129px 16px 100px 30px; 
+      box-sizing: border-box;
+      overflow: visible;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .aiContainer,
+    .aiContainer2 {
+        font-size: clamp(15px, 0.6vw + 13px, 19px);
+        line-height: clamp(28px, 0.9vw + 25px, 34px);
+    }
+
+    .b,
+    .strategy {
+        font-size: clamp(24px, 0.8vw + 21px, 29px);
+            }  
+
+    .leftGroup {
+      position: relative;
+      top: auto;
+      left: auto;
+      /* 부모 컨테이너가 좌우 16px을 이미 막아주므로 width 100%만 줘도 됩니다 */
+      width: 100%;
+      max-width: 604px;
+    }
+  
+    .b,
+    .aiContainer {
+      width: 100%;
+      max-width: 604px;
+    }
+  
+    .circleArea {
+      transform-origin: top left;
+    }
+  
+    .strategyGroup {
+      width: 100%;
+    }
+  
+    .phoneStage {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: var(--phone-w);
+      height: var(--phone-h);
+      margin-top: 64px;
+    }
+  
+    .image48Parent,
+    .imageParent {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 1;
+    }
+  
+    .fadePhone1 {
+      animation: fade-1 6s infinite ease-in-out;
+    }
+  
+    .fadePhone2 {
+      animation: fade-2 6s infinite ease-in-out;
+    }
+  }
+  
+  /* ========================================================
+     680 이하
+  ======================================================== */
+  @media (max-width: 680px) {
+    .leftGroup {
+      width: 100%;
+    }
+  
+    .b,
+    .aiContainer,
+    .strategyGroup {
+      max-width: 604px;
+    }
+  
+    /* circleArea 동적 축소 추가 */
+    .circleArea {
+      /* 부모의 좌우 패딩(30px + 16px = 46px)을 제외한 실제 가용 너비를 
+         circleArea의 원본 기준 너비(450)로 나누어 스케일 비율 계산.
+         비율이 1을 초과해 커지지 않도록 min() 함수 사용 */
+      --circle-scale: min(1, calc((100vw - 46px) / 450px));
+      transform: scale(var(--circle-scale));
+      /* height는 상단 기본 속성에 정의된 calc(149px * var(--circle-scale))에 의해 자동 반영됩니다. */
+    }
+  
+    .phoneStage {
+      /* CSS calc() 내에서 나눗셈 시 분모는 단위가 없어야 크로스 브라우징에 안전합니다 (400px -> 400 수정) */
+      transform: scale(calc((100vw - 46px) / 400px));
+      transform-origin: top center;
+      height: calc(849px * ((100vw - 46px) / 400px));
+      margin-top: 40px;
+      margin-right: 14px;
+    }
+  }

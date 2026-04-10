@@ -12,41 +12,68 @@ const image48 = withBasePath('/portfolio/zigzag-reverse/assets/image/image 48@3x
 const Overview = () => {
   return (
     <div className={styles.div}>
-    <div className={styles.image48Parent}>
-    <img className={styles.image48Icon} src={image48} />
-    <div className={styles.image50} />
-    <img className={styles.icon} src={image49} />
+      <div className={styles.leftGroup}>
+        <div className={styles.headerGroup}>
+          <div className={styles.child} />
+          <div className={styles.overview}>Overview</div>
+        </div>
+
+        <b className={styles.b}>
+          내 취향 및 체형에 맞는 스타일을 받아볼 수는 없을까?
+        </b>
+
+        <div className={styles.aiContainer}>
+          <span className={styles.aiContainer1}>
+            <p className={styles.p}>
+              나를 위한 맞춤형 서비스를 제공하기 위해 다양한 혁신적인 작업을 진행하였습니다.
+            </p>
+            <p className={styles.p}>
+              퍼스널 컬러 진단과 체형 분석 기능을 추가해 개인 맞춤형 스타일링을 지원하고,
+            </p>
+            <p className={styles.p}>
+              AI 기반 알고리즘을 활용해 추천 정확도를 높이고, 사용자 편의성을 강화하였습니다.
+            </p>
+          </span>
+        </div>
+
+        <div className={styles.circleArea}>
+          <div className={styles.item} />
+          <div className={styles.contents}>Contents</div>
+
+          <div className={styles.inner} />
+          <div className={styles.service}>Service</div>
+
+          <img className={styles.vectorIcon} src={vector6} alt="vector" />
+
+          <div className={styles.ellipseDiv} />
+          <div className={styles.product}>Product</div>
+        </div>
+
+        <div className={styles.strategyGroup}>
+          <div className={styles.strategy}>STRATEGY</div>
+          <div className={styles.aiContainer2}>
+            <p className={styles.p}>01. AI 기반 퍼스널 컬러 진단</p>
+            <p className={styles.p}>02. 나만의 옷장 기능</p>
+            <p className={styles.p}>03. 체형별 스타일링 팁 제공</p>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.phoneStage}>
+        <div className={`${styles.image48Parent} ${styles.fadePhone1}`}>
+          <img className={styles.image48Icon} src={image48} alt="phone1" />
+          <div className={styles.image50} />
+          <img className={styles.icon} src={image49} alt="frame" />
+        </div>
+
+        <div className={`${styles.imageParent} ${styles.fadePhone2}`}>
+          <img className={styles.image48Icon} src={image50} alt="phone2" />
+          <div className={styles.image50} />
+          <img className={styles.icon} src={image49} alt="frame" />
+        </div>
+      </div>
     </div>
-    <div className={styles.imageParent}>
-    <img className={styles.image48Icon} src={image50} />
-    <div className={styles.image50} />
-    <img className={styles.icon} src={image49} />
-    </div>
-    <div className={styles.child} />
-    <div className={styles.overview}>Overview</div>
-    <b className={styles.b}>{`내 취향 및 체형에 맞는 스타일을 받아볼 수는 없을까? `}</b>
-    <div className={styles.strategy}>STRATEGY</div>
-    <div className={styles.aiContainer}>
-    <span className={styles.aiContainer1}>
-    <p className={styles.p}>나를 위한 맞춤형 서비스를 제공하기 위해 다양한 혁신적인 작업을 진행하였습니다.</p>
-    <p className={styles.p1}>{`퍼스널 컬러 진단과 체형 분석 기능을 추가해 개인 맞춤형 스타일링을 지원하고, `}</p>
-    <p className={styles.p}>AI 기반 알고리즘을 활용해 추천 정확도를 높이고, 사용자 편의성을 강화하였습니다</p>
-    </span>
-    </div>
-    <div className={styles.aiContainer2}>
-    <p className={styles.p}>01. AI 기반 퍼스널 컬러 진단</p>
-    <p className={styles.p}>02. 나만의 옷장 기능</p>
-    <p className={styles.p}>03. 체형별 스타일링 팁 제공</p>
-    </div>
-    <div className={styles.item} />
-    <div className={styles.inner} />
-    <div className={styles.ellipseDiv} />
-    <img className={styles.vectorIcon} src={vector6} />
-    <div className={styles.contents}>Contents</div>
-    <div className={styles.service}>Service</div>
-    <div className={styles.product}>Product</div>
-    </div>);
-    };
-    
+  );
+};
 
 export default Overview;
