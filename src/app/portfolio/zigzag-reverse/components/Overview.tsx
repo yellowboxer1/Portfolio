@@ -11,6 +11,7 @@ const image48 = withBasePath('/portfolio/zigzag-reverse/assets/image/image 48@3x
 
 const Overview = () => {
   return (
+    <div className={styles.outer}>
     <div className={styles.div}>
       <div className={styles.leftGroup}>
         <div className={styles.headerGroup}>
@@ -72,6 +73,7 @@ const Overview = () => {
           <img className={styles.icon} src={image49} alt="frame" />
         </div>
       </div>
+    </div>
     </div>
   );
 };

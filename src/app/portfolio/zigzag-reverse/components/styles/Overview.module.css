@@ -23,6 +23,7 @@
     font-family: var(--font-noto-sans);
     max-width: 1920px;
     margin: 0 auto;
+    background-color: #1a1a1a;
   }
   
   /* ========================================================
@@ -55,7 +56,7 @@
   .overview {
     position: relative;
     letter-spacing: -0.03em;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 38px;
   }
   
@@ -276,6 +277,7 @@
     100% { opacity: 1; }
   }
   
+  
   /* ========================================================
      1440 이하: 폰 1개 위치로 합쳐짐 시작
   ======================================================== */
@@ -362,7 +364,7 @@
   
 /* ========================================================
    1000 이하
-   - 최상위 div에 좌우 패딩 16px 추가하여 최소 마진 확보
+   - 최상위 div에 좌우 패 16px 추가하딩여 최소 마진 확보
 ======================================================== */
 @media (max-width: 1000px) {
     .div {
@@ -384,7 +386,7 @@
 
     .b,
     .strategy {
-        font-size: clamp(24px, 0.8vw + 21px, 29px);
+        font-size: clamp(24px, 0.8vw + 21px, 28.5px);
             }  
 
     .leftGroup {
@@ -461,11 +463,20 @@
     }
   
     .phoneStage {
-      /* CSS calc() 내에서 나눗셈 시 분모는 단위가 없어야 크로스 브라우징에 안전합니다 (400px -> 400 수정) */
-      transform: scale(calc((100vw - 46px) / 400px));
+
+      --scale-factor: min(calc((100vw - 46px) / 400px), 1.035);
+    
+      /* 2. 변수를 transform과 height에 공통으로 적용합니다. */
+      transform: scale(var(--scale-factor));
       transform-origin: top center;
-      height: calc(849px * ((100vw - 46px) / 400px));
+      height: calc(849px * var(--scale-factor));
+      
       margin-top: 40px;
       margin-right: 14px;
     }
+  }
+
+  .outer {
+    width: 100%;
+    background-color: #1a1a1a; /* 1920px 밖의 배경색 */
   }
