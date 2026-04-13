@@ -414,7 +414,7 @@ const MobileLayout = memo(function MobileLayout() {
       <section className={`${styles.mobileSection} ${styles.mobileSectionDark}`}>
         <div className={styles.mobileBg}>
           <img src={imageFx81} alt="" className={styles.mobileBgImage} decoding="async" loading="lazy" />
-          <div className={styles.mobileOverlayDark} />
+          <div className={styles.mobileOverlayDark1} />
         </div>
 
         <div className={styles.mobileInner}>

@@ -1066,6 +1066,18 @@
   );
 }
 
+.mobileOverlayDark1 {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.86) 0%,
+    rgba(0, 0, 0, 0.48) 36%,
+    rgba(0, 0, 0, 0.18) 72%,
+    rgba(0, 0, 0, 0.86) 100%
+  );
+}
+
 .mobileInner {
   position: relative;
   z-index: 1;
@@ -1282,7 +1294,7 @@
 .mobileMauPoint {
   position: absolute;
   right: 12%;
-  top: 53%;
+  top: 52%;
   width: 16px;
   height: 16px;
   border-radius: 50%;
