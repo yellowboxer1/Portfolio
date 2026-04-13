@@ -4,9 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import './zigzag-reverse.tokens.css';
 import styles from './zigzag-reverse.module.css';
-import { withBasePath } from './lib/asset';
 
-// 컴포넌트 임포트
 import Main from './components/Main';
 import Spacer from './components/Spacer';
 import Overview from './components/Overview';
@@ -25,79 +23,172 @@ import Store from './components/Store';
 import Discover from './components/Discover';
 import Closet from './components/Closet';
 
-// 가로 스크롤 섹션인 Deskresearch는 클라이언트 사이드에서 로드
 const Deskresearch = dynamic(() => import('./components/Deskresearch'), {
   ssr: false,
   loading: () => <div className={styles.loading}>Loading research section...</div>,
 });
 
 export default function ZigzagReverseExperience() {
+  const triggerRef = useRef<HTMLElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef<HTMLDivElement>(null);
-  const [vw, setVw] = useState(0);
 
-  // 1. 브라우저 너비 감지 (가로 스크롤 계산용)
+  const [isVerticalDeskresearch, setIsVerticalDeskresearch] = useState(false);
+
   useEffect(() => {
-    const updateWidth = () => {
-      setVw(window.innerWidth);
+    if (typeof window === 'undefined') return;
+
+    const mq = window.matchMedia('(max-width: 1330px)');
+
+    const update = () => {
+      setIsVerticalDeskresearch(mq.matches);
     };
-    
-    updateWidth();
-    window.addEventListener('resize', updateWidth);
-    return () => window.removeEventListener('resize', updateWidth);
+
+    update();
+
+    if (mq.addEventListener) {
+      mq.addEventListener('change', update);
+      return () => mq.removeEventListener('change', update);
+    }
+
+    mq.addListener(update);
+    return () => mq.removeListener(update);
   }, []);
 
-  // 1200px 미만일 때는 가로 스크롤 애니메이션을 끄고 세로로 보여주는 것이 일반적입니다.
-  const isSmallViewport = vw > 0 && vw < 1200;
-
-  // 2. GSAP 가로 스크롤 로직
   useEffect(() => {
-    // 윈도우가 없거나 작은 화면일 경우 가로 스크롤을 적용하지 않음
-    if (typeof window === 'undefined' || isSmallViewport || vw === 0) return;
+    if (typeof window === 'undefined') return;
 
-    let ctx: gsap.Context;
+    let ctx: any = null;
+    let resizeObserver: ResizeObserver | null = null;
+    let mounted = true;
+
+    const cleanup = async () => {
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+        resizeObserver = null;
+      }
+
+      if (ctx) {
+        ctx.revert();
+        ctx = null;
+      }
+
+      try {
+        const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+        ScrollTrigger.getAll().forEach((trigger) => {
+          if (
+            triggerRef.current &&
+            (trigger.trigger === triggerRef.current || trigger.pin === triggerRef.current)
+          ) {
+            trigger.kill();
+          }
+        });
+      } catch {
+        // noop
+      }
+
+      if (sectionRef.current) {
+        sectionRef.current.style.transform = '';
+        sectionRef.current.style.width = '';
+      }
+    };
 
     const initGSAP = async () => {
+      if (isVerticalDeskresearch) {
+        await cleanup();
+        return;
+      }
+
       const { gsap } = await import('gsap');
       const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+
+      if (!mounted) return;
+
       gsap.registerPlugin(ScrollTrigger);
 
-      ctx = gsap.context(() => {
-        const sections = sectionRef.current;
-        const container = triggerRef.current;
+      const container = triggerRef.current;
+      const sections = sectionRef.current;
 
-        if (!sections || !container) return;
+      if (!container || !sections) return;
 
-        // 실제 가로로 움직여야 할 거리 계산
-        const getScrollAmount = () => {
-          return sections.offsetWidth - window.innerWidth;
-        };
-        
-        // 스크롤 속도 배수 (높을수록 천천히)
-        const scrollSpeedFactor = 1.8; 
-        
-        gsap.to(sections, {
-          x: () => -getScrollAmount(),
-          ease: 'none',
-          scrollTrigger: {
-            trigger: container,
-            start: 'top top',
-            end: () => `+=${getScrollAmount() * scrollSpeedFactor}`, 
-            pin: true,
-            scrub: 2, // 휠을 멈춰도 부드럽게 따라오도록 설정
-            invalidateOnRefresh: true, // 리사이즈 시 재계산
-            anticipatePin: 1,
-          },
+      const getDesktopTrack = () =>
+        sections.querySelector('[class*="desktopTrack"]') as HTMLElement | null;
+
+      const getScrollAmount = () => {
+        const desktopTrack = getDesktopTrack();
+        const contentWidth = Math.max(
+          sections.scrollWidth,
+          desktopTrack?.scrollWidth ?? 0,
+          desktopTrack?.offsetWidth ?? 0
+        );
+
+        return Math.max(0, contentWidth - window.innerWidth);
+      };
+
+      const applyWidth = () => {
+        const desktopTrack = getDesktopTrack();
+        const contentWidth = Math.max(
+          sections.scrollWidth,
+          desktopTrack?.scrollWidth ?? 0,
+          desktopTrack?.offsetWidth ?? 0,
+          window.innerWidth
+        );
+
+        sections.style.width = `${contentWidth}px`;
+      };
+
+      const build = () => {
+        applyWidth();
+
+        ctx = gsap.context(() => {
+          const scrollSpeedFactor = 1.8;
+
+          gsap.set(sections, { x: 0 });
+
+          gsap.to(sections, {
+            x: () => -getScrollAmount(),
+            ease: 'none',
+            scrollTrigger: {
+              trigger: container,
+              start: 'top top',
+              end: () => `+=${getScrollAmount() * scrollSpeedFactor}`,
+              pin: true,
+              scrub: 2,
+              invalidateOnRefresh: true,
+              anticipatePin: 1,
+            },
+          });
+        }, triggerRef);
+
+        ScrollTrigger.refresh();
+      };
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (!mounted) return;
+          build();
+
+          resizeObserver = new ResizeObserver(() => {
+            applyWidth();
+            ScrollTrigger.refresh();
+          });
+
+          resizeObserver.observe(sections);
+
+          const desktopTrack = getDesktopTrack();
+          if (desktopTrack) {
+            resizeObserver.observe(desktopTrack);
+          }
         });
-      }, triggerRef);
+      });
     };
 
     initGSAP();
 
     return () => {
-      if (ctx) ctx.revert();
+      mounted = false;
+      cleanup();
     };
-  }, [isSmallViewport, vw]); // vw가 변경될 때 GSAP 트리거 갱신
+  }, [isVerticalDeskresearch]);
 
   return (
     <article className={styles.pageScope} data-project="zigzag-reverse">
@@ -106,10 +197,9 @@ export default function ZigzagReverseExperience() {
       <Overview />
       <Spacer2 />
 
-      {/* 가로 스크롤 (데스크탑 전용) */}
       <section ref={triggerRef} className={styles.horizontalTrigger}>
         <div ref={sectionRef} className={styles.horizontalContent}>
-          <Deskresearch vector22={withBasePath('/portfolio/zigzag-reverse/assets/image/Vector 22.svg')} />
+          <Deskresearch />
         </div>
       </section>
 

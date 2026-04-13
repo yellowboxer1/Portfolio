@@ -26,6 +26,7 @@
   width: auto;
   height: 100%;
   display: flex;
+  will-change: transform;
 }
 
 .horizontalTriggerNative {
@@ -59,3 +60,20 @@
   color: rgba(238, 238, 238, 0.75);
 }
 
+@media (max-width: 1330px) {
+  .horizontalTrigger {
+    overflow: visible;
+    height: auto;
+    min-height: 0;
+  }
+
+  .horizontalContent {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    display: block;
+    transform: none !important;
+    will-change: auto;
+  }
+}

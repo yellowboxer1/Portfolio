@@ -7,16 +7,16 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
   background: #000;
 }
 
 /* =========================================================
    PERF
 ========================================================= */
-.desktopPage,
-.quadPanel,
-.mobileLayout {
+
+.desktopPage {
   content-visibility: auto;
   contain-intrinsic-size: 100vh;
   contain: layout paint style;
@@ -37,9 +37,9 @@
   overflow-y: hidden;
   scrollbar-width: none;
   scroll-snap-type: x proximity;
-  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
+  will-change: scroll-position;
   background: #000;
 }
 
@@ -89,23 +89,24 @@
    QUAD
 ========================================================= */
 .quadLayout {
+  position: relative;
   width: 100%;
-  height: auto;
-  overflow: visible;
   overflow-x: hidden;
+  overflow-y: visible;
   background: #000;
 }
 
 .quadPanel {
   position: relative;
-  width: 100vw;
+  display: block;
+  width: 100%;
   height: 100vh;
-  min-height: 100svh;
+  min-height: 100vh;
   overflow: hidden;
   background:
     var(--quad-bg) center / cover no-repeat,
     #000;
-  transform: translateZ(0);
+  isolation: isolate;
 }
 
 .quadOverlay {
@@ -274,6 +275,13 @@
   flex: 0 0 var(--page1-right-width);
   min-width: var(--page1-right-width);
   margin-top: -148px;
+}
+
+.churnGroup {
+  position: absolute;
+  top: 154px;
+  left: 1312px;
+  width: 430px;
 }
 
 .chartSection,
@@ -557,7 +565,7 @@
 
 .bParent {
   position: absolute;
-  top: 485px;
+  top: 463px;
   left: 116px;
   width: 44px;
   display: flex;
@@ -583,7 +591,7 @@
 
 .frameParent {
   position: absolute;
-  top: 502px;
+  top: 480px;
   left: 170px;
   width: 865.4px;
   height: 360px;
@@ -591,8 +599,9 @@
 
 .div11 {
   position: absolute;
-  top: 727px;
-  left: 874px;
+  width: 150px;
+  top: 712px;
+  left: 847px;
   letter-spacing: -0.03em;
   line-height: 34px;
   font-family: var(--font-noto-sans-kr);
@@ -603,7 +612,7 @@
 
 .child1 {
   position: absolute;
-  top: 703px;
+  top: 681px;
   left: 911px;
   border-radius: 50%;
   background-color: var(--color-white);
@@ -618,18 +627,19 @@
 }
 
 .b15 {
-  position: absolute;
-  top: 154px;
-  left: 1344px;
+  position: relative;
+  top: auto;
+  left: auto;
   font-size: var(--font-size-16xl);
   letter-spacing: -0.03em;
   text-align: center;
+  margin: 0 0 34px 0;
 }
 
 .groupIcon {
   position: absolute;
-  top: 265px;
-  left: 1490px;
+  top: 111px;
+  left: 178px;
   width: 73px;
   height: 76px;
 }
@@ -743,9 +753,10 @@
 }
 
 .groupParent {
-  position: absolute;
-  top: 377px;
-  left: 1312px;
+  position: relative;
+  margin-top: 119px;
+  top: auto;
+  left: auto;
   width: 430px;
   display: flex;
   flex-direction: column;
@@ -755,11 +766,16 @@
 }
 
 /* =========================================================
-   1920 ~ 1001
+   DESKTOP RESPONSIVE
+   1920 ~ 1331 only
 ========================================================= */
 @media (max-width: 1920px) {
   .page1Main {
     --page1-right-space: calc(100px + (100vw - 1711px) * (98 / 209));
+  }
+
+  .churnGroup {
+    left: calc(1208.4px + (100vw - 1711px) * (103.6 / 209));
   }
 }
 
@@ -768,6 +784,24 @@
     --page1-right-space: 100px;
     --page1-gap: calc(133px + (100vw - 1551px) * (160 / 160));
   }
+
+  .frameParent,
+  .vectorParent {
+    width: calc(705.4px + (100vw - 1551px) * (160 / 160));
+    height: 360px;
+  }
+
+  .churnGroup {
+    left: calc(1048.4px + (100vw - 1551px) * (160 / 160));
+  }
+
+  .child1 {
+    left: calc(771px + (100vw - 1551px) * (140 / 160));
+  }
+
+  .div11 {
+    left: calc(707px + (100vw - 1551px) * (140 / 160));
+  }
 }
 
 @media (max-width: 1551px) {
@@ -775,16 +809,22 @@
     --page1-gap: 133px;
     --chart-col: calc(56.5px + (100vw - 1331px) * (16.4 / 220));
     --chart-gap: calc(8px + (100vw - 1331px) * (4 / 220));
-  }
-}
-
-@media (max-width: 1331px) {
-  .page1Main {
     --page1-right-width: 322px;
     --page1-right-space: 153px;
-    --page1-gap: 133px;
-    --chart-col: 56.5px;
-    --chart-gap: 8px;
+  }
+
+  .frameParent,
+  .vectorParent {
+    width: calc(530px + (100vw - 1331px) * (175.4 / 220));
+    height: 360px;
+  }
+
+  .child1 {
+    left: calc(621px + (100vw - 1331px) * (150 / 220));
+  }
+
+  .div11 {
+    left: calc(557px + (100vw - 1331px) * (150 / 220));
   }
 
   .b6 {
@@ -798,85 +838,10 @@
   }
 }
 
-@media (max-width: 1284px) {
-  .page1Main {
-    --chart-col: calc(48px + (100vw - 1001px) * (8.5 / 283));
-    --chart-gap: calc(4px + (100vw - 1001px) * (4 / 283));
-    --page1-right-width: calc(320px + (100vw - 1001px) * (20 / 283));
-    --page1-gap: calc(40px + (100vw - 1001px) * (93 / 283));
-    --page1-right-space: 80px;
-  }
-
-  .zNo1Container {
-    font-size: calc(28.5px + (100vw - 1001px) * (5.5 / 283));
-  }
-
-  .mauContainer {
-    width: calc(500px + (100vw - 1001px) * (98 / 283));
-    word-break: keep-all;
-  }
-
-  .page1Left {
-    min-width: 492px;
-  }
-
-  .chartBar {
-    width: 28px;
-  }
-
-  .chartLabel,
-  .chartValue {
-    font-size: max(14px, calc(14px + (100vw - 1001px) * (2 / 283)));
-  }
-
-  .chartIconWrap {
-    width: calc(30px + (100vw - 1001px) * (10 / 283));
-    height: calc(30px + (100vw - 1001px) * (10 / 283));
-  }
-
-  .page1Right {
-    width: var(--page1-right-width);
-    flex: 0 0 var(--page1-right-width);
-    min-width: var(--page1-right-width);
-  }
-
-  .b6 {
-    font-size: calc(26px + (100vw - 1001px) * (4 / 283));
-  }
-
-  .group {
-    font-size: calc(20px + (100vw - 1001px) * (2 / 283));
-    gap: calc(36px + (100vw - 1001px) * (22 / 283));
-  }
-
-  .b1,
-  .b2,
-  .b3,
-  .b4,
-  .b5 {
-    line-height: 1.6;
-  }
-
-  .page1Main,
-  .page1Left,
-  .page1Right,
-  .chartBlock,
-  .chartBars,
-  .chartItem,
-  .chartBar,
-  .chartIconWrap,
-  .chartLabel,
-  .chartBaseline,
-  .b6,
-  .group {
-    transition: none !important;
-  }
-}
-
 /* =========================================================
-   QUAD 1000 ~ 768
+   QUAD 1330 ~ 768
 ========================================================= */
-@media (max-width: 1000px) and (min-width: 768px) {
+@media (max-width: 1330px) and (min-width: 768px) {
   .quadPanel .zNo1Container {
     top: 150px;
     left: 92px;
@@ -910,8 +875,9 @@
 
   .quadContentBox .chartBlock {
     width: 100%;
-    max-width: 720px;
+    max-width: 814px;
   }
+
 
   .quadContentBox .chartBars {
     display: grid;
@@ -925,7 +891,9 @@
   }
 
   .quadContentBox .chartBar {
-    width: 24px;
+    width: 100%; /* 부모(그리드/플렉스)가 허용하는 만큼 꽉 채움 */
+    min-width: 24px; /* 아무리 좁아져도 24px 이하로 줄어들지 않음 */
+    max-width: 34px; /* 아무리 넓어져도 34px 이상 늘어나지 않음 */
   }
 
   .quadContentBox .chartBaseline {
@@ -939,7 +907,7 @@
 
   .quadContentBox .chartLabel,
   .quadContentBox .chartValue {
-    font-size: 13px;
+    font-size: clamp(13px, 1.2vw, 15px); 
   }
 
   .quadRightBox .page1RightHeader {
@@ -1001,13 +969,20 @@
     left: min(62vw, 560px);
   }
 
+  .quadRightBox .churnGroup {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: min(100%, 430px);
+  }
+
   .quadRightBox .b15 {
     position: relative;
     top: auto;
     left: auto;
     font-size: 32px;
     text-align: left;
-    margin-bottom: 28px;
+    margin: 0 0 28px 0;
   }
 
   .quadRightBox .groupIcon {
@@ -1033,8 +1008,8 @@
 ========================================================= */
 .mobileLayout {
   position: relative;
+  width: 100%;
   min-height: 100vh;
-  overflow: hidden;
   background: #000;
 }
 
@@ -1111,9 +1086,9 @@
 .mobileCard {
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: 24px;
   padding: 20px 18px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.24);

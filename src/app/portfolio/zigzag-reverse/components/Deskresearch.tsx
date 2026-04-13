@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState, memo } from 'react';
 import styles from './styles/Deskresearch.module.css';
 import { withBasePath } from '../lib/asset';
 
@@ -63,11 +63,15 @@ function useLayoutMode(): LayoutMode {
   const [mode, setMode] = useState<LayoutMode>('desktop');
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const mobileMq = window.matchMedia('(max-width: 767px)');
+    const quadMq = window.matchMedia('(max-width: 1330px)');
+
     const update = () => {
-      const w = window.innerWidth;
-      if (w <= 767) {
+      if (mobileMq.matches) {
         setMode('mobile');
-      } else if (w <= 1000) {
+      } else if (quadMq.matches) {
         setMode('quad');
       } else {
         setMode('desktop');
@@ -75,14 +79,29 @@ function useLayoutMode(): LayoutMode {
     };
 
     update();
-    window.addEventListener('resize', update, { passive: true });
-    return () => window.removeEventListener('resize', update);
+
+    const add = (mq: MediaQueryList, handler: () => void) => {
+      if (mq.addEventListener) {
+        mq.addEventListener('change', handler);
+        return () => mq.removeEventListener('change', handler);
+      }
+      mq.addListener(handler);
+      return () => mq.removeListener(handler);
+    };
+
+    const removeMobile = add(mobileMq, update);
+    const removeQuad = add(quadMq, update);
+
+    return () => {
+      removeMobile();
+      removeQuad();
+    };
   }, []);
 
   return mode;
 }
 
-function ChartSection() {
+const ChartSection = memo(function ChartSection() {
   return (
     <div className={styles.chartSection}>
       <div className={styles.chartTitleRow}>
@@ -114,7 +133,7 @@ function ChartSection() {
               </div>
 
               <div className={styles.chartIconWrap}>
-                <img src={item.icon} alt={item.name} className={styles.chartIcon} />
+                <img src={item.icon} alt={item.name} className={styles.chartIcon} decoding="async" loading="lazy" />
               </div>
 
               <div className={`${styles.chartLabel} ${item.active ? styles.chartLabelActive : ''}`}>
@@ -128,9 +147,9 @@ function ChartSection() {
       </div>
     </div>
   );
-}
+});
 
-function ReasonSection() {
+const ReasonSection = memo(function ReasonSection() {
   return (
     <div className={styles.reasonSection}>
       <div className={styles.page1RightHeader}>
@@ -147,9 +166,9 @@ function ReasonSection() {
       </div>
     </div>
   );
-}
+});
 
-function MauGraphSection() {
+const MauGraphSection = memo(function MauGraphSection() {
   return (
     <div className={styles.mauGraphSection}>
       <div className={styles.bParent}>
@@ -163,7 +182,7 @@ function MauGraphSection() {
       </div>
 
       <div className={styles.frameParent}>
-        <img className={styles.vectorParent} src={group7} alt="" />
+        <img className={styles.vectorParent} src={group7} alt="" decoding="async" loading="lazy" />
       </div>
 
       <b className={styles.b11}>지그재그 월간 사용자 수(MAU) 추이</b>
@@ -179,47 +198,55 @@ function MauGraphSection() {
       <div className={styles.child1} />
     </div>
   );
-}
+});
 
-function ChurnSection() {
+const ChurnSection = memo(function ChurnSection() {
   return (
     <div className={styles.churnSection}>
-      <b className={styles.b15}>
-        <p className={styles.p2}>지그재그 월간 이탈 사용자</p>
-        <p className={styles.p4}>
-          <span>{`794,664 `}</span>
-          <span className={styles.span2}>명</span>
-        </p>
-      </b>
+      <div className={styles.churnGroup}>
+        <b className={styles.b15}>
+          <p className={styles.p2}>지그재그 월간 이탈 사용자</p>
+          <p className={styles.p4}>
+            <span>{`794,664 `}</span>
+            <span className={styles.span2}>명</span>
+          </p>
+        </b>
 
-      <img className={styles.groupIcon} src={group8} alt="" />
+        <img className={styles.groupIcon} src={group8} alt="" decoding="async" loading="lazy" />
 
-      <div className={styles.groupParent}>
-        {churnList.map((item, index) => (
-          <div
-            key={item.rank + item.name}
-            className={index === churnList.length - 1 ? styles.parent5 : styles.container}
-          >
-            <div className={styles.div12}>{item.rank}</div>
-            <div className={styles.div13}>{item.name}</div>
-            <div className={styles.div21}>{item.count}</div>
-            <img className={styles.imageIcon10} src={item.icon} alt={item.name} />
-            <div className={styles.groupChild8} />
-            <div className={styles.div19}>{item.rate}</div>
-            {index === churnList.length - 1 && (
-              <div className={styles.div36}>참고 : 경쟁앱 간 중복 이탈자가 발생할 수 있습니다.</div>
-            )}
-          </div>
-        ))}
+        <div className={styles.groupParent}>
+          {churnList.map((item, index) => (
+            <div
+              key={item.rank + item.name}
+              className={index === churnList.length - 1 ? styles.parent5 : styles.container}
+            >
+              <div className={styles.div12}>{item.rank}</div>
+              <div className={styles.div13}>{item.name}</div>
+              <div className={styles.div21}>{item.count}</div>
+              <img
+                className={styles.imageIcon10}
+                src={item.icon}
+                alt={item.name}
+                decoding="async"
+                loading="lazy"
+              />
+              <div className={styles.groupChild8} />
+              <div className={styles.div19}>{item.rate}</div>
+              {index === churnList.length - 1 && (
+                <div className={styles.div36}>참고 : 경쟁앱 간 중복 이탈자가 발생할 수 있습니다.</div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
-}
+});
 
-function Page1Desktop() {
+const Page1Desktop = memo(function Page1Desktop() {
   return (
     <div className={styles.div1}>
-      <img className={styles.imageFx81} src={imageFx81} alt="" />
+      <img className={styles.imageFx81} src={imageFx81} alt="" decoding="async" />
       <div className={styles.imageFx82} />
       <div className={styles.child} />
       <div className={styles.background}>Background</div>
@@ -247,12 +274,12 @@ function Page1Desktop() {
       </div>
     </div>
   );
-}
+});
 
-function Page2Desktop() {
+const Page2Desktop = memo(function Page2Desktop() {
   return (
     <div className={styles.div10}>
-      <img className={styles.imageFx81} src={imageFx81} alt="" />
+      <img className={styles.imageFx81} src={imageFx81} alt="" decoding="async" />
       <div className={styles.imageFx821} />
       <div className={styles.child} />
       <div className={styles.background}>Background</div>
@@ -271,13 +298,13 @@ function Page2Desktop() {
       <ChurnSection />
     </div>
   );
-}
+});
 
 type QuadPanelProps = {
   variant: 'page1-left' | 'page1-right' | 'page2-left' | 'page2-right';
 };
 
-function QuadPanel({ variant }: QuadPanelProps) {
+const QuadPanel = memo(function QuadPanel({ variant }: QuadPanelProps) {
   const isPage1 = variant.startsWith('page1');
   const panelClass = [
     styles.quadPanel,
@@ -334,13 +361,13 @@ function QuadPanel({ variant }: QuadPanelProps) {
       </div>
     </div>
   );
-}
+});
 
-function MobileLayout() {
+const MobileLayout = memo(function MobileLayout() {
   return (
     <div className={styles.mobileLayout}>
       <div className={styles.mobileBg}>
-        <img src={imageFx81} alt="" className={styles.mobileBgImage} />
+        <img src={imageFx81} alt="" className={styles.mobileBgImage} decoding="async" loading="lazy" />
         <div className={styles.mobileOverlay} />
       </div>
 
@@ -391,7 +418,7 @@ function MobileLayout() {
       </div>
     </div>
   );
-}
+});
 
 const Deskresearch = () => {
   const mode = useLayoutMode();
