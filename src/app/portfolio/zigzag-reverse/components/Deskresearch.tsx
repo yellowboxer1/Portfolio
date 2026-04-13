@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useMemo, useState, memo } from 'react';
+import React, { useEffect, useRef, useState, memo } from 'react';
 import styles from './styles/Deskresearch.module.css';
 import { withBasePath } from '../lib/asset';
 
@@ -26,7 +26,7 @@ const brendy = withBasePath('/portfolio/zigzag-reverse/assets/image/icon/brandy@
 const queen = withBasePath('/portfolio/zigzag-reverse/assets/image/icon/queen@3x.png');
 const wconcept1 = withBasePath('/portfolio/zigzag-reverse/assets/image/icon/w@3x.png');
 
-type LayoutMode = 'desktop' | 'quad' | 'mobile';
+type LayoutMode = 'desktop' | 'tablet' | 'mobile';
 
 const chartItems = [
   { name: '지그재그', value: '270k', height: 270, icon: zigzag, active: true },
@@ -50,14 +50,16 @@ const reasons = [
 ];
 
 const churnList = [
-  { rank: '1위', name: '에이블리', count: '317,396명', rate: '39.94%', icon: ably1 },
-  { rank: '2위', name: '무신사', count: '186,850명', rate: '23.51%', icon: musinsa1 },
-  { rank: '3위', name: '29CM', count: '56,934명', rate: '7.16%', icon: a291 },
-  { rank: '4위', name: '퀸잇', count: '55,991명', rate: '7.05%', icon: queen },
-  { rank: '5위', name: '브랜디', count: '38,106명', rate: '4.80%', icon: brendy },
-  { rank: '6위', name: 'KREAM', count: '35,985명', rate: '4.53%', icon: kream1 },
-  { rank: '7위', name: 'W컨셉', count: '33,246명', rate: '4.18%', icon: wconcept1 },
+  { rank: '2위', name: '에이블리', count: '317,396명', rate: '39.94%', icon: ably1 },
+  { rank: '3위', name: '무신사', count: '186,850명', rate: '23.51%', icon: musinsa1 },
+  { rank: '4위', name: '29CM', count: '56,934명', rate: '7.16%', icon: a291 },
+  { rank: '5위', name: '퀸잇', count: '55,991명', rate: '7.05%', icon: queen },
+  { rank: '6위', name: '브랜디', count: '38,106명', rate: '4.80%', icon: brendy },
+  { rank: '7위', name: 'KREAM', count: '35,985명', rate: '4.53%', icon: kream1 },
+  { rank: '8위', name: 'W컨셉', count: '33,246명', rate: '4.18%', icon: wconcept1 },
 ];
+
+const mauScale = ['4.5B', '4.0B', '3.5B', '3.0B', '2.5B', '2.0B', '1.5B'];
 
 function useLayoutMode(): LayoutMode {
   const [mode, setMode] = useState<LayoutMode>('desktop');
@@ -66,13 +68,13 @@ function useLayoutMode(): LayoutMode {
     if (typeof window === 'undefined') return;
 
     const mobileMq = window.matchMedia('(max-width: 767px)');
-    const quadMq = window.matchMedia('(max-width: 1330px)');
+    const tabletMq = window.matchMedia('(max-width: 1330px)');
 
     const update = () => {
       if (mobileMq.matches) {
         setMode('mobile');
-      } else if (quadMq.matches) {
-        setMode('quad');
+      } else if (tabletMq.matches) {
+        setMode('tablet');
       } else {
         setMode('desktop');
       }
@@ -90,11 +92,11 @@ function useLayoutMode(): LayoutMode {
     };
 
     const removeMobile = add(mobileMq, update);
-    const removeQuad = add(quadMq, update);
+    const removeTablet = add(tabletMq, update);
 
     return () => {
       removeMobile();
-      removeQuad();
+      removeTablet();
     };
   }, []);
 
@@ -300,64 +302,51 @@ const Page2Desktop = memo(function Page2Desktop() {
   );
 });
 
-type QuadPanelProps = {
-  variant: 'page1-left' | 'page1-right' | 'page2-left' | 'page2-right';
-};
-
-const QuadPanel = memo(function QuadPanel({ variant }: QuadPanelProps) {
-  const isPage1 = variant.startsWith('page1');
-  const panelClass = [
-    styles.quadPanel,
-    variant === 'page1-left' ? styles.quadPanelPage1Left : '',
-    variant === 'page1-right' ? styles.quadPanelPage1Right : '',
-    variant === 'page2-left' ? styles.quadPanelPage2Left : '',
-    variant === 'page2-right' ? styles.quadPanelPage2Right : '',
-  ]
-    .filter(Boolean)
-    .join(' ');
-
+const TabletLayout = memo(function TabletLayout() {
   return (
-    <div
-      className={panelClass}
-      style={{ ['--quad-bg' as any]: `url("${imageFx81}")` }}
-    >
-      <div className={styles.quadOverlay} />
-      <div className={styles.child} />
-      <div className={styles.background}>Background</div>
+    <div className={styles.tabletLayout}>
+      <div className={styles.tabletPage}>
+        <img className={styles.imageFx81} src={imageFx81} alt="" decoding="async" />
+        <div className={styles.imageFx82} />
+        <div className={styles.child} />
+        <div className={styles.background}>Background</div>
 
-      <b className={styles.zNo1Container}>
-        {isPage1 ? (
-          <>
-            <span>Z세대가 선택한 No.1 패션 플랫폼, </span>
-            <span className={styles.span}>지그재그</span>
-          </>
-        ) : (
-          <>
-            <span>신규 유입 1위, 하지만.. </span>
-            <span className={styles.span}>유지율은?</span>
-          </>
-        )}
-      </b>
+        <b className={styles.zNo1Container}>
+          <span>Z세대가 선택한 No.1 패션 플랫폼, </span>
+          <span className={styles.span}>지그재그</span>
+        </b>
 
-      <div className={styles.mauContainer}>
-        {isPage1 ? (
-          <>
-            <p className={styles.p}>2025년 2월 기준, 패션 플랫폼 경쟁이 여전히 치열한 가운데,</p>
-            <p className={styles.p}>지그재그는 여전히 강력한 신규 유입을 유지하며 신규 앱 설치 수 1위를 차지하고 있음</p>
-          </>
-        ) : (
-          <>
-            <p className={styles.p}>여전히 높은 신규 유입을 기록하고 있지만,</p>
-            <p className={styles.p}>월간 활성 사용자(MAU) 감소세가 두드러지며 이탈률이 급증하는 모습을 보이고 있음</p>
-          </>
-        )}
+        <div className={styles.mauContainer}>
+          <p className={styles.p}>2025년 2월 기준, 패션 플랫폼 경쟁이 여전히 치열한 가운데,</p>
+          <p className={styles.p}>지그재그는 여전히 강력한 신규 유입을 유지하며 신규 앱 설치 수 1위를 차지하고 있음</p>
+        </div>
+
+        <div className={styles.tabletContent}>
+          <ChartSection />
+          <ReasonSection />
+        </div>
       </div>
 
-      <div className={styles.quadContentBox}>
-        {variant === 'page1-left' && <ChartSection />}
-        {variant === 'page1-right' && <div className={styles.quadRightBox}><ReasonSection /></div>}
-        {variant === 'page2-left' && <MauGraphSection />}
-        {variant === 'page2-right' && <div className={styles.quadRightBox}><ChurnSection /></div>}
+      <div className={`${styles.tabletPage} ${styles.tabletPageDark}`}>
+        <img className={styles.imageFx81} src={imageFx81} alt="" decoding="async" />
+        <div className={styles.imageFx821} />
+        <div className={styles.child} />
+        <div className={styles.background}>Background</div>
+
+        <div className={styles.mauContainer}>
+          <p className={styles.p}>여전히 높은 신규 유입을 기록하고 있지만,</p>
+          <p className={styles.p}>월간 활성 사용자(MAU) 감소세가 두드러지며 이탈률이 급증하는 모습을 보이고 있음</p>
+        </div>
+
+        <b className={styles.zNo1Container}>
+          <span>신규 유입 1위, 하지만.. </span>
+          <span className={styles.span}>유지율은?</span>
+        </b>
+
+        <div className={styles.tabletContent}>
+          <MauGraphSection />
+          <ChurnSection />
+        </div>
       </div>
     </div>
   );
@@ -366,67 +355,210 @@ const QuadPanel = memo(function QuadPanel({ variant }: QuadPanelProps) {
 const MobileLayout = memo(function MobileLayout() {
   return (
     <div className={styles.mobileLayout}>
-      <div className={styles.mobileBg}>
-        <img src={imageFx81} alt="" className={styles.mobileBgImage} decoding="async" loading="lazy" />
-        <div className={styles.mobileOverlay} />
-      </div>
-
-      <div className={styles.mobileInner}>
-        <div className={styles.mobileLabelRow}>
-          <span className={styles.mobileDot} />
-          <span className={styles.mobileLabel}>Background</span>
+      {/* page 1 */}
+      <section className={styles.mobileSection}>
+        <div className={styles.mobileBg}>
+          <img src={imageFx81} alt="" className={styles.mobileBgImage} decoding="async" loading="lazy" />
+          <div className={styles.mobileOverlay} />
         </div>
 
-        <h2 className={styles.mobileTitle}>
-          Z세대가 선택한 No.1 패션 플랫폼, <span>지그재그</span>
-        </h2>
+        <div className={styles.mobileInner}>
+          <div className={styles.mobileLabelRow}>
+            <span className={styles.mobileDot} />
+            <span className={styles.mobileLabel}>Background 1</span>
+          </div>
 
-        <p className={styles.mobileDesc}>
-          2025년 2월 기준, 패션 플랫폼 경쟁이 치열한 가운데 지그재그는 강력한 신규 유입을 유지하며
-          신규 앱 설치 수 1위를 차지하고 있음
-        </p>
+          <h2 className={styles.mobileTitle}>
+            Z세대가 선택한 No.1 패션 플랫폼, <span>지그재그</span>
+          </h2>
 
-        <div className={styles.mobileCard}>
-          <h3 className={styles.mobileCardTitle}>올해의 패션/의류 신규 설치 순위 (2025)</h3>
+          <p className={styles.mobileDesc}>
+            2025년 2월 기준, 패션 플랫폼 경쟁이 치열한 가운데,
+            지그재그는 강력한 신규 유입을 유지하며
+            신규 앱 설치 수 1위를 차지하고 있음
+          </p>
 
-          <div className={styles.mobileBars}>
-            {chartItems.map((item) => (
-              <div key={item.name} className={styles.mobileBarItem}>
-                <div className={styles.mobileBarValue}>{item.value}</div>
-                <div
-                  className={`${styles.mobileBar} ${item.active ? styles.mobileBarActive : ''}`}
-                  style={{ height: `${Math.max(48, item.height * 0.62)}px` }}
+          <div className={styles.mobileCard}>
+            <h3 className={styles.mobileCardTitle}>올해의 패션/의류 신규 설치 순위 (2025)</h3>
+
+            <div className={styles.mobileBars}>
+              {chartItems.map((item) => (
+                <div key={item.name} className={styles.mobileBarItem}>
+                  <div className={styles.mobileBarValue}>{item.value}</div>
+                  <div
+                    className={`${styles.mobileBar} ${item.active ? styles.mobileBarActive : ''}`}
+                    style={{ height: `${Math.max(48, item.height * 0.62)}px` }}
+                  />
+                  <img src={item.icon} alt={item.name} className={styles.mobileBarIcon} />
+                  <div className={styles.mobileBarLabel}>{item.name}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.mobileCard}>
+            <h3 className={styles.mobileCardTitle}>왜 지그재그를 사용하나요?</h3>
+            <div className={styles.mobileReasonList}>
+              {reasons.map((reason, index) => (
+                <div key={reason} className={styles.mobileReasonItem}>
+                  <span className={styles.mobileReasonNumber}>0{index + 1}</span>
+                  <span>{reason}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* page 2 */}
+      <section className={`${styles.mobileSection} ${styles.mobileSectionDark}`}>
+        <div className={styles.mobileBg}>
+          <img src={imageFx81} alt="" className={styles.mobileBgImage} decoding="async" loading="lazy" />
+          <div className={styles.mobileOverlayDark} />
+        </div>
+
+        <div className={styles.mobileInner}>
+          <div className={styles.mobileLabelRow}>
+            <span className={styles.mobileDot} />
+            <span className={styles.mobileLabel}>Background 2</span>
+          </div>
+
+          <h2 className={styles.mobileTitle}>
+            신규 유입 1위, 하지만.. <span>유지율은?</span>
+          </h2>
+
+          <p className={styles.mobileDesc}>
+            여전히 높은 신규 유입을 기록하고 있지만,
+            월간 활성 사용자(MAU) 감소세가 두드러지며
+            이탈률이 급증하는 모습을 보이고 있음
+          </p>
+
+          <div className={styles.mobileCard}>
+            <h3 className={styles.mobileCardTitle}>지그재그 월간 사용자 수(MAU) 추이</h3>
+
+            <div className={styles.mobileMauWrap}>
+              <div className={styles.mobileMauAxis}>
+                {mauScale.map((label) => (
+                  <span key={label}>{label}</span>
+                ))}
+              </div>
+
+              <div className={styles.mobileMauChartArea}>
+                <img
+                  src={group7}
+                  alt="지그재그 월간 사용자 수 추이"
+                  className={styles.mobileMauImage}
+                  decoding="async"
+                  loading="lazy"
                 />
-                <img src={item.icon} alt={item.name} className={styles.mobileBarIcon} />
-                <div className={styles.mobileBarLabel}>{item.name}</div>
+                <span className={styles.mobileMauPoint} />
+                <span className={styles.mobileMauDate}>2024년 2월</span>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
 
-        <div className={styles.mobileCard}>
-          <h3 className={styles.mobileCardTitle}>왜 지그재그를 사용하나요?</h3>
-          <div className={styles.mobileReasonList}>
-            {reasons.map((reason, index) => (
-              <div key={reason} className={styles.mobileReasonItem}>
-                <span className={styles.mobileReasonNumber}>0{index + 1}</span>
-                <span>{reason}</span>
+          <div className={styles.mobileCard}>
+            <div className={styles.mobileChurnHeader}>
+              <div>
+                <p className={styles.mobileChurnLabel}>지그재그 월간 이탈 사용자</p>
+                <p className={styles.mobileChurnValue}>
+                  794,664 <span>명</span>
+                </p>
               </div>
-            ))}
+
+              <img
+                src={group8}
+                alt=""
+                className={styles.mobileChurnIcon}
+                decoding="async"
+                loading="lazy"
+              />
+            </div>
+
+            <div className={styles.mobileChurnList}>
+              {churnList.map((item) => (
+                <div key={item.rank + item.name} className={styles.mobileChurnItem}>
+                  <div className={styles.mobileChurnRank}>{item.rank}</div>
+                  <img
+                    src={item.icon}
+                    alt={item.name}
+                    className={styles.mobileChurnAppIcon}
+                    decoding="async"
+                    loading="lazy"
+                  />
+                  <div className={styles.mobileChurnName}>{item.name}</div>
+                  <div className={styles.mobileChurnCount}>{item.count}</div>
+                  <div className={styles.mobileChurnRate}>{item.rate}</div>
+                </div>
+              ))}
+            </div>
+
+            <p className={styles.mobileChurnNote}>
+              참고 : 경쟁앱 간 중복 이탈자가 발생할 수 있습니다.
+            </p>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 });
 
-const Deskresearch = () => {
-  const mode = useLayoutMode();
+function DesktopScrollLayout() {
+  const shellRef = useRef<HTMLDivElement | null>(null);
+  const [offsetX, setOffsetX] = useState(0);
+  const [scrollLength, setScrollLength] = useState(0);
 
-  const desktopView = useMemo(
-    () => (
-      <div className={styles.desktopViewport}>
-        <div className={styles.desktopTrack}>
+  useEffect(() => {
+    let rafId = 0;
+
+    const updateMetrics = () => {
+      const viewportWidth = window.innerWidth;
+      const pageWidth = Math.min(viewportWidth, 1920);
+      const maxOffset = pageWidth;
+
+      setScrollLength(maxOffset);
+      setOffsetX((prev) => Math.min(prev, maxOffset));
+    };
+
+    const updateScroll = () => {
+      if (!shellRef.current) return;
+
+      const rect = shellRef.current.getBoundingClientRect();
+      const maxOffset = Math.max(0, shellRef.current.offsetHeight - window.innerHeight);
+      const nextOffset = Math.min(Math.max(-rect.top, 0), maxOffset);
+
+      cancelAnimationFrame(rafId);
+      rafId = window.requestAnimationFrame(() => {
+        setOffsetX(nextOffset);
+      });
+    };
+
+    updateMetrics();
+    updateScroll();
+
+    window.addEventListener('resize', updateMetrics);
+    window.addEventListener('resize', updateScroll);
+    window.addEventListener('scroll', updateScroll, { passive: true });
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener('resize', updateMetrics);
+      window.removeEventListener('resize', updateScroll);
+      window.removeEventListener('scroll', updateScroll);
+    };
+  }, []);
+
+  return (
+    <div
+      ref={shellRef}
+      className={styles.desktopShell}
+      style={{ ['--desktop-scroll-length' as string]: `${scrollLength}px` }}
+    >
+      <div className={styles.desktopSticky}>
+        <div
+          className={styles.desktopTrack}
+          style={{ transform: `translate3d(-${offsetX}px, 0, 0)` }}
+        >
           <div className={styles.desktopPage}>
             <Page1Desktop />
           </div>
@@ -435,33 +567,20 @@ const Deskresearch = () => {
           </div>
         </div>
       </div>
-    ),
-    []
+    </div>
   );
+}
 
-  const quadView = useMemo(
-    () => (
-      <div className={styles.quadLayout}>
-        <QuadPanel variant="page1-left" />
-        <QuadPanel variant="page1-right" />
-        <QuadPanel variant="page2-left" />
-        <QuadPanel variant="page2-right" />
-      </div>
-    ),
-    []
-  );
-
-  const mobileView = useMemo(() => <MobileLayout />, []);
+export default function Deskresearch() {
+  const mode = useLayoutMode();
 
   return (
     <section className={styles.deskresearch}>
       <section className={styles.page}>
-        {mode === 'desktop' && desktopView}
-        {mode === 'quad' && quadView}
-        {mode === 'mobile' && mobileView}
+        {mode === 'desktop' && <DesktopScrollLayout />}
+        {mode === 'tablet' && <TabletLayout />}
+        {mode === 'mobile' && <MobileLayout />}
       </section>
     </section>
   );
-};
-
-export default Deskresearch;
+}

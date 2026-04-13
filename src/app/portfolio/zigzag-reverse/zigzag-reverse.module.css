@@ -2,7 +2,7 @@
   background: #070503;
   color: #eee;
   isolation: isolate;
-  overflow-x: clip;
+  overflow-x: visible;
   width: 100%;
   --zigzag-scale: 1;
 }
@@ -13,67 +13,10 @@
   transform-origin: top center;
 }
 
-.horizontalTrigger {
-  overflow: hidden;
-  position: relative;
-  height: 100vh;
-  width: 100%;
-}
-
-.horizontalContent {
-  position: absolute;
-  inset: 0 auto auto 0;
-  width: auto;
-  height: 100%;
-  display: flex;
-  will-change: transform;
-}
-
-.horizontalTriggerNative {
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
-}
-
-.horizontalContentNative {
-  position: relative;
-  min-width: max-content;
-}
-
-.horizontalContentNative > * {
-  scroll-snap-align: start;
-}
-
 .loading {
   min-height: 60vh;
   display: grid;
   place-items: center;
   font-family: var(--font-noto-sans, 'Noto Sans', sans-serif);
   color: rgba(255, 255, 255, 0.75);
-}
-
-.mobileHint {
-  margin: 0;
-  padding: 16px 20px 24px;
-  font: 500 12px/1.5 var(--font-noto-sans, 'Noto Sans', sans-serif);
-  color: rgba(238, 238, 238, 0.75);
-}
-
-@media (max-width: 1330px) {
-  .horizontalTrigger {
-    overflow: visible;
-    height: auto;
-    min-height: 0;
-  }
-
-  .horizontalContent {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    height: auto;
-    display: block;
-    transform: none !important;
-    will-change: auto;
-  }
 }
