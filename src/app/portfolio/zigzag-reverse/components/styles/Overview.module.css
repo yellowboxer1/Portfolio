@@ -57,6 +57,7 @@
     position: relative;
     letter-spacing: -0.03em;
     font-weight: 600;
+    font-family: var(--font-noto-sans-kr1);
     line-height: 38px;
   }
   

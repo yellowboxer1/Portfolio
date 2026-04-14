@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useMemo, useState } from 'react';
 import styles from './styles/Swot.module.css';
 import { withBasePath } from '../lib/asset';
 
@@ -73,12 +74,112 @@ const swotCards: SwotCard[] = [
   },
 ];
 
+function useViewportWidth() {
+  const [width, setWidth] = useState<number>(1920);
+
+  useEffect(() => {
+    const update = () => setWidth(window.innerWidth);
+    update();
+
+    window.addEventListener('resize', update, { passive: true });
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
+  return width;
+}
+
 function DesktopLayout() {
+  const viewportWidth = useViewportWidth();
+
+  const cardGap = useMemo(() => {
+    if (viewportWidth >= 1920) return 108;
+    if (viewportWidth <= 1746) return 50;
+    const ratio = (viewportWidth - 1746) / (1920 - 1746);
+    return 50 + (108 - 50) * ratio;
+  }, [viewportWidth]);
+
+  const cardScale = useMemo(() => {
+    if (viewportWidth >= 1746) return 1;
+    if (viewportWidth <= 1330) return 1;
+    return (viewportWidth - 168) / 1510;
+  }, [viewportWidth]);
+
+  const cardStageHeight = 333 * cardScale;
+
+  const bottomScale = useMemo(() => {
+    if (viewportWidth >= 1920) return 1;
+    if (viewportWidth <= 1330) return 1;
+    return viewportWidth / 1920;
+  }, [viewportWidth]);
+
+  const bottomStageHeight = 1290 * bottomScale;
+
   return (
     <div className={styles.desktopLayout}>
-      <div className={styles.desktopScaleStage}>
-        <div className={styles.desktopScaleCanvas}>
-          <div className={styles.swot}>
+      <div className={styles.desktopTopStatic}>
+        <div className={styles.desktopTopCanvas}>
+          <div className={styles.ellipseDiv} />
+          <div className={styles.swotPositioning}>SWOT &amp; Positioning Map</div>
+
+          <b className={styles.aiContainer}>
+            <span>AI 기반 개인화</span>
+            <span className={styles.span}>로 차별화 된 경쟁력 확보</span>
+          </b>
+
+          <div className={styles.div1}>
+            <p className={styles.p}>
+              지그재그는 개인화 요소가 강한 플랫폼이면서도, 대중적인 접근성을 갖춘 플랫폼임
+            </p>
+            <p className={styles.p}>
+              이 점을 강조하여 개인화 요소 기능을 더욱 정교하게 발전시키고, 사용자 맞춤형 경험을 극대화할 계획임
+            </p>
+          </div>
+
+          <div
+            className={styles.desktopCardScaleStage}
+            style={{ height: `${cardStageHeight}px` }}
+          >
+            <div
+              className={styles.desktopCardScaleCanvas}
+              style={{ transform: `scale(${cardScale})` }}
+            >
+              <div
+                className={styles.groupParent}
+                style={{ gap: `${cardGap}px` }}
+              >
+                {swotCards.map((card) => (
+                  <div key={card.title} className={styles.rectangleParent}>
+                    <div className={styles.groupChild} />
+                    <div className={styles[card.titleClass]}>{card.title}</div>
+
+                    <div className={styles[card.bodyClass]}>
+                      <ul className={styles.aiZ}>
+                        {card.items.map((item) => (
+                          <li key={item.text} className={styles.ai}>
+                            <span className={item.active ? undefined : styles.z1}>
+                              {item.text}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className={styles.desktopScaleStage}
+        style={{ height: `${bottomStageHeight}px` }}
+      >
+        <div
+          className={styles.desktopScaleCanvas}
+          style={{ transform: `scale(${bottomScale})` }}
+        >
+          <div className={styles.desktopBottomCanvas}>
             <div className={styles.swotChild} />
 
             <div className={styles.swotInner}>
@@ -109,44 +210,6 @@ function DesktopLayout() {
                   <div className={styles.frameChild10} />
                 </div>
               </div>
-            </div>
-
-            <div className={styles.ellipseDiv} />
-            <div className={styles.swotPositioning}>SWOT &amp; Positioning Map</div>
-
-            <b className={styles.aiContainer}>
-              <span>AI 기반 개인화</span>
-              <span className={styles.span}>로 차별화 된 경쟁력 확보</span>
-            </b>
-
-            <div className={styles.groupParent}>
-              {swotCards.map((card) => (
-                <div key={card.title} className={styles.rectangleParent}>
-                  <div className={styles.groupChild} />
-                  <div className={styles[card.titleClass]}>{card.title}</div>
-
-                  <div className={styles[card.bodyClass]}>
-                    <ul className={styles.aiZ}>
-                      {card.items.map((item) => (
-                        <li key={item.text} className={styles.ai}>
-                          <span className={item.active ? undefined : styles.z1}>
-                            {item.text}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className={styles.div1}>
-              <p className={styles.p}>
-                지그재그는 개인화 요소가 강한 플랫폼이면서도, 대중적인 접근성을 갖춘 플랫폼임
-              </p>
-              <p className={styles.p}>
-                이 점을 강조하여 개인화 요소 기능을 더욱 정교하게 발전시키고, 사용자 맞춤형 경험을 극대화할 계획임
-              </p>
             </div>
 
             <div className={styles.parent}>
