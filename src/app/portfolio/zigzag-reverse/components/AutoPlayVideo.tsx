@@ -9,7 +9,7 @@ export default function AutoPlayVideo({
   loop = true,
   muted = true,
   playsInline = true,
-  preload = 'metadata',
+  preload = 'auto',
   ...props
 }: AutoPlayVideoProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -23,6 +23,8 @@ export default function AutoPlayVideo({
     video.muted = true;
     video.defaultMuted = true;
     video.playsInline = true;
+    video.preload = 'auto';
+    video.load();
 
     const tryPlay = () => {
       const playPromise = video.play();
