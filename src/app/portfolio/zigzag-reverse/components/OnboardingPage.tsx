@@ -2,6 +2,7 @@
 
 import styles from './styles/OnboardingPage.module.css';
 import { withBasePath } from '../lib/asset';
+import AutoPlayVideo from './AutoPlayVideo';
 
 const g3927 = withBasePath('/portfolio/zigzag-reverse/assets/image/Group 1000003927 1@3x.png');
 const g3928 = withBasePath('/portfolio/zigzag-reverse/assets/image/Group 1000003928 1@3x.png');
@@ -33,7 +34,7 @@ const OnboardingPage = () => {
 	<img className={styles.image321Icon} src={i321} />
 	<div className={styles.image323} />
 	<div className={styles.image48Parent}>
-	<video className={styles.image48Icon} src={all} autoPlay muted loop playsInline />
+	<AutoPlayVideo className={styles.image48Icon} src={all} />
 	<div className={styles.image50} />
 	<img className={styles.icon} src={i49} />
 	</div>
@@ -44,7 +45,7 @@ const OnboardingPage = () => {
 	</div>
 	<div className={styles.imageParent}>
 	<img className={styles.image48Icon} src={i01} />
-	<video className={styles.onboardingVideo} src={video} autoPlay muted loop playsInline />
+	<AutoPlayVideo className={styles.onboardingVideo} src={video} />
 	<img className={styles.icon} src={i49} />
 	<div className={styles.image502} />
 	</div>

@@ -6,33 +6,36 @@ import { motion, useAnimation } from 'framer-motion';
 import { withBasePath } from '../lib/asset';
 
 const svgg = withBasePath('/portfolio/zigzag-reverse/assets/image/Group 1000003918.svg');
+const PROXIMITY_RADIUS = 300;
 
 const JourneyMap = () => {
-		const svgRef = useRef<HTMLDivElement | null>(null);
+		const svgRef = useRef<HTMLImageElement | null>(null);
+		const inRangeRef = useRef(false);
 		const controls = useAnimation();
 		const [inRange, setInRange] = useState(false);
 	  
 		useEffect(() => {
 		  const handleMouseMove = (e: MouseEvent) => {
-			if (!svgRef.current) return;
+			const svg = svgRef.current;
+			if (!svg) return;
 	  
-			const rect = svgRef.current.getBoundingClientRect();
+			const rect = svg.getBoundingClientRect();
 			const centerX = rect.left + rect.width / 2;
 			const centerY = rect.top + rect.height / 2;
 			const distance = Math.sqrt(
 			  Math.pow(e.clientX - centerX, 2) + Math.pow(e.clientY - centerY, 2)
 			);
-	  
-			if (distance < 300 && !inRange) {
-			  setInRange(true);
-			} else if (distance >= 300 && inRange) {
-			  setInRange(false);
+
+			const nextInRange = distance < PROXIMITY_RADIUS;
+			if (inRangeRef.current !== nextInRange) {
+			  inRangeRef.current = nextInRange;
+			  setInRange(nextInRange);
 			}
 		  };
 	  
 		  window.addEventListener('mousemove', handleMouseMove);
 		  return () => window.removeEventListener('mousemove', handleMouseMove);
-		}, [inRange]);
+		}, []);
 	  
 		useEffect(() => {
 		  if (inRange) {
@@ -42,7 +45,7 @@ const JourneyMap = () => {
 				duration: 1.5,
 				repeat: Infinity,
 				ease: 'easeInOut',
-			  }
+				  }
 			});
 		  } else {
 			controls.stop();
@@ -203,16 +206,12 @@ const JourneyMap = () => {
         				<div className={styles.painPoint}>{`Pain Point `}</div>
       			</div>
 				  <motion.img
+						ref={svgRef}
 						className={styles.groupIcon}
 						alt=""
 						src={svgg}
 						initial={{ y: 0 }}
-						animate={{ y: [0, -20, 0] }} // 위로 갔다 다시 내려옴
-						transition={{
-							duration: 1.5,
-							repeat: Infinity,
-							ease: 'easeInOut',
-						}}
+						animate={controls}
 					/>
 						<div className={styles.group}>
         				<div className={styles.div18}>만족</div>

@@ -1,8 +1,8 @@
 'use client';
 
 import styles from './styles/Home.module.css';
-import React, { useEffect, useRef, useState } from 'react';
 import { withBasePath } from '../lib/asset';
+import AutoPlayVideo from './AutoPlayVideo';
 
 const v37 = withBasePath('/portfolio/zigzag-reverse/assets/image/Vector 37.svg');
 const v38 = withBasePath('/portfolio/zigzag-reverse/assets/image/Vector 38.svg');
@@ -24,7 +24,7 @@ const Home = () => {
     <img className={styles.searchIcon} src={search} />
     <img className={styles.image325Icon} src={i324} />
     <div className={styles.main1Parent}>
-    <video  className={styles.main1Icon} src={main} autoPlay muted loop playsInline />
+    <AutoPlayVideo className={styles.main1Icon} src={main} />
     <div className={styles.image50} />
     <img className={styles.icon} src={i49} />
     </div>

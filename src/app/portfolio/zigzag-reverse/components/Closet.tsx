@@ -2,6 +2,7 @@
 
 import styles from './styles/Closet.module.css';
 import { withBasePath } from '../lib/asset';
+import AutoPlayVideo from './AutoPlayVideo';
 
 const wish = withBasePath('/portfolio/zigzag-reverse/assets/image/WISH & STYLING@3x.png');
 const i49 = withBasePath('/portfolio/zigzag-reverse/assets/image/image 49@3x.png');
@@ -72,7 +73,7 @@ const Closet = () => {
     <p className={styles.p}>코디한 옷의 정보도 보고, 원하는 옷을 바로 구매도 할 수 있어요</p>
     </div>
     <div className={styles.imageContainer}>
-    <video className={styles.imageIcon} src={fitting} autoPlay muted loop playsInline />
+    <AutoPlayVideo className={styles.imageIcon} src={fitting} />
     <img className={styles.icon} src={i49} />
     <div className={styles.image50} />
     </div>

@@ -2,6 +2,7 @@
 
 import styles from './styles/Discover.module.css';
 import { withBasePath } from '../lib/asset';
+import AutoPlayVideo from './AutoPlayVideo';
 
 const epick = withBasePath('/portfolio/zigzag-reverse/assets/image/epick@3x.png');
 const talkLounge = withBasePath('/portfolio/zigzag-reverse/assets/image/talk lounge@3x.png');
@@ -40,7 +41,7 @@ const Discover = () => {
         				<img className={styles.icon} src={frame} />
       			</div>
       			<div className={styles.imageGroup}>
-        				<video className={styles.imageIcon1} src={video1} autoPlay muted loop playsInline />
+        				<AutoPlayVideo className={styles.imageIcon1} src={video1} />
         				<img className={styles.icon} src={frame} />
         				<div className={styles.image50} />
       			</div>
@@ -79,7 +80,7 @@ const Discover = () => {
           					<p className={styles.p}> 완벽한 핏을 바로 추천해드려요</p>
           					</div>
           					<div className={styles.imageContainer}>
-            						<video className={styles.imageIcon1} src={video2} autoPlay muted loop playsInline />
+            						<AutoPlayVideo className={styles.imageIcon1} src={video2} />
             						<img className={styles.icon} src={frame} />
             						<div className={styles.image50} />
           					</div>
