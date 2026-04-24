@@ -1,58 +1,12 @@
 'use client';
 
 import styles from './styles/JourneyMap.module.css';
-import React, { useEffect, useRef, useState } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import React from 'react';
 import { withBasePath } from '../lib/asset';
 
 const svgg = withBasePath('/portfolio/zigzag-reverse/assets/image/Group 1000003918.svg');
-const PROXIMITY_RADIUS = 300;
 
 const JourneyMap = () => {
-		const svgRef = useRef<HTMLImageElement | null>(null);
-		const inRangeRef = useRef(false);
-		const controls = useAnimation();
-		const [inRange, setInRange] = useState(false);
-	  
-		useEffect(() => {
-		  const handleMouseMove = (e: MouseEvent) => {
-			const svg = svgRef.current;
-			if (!svg) return;
-	  
-			const rect = svg.getBoundingClientRect();
-			const centerX = rect.left + rect.width / 2;
-			const centerY = rect.top + rect.height / 2;
-			const distance = Math.sqrt(
-			  Math.pow(e.clientX - centerX, 2) + Math.pow(e.clientY - centerY, 2)
-			);
-
-			const nextInRange = distance < PROXIMITY_RADIUS;
-			if (inRangeRef.current !== nextInRange) {
-			  inRangeRef.current = nextInRange;
-			  setInRange(nextInRange);
-			}
-		  };
-	  
-		  window.addEventListener('mousemove', handleMouseMove);
-		  return () => window.removeEventListener('mousemove', handleMouseMove);
-		}, []);
-	  
-		useEffect(() => {
-		  if (inRange) {
-			controls.start({
-			  y: [0, -20, 0], // 위로 갔다 다시 내려옴
-			  transition: {
-				duration: 1.5,
-				repeat: Infinity,
-				ease: 'easeInOut',
-				  }
-			});
-		  } else {
-			controls.stop();
-			controls.set({ y: 0 }); // 원래 위치로 복귀
-		  }
-		}, [inRange, controls]);
-	  
   	return (
     		<div className={styles.journeyMap}>
       			<div className={styles.journeyMapChild} />
@@ -205,14 +159,7 @@ const JourneyMap = () => {
         				<div className={styles.solution}>Solution</div>
         				<div className={styles.painPoint}>{`Pain Point `}</div>
       			</div>
-				  <motion.img
-						ref={svgRef}
-						className={styles.groupIcon}
-						alt=""
-						src={svgg}
-						initial={{ y: 0 }}
-						animate={controls}
-					/>
+				  <img className={styles.groupIcon} alt="" src={svgg} />
 						<div className={styles.group}>
         				<div className={styles.div18}>만족</div>
         				<div className={styles.div19}>😍</div>

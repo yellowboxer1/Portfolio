@@ -11,7 +11,7 @@
     top: 2616px;
     left: 550px;
     max-height: 100%;
-    width: 190.5px;
+    width: 192px;
 }
 .homeInner {
     position: absolute;
@@ -93,6 +93,7 @@
     position: absolute;
     top: 1432px;
     left: 1370px;
+    color: #222;
     text-transform: uppercase;
 }
 .p {
@@ -109,6 +110,7 @@
 }
 .beautyMain {
     position: absolute;
+    color: #222;
     top: 2595px;
     left: 768px;
     text-transform: uppercase;
@@ -166,7 +168,7 @@
     position: absolute;
     top: 253px;
     left: 1138px;
-    width: 637px;
+    width: 642px;
     height: 336px;
     text-align: right;
     font-size: 18px;

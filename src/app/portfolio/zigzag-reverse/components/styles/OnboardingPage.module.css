@@ -56,6 +56,7 @@
     left: 148px;
     width: 758px;
     height: 100px;
+    color: var(--color-white);
     object-fit: cover;
 }
 .image321Icon {
@@ -175,7 +176,7 @@
     text-transform: uppercase;
     font-weight: 600;
     display: inline-block;
-    width: 102px;
+    width: 103px;
     height: 59px;
     color: #FF3390;
     font-family: var(--font-noto-sans-kr);
@@ -189,7 +190,7 @@
     text-transform: uppercase;
     font-weight: 600;
     display: inline-block;
-    width: 101px;
+    width: 103px;
     height: 59px;
     color: #FF3390;
     font-family: var(--font-noto-sans-kr);

@@ -1,9 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Bacasime+Antique:wght@400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@100..900&display=swap');
-
 body {
   margin: 0;
   line-height: normal;
@@ -12,11 +6,11 @@ body {
 :root,
 [data-project='zigzag-reverse'] {
   /* Fonts */
-  --font-noto-sans: 'Noto Sans';
-  --font-noto-sans-kr: 'Noto Sans KR';
-  --font-inter: Inter;
-  --font-bacasime-antique: 'Bacasime Antique';
-  --font-noto-sans1: 'Noto Sans Display';
+  --font-noto-sans: var(--font-family-noto-sans), 'Noto Sans', sans-serif;
+  --font-noto-sans-kr: var(--font-family-noto-sans-kr), 'Noto Sans KR', sans-serif;
+  --font-inter: var(--font-family-inter), Inter, sans-serif;
+  --font-bacasime-antique: var(--font-family-bacasime-antique), 'Bacasime Antique', serif;
+  --font-noto-sans1: var(--font-family-noto-sans-display), 'Noto Sans Display', sans-serif;
 
   /* font sizes */
   --font-size-mini: 15px;

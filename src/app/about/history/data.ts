@@ -1,0 +1,103 @@
+export type HistoryEntry = {
+  year: string;
+  title: string;
+  description: string;
+  mPoster: string;
+  pcPoster: string;
+  videoWebm?: string;
+  videoMp4?: string;
+  videoClassName?: string;
+};
+
+function createHistoryMedia(name: string) {
+  const base = `https://cache.wemade.com/wemade/assets/opt_video/aboutus/history/${name}`;
+
+  return {
+    mPoster: `${base}-m-poster.webp`,
+    pcPoster: `${base}-pc-poster.webp`,
+    videoWebm: `${base}-pc.webm`,
+    videoMp4: `${base}-pc.mp4`,
+  };
+}
+
+export const HISTORY_ENTRIES: HistoryEntry[] = [
+  {
+    year: "2020",
+    title: "첫 커리어",
+    description:
+      "라온코메스에서 지역 특화 산업 고도화와 국책과제를 수행하며 커리어를 시작했습니다. 기본계획 수립, 전략 기획, BC 분석 등 공공 프로젝트의 기반 역량을 만들었습니다.",
+    mPoster: "",
+    pcPoster: "",
+    videoWebm: undefined,
+    videoMp4: "/screen/seed1.mp4",
+    videoClassName: "h-full w-full object-contain md:h-[50%] md:w-[50%]",
+  },
+  {
+    year: "2021",
+    title: "국비 62억 수주",
+    description:
+      "농어촌 지역개발 프로젝트를 총괄하며 사업 제안과 전략 설계를 수행했습니다. 사업 선정으로 국비 62억 원 규모 프로젝트를 수주하며 첫 대형 성과를 만들었습니다.",
+    ...createHistoryMedia("kosdaq"),
+  },
+  {
+    year: "2022",
+    title: "IT 서비스 기획 직무 전환",
+    description:
+      "제로웹에 합류해 공공·IoT 데이터 기반 서비스 기획을 맡았습니다. 앱, 대시보드, B2G 사업기획까지 영역을 넓히며 IT 서비스 기획자로 전환했습니다.",
+    mPoster: "",
+    pcPoster: "",
+    videoWebm: undefined,
+    videoMp4: "/screen/rise.mp4",
+    videoClassName: "h-full w-full object-contain md:h-[50%] md:w-[50%]",
+  },
+  {
+    year: "2023",
+    title: "주관기관 사업비 연 15억 확보 · 장관상 수상",
+    description:
+      "스마트빌리지 보급 및 확산 사업 제안과 PM을 맡았습니다. 주관기관 기준 연 15억 원 사업비를 확보했고, 우수사례로 선정돼 장관상을 수상했습니다.",
+    ...createHistoryMedia("playon"),
+  },
+  {
+    year: "2024",
+    title: "미래교육 플랫폼 PM",
+    description:
+      "엔에스데블에서 바이오헬스 COSS와 HUSS 프로젝트를 운영했습니다. 교육·공공 도메인에서 미래교육 플랫폼 PM 경험을 확장했습니다.",
+    ...createHistoryMedia("wepublic"),
+  },
+  {
+    year: "2025",
+    title: "TPM · 30억 수주",
+    description:
+      "AI 기반 정부지원사업 매칭 서비스 파트너잇에서 TPM과 서비스 기획을 맡고 있습니다. 30억 규모 사업을 수주했고, 매출 150% 성장과 첫 흑자 전환을 달성했습니다.",
+    ...createHistoryMedia("nightcrows"),
+  },
+  {
+    year: "2026",
+    title: "가치가개 런칭 · 시장상 수상",
+    description:
+      "시각장애인 보행보조 서비스 가치가개를 직접 기획·개발·런칭했습니다. 부산광역시 공공빅데이터 활용 창업경진대회에서 부산광역시장상을 수상했습니다.",
+    ...createHistoryMedia("thor"),
+  },
+];
+
+export const TIMELINE_YEARS = ["2020", "2021", "2022", "2023", "2024", "2025", "2026"];
+
+export const YEAR_DEGREE: Record<string, number> = {
+  "2020": 0,
+  "2021": 15,
+  "2022": 30,
+  "2023": 45,
+  "2024": 60,
+  "2025": 75,
+  "2026": 90,
+};
+
+export const YEAR_ROTATIONS: Record<string, string> = {
+  "2020": "md:translate-y-[-50%]",
+  "2021": "md:-translate-y-5 md:rotate-[15deg]",
+  "2022": "md:-translate-y-5 md:rotate-[30deg]",
+  "2023": "md:-translate-y-5 md:rotate-[45deg]",
+  "2024": "md:-translate-y-5 md:rotate-[60deg]",
+  "2025": "md:-translate-y-5 md:rotate-[75deg]",
+  "2026": "md:-translate-y-5 md:rotate-[90deg]",
+};

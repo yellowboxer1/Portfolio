@@ -14,14 +14,14 @@
 .letsGoSee {
     position: absolute;
     top: calc(50% - 26px);
-    left: calc(50% - 312px);
+    left: 50%;
     font-weight: 500;
     display: inline-block;
-    width: 624px;
-    
+    text-align: center;
+
     opacity: 0;
     filter: blur(4px);
-    transform: scale(0.95);
+    transform: translateX(-50%) scale(0.95);
     transition: none;
 }
 
@@ -35,11 +35,11 @@
     0% {
         opacity: 0;
         filter: blur(4px);
-        transform: scale(0.95);
+        transform: translateX(-50%) scale(0.95);
     }
     100% {
         opacity: 1;
         filter: blur(0px);
-        transform: scale(1);
+        transform: translateX(-50%) scale(1);
     }
 }

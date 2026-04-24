@@ -34,7 +34,7 @@ const OnboardingPage = () => {
 	<img className={styles.image321Icon} src={i321} />
 	<div className={styles.image323} />
 	<div className={styles.image48Parent}>
-	<AutoPlayVideo className={styles.image48Icon} src={all} />
+	<AutoPlayVideo className={styles.image48Icon} src={all} loopEndSeconds={21} />
 	<div className={styles.image50} />
 	<img className={styles.icon} src={i49} />
 	</div>

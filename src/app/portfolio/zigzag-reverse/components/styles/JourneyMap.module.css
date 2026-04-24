@@ -530,6 +530,8 @@
     left: 536px;
     width: 1152px;
     height: 157px;
+    animation: journeyFloat 1.5s ease-in-out infinite;
+    will-change: transform;
 }
 .div18 {
     position: absolute;
@@ -584,3 +586,14 @@
     font-family: var(--font-noto-sans-kr);
 }
 
+@keyframes journeyFloat {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}

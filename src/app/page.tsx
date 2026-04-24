@@ -17,7 +17,6 @@ export default function Home() {
       <Strengths />
       <Portfolio />
       {/* <News />
-      <Partners />
       <Contact />
       <Footer /> */}
     </main>

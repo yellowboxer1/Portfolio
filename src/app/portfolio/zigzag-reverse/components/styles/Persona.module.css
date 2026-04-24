@@ -102,10 +102,163 @@
     width: 100%;
     position: relative;
     background-color: #070503;
-    height: 1910px;
+    min-height: 1910px;
     overflow: hidden;
     text-align: left;
     font-size: var(--font-size-2xl);
     color: var(--color-darkgray);
     font-family: var(--font-noto-sans-kr);
+}
+
+.tabletShell,
+.mobileShell {
+    width: 100%;
+    background-color: #070503;
+}
+
+.responsiveInner {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0;
+    color: var(--color-white);
+}
+
+.sectionHeader {
+    max-width: 760px;
+    margin-bottom: 64px;
+}
+
+.sectionLabelRow {
+    position: relative;
+    display: inline-block;
+    min-height: 38px;
+    margin-bottom: 30px;
+}
+
+.sectionDot {
+    position: absolute;
+    top: 0;
+    left: -14px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: var(--color-violet);
+}
+
+.sectionLabel {
+    position: relative;
+    display: block;
+    font-size: 28.5px;
+    line-height: 38px;
+    letter-spacing: -0.03em;
+    font-family: var(--font-noto-sans);
+    font-weight: 600;
+    color: var(--color-white);
+}
+
+.sectionTitle {
+    margin: 0 0 28px;
+    font-size: 32px;
+    line-height: 1.4;
+    letter-spacing: -0.03em;
+    font-family: var(--font-noto-sans-kr);
+    font-weight: 600;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.sectionTitle span {
+    display: inline;
+}
+
+.sectionTitleWord {
+    display: inline-block;
+    white-space: nowrap;
+    margin-right: 0.26ch;
+}
+
+.sectionTitleAccent {
+    color: var(--color-violet);
+}
+
+.sectionDescription {
+    font-size: 18px;
+    line-height: 34px;
+    letter-spacing: -0.03em;
+    font-family: var(--font-noto-sans-kr);
+    font-weight: 350;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.sectionDescription p {
+    margin: 0;
+}
+
+.personaStageSection {
+    width: 100%;
+    overflow: hidden;
+}
+
+.personaStageViewport {
+    position: relative;
+    width: 1724px;
+    height: 1450px;
+    overflow: hidden;
+}
+
+.personaStageCanvas {
+    position: relative;
+    width: 1724px;
+    height: 1450px;
+    transform-origin: top left;
+    will-change: transform;
+    overflow: hidden;
+}
+
+.personaStageLayer {
+    position: relative;
+    width: 1724px;
+    height: 1712px;
+    transform: translateY(-432px);
+    transform-origin: top left;
+}
+
+.desktopStageOffset {
+    position: absolute;
+    top: 432px;
+    left: 0;
+}
+
+@media (max-width: 1330px) and (min-width: 768px) {
+    .responsiveInner {
+        padding: 128px 92px 100px 106px;
+    }
+}
+
+@media (max-width: 767px) {
+    .responsiveInner {
+        padding: 129px 16px 100px 30px;
+    }
+
+    .sectionHeader {
+        max-width: 604px;
+        margin-bottom: 56px;
+    }
+
+    .sectionLabelRow {
+        min-height: 38px;
+    }
+
+    .sectionTitle {
+        font-size: clamp(24px, calc(0.8vw + 21px), 28.5px);
+        line-height: 1.45;
+    }
+
+    .sectionDescription {
+        max-width: 604px;
+        font-size: clamp(15px, calc(0.6vw + 13px), 19px);
+        line-height: clamp(28px, calc(0.9vw + 25px), 34px);
+    }
 }

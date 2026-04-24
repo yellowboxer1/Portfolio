@@ -651,7 +651,10 @@ const DynamicSpiral = dynamic(() => Promise.resolve(SpiralContent), {
 
 export default function Portfolio() {
   return (
-    <section className="relative overflow-hidden bg-black px-6 pt-24 pb-24 md:px-12 md:pt-32 md:pb-0">
+    <section
+      id="selected-works"
+      className="relative overflow-hidden bg-black px-6 pt-24 pb-24 md:px-12 md:pt-32 md:pb-0 scroll-mt-28 md:scroll-mt-32"
+    >
       {/* Background Layers */}
       <div className="portfolio-bg-wrap" aria-hidden="true">
         <div className="portfolio-bg-image" />

@@ -92,7 +92,7 @@
     font-family: var(--font-noto-sans-kr);
     display: flex;
     align-items: flex-start;
-    font-weight: 400;
+    font-weight: 350;
     word-break: keep-all;
     overflow-wrap: break-word;
   }
@@ -202,7 +202,7 @@
     letter-spacing: -0.03em;
     line-height: 34px;
     font-family: var(--font-noto-sans-kr);
-    font-weight: 400;
+    font-weight: 350;
     word-break: keep-all;
     overflow-wrap: break-word;
   }

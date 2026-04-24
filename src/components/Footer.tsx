@@ -82,10 +82,10 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="/about/partners"
+                      href="/resume"
                       className="text-sm text-white/50 hover:text-white transition-colors"
                     >
-                      PARTNERS
+                      Resume
                     </Link>
                   </li>
                 </ul>

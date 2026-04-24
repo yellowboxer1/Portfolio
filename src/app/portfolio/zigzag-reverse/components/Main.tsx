@@ -9,7 +9,7 @@ const vector3 = withBasePath('/portfolio/zigzag-reverse/assets/image/Vector 3.sv
 const vector4 = withBasePath('/portfolio/zigzag-reverse/assets/image/Vector 4.svg');
 const group1 = withBasePath('/portfolio/zigzag-reverse/assets/image/Group 1.svg');
 const image57 = withBasePath('/portfolio/zigzag-reverse/assets/image/image 57.png');
-const bi1 = withBasePath('/portfolio/zigzag-reverse/assets/image/지그재그_BI 1.svg');
+const bi1 = withBasePath('/portfolio/zigzag-reverse/assets/image/zigzag-bi-1.svg');
 
 const Main = () => {
   return (

@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 import './zigzag-reverse.tokens.css';
 import styles from './zigzag-reverse.module.css';
+import Header from '../../../components/Header';
 
 import Main from './components/Main';
 import Spacer from './components/Spacer';
@@ -28,8 +29,25 @@ const Deskresearch = dynamic(() => import('./components/Deskresearch'), {
 });
 
 export default function ZigzagReverseExperience() {
+  const handleBack = () => {
+    window.location.href = '/#selected-works';
+  };
+
+  const handleAbout = () => {
+    window.location.href = '/#about';
+  };
+
   return (
     <article className={styles.pageScope} data-project="zigzag-reverse">
+      <Header aboutHref="/#about" onAboutClick={handleAbout} />
+
+      <button type="button" className={styles.projectBackButton} onClick={handleBack}>
+        <span className={styles.projectBackArrow} aria-hidden="true">
+          ←
+        </span>
+        <span className={styles.projectBackLabel}>Back</span>
+      </button>
+
       <Main />
       <Spacer />
       <Overview />
