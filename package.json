@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -H 0.0.0.0 --turbopack",
-    "build": "next build",
-    "build:local": "NEXT_DIST_DIR=.next-build next build",
-    "start": "next start",
-    "start:local": "NEXT_DIST_DIR=.next-build next start",
+    "dev": "node scripts/next-cli.cjs dev -H 0.0.0.0 --turbopack",
+    "build": "node scripts/next-cli.cjs build",
+    "build:local": "node scripts/next-cli.cjs build",
+    "start": "node scripts/next-cli.cjs start",
+    "start:local": "node scripts/next-cli.cjs start",
     "lint": "bunx tsc --noEmit && next lint",
     "format": "bunx biome format --write"
   },

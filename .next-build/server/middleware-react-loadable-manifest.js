@@ -1,1 +1,0 @@
-self.__REACT_LOADABLE_MANIFEST='{"app/portfolio/zigzag-reverse/ZigzagReverseExperience.tsx -> ./components/Deskresearch":{"id":8349,"files":["static/css/e94f683b225f65ee.css","static/chunks/349.d1d4f3a2fe6c4efc.js"]}}';

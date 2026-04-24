@@ -1,11 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const videos = [
-  "/screen/main_object_video.mp4",
-  "/screen/main_object_video03.mp4",
-];
+const heroVideo = "/screen/main_object_video.mp4";
 
 const introTitles = [
   "서비스 기획자",
@@ -26,12 +23,16 @@ function lerp(start: number, end: number, t: number) {
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-  const rafRef = useRef<number | null>(null);
-  const tickingRef = useRef(false);
+  const scrollRafRef = useRef<number | null>(null);
+  const currentProgressRef = useRef(0);
+  const targetProgressRef = useRef(0);
+  const guideLinesRef = useRef<HTMLDivElement | null>(null);
+  const introPageRef = useRef<HTMLDivElement | null>(null);
+  const headlinePageRef = useRef<HTMLDivElement | null>(null);
+  const headlineInnerRef = useRef<HTMLDivElement | null>(null);
+  const paragraphRef = useRef<HTMLParagraphElement | null>(null);
+  const videoObjectRef = useRef<HTMLDivElement | null>(null);
 
-  const [progress, setProgress] = useState(0);
-  const [videoIndex, setVideoIndex] = useState(0);
   const [time, setTime] = useState("");
   const [date, setDate] = useState("");
   const [introWordIndex, setIntroWordIndex] = useState(0);
@@ -82,28 +83,95 @@ export default function Hero() {
       setDate(`${month} ${day}${suffix} ${year}`);
     };
 
-    const updateScrollProgress = () => {
+    const readScrollProgress = () => {
       if (!sectionRef.current) return;
 
       const rect = sectionRef.current.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
       const raw = -rect.top / viewportHeight;
 
-      setProgress(clamp(raw, 0, 1));
-      tickingRef.current = false;
+      targetProgressRef.current = clamp(raw, 0, 1);
+    };
+
+    const applyScrollStyles = (progressValue: number) => {
+      const eased =
+        progressValue *
+        progressValue *
+        progressValue *
+        (progressValue * (progressValue * 6 - 15) + 10);
+      const introOpacity = 1 - clamp(progressValue * 1.55, 0, 1);
+      const headlineOpacity = clamp((progressValue - 0.1) / 0.38, 0, 1);
+      const pushProgress = clamp((progressValue - 0.18) / 0.5, 0, 1);
+      const paragraphOpacity = clamp((progressValue - 0.16) / 0.42, 0, 1);
+
+      const videoX = lerp(0, 24, eased);
+      const videoY = lerp(30, 0, eased);
+      const videoScale = lerp(0.24, 1, eased);
+      const headlineY = lerp(48, 0, headlineOpacity);
+      const headlineScale = lerp(0.965, 1, headlineOpacity);
+      const headlinePushY = lerp(18, -10, pushProgress);
+      const headlinePushScale = lerp(1, 1.018, pushProgress);
+      const paragraphY = lerp(30, 0, paragraphOpacity);
+
+      if (guideLinesRef.current) {
+        guideLinesRef.current.style.opacity = `${introOpacity * 0.45}`;
+      }
+
+      if (introPageRef.current) {
+        introPageRef.current.style.opacity = `${introOpacity}`;
+      }
+
+      if (headlinePageRef.current) {
+        headlinePageRef.current.style.opacity = `${headlineOpacity}`;
+        headlinePageRef.current.style.transform = `translate3d(0%, ${headlineY}px, 0) scale(${headlineScale})`;
+      }
+
+      if (headlineInnerRef.current) {
+        headlineInnerRef.current.style.transform = `translate3d(0, ${headlinePushY}px, 0) scale(${headlinePushScale})`;
+      }
+
+      if (paragraphRef.current) {
+        paragraphRef.current.style.opacity = `${paragraphOpacity}`;
+        paragraphRef.current.style.transform = `translate3d(0, ${paragraphY}px, 0)`;
+      }
+
+      if (videoObjectRef.current) {
+        videoObjectRef.current.style.opacity = `${lerp(0.72, 1, eased)}`;
+        videoObjectRef.current.style.transform = `translate3d(calc(-50% + ${videoX}vw), calc(-50% + ${videoY}vh), 0) scale(${videoScale})`;
+      }
+    };
+
+    const animateScrollProgress = () => {
+      const current = currentProgressRef.current;
+      const target = targetProgressRef.current;
+      const next = current + (target - current) * 0.18;
+
+      if (Math.abs(target - next) < 0.001) {
+        currentProgressRef.current = target;
+        applyScrollStyles(target);
+        scrollRafRef.current = null;
+        return;
+      }
+
+      currentProgressRef.current = next;
+      applyScrollStyles(next);
+      scrollRafRef.current = requestAnimationFrame(animateScrollProgress);
     };
 
     const handleScroll = () => {
-      if (!tickingRef.current) {
-        tickingRef.current = true;
-        rafRef.current = requestAnimationFrame(updateScrollProgress);
+      readScrollProgress();
+
+      if (scrollRafRef.current === null) {
+        scrollRafRef.current = requestAnimationFrame(animateScrollProgress);
       }
     };
 
     updateTime();
-    updateScrollProgress();
+    readScrollProgress();
+    currentProgressRef.current = targetProgressRef.current;
+    applyScrollStyles(targetProgressRef.current);
 
-    const timeInterval = setInterval(updateTime, 30);
+    const timeInterval = setInterval(updateTime, 250);
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
@@ -112,7 +180,7 @@ export default function Hero() {
       clearInterval(timeInterval);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      if (scrollRafRef.current) cancelAnimationFrame(scrollRafRef.current);
     };
   }, []);
 
@@ -151,87 +219,6 @@ export default function Hero() {
     return () => clearInterval(wordInterval);
   }, []);
 
-  useEffect(() => {
-    videoRefs.current.forEach((video, index) => {
-      if (!video) return;
-
-      if (index === videoIndex) {
-        if (video.currentTime > 0.05 && !video.paused) return;
-
-        video.currentTime = 0;
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(() => {});
-        }
-      } else {
-        video.pause();
-      }
-    });
-  }, [videoIndex]);
-
-  const handleVideoEnded = () => {
-    setVideoIndex((prev) => (prev + 1) % videos.length);
-  };
-
-  const eased = useMemo(() => {
-    return 1 - Math.pow(1 - progress, 3);
-  }, [progress]);
-
-  const introOpacity = 1 - clamp(progress * 1.55, 0, 1);
-  const headlineOpacity = clamp((progress - 0.1) / 0.38, 0, 1);
-
-  const videoStyle = useMemo(() => {
-    // 시작부터 중앙 기준
-    const startLeft = 50;
-    const startTop = 80;
-    const startScale = 0.24;
-
-    // 전개 후에도 중앙축 기준에서 우측으로 자연스럽게 이동
-    const endLeft = 74;
-    const endTop = 50;
-    const endScale = 1;
-
-    return {
-      left: `${lerp(startLeft, endLeft, eased)}%`,
-      top: `${lerp(startTop, endTop, eased)}%`,
-      transform: `translate3d(-50%, -50%, 0) scale(${lerp(
-        startScale,
-        endScale,
-        eased
-      )})`,
-      opacity: lerp(0.72, 1, eased),
-    };
-  }, [eased]);
-
-  const headlineWrapStyle = useMemo(() => {
-    const y = lerp(48, 0, headlineOpacity);
-    const scale = lerp(0.965, 1, headlineOpacity);
-
-    return {
-      opacity: headlineOpacity,
-      transform: `translate3d(0%, ${y}px, 0) scale(${scale})`,
-    };
-  }, [headlineOpacity]);
-
-  const headlineInnerStyle = useMemo(() => {
-    const pushProgress = clamp((progress - 0.18) / 0.5, 0, 1);
-    const pushY = lerp(18, -10, pushProgress);
-    const pushScale = lerp(1, 1.018, pushProgress);
-
-    return {
-      transform: `translate3d(0, ${pushY}px, 0) scale(${pushScale})`,
-    };
-  }, [progress]);
-
-  const paragraphStyle = useMemo(() => {
-    const p = clamp((progress - 0.16) / 0.42, 0, 1);
-
-    return {
-      opacity: p,
-      transform: `translate3d(0, ${lerp(30, 0, p)}px, 0)`,
-    };
-  }, [progress]);
-
   const finalChars = "박 건 호".split("");
 
   return (
@@ -239,8 +226,8 @@ export default function Hero() {
       <div className="sticky top-0 h-screen overflow-hidden bg-black">
         {/* Intro guide lines */}
         <div
+          ref={guideLinesRef}
           className="pointer-events-none absolute inset-0 z-10 grid [grid-template-rows:repeat(11,minmax(0,0fr))]"
-          style={{ opacity: introOpacity * 0.45 }}
         >
           {Array.from({ length: 11 }).map((_, index) => (
             <div
@@ -254,8 +241,8 @@ export default function Hero() {
 
         {/* Intro page */}
         <div
+          ref={introPageRef}
           className="absolute inset-0 z-30 grid w-full [grid-template-rows:repeat(11,minmax(0,1fr))]"
-          style={{ opacity: introOpacity }}
         >
           <div className="row-start-5 row-end-6 flex items-center">
             <div className="mx-auto grid w-full max-w-[1440px] grid-cols-[85px_minmax(0,1fr)_85px] items-center gap-4 px-4 md:px-12 lg:px-20 xl:px-24">
@@ -325,11 +312,11 @@ export default function Hero() {
 
         {/* Main headline page */}
         <div
+          ref={headlinePageRef}
           className="absolute inset-0 z-20 flex items-center justify-center px-6"
-          style={headlineWrapStyle}
         >
           <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center justify-center text-center">
-            <div style={headlineInnerStyle}>
+            <div ref={headlineInnerRef}>
               <p
                 className="font-semibold leading-[1.05] text-white
                 text-[40px] sm:text-[52px] md:text-[64px] lg:text-[84px] xl:text-[110px]"
@@ -343,8 +330,8 @@ export default function Hero() {
             </div>
 
             <p
+              ref={paragraphRef}
               className="mt-8 max-w-[800px] text-base leading-relaxed text-white/70 md:text-lg lg:text-xl break-keep"
-              style={paragraphStyle}
             >
               서비스 기획부터 R&D 사업기획까지 전 과정을 책임지는 PM 박건호입니다.
               <br /> 
@@ -355,31 +342,23 @@ export default function Hero() {
 
         {/* Video object */}
         <div
-          className="absolute z-0 h-[320px] w-[260px] bg-transparent will-change-transform
+          ref={videoObjectRef}
+          className="absolute z-0 h-[320px] w-[260px] overflow-hidden bg-transparent will-change-transform transform-gpu
                      sm:h-[380px] sm:w-[300px]
                      md:h-[420px] md:w-[340px]
                      lg:h-[520px] lg:w-[460px]"
-          style={videoStyle}
+          style={{ left: "50%", top: "50%" }}
         >
-          {videos.map((src, index) => (
-            <video
-              key={src}
-              ref={(el) => {
-                videoRefs.current[index] = el;
-              }}
-              muted
-              playsInline
-              preload="metadata"
-              onEnded={index === videoIndex ? handleVideoEnded : undefined}
-              className={`absolute inset-0 h-full w-full object-cover bg-transparent transition-all duration-[1200ms] ease-in-out ${
-                videoIndex === index
-                  ? "opacity-60 md:opacity-80 scale-100"
-                  : "opacity-0 scale-[1.03]"
-              }`}
-            >
-              <source src={src} type="video/mp4" />
-            </video>
-          ))}
+          <video
+            muted
+            playsInline
+            autoPlay
+            loop
+            preload="auto"
+            className="absolute inset-0 h-full w-full object-cover bg-transparent opacity-60 transition-none md:opacity-80"
+          >
+            <source src={heroVideo} type="video/mp4" />
+          </video>
         </div>
       </div>
     </section>

@@ -6,7 +6,7 @@ import { HistoryTimeline } from "./components/HistoryTimeline";
 import { HISTORY_ENTRIES, TIMELINE_YEARS } from "./data";
 
 // How many px of scroll per card transition
-const PX_PER_STEP = 300;
+const PX_PER_STEP = 125;
 const TOTAL_STEPS = HISTORY_ENTRIES.length;
 const SCROLL_HEIGHT = PX_PER_STEP * TOTAL_STEPS;
 
@@ -14,6 +14,19 @@ export default function HistorySection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const outerRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number>(0);
+
+  const scrollToIndex = useCallback((index: number) => {
+    const el = outerRef.current;
+    if (!el) return;
+
+    const targetIndex = Math.min(Math.max(index, 0), TOTAL_STEPS - 1);
+    const absoluteTop = window.scrollY + el.getBoundingClientRect().top;
+
+    window.scrollTo({
+      top: absoluteTop + targetIndex * PX_PER_STEP,
+      behavior: "smooth",
+    });
+  }, []);
 
   // ── Scroll-driven index update ─────────────────────────────────────────────
   useEffect(() => {
@@ -25,10 +38,17 @@ export default function HistorySection() {
         const rect = el.getBoundingClientRect();
         // How far we've scrolled into the sticky scroll space
         const scrolled = -rect.top;
-        if (scrolled < 0) return;
-        const rawIndex = scrolled / PX_PER_STEP;
-        const clamped = Math.min(Math.max(Math.round(rawIndex), 0), TOTAL_STEPS - 1);
-        setActiveIndex(clamped);
+        if (scrolled < 0) {
+          setActiveIndex((prev) => (prev === 0 ? prev : 0));
+          return;
+        }
+        const rawProgress = scrolled / PX_PER_STEP;
+        const nextIndex = Math.min(
+          Math.max(Math.round(rawProgress), 0),
+          TOTAL_STEPS - 1,
+        );
+
+        setActiveIndex((prev) => (prev === nextIndex ? prev : nextIndex));
       });
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -41,21 +61,21 @@ export default function HistorySection() {
   // ── Click / dot / year handlers ────────────────────────────────────────────
   const handleYearClick = useCallback((year: string) => {
     const idx = HISTORY_ENTRIES.findIndex((e) => e.year === year);
-    if (idx !== -1) setActiveIndex(idx);
-  }, []);
+    if (idx !== -1) scrollToIndex(idx);
+  }, [scrollToIndex]);
 
   const handleNext = useCallback(() => {
-    setActiveIndex((prev) => (prev + 1) % HISTORY_ENTRIES.length);
-  }, []);
+    scrollToIndex((activeIndex + 1) % HISTORY_ENTRIES.length);
+  }, [activeIndex, scrollToIndex]);
 
   useEffect(() => {
     const handler = (e: Event) => {
       const idx = (e as CustomEvent<number>).detail;
-      if (typeof idx === "number") setActiveIndex(idx);
+      if (typeof idx === "number") scrollToIndex(idx);
     };
     window.addEventListener("history-set-index", handler);
     return () => window.removeEventListener("history-set-index", handler);
-  }, []);
+  }, [scrollToIndex]);
 
   const activeEntry = HISTORY_ENTRIES[activeIndex];
 
@@ -123,11 +143,38 @@ type InfoListProps = {
 };
 
 function HistoryInfoList({ activeIndex, entries, timelineYears, onYearClick }: InfoListProps) {
+  const [displayIndex, setDisplayIndex] = useState(activeIndex);
+  const [leavingIndex, setLeavingIndex] = useState<number | null>(null);
+  const timeoutRef = useRef<number | null>(null);
   const activeEntry = entries[activeIndex];
   const currentYearIdx = timelineYears.indexOf(activeEntry.year);
 
+  useEffect(() => {
+    if (activeIndex === displayIndex) return;
+
+    if (timeoutRef.current !== null) {
+      window.clearTimeout(timeoutRef.current);
+    }
+
+    setLeavingIndex(displayIndex);
+    setDisplayIndex(activeIndex);
+
+    timeoutRef.current = window.setTimeout(() => {
+      setLeavingIndex(null);
+      timeoutRef.current = null;
+    }, 1200);
+  }, [activeIndex, displayIndex]);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current !== null) {
+        window.clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="pointer-events-none self-auto md:w-[504px] xl:w-full xl:max-w-[407px] xl:self-end min-[1920px]:w-[504px] min-[1920px]:max-w-none">
+    <div className="pointer-events-none self-auto md:w-[504px] xl:w-full xl:max-w-[420px] xl:self-end min-[1920px]:w-[504px] min-[1920px]:max-w-none">
       <div className="mb-3 flex items-center justify-between px-6 md:hidden">
         <button
           type="button"
@@ -152,16 +199,22 @@ function HistoryInfoList({ activeIndex, entries, timelineYears, onYearClick }: I
         <div className="relative min-h-[148px] md:min-h-0">
           <ul className="relative m-0 grid h-full list-none p-0 md:items-end">
             {entries.map((entry, index) => {
-              const isActive = index === activeIndex;
+              const isActive = index === displayIndex;
+              const isLeaving = index === leavingIndex;
+              const shouldRender = isActive || isLeaving;
+
+              if (!shouldRender) {
+                return null;
+              }
 
               return (
                 <li
                   key={`${entry.year}-${index}`}
                   aria-hidden={!isActive}
-                  className={`col-start-1 row-start-1 flex min-h-[148px] items-start transition-[opacity,visibility,transform] duration-[800ms] ease-in-out ${
+                  className={`col-start-1 row-start-1 flex min-h-[148px] items-start ${
                     isActive
-                      ? "visible translate-y-0 opacity-100"
-                      : "invisible pointer-events-none translate-y-4 opacity-0"
+                      ? "visible history-page-fade-in"
+                      : "pointer-events-none visible history-page-fade-out"
                   }`}
                 >
                   <div className="w-full rounded-[21px] bg-[linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,0.93)_47%,rgba(255,255,255,0))] p-px md:rounded-[30px]">

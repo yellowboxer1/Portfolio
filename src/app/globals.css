@@ -1,6 +1,99 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* suit (Korean + Latin sans) → Noto Sans KR */
+@font-face {
+  font-family: 'suit';
+  src: local('Noto Sans KR');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'suit';
+  src: local('Noto Sans KR');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'suit';
+  src: local('Noto Sans KR');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'suit';
+  src: local('Noto Sans KR');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'suit';
+  src: local('Noto Sans KR');
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* jokker (geometric sans) → Plus Jakarta Sans */
+@font-face {
+  font-family: 'jokker';
+  src: local('Plus Jakarta Sans');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'jokker';
+  src: local('Plus Jakarta Sans');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'jokker';
+  src: local('Plus Jakarta Sans');
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* groteskDisplayRoman (Aktiv Grotesk display) → Barlow */
+@font-face {
+  font-family: 'groteskDisplayRoman';
+  src: local('Barlow');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* groteskDisplayMedium (Aktiv Grotesk display medium) → Barlow */
+@font-face {
+  font-family: 'groteskDisplayMedium';
+  src: local('Barlow');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* groteskTextRoman (Aktiv Grotesk text) → Barlow */
+@font-face {
+  font-family: 'groteskTextRoman';
+  src: local('Barlow');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* groteskTextMedium (Aktiv Grotesk text medium) → Barlow */
+@font-face {
+  font-family: 'groteskTextMedium';
+  src: local('Barlow');
+  font-weight: 500;
+  font-style: normal;
+}
 
 :root {
   --background: 0 0% 0%;
@@ -25,9 +118,11 @@
   --radius: 0.5rem;
 }
 
-* {
-  box-sizing: border-box;
-  border-color: hsl(var(--border));
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: hsl(var(--border));
+  }
 }
 
 html {
@@ -401,6 +496,42 @@ body {
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
+@keyframes historyPageFadeIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+
+@keyframes historyPageFadeOut {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -24px, 0);
+    filter: blur(6px);
+  }
+}
+
+.history-page-fade-in {
+  animation: historyPageFadeIn 1200ms ease 0ms 1 normal forwards;
+  will-change: opacity, transform, filter;
+}
+
+.history-page-fade-out {
+  animation: historyPageFadeOut 1200ms ease 0ms 1 normal forwards;
+  will-change: opacity, transform, filter;
+}
+
 @keyframes introWordSlide {
   0% {
     opacity: 0;
@@ -542,7 +673,9 @@ body {
   .animate-float,
   .animate-rotate-clock,
   .animate-rotate-reverse,
-  .execution-rotor {
+  .execution-rotor,
+  .history-page-fade-in,
+  .history-page-fade-out {
     animation: none !important;
   }
 
