@@ -97,7 +97,7 @@ export const HistoryMediaGallery = ({ activeIndex, entries, onNext }: Props) => 
                     </video>
                   </div>
                 )}
-                <div className="pointer-events-none absolute bottom-8 left-1/2 z-[4] -translate-x-1/2 select-none">
+                <div className="pointer-events-none absolute bottom-8 left-1/2 z-[4] -translate-x-1/2 select-none hidden lg:block">
                   <span className="font-pretendard text-[80px] font-bold leading-none tracking-tight text-white/12 md:text-[160px]">
                     {entry.year}
                   </span>

@@ -104,15 +104,15 @@ export default function HistorySection() {
         {/* UI overlay */}
         <div className="absolute inset-0 left-1/2 z-10 flex w-full -translate-x-1/2 transform-gpu flex-col pointer-events-none 
                         md:max-w-[1920px] md:items-start md:justify-between md:overflow-hidden 
-                        md:px-10 md:pb-[4.5rem] md:pt-20 
-                        xl:px-10 xl:pb-20 xl:pt-24 
+                        md:px-12 md:pb-[4.5rem] md:pt-34 
+                        xl:px-12 xl:pb-20 xl:pt-34
                         2xl:px-[120px] 2xl:pb-[6.375rem] 2xl:pt-[8.75rem]">
 
           {/* Title */}
           <h3 className="z-[3] px-6 pt-[4.625rem] text-[32px] font-semibold uppercase leading-[30px] tracking-[-0.05em] text-white md:px-0 md:pt-0 md:text-[64px] md:leading-[58px] md:tracking-[-0.03em]">
-            ABOUT
+            MY
             <br />
-            HISTORY
+            JOURNEY
           </h3>
 
           {/* Timeline */}

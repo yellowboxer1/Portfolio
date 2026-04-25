@@ -230,4 +230,15 @@
     box-shadow: none;
     padding: 15mm 20mm;
   }
+
+  @media print {
+    .pageScope :global(nav) {
+      display: none !important;
+    }
+  
+    .page {
+      min-height: auto;
+      background: #ffffff;
+    }
+}
 }

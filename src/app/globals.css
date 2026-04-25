@@ -186,14 +186,6 @@ body {
   opacity: 1;
 }
 
-.news-item {
-  transition: all 0.3s ease;
-}
-
-.news-item:hover {
-  background: rgba(255, 255, 255, 0.03);
-}
-
 .btn-arrow {
   transition: all 0.3s ease;
 }
@@ -532,6 +524,22 @@ body {
   will-change: opacity, transform, filter;
 }
 
+@keyframes aboutHeroRise {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.about-hero-rise {
+  animation: aboutHeroRise 900ms cubic-bezier(.22, 1, .36, 1) both;
+  will-change: opacity, transform;
+}
+
 @keyframes introWordSlide {
   0% {
     opacity: 0;
@@ -689,7 +697,6 @@ body {
   .section-reveal,
   .about-content,
   .portfolio-card,
-  .news-item,
   .btn-arrow,
   .primary-outline-button,
   .about-cta {

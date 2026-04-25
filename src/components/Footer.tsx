@@ -98,12 +98,6 @@ export default function Footer() {
                   WORKS
                 </Link>
                 <Link
-                  href="/news"
-                  className="block text-sm font-medium text-white hover:text-white/70 transition-colors"
-                >
-                  NEWS
-                </Link>
-                <Link
                   href="/contact"
                   className="block text-sm font-medium text-white hover:text-white/70 transition-colors"
                 >

@@ -6,7 +6,6 @@ import Link from "next/link";
 type HeaderProps = {
   aboutHref?: string;
   worksHref?: string;
-  newsHref?: string;
   contactHref?: string;
   onAboutClick?: () => void;
   variant?: "default" | "light";
@@ -15,7 +14,6 @@ type HeaderProps = {
 export default function Header({
   aboutHref = "/about",
   worksHref = "/works",
-  newsHref = "/news",
   contactHref = "/contact",
   onAboutClick,
   variant = "default",
@@ -28,7 +26,7 @@ export default function Header({
     <header
       className={`fixed top-0 left-0 right-0 z-50 header-blur ${
         isLight
-          ? "bg-white/88 border-b border-black/8 shadow-[0_12px_34px_rgba(15,23,42,0.08)]"
+          ? "bg-white/88 border-b border-black/8 shadow-[0_12px_34px_rgba(15,23,42,0.01)]"
           : "bg-black/50"
       }`}
     >
@@ -42,7 +40,7 @@ export default function Header({
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-10">
+        <nav className="hidden md:flex items-center space-x-15">
           <div
             className="relative group"
             onMouseEnter={() => setIsAboutOpen(true)}
@@ -107,14 +105,6 @@ export default function Header({
             }`}
           >
             WORKS
-          </Link>
-          <Link
-            href={newsHref}
-            className={`text-sm font-medium transition-colors tracking-wider ${
-              isLight ? "text-black/65 hover:text-black" : "text-white/80 hover:text-white"
-            }`}
-          >
-            NEWS
           </Link>
           <Link
             href={contactHref}
@@ -192,14 +182,6 @@ export default function Header({
               }`}
             >
               WORKS
-            </Link>
-            <Link
-              href={newsHref}
-              className={`block text-sm font-semibold py-2 ${
-                isLight ? "text-black/72 hover:text-black" : "text-white/80 hover:text-white"
-              }`}
-            >
-              NEWS
             </Link>
             <Link
               href={contactHref}

@@ -2,7 +2,6 @@ import Header from "@/src/components/Header";
 import Hero from "@/src/components/Hero";
 import Portfolio from "@/src/components/Portfolio";
 import About from "@/src/components/About";
-import News from "@/src/components/News";
 import Partners from "@/src/components/Partners";
 import Contact from "@/src/components/Contact";
 import Footer from "@/src/components/Footer";
@@ -16,9 +15,6 @@ export default function Home() {
       <About />
       <Strengths />
       <Portfolio />
-      {/* <News />
-      <Contact />
-      <Footer /> */}
     </main>
   );
 }

@@ -14,14 +14,23 @@ const INNER_TIMELINE_SIZE = 1364;
 const TIMELINE_CENTER = OUTER_TIMELINE_SIZE / 2;
 const TIMELINE_MARKER_RADIUS = (OUTER_TIMELINE_SIZE / 2 + INNER_TIMELINE_SIZE / 2) / 2;
 
-const TIMELINE_MARKERS = [
+type TimelineMarker = {
+  angle: number;
+  height: number;
+  width: number;
+  className: string;
+  hideFromIndex?: number;
+};
+
+const TIMELINE_MARKERS: TimelineMarker[] = [
   { angle: 0, height: 7, width: 36, className: "bg-[#5327FA]" },
-  { angle: 15, height: 3, width: 36, className: "bg-neutral-400" },
-  { angle: 30, height: 3, width: 36, className: "bg-neutral-400" },
-] as const;
+  { angle: 15, height: 3, width: 36, className: "bg-neutral-400", hideFromIndex: 6 },
+  { angle: 30, height: 3, width: 36, className: "bg-neutral-400", hideFromIndex: 5 },
+];
 
 export const HistoryTimeline = ({ activeYear, onYearClick }: Props) => {
   const ulRef = useRef<HTMLUListElement>(null);
+  const activeYearIndex = TIMELINE_YEARS.indexOf(activeYear);
 
   // Rotate the dial on desktop so the active year sits at the top (0°)
   useEffect(() => {
@@ -59,7 +68,11 @@ export const HistoryTimeline = ({ activeYear, onYearClick }: Props) => {
         {TIMELINE_MARKERS.map((marker) => (
           <div
             key={`${marker.angle}-${marker.height}`}
-            className={`hidden md:block md:absolute ${marker.className}`}
+            className={`hidden md:block md:absolute transition-opacity duration-300 ${marker.className} ${
+              marker.hideFromIndex !== undefined && activeYearIndex >= marker.hideFromIndex
+                ? "md:opacity-0"
+                : "md:opacity-100"
+            }`}
             style={{
               width: `${marker.width}px`,
               height: `${marker.height}px`,

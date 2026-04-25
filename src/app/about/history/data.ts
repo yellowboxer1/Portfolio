@@ -61,7 +61,7 @@ export const HISTORY_ENTRIES: HistoryEntry[] = [
     pcPoster: "",
     videoWebm: undefined,
     videoMp4: "/screen/award.mp4",
-    videoClassName: "h-full w-full object-contain md:h-[75%] md:w-[75%]",
+    videoClassName: "h-full w-full object-contain md:h-[75%] md:w-[75%] right-[2%]",
   },
   {
     year: "2023",
@@ -85,20 +85,24 @@ export const HISTORY_ENTRIES: HistoryEntry[] = [
     year: "2025",
     title: "가치가개 런칭 · 부산광역시장상 수상",
     description:
-      "AI 및 빅데이터 기반 시각장애인 보행보조 서비스 가치가개를 런칭했습니다. <br/>예비창업패키지로 서비스 방향을 구체화했고, 부산광역시장상을 수상했습니다.",
+      "AI 보행보조 서비스 '가치가개'를 런칭하며 비즈니스 전반에 대한 창업가적 인사이트를 확보했습니다. <br/> 예비창업패키지를 통해 모델의 실효성을 검증했으며, 그 성과를 인정받아 시장상을 수상했습니다.",
       mPoster: "",
       pcPoster: "",
       videoWebm: undefined,
       videoMp4: "/screen/award.mp4",
-      videoClassName: "h-full w-full object-contain md:h-[75%] md:w-[75%]",
+      videoClassName: "h-full w-full object-contain md:h-[75%] md:w-[75%] right-[2%]",
     },
   {
     year: "2026",
-    title: "파트너잇 TPM · 기획/개발/알고리즘/운영",
+    title: "파트너잇 수석 연구원",
     description:
-      "AI 기반 정부지원사업 매칭 서비스 파트너잇에서 TPM으로 기획, 개발, 알고리즘 설계, 특허, 운영까지 전 과정을 맡고 있습니다. <br/>청년창업사관학교와 디딤돌 R&D를 수주하며 서비스와 사업 양쪽을 함께 리드하고 있습니다.",
-    ...createHistoryMedia("nightcrows"),
-  },
+      "기획부터 개발까지 서비스 전 과정을 리드하며 플랫폼의 기술적 기틀을 마련했습니다. <br/> 람다-다중 적합도 알고리즘으로 지식재산권을 확보했으며, 청년 창업 사관학교, 디딤돌 R&D 등 과제 수주를 통해 사업 성장을 견인하고 있습니다.",
+      mPoster: "",
+      pcPoster: "",
+      videoWebm: undefined,
+      videoMp4: "/screen/02.mp4",
+      videoClassName: "h-full w-full object-contain md:h-[46%] md:w-[46%]",
+    },
 ];
 
 export const TIMELINE_YEARS = ["2020", "2021", "2022", "2023", "2024", "2025", "2026"];
