@@ -7,18 +7,13 @@ export type HistoryEntry = {
   videoWebm?: string;
   videoMp4?: string;
   videoClassName?: string;
+  videoWidthPercent?: number;
+  videoHeightPercent?: number;
+  videoAspectRatio?: number;
+  videoFit?: "contain" | "cover";
+  videoOffsetX?: string;
+  videoOffsetY?: string;
 };
-
-function createHistoryMedia(name: string) {
-  const base = `https://cache.wemade.com/wemade/assets/opt_video/aboutus/history/${name}`;
-
-  return {
-    mPoster: `${base}-m-poster.webp`,
-    pcPoster: `${base}-pc-poster.webp`,
-    videoWebm: `${base}-pc.webm`,
-    videoMp4: `${base}-pc.mp4`,
-  };
-}
 
 export const HISTORY_ENTRIES: HistoryEntry[] = [
   {
@@ -30,16 +25,25 @@ export const HISTORY_ENTRIES: HistoryEntry[] = [
     pcPoster: "",
     videoWebm: undefined,
     videoMp4: "/screen/seed2.mp4",
-    videoClassName: "h-full w-full object-contain md:h-[85%] md:w-[85%]",
+    videoWidthPercent: 82,
+    videoHeightPercent: 82,
+    videoAspectRatio: 16 / 9,
+    videoFit: "contain",
   },
   {
     year: "2021",
     title: "국비 62억 규모 사업 수주",
     description:
       "농어촌 지역개발 프로젝트를 총괄하며 사업 제안과 전략 설계를 수행했습니다. <br/>사업 선정으로 국비 62억 원 규모 프로젝트를 수주하며 첫 대형 성과를 만들었습니다.",
-    ...createHistoryMedia("kosdaq"),
-    videoClassName:
-      "relative z-[1] h-full w-full object-cover md:h-[88%] md:w-[88%] md:-translate-y-[6%]",
+    mPoster: "",
+    pcPoster: "",
+    videoWebm: undefined,
+    videoMp4: "/screen/up.webm",
+    videoWidthPercent: 84,
+    videoHeightPercent: 84,
+    videoAspectRatio: 16 / 9,
+    videoFit: "cover",
+    videoOffsetY: "-6%",
   },
   {
     year: "2022",
@@ -50,7 +54,10 @@ export const HISTORY_ENTRIES: HistoryEntry[] = [
     pcPoster: "",
     videoWebm: undefined,
     videoMp4: "/screen/main_object_video02.mp4",
-    videoClassName: "h-full w-full object-contain md:h-[53%] md:w-[53%]",
+    videoWidthPercent: 50,
+    videoHeightPercent: 50,
+    videoAspectRatio: 1,
+    videoFit: "contain",
   },
   {
     year: "2023",
@@ -61,7 +68,11 @@ export const HISTORY_ENTRIES: HistoryEntry[] = [
     pcPoster: "",
     videoWebm: undefined,
     videoMp4: "/screen/award.mp4",
-    videoClassName: "h-full w-full object-contain md:h-[75%] md:w-[75%] right-[2%]",
+    videoWidthPercent: 75,
+    videoHeightPercent: 75,
+    videoAspectRatio: 16 / 9,
+    videoFit: "contain",
+    videoOffsetX: "-2%",
   },
   {
     year: "2023",
@@ -72,14 +83,24 @@ export const HISTORY_ENTRIES: HistoryEntry[] = [
     pcPoster: "",
     videoWebm: undefined,
     videoMp4: "/screen/rise1.mp4",
-    videoClassName: "h-full w-full object-contain md:h-[70%] md:w-[70%]",
+    videoWidthPercent: 70,
+    videoHeightPercent: 70,
+    videoAspectRatio: 16 / 9,
+    videoFit: "contain",
   },
   {
     year: "2024",
     title: "미래교육 플랫폼 PM · 혁신융합대학 운영",
     description:
       "엔에스데블에서 바이오헬스 COSS와 HUSS 프로젝트를 운영했습니다. <br/>미래교육 플랫폼 사업 관리와 운영, 신규 제안까지 맡으며 교육·공공 도메인 PM 경험을 확장했습니다.",
-    ...createHistoryMedia("wepublic"),
+      mPoster: "",
+      pcPoster: "",
+      videoWebm: undefined,
+      videoMp4: "/screen/etc.webm",
+      videoWidthPercent: 100,
+      videoHeightPercent: 100,
+      videoAspectRatio: 16 / 9,
+      videoFit: "cover",
   },
   {
     year: "2025",
@@ -90,7 +111,11 @@ export const HISTORY_ENTRIES: HistoryEntry[] = [
       pcPoster: "",
       videoWebm: undefined,
       videoMp4: "/screen/award.mp4",
-      videoClassName: "h-full w-full object-contain md:h-[75%] md:w-[75%] right-[2%]",
+      videoWidthPercent: 75,
+      videoHeightPercent: 75,
+      videoAspectRatio: 16 / 9,
+      videoFit: "contain",
+      videoOffsetX: "-2%",
     },
   {
     year: "2026",
@@ -101,7 +126,10 @@ export const HISTORY_ENTRIES: HistoryEntry[] = [
       pcPoster: "",
       videoWebm: undefined,
       videoMp4: "/screen/02.mp4",
-      videoClassName: "h-full w-full object-contain md:h-[46%] md:w-[46%]",
+      videoWidthPercent: 45,
+      videoHeightPercent: 45,
+      videoAspectRatio: 1,
+      videoFit: "contain",
     },
 ];
 

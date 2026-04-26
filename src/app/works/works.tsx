@@ -271,7 +271,7 @@ export default function WorksPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 md:gap-x-[60px] md:gap-y-[60px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-10 lg:grid-cols-3 lg:gap-x-10 xl:gap-x-[60px] md:gap-y-[60px]">
           {visible.map((item, i) => (
             <WorkCard
               key={item.id}

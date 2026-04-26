@@ -104,12 +104,12 @@ export default function HistorySection() {
         {/* UI overlay */}
         <div className="absolute inset-0 left-1/2 z-10 flex w-full -translate-x-1/2 transform-gpu flex-col pointer-events-none 
                         md:max-w-[1920px] md:items-start md:justify-between md:overflow-hidden 
-                        md:px-12 md:pb-[4.5rem] md:pt-34 
+                        md:px-12 md:pb-[3rem] md:pt-34 
                         xl:px-12 xl:pb-20 xl:pt-34
                         2xl:px-[120px] 2xl:pb-[6.375rem] 2xl:pt-[8.75rem]">
 
           {/* Title */}
-          <h3 className="z-[3] px-6 pt-[4.625rem] text-[32px] font-semibold uppercase leading-[30px] tracking-[-0.05em] text-white md:px-0 md:pt-0 md:text-[64px] md:leading-[58px] md:tracking-[-0.03em]">
+          <h3 className="z-[3] px-6 pt-[8rem] text-[32px] font-semibold uppercase leading-[30px] tracking-[-0.05em] text-white md:px-0 md:pt-0 md:text-[64px] md:leading-[58px] md:tracking-[-0.03em]">
             MY
             <br />
             JOURNEY
@@ -174,8 +174,8 @@ function HistoryInfoList({ activeIndex, entries, timelineYears, onYearClick }: I
   }, []);
 
   return (
-    <div className="pointer-events-none self-auto md:w-[504px] xl:w-full xl:max-w-[420px] xl:self-end min-[1920px]:w-[504px] min-[1920px]:max-w-none">
-      <div className="mb-3 flex items-center justify-between px-6 md:hidden">
+    <div className="history-info-card pointer-events-none self-auto w-full  lg:self-end xl:w-full xl:max-w-[390px] min-[1536px]:max-w-[440px] min-[1536px]:-translate-x-14 min-[1920px]:w-[504px] min-[1920px]:max-w-none min-[1920px]:translate-x-0">
+      <div className="hidden">
         <button
           type="button"
           onClick={() => onYearClick(timelineYears[Math.max(0, currentYearIdx - 1)])}
@@ -195,7 +195,7 @@ function HistoryInfoList({ activeIndex, entries, timelineYears, onYearClick }: I
         </button>
       </div>
 
-      <div className="relative mx-auto w-[calc(100%-48px)] md:mx-0 md:w-full">
+      <div className="relative mx-auto w-[calc(100%-48px)] lg:mx-0 lg:w-full">
         <div className="relative min-h-[148px] md:min-h-0">
           <ul className="relative m-0 grid h-full list-none p-0 md:items-end">
             {entries.map((entry, index) => {
@@ -218,14 +218,14 @@ function HistoryInfoList({ activeIndex, entries, timelineYears, onYearClick }: I
                   }`}
                 >
                   <div className="w-full rounded-[21px] bg-[linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,0.93)_47%,rgba(255,255,255,0))] p-px md:rounded-[30px]">
-                    <div className="flex min-h-[148px] w-full flex-col gap-3 rounded-[20px] bg-black px-4 py-4 text-white md:gap-4 md:rounded-[29px] md:px-12 md:py-6">
+                    <div className="flex min-h-[148px] w-full flex-col gap-3 rounded-[20px] bg-black pb-12 px-4 pt-4 text-white md:gap-3 md:rounded-[29px] md:px-8 md:py-5 xl:gap-4 xl:px-8 xl:py-5 min-[1536px]:px-10 min-[1536px]:py-6">
                       <p
-                        className="break-keep text-center font-medium text-[16px] leading-6 tracking-[-0.02em] text-white md:text-left md:text-[28px] md:font-bold md:leading-8 md:tracking-normal"
-                      dangerouslySetInnerHTML={{ __html: entry.title }}
+                        className="break-keep text-left font-medium text-[18px] leading-6 tracking-[-0.02em] text-white md:text-left md:text-[22px] md:font-bold md:leading-7 md:tracking-normal xl:text-[24px] xl:leading-7 min-[1536px]:text-[28px] min-[1536px]:leading-8"
+                        dangerouslySetInnerHTML={{ __html: entry.title }}
                       />
                       <p
-                        className="break-keep text-left text-[15px] leading-[22px] tracking-normal text-white md:text-[20px] md:leading-8"
-                      dangerouslySetInnerHTML={{ __html: entry.description }}
+                        className="break-keep text-left text-[15px] leading-[22px] tracking-normal text-white md:text-[16px] md:leading-6 xl:text-[18px] xl:leading-7 min-[1536px]:text-[20px] min-[1536px]:leading-8"
+                        dangerouslySetInnerHTML={{ __html: entry.description }}
                       />
                     </div>
                   </div>

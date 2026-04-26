@@ -40,14 +40,29 @@ export const HistoryMediaGallery = ({ activeIndex, entries, onNext }: Props) => 
     };
   }, []);
 
-  const getVideoClassName = (entry: HistoryEntry) => {
-    const defaultVideoClassName = entry.videoMp4?.startsWith("/")
-      ? "relative z-[1] h-full w-full object-cover"
-      : "relative z-[1] hidden h-full w-full object-cover md:block";
+  const getVideoFrameStyle = (entry: HistoryEntry) => {
+    const widthPercent = entry.videoWidthPercent ?? 100;
+    const heightPercent = entry.videoHeightPercent ?? 100;
+    const baseBoxWidth = 1280 * (widthPercent / 100);
+    const baseBoxHeight = 900 * (heightPercent / 100);
+    const aspectRatio = entry.videoAspectRatio ?? 16 / 9;
+    const isCover = entry.videoFit === "cover";
+    const containedWidth = Math.min(baseBoxWidth, baseBoxHeight * aspectRatio);
+    const containedHeight = containedWidth / aspectRatio;
+    const fluidWidth = isCover ? baseBoxWidth : containedWidth;
+    const fluidHeight = isCover ? baseBoxHeight : containedHeight;
+    const fixedBelowLgRatio = 1024 / 1280;
 
-    return entry.videoClassName
-      ? `relative z-[1] ${entry.videoClassName}`
-      : defaultVideoClassName;
+    return {
+      "--history-video-width": `${widthPercent}%`,
+      "--history-video-height": `${heightPercent}%`,
+      "--history-video-fluid-width": `${(fluidWidth / 1280) * 100}vw`,
+      "--history-video-fluid-height": `${(fluidHeight / 1280) * 100}vw`,
+      "--history-video-fixed-width": `${fluidWidth * fixedBelowLgRatio}px`,
+      "--history-video-fixed-height": `${fluidHeight * fixedBelowLgRatio}px`,
+      "--history-video-offset-x": entry.videoOffsetX ?? "0px",
+      "--history-video-offset-y": entry.videoOffsetY ?? "0px",
+    } as React.CSSProperties;
   };
 
   return (
@@ -84,20 +99,27 @@ export const HistoryMediaGallery = ({ activeIndex, entries, onNext }: Props) => 
                 />
                 {entry.videoMp4 && (
                   <div className="absolute inset-0 flex items-center justify-center">
+                    <div
+                      className="history-video-frame relative z-[1]"
+                      style={getVideoFrameStyle(entry)}
+                    >
                     <video
                       autoPlay
                       playsInline
                       loop
                       muted
                       preload="auto"
-                      className={getVideoClassName(entry)}
+                      className={`h-full w-full ${
+                        entry.videoFit === "cover" ? "object-cover" : "object-contain"
+                      }`}
                     >
                       {entry.videoWebm && <source type="video/webm" src={entry.videoWebm} />}
                       <source type="video/mp4" src={entry.videoMp4} />
                     </video>
+                    </div>
                   </div>
                 )}
-                <div className="pointer-events-none absolute bottom-8 left-1/2 z-[4] -translate-x-1/2 select-none hidden lg:block">
+                <div className="pointer-events-none absolute bottom-8 left-1/2 z-[4] -translate-x-1/2 select-none hidden xl:block">
                   <span className="font-pretendard text-[80px] font-bold leading-none tracking-tight text-white/12 md:text-[160px]">
                     {entry.year}
                   </span>

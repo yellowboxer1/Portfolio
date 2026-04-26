@@ -17,6 +17,7 @@ export type MetricCardProps = {
   videoMp4Src?: string;
   /** @deprecated Use videoWebmSrc/videoMp4Src instead */
   videoSrc?: string;
+  isMediaEnabled?: boolean;
   index: number;
   scrollStage: number;
 };
@@ -31,6 +32,7 @@ export default function MetricCard({
   videoWebmSrc,
   videoMp4Src,
   videoSrc,
+  isMediaEnabled = true,
   index,
   scrollStage,
 }: MetricCardProps) {
@@ -54,6 +56,7 @@ export default function MetricCard({
   };
 
   const hasVideo = videoWebmSrc || videoMp4Src || videoSrc;
+  const shouldLoadVideo = hasVideo && isMediaEnabled && distance <= 1;
 
   return (
     <article
@@ -74,7 +77,7 @@ export default function MetricCard({
           )}
 
           {/* Video background */}
-          {hasVideo && (
+          {shouldLoadVideo && (
             <video
               className="absolute inset-0 inline h-full w-full object-cover opacity-86"
               autoPlay

@@ -524,6 +524,100 @@ body {
   will-change: opacity, transform, filter;
 }
 
+.history-video-frame {
+  flex: 0 0 auto;
+  width: var(--history-video-fluid-width, 100vw);
+  height: var(--history-video-fluid-height, 70.3125vw);
+  transform: translate(var(--history-video-offset-x, 0px), var(--history-video-offset-y, 0px));
+}
+
+@media (max-width: 1023.98px) {
+  .history-video-frame {
+    width: var(--history-video-fixed-width, var(--history-video-fluid-width, 100vw));
+    height: var(--history-video-fixed-height, var(--history-video-fluid-height, 70.3125vw));
+  }
+}
+
+@media (min-width: 1280px) {
+  .history-video-frame {
+    width: var(--history-video-width, 100%);
+    height: var(--history-video-height, 100%);
+    max-width: var(--history-video-width, 100%);
+    max-height: var(--history-video-height, 100%);
+  }
+}
+
+.history-info-card {
+  position: relative;
+}
+
+.history-info-card::before {
+  position: absolute;
+  inset: 0;
+  border-radius: 21px;
+  background: rgba(0, 0, 0, 0.34);
+  content: "";
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .history-info-card::before {
+    border-radius: 30px;
+  }
+}
+
+.history-mobile-year::after {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 7px;
+  width: 40px;
+  height: 200px;
+  background: url("https://cache.wemade.com/wemade/assets/opt_imgs/aboutus/img-year-bg-m.webp") no-repeat 9px center / contain;
+  content: "";
+  transform: translateY(-50%);
+}
+
+.history-mobile-year-next {
+  background: url("https://cache.wemade.com/wemade/assets/opt_imgs/aboutus/btn-year-next-m.webp") no-repeat center center / contain;
+  pointer-events: auto;
+}
+
+.history-mobile-year-box {
+  top: 50%;
+  left: 56px;
+  width: 42px;
+  height: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(2.5px);
+  transform: translateY(-50%) translateZ(0);
+}
+
+@media (min-width: 768px) {
+  .history-mobile-year::after {
+    left: 0;
+  }
+
+  .history-mobile-year-box {
+    left: 50px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .history-timeline-ring {
+    transform: translateY(-50%)
+      translateX(calc(-1068px - clamp(0px, (1920px - 100vw) * 0.12, 112px)));
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .history-info-card {
+    transform: translateX(-2.5rem);
+  }
+}
+
 @keyframes aboutHeroRise {
   0% {
     opacity: 0;

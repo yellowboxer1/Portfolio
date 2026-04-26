@@ -24,7 +24,7 @@ export default function Header({
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 header-blur ${
+      className={`fixed top-0 left-0 right-0 z-[80] header-blur ${
         isLight
           ? "bg-white/88 border-b border-black/8 shadow-[0_12px_34px_rgba(15,23,42,0.01)]"
           : "bg-black/50"
@@ -131,7 +131,7 @@ export default function Header({
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div
-          className={`md:hidden backdrop-blur-md ${
+          className={`fixed inset-x-0 top-[64px] z-[90] md:hidden backdrop-blur-md ${
             isLight
               ? "bg-white/96 border-t border-black/8 shadow-[0_20px_40px_rgba(15,23,42,0.08)]"
               : "bg-black/95 border-t border-white/10"
@@ -166,7 +166,7 @@ export default function Header({
                   HISTORY
                 </Link>
                 <Link
-                  href="/resume"
+                  href="/about/resume"
                   className={`block text-sm font-semibold py-1 ${
                     isLight ? "text-black/58 hover:text-black" : "text-white/60 hover:text-white"
                   }`}

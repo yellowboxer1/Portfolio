@@ -222,7 +222,9 @@ export default function Hero() {
   const finalChars = "박 건 호".split("");
 
   return (
-    <section ref={sectionRef} className="relative h-[200vh] bg-black">
+    <>
+      <link rel="preload" href={heroVideo} as="video" type="video/mp4" />
+      <section ref={sectionRef} className="relative h-[200vh] bg-black">
       <div className="sticky top-0 h-screen overflow-hidden bg-black">
         {/* Intro guide lines */}
         <div
@@ -361,6 +363,7 @@ export default function Hero() {
           </video>
         </div>
       </div>
-    </section>
+      </section>
+    </>
   );
 }

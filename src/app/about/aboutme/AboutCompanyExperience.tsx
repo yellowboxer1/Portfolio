@@ -23,6 +23,8 @@ type Capability = {
   }>;
 };
 
+const aboutHeroVideo = "/screen/bg-2.mp4";
+const coreCapabilityVideo = "/screen/bg-5.mp4";
 
 const aboutParagraphs = [
   "아이디어를 실현하는 과정은 시간, 비용, 수많은 선택의 결과입니다.\n하지만 시장의 선택을 받는 것은 전혀 다른 문제입니다.",
@@ -184,6 +186,8 @@ export function MetricsSection() {
   const ctaRef = useRef<HTMLDivElement | null>(null);
   const scrollLockRef = useRef(false);
   const scrollReleaseTimeoutRef = useRef<number | null>(null);
+  const touchStartYRef = useRef<number | null>(null);
+  const touchLastYRef = useRef<number | null>(null);
   const [activeScene, setActiveScene] = useState(0);
   const [activeCapabilityIndex, setActiveCapabilityIndex] = useState(0);
   const [displayedCapabilityIndex, setDisplayedCapabilityIndex] = useState(0);
@@ -295,16 +299,57 @@ export function MetricsSection() {
     moveToScene(activeScene + direction);
   }, [activeScene, moveToScene]);
 
+  const handleTouchStart = useCallback((event: TouchEvent) => {
+    const touch = event.touches[0];
+    if (!touch) return;
+
+    touchStartYRef.current = touch.clientY;
+    touchLastYRef.current = touch.clientY;
+  }, []);
+
+  const handleTouchMove = useCallback((event: TouchEvent) => {
+    const touch = event.touches[0];
+    if (!touch) return;
+
+    touchLastYRef.current = touch.clientY;
+    event.preventDefault();
+  }, []);
+
+  const handleTouchEnd = useCallback(() => {
+    if (scrollLockRef.current) return;
+
+    const startY = touchStartYRef.current;
+    const lastY = touchLastYRef.current;
+    touchStartYRef.current = null;
+    touchLastYRef.current = null;
+
+    if (startY === null || lastY === null) return;
+
+    const deltaY = startY - lastY;
+    if (Math.abs(deltaY) < 44) return;
+
+    const direction = deltaY > 0 ? 1 : -1;
+    moveToScene(activeScene + direction);
+  }, [activeScene, moveToScene]);
+
   useEffect(() => {
     const viewport = viewportRef.current;
     if (!viewport) return;
 
     viewport.addEventListener("wheel", handleWheel, { passive: false });
+    viewport.addEventListener("touchstart", handleTouchStart, { passive: true });
+    viewport.addEventListener("touchmove", handleTouchMove, { passive: false });
+    viewport.addEventListener("touchend", handleTouchEnd);
+    viewport.addEventListener("touchcancel", handleTouchEnd);
 
     return () => {
       viewport.removeEventListener("wheel", handleWheel);
+      viewport.removeEventListener("touchstart", handleTouchStart);
+      viewport.removeEventListener("touchmove", handleTouchMove);
+      viewport.removeEventListener("touchend", handleTouchEnd);
+      viewport.removeEventListener("touchcancel", handleTouchEnd);
     };
-  }, [handleWheel]);
+  }, [handleTouchEnd, handleTouchMove, handleTouchStart, handleWheel]);
 
   const viewportOffset =
     activeScene === 0
@@ -318,13 +363,19 @@ export function MetricsSection() {
     transform: `translate3d(0, -${viewportOffset}%, 0)`,
     transition: `transform ${transitionDuration}ms ${transitionEase}`,
   };
+  const shouldLoadMetricVideos =
+    activeScene > 0 && activeScene <= metricGroups.length + 1;
+  const shouldLoadCoreVideo = activeScene >= metricGroups.length;
+  const shouldLoadProjectsVideo = activeScene >= coreEndScene;
 
   return (
-    <div
-      ref={viewportRef}
-      className="h-[var(--viewport-height,100vh)] max-h-[100svh] overflow-hidden bg-black text-white"
-    >
-      <Header aboutHref="/about/aboutme" variant="default" />
+    <>
+      <link rel="preload" href={aboutHeroVideo} as="video" type="video/mp4" />
+      <div
+        ref={viewportRef}
+        className="h-[var(--viewport-height,100vh)] max-h-[100svh] touch-none overflow-hidden bg-black text-white"
+      >
+        <Header aboutHref="/about/aboutme" variant="default" />
 
       <Link
         href="/#about"
@@ -381,16 +432,16 @@ export function MetricsSection() {
       <main className="h-full will-change-transform" style={viewportStyle}>
       <section
         className="relative flex h-full min-h-full items-center overflow-hidden bg-black px-6 md:px-12" // 상단 패딩 과다 제거
-        aria-hidden={activeScene !== coreScene}
+        aria-hidden={activeScene !== 0}
         >
           <video
             className="absolute inset-0 h-full w-full object-cover opacity-85"
-            src="/screen/bg-2.mp4"
+            src={aboutHeroVideo}
             autoPlay
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
           />
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_35%,rgba(255,255,255,0.10),transparent_32%),linear-gradient(90deg,rgba(0,0,0,0.66),rgba(0,0,0,0.34)_48%,rgba(0,0,0,0.58))]" />
@@ -455,6 +506,7 @@ export function MetricsSection() {
                     title={group.title}
                     eyebrow={group.eyebrow}
                     videoSrc={group.videoSrc}
+                    isMediaEnabled={shouldLoadMetricVideos}
                     items={group.items}
                     index={index}
                     scrollStage={activeIndex}
@@ -473,12 +525,12 @@ export function MetricsSection() {
           <div className="pointer-events-none absolute inset-0">
             <video
               className="absolute inset-0 h-full w-full object-cover"
-              src="/screen/bg-5.mp4"
+              src={shouldLoadCoreVideo ? coreCapabilityVideo : undefined}
               autoPlay
               muted
               loop
               playsInline
-              preload="auto"
+              preload={shouldLoadCoreVideo ? "auto" : "none"}
             />
             <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.75),rgba(0,0,0,0.40)_46%,rgba(0,0,0,0.70)),radial-gradient(circle_at_78%_42%,rgba(120,140,255,0.14),transparent_26%),linear-gradient(180deg,rgba(0,0,0,0.18),rgba(0,0,0,0.72))]" />
           </div>
@@ -565,12 +617,12 @@ export function MetricsSection() {
           <div className="pointer-events-none absolute inset-0">
             <video
               className="absolute inset-0 h-full w-full object-cover"
-              src="/screen/bg-2.mp4"
+              src={shouldLoadProjectsVideo ? aboutHeroVideo : undefined}
               autoPlay
               muted
               loop
               playsInline
-              preload="metadata"
+              preload={shouldLoadProjectsVideo ? "auto" : "none"}
             />
             <div className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-white/[0.035] shadow-[0_0_120px_rgba(120,140,255,0.22)] blur-[1px] md:h-[720px] md:w-[720px]" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(255,255,255,0.08),transparent_32%),linear-gradient(90deg,rgba(0,0,0,0.86),rgba(0,0,0,0.34)_50%,rgba(0,0,0,0.86)),linear-gradient(180deg,rgba(0,0,0,0.28),#000)]" />
@@ -617,7 +669,8 @@ export function MetricsSection() {
           </div>
         </section>
       </main>
-    </div>
+      </div>
+    </>
   );
 }
 
