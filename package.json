@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node scripts/next-cli.cjs dev --turbopack",
-    "build": "node scripts/next-cli.cjs build",
+    "dev": "next dev --turbopack", 
+    "build": "next build",
     "build:local": "node scripts/next-cli.cjs build",
-    "start": "node scripts/next-cli.cjs start",
+    "start": "next start",
     "start:local": "node scripts/next-cli.cjs start",
     "lint": "bunx tsc --noEmit && next lint",
     "format": "bunx biome format --write"
