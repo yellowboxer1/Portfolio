@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack", 
-    "build": "next build",
-    "build:local": "node scripts/next-cli.cjs build",
-    "start": "next start",
-    "start:local": "node scripts/next-cli.cjs start",
-    "lint": "bunx tsc --noEmit && next lint",
-    "format": "bunx biome format --write"
+    "dev": "bunx next dev --turbopack",
+    "build": "bunx next build",
+    "build:local": "bun scripts/next-cli.cjs build",
+    "start": "bunx next start",
+    "start:local": "bun scripts/next-cli.cjs start",
+    "typecheck": "bunx tsc --noEmit",
+    "lint": "bun run typecheck && bunx eslint src next.config.ts postcss.config.mjs tailwind.config.ts eslint.config.mjs --ignore-pattern .next --ignore-pattern .next-build --ignore-pattern node_modules",
+    "format": "bunx biome format --write ."
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.2.2",

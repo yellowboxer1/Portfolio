@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 export type MetricItem = {
   label?: string;
   value: string;
@@ -36,11 +38,27 @@ export default function MetricCard({
   index,
   scrollStage,
 }: MetricCardProps) {
+  const [stackGap, setStackGap] = useState(36);
+
+  useEffect(() => {
+    const desktopQuery = window.matchMedia("(min-width: 1024px)");
+    const updateStackGap = () => {
+      setStackGap(desktopQuery.matches ? 36 : 20);
+    };
+
+    updateStackGap();
+    desktopQuery.addEventListener("change", updateStackGap);
+
+    return () => {
+      desktopQuery.removeEventListener("change", updateStackGap);
+    };
+  }, []);
+
   const distance = index - scrollStage;
   const isFuture = distance > 1;
   const entryProgress = distance > 0 ? 1 - distance : 1;
   const stackDepth = distance <= 0 ? Math.min(Math.abs(distance), 2) : 0;
-  const translateX = distance <= 0 ? stackDepth * 36 : 0;
+  const translateX = distance <= 0 ? stackDepth * stackGap : 0;
   const easedEntry = 1 - Math.pow(1 - Math.max(0, entryProgress), 3);
   const translateY = distance > 0 ? (1 - easedEntry) * 780 : -stackDepth * 18;
   const scale = distance > 0 ? 0.955 + easedEntry * 0.045 : 1 - stackDepth * 0.024;
@@ -49,7 +67,7 @@ export default function MetricCard({
   const isCurrent = Math.abs(distance) < 0.18;
 
   const stackStyle = {
-    transform: `translate3d(calc(-50% + ${translateX}px), ${translateY}px, 0) scale(${scale})`,
+    transform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`,
     zIndex,
     opacity,
     transition: "transform 980ms cubic-bezier(.77,0,.175,1), opacity 260ms ease",
@@ -60,7 +78,7 @@ export default function MetricCard({
 
   return (
     <article
-      className={`absolute left-1/2 top-0 min-h-[520px] w-full max-w-[1328px] overflow-hidden rounded-[14px] border border-white/18 bg-black text-white shadow-[0_28px_80px_rgba(0,0,0,0.46)] will-change-transform md:aspect-[1328/660] md:min-h-[660px] ${
+      className={`absolute left-0 top-0 min-h-[min(520px,calc(100svh-260px))] w-full overflow-hidden rounded-[14px] border border-white/18 bg-black text-white shadow-[0_28px_80px_rgba(0,0,0,0.46)] will-change-transform md:aspect-[1328/660] md:min-h-[min(660px,calc(100svh-230px))] ${
         isCurrent ? "pointer-events-auto" : "pointer-events-none"
       }`}
       style={stackStyle}
@@ -113,7 +131,7 @@ export default function MetricCard({
       )}
 
       {/* ── Content ── */}
-      <div className="relative z-[3] flex min-h-[520px] flex-col justify-between gap-14 p-7 md:min-h-[660px] md:gap-0 md:p-10">
+      <div className="relative z-[3] flex min-h-[min(520px,calc(100svh-260px))] flex-col justify-between gap-14 p-5 md:min-h-[min(660px,calc(100svh-230px))] md:gap-0 md:p-10">
         {/* Title block */}
         <div>
           <p className="sr-only">{eyebrow}</p>
@@ -127,7 +145,7 @@ export default function MetricCard({
           {items.map((item, idx) => (
             <div key={`${item.label ?? item.value}-${idx}`} className="min-w-0">
               {/* Value row */}
-              <p className="relative mb-3 pb-3 text-5xl font-medium leading-none tracking-[-0.08em] md:text-[72px] md:tracking-[-4px] md:leading-[76px] lg:text-[80px]">
+              <p className="relative mb-3 pb-3 text-[38px] font-medium leading-none tracking-[-0.08em] md:text-[72px] md:tracking-[-4px] md:leading-[76px] lg:text-[80px]">
                 {item.hasSupDollar && (
                   <sup className="relative -top-6 text-5xl leading-none align-baseline md:text-5xl">
                     $
@@ -147,7 +165,7 @@ export default function MetricCard({
                     {item.highlight}
                   </strong>
                 )}
-              <span className="text-[13px] lg:text-[14px] xl:text-[15px] font-light leading-snug whitespace-pre-wrap text-white/72 tracking-[0.39px] md:block [&:first-line]:font-medium">
+              <span className="text-[13px] lg:text-[14px] xl:text-[15px] font-[300] first-line:font-[500] leading-snug whitespace-pre-wrap text-white/72 tracking-[0.39px] inline-block break-keep">
                 {item.description}
               </span>
               </p>

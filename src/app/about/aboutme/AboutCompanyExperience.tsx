@@ -215,7 +215,7 @@ export function MetricsSection() {
       }, 220);
       return () => window.clearTimeout(t);
     }
-  }, [activeScene, coreScene, coreEndScene]);
+  }, [activeCapabilityIndex, activeScene, coreScene, coreEndScene]);
 
   const activeCapability = capabilities[displayedCapabilityIndex];
   const transitionDuration = 740;
@@ -365,27 +365,28 @@ export function MetricsSection() {
   };
   const shouldLoadMetricVideos =
     activeScene > 0 && activeScene <= metricGroups.length + 1;
-  const shouldLoadCoreVideo = activeScene >= metricGroups.length;
-  const shouldLoadProjectsVideo = activeScene >= coreEndScene;
+  const shouldLoadCoreVideo =
+    activeScene >= coreScene && activeScene <= coreEndScene;
+  const shouldLoadProjectsVideo = activeScene === projectsScene;
 
   return (
     <>
       <link rel="preload" href={aboutHeroVideo} as="video" type="video/mp4" />
       <div
         ref={viewportRef}
-        className="h-[var(--viewport-height,100vh)] max-h-[100svh] touch-none overflow-hidden bg-black text-white"
+        className="h-[var(--viewport-height,100vh)] max-h-[100svh] touch-none overflow-hidden bg-black text-white [--about-gnb-height:64px]"
       >
         <Header aboutHref="/about/aboutme" variant="default" />
 
       <Link
         href="/#about"
-        className="group fixed left-6 top-[72px] z-[60] inline-flex h-[42px] min-w-[42px] items-center justify-center rounded-full border border-white/15 bg-black/55 px-[13px] text-sm font-medium tracking-[0.04em] text-white/88 shadow-[0_14px_32px_rgba(0,0,0,0.28)] backdrop-blur-md transition-[border-color,background-color,box-shadow,color,transform] duration-300 hover:-translate-x-[2px] hover:border-white/28 hover:bg-black/78 hover:text-white md:left-12 md:top-[72px]"
+        className="group fixed left-6 top-[calc(var(--about-gnb-height)+8px)] z-[60] inline-flex h-[34px] min-w-[34px] items-center justify-center rounded-full border border-white/15 bg-black/55 px-[10px] text-xs font-medium tracking-[0.04em] text-white/88 shadow-[0_14px_32px_rgba(0,0,0,0.28)] backdrop-blur-md transition-[border-color,background-color,box-shadow,color,transform] duration-300 hover:-translate-x-[2px] hover:border-white/28 hover:bg-black/78 hover:text-white md:left-12 md:h-[38px] md:min-w-[38px] md:px-3 md:text-[13px] lg:h-[42px] lg:min-w-[42px] lg:px-[13px] lg:text-sm"
       >
         <span
           aria-hidden="true"
-          className="inline-flex h-4 w-4 flex-none items-center justify-center text-white"
+          className="inline-flex h-3.5 w-3.5 flex-none items-center justify-center text-white md:h-[15px] md:w-[15px] lg:h-4 lg:w-4"
         >
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <svg className="h-full w-full" viewBox="0 0 16 16" fill="none">
             <path
               d="M13 8H3.5M7.5 4L3.5 8L7.5 12"
               stroke="currentColor"
@@ -431,7 +432,7 @@ export function MetricsSection() {
 
       <main className="h-full will-change-transform" style={viewportStyle}>
       <section
-        className="relative flex h-full min-h-full items-center overflow-hidden bg-black px-6 md:px-12" // 상단 패딩 과다 제거
+        className="relative flex h-full min-h-full items-center overflow-hidden bg-black px-6 pt-[var(--about-gnb-height)] md:px-12" // GNB 아래 남은 영역 기준으로 중앙 정렬
         aria-hidden={activeScene !== 0}
         >
           <video
@@ -487,11 +488,11 @@ export function MetricsSection() {
           className="relative h-full min-h-full overflow-hidden bg-black"
           aria-hidden={activeScene === 0 || activeScene > metricGroups.length}
         >
-          <div className="flex h-full min-h-full items-center overflow-hidden px-6 py-16 md:px-12">
-            <div className="mx-auto w-full max-w-7xl">
+          <div className="flex h-full min-h-full items-center overflow-hidden px-6 pb-8 pt-[calc(var(--about-gnb-height)+16px)] md:px-12 md:pb-10">
+            <div className="mx-auto w-full max-w-[1328px]">
               <h2 className="sr-only">Our Metrics</h2>
 
-              <div className="mb-8 md:mb-10">
+              <div className="mb-6 mb-10 md:pl-[88px] 2xl:pl-0">
                 <MetricsTabs
                   tabs={metricGroups.map((group) => ({ label: group.tabLabel }))}
                   activeIndex={activeIndex}
@@ -499,7 +500,7 @@ export function MetricsSection() {
                 />
               </div>
 
-              <div className="relative mx-auto min-h-[570px] md:min-h-[690px]">
+              <div className="relative mx-auto min-h-[min(570px,calc(100svh-210px))] md:min-h-[min(690px,calc(100svh-190px))]">
                 {metricGroups.map((group, index) => (
                   <MetricCard
                     key={group.tabLabel}
@@ -519,12 +520,12 @@ export function MetricsSection() {
         </section>
 
         <section
-          className="relative flex h-full min-h-full items-center overflow-hidden bg-black px-6 pb-16 pt-32 md:px-12 md:pb-24 md:pt-40"
+          className="relative isolate flex h-full min-h-full items-center overflow-hidden bg-black px-6 pb-16 pt-[calc(var(--about-gnb-height)+32px)] md:px-12 md:pb-24 md:pt-[calc(var(--about-gnb-height)+56px)]"
           aria-hidden={activeScene < coreScene || activeScene > coreEndScene}
         >
-          <div className="pointer-events-none absolute inset-0">
+          <div className="pointer-events-none absolute inset-0 isolate bg-black">
             <video
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 z-0 h-full w-full object-cover"
               src={shouldLoadCoreVideo ? coreCapabilityVideo : undefined}
               autoPlay
               muted
@@ -532,12 +533,12 @@ export function MetricsSection() {
               playsInline
               preload={shouldLoadCoreVideo ? "auto" : "none"}
             />
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.75),rgba(0,0,0,0.40)_46%,rgba(0,0,0,0.70)),radial-gradient(circle_at_78%_42%,rgba(120,140,255,0.14),transparent_26%),linear-gradient(180deg,rgba(0,0,0,0.18),rgba(0,0,0,0.72))]" />
+            <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.75),rgba(0,0,0,0.40)_46%,rgba(0,0,0,0.70)),radial-gradient(circle_at_78%_42%,rgba(120,140,255,0.14),transparent_26%),linear-gradient(180deg,rgba(0,0,0,0.18),rgba(0,0,0,0.72))]" />
           </div>
 
-          <div className="relative z-10 mx-auto grid h-full w-full max-w-7xl content-center gap-20 xl:grid-cols-[335px_minmax(0,1fr)] xl:items-center xl:gap-10 2xl:max-w-[1280px] 2xl:grid-cols-[423px_minmax(0,1fr)] 2xl:gap-14">
+          <div className="relative z-20 mx-auto grid h-full w-full max-w-7xl content-center gap-20 xl:grid-cols-[335px_minmax(0,1fr)] xl:items-center xl:gap-10 2xl:max-w-[1280px] 2xl:grid-cols-[423px_minmax(0,1fr)] 2xl:gap-14">
           <div className="xl:flex xl:min-h-[525px] xl:flex-col xl:justify-center xl:border-r xl:border-white/18 xl:pr-10 2xl:min-h-[620px] 2xl:pr-12">
-            <h2 className="mb-10 text-[32px] font-semibold uppercase leading-tight tracking-tight md:text-[52px] xl:mb-16">
+            <h2 className="hidden mb-10 text-[32px] font-semibold uppercase leading-tight tracking-tight md:block md:text-[52px] xl:mb-16">
               CORE
               <br />
               CAPABILITY
@@ -611,7 +612,7 @@ export function MetricsSection() {
         </section>
 
         <section
-          className="relative flex h-full min-h-full items-center justify-center overflow-hidden bg-black px-6 py-24 text-center md:px-12 md:py-28"
+          className="relative flex h-full min-h-full items-center justify-center overflow-hidden bg-black px-6 pb-24 pt-[calc(var(--about-gnb-height)+48px)] text-center md:px-12 md:pb-28 md:pt-[calc(var(--about-gnb-height)+64px)]"
           aria-hidden={activeScene !== projectsScene}
         >
           <div className="pointer-events-none absolute inset-0">
