@@ -185,7 +185,7 @@
     position: absolute;
     top: 2713px;
     left: 469px;
-    font-size: 45px;
+    font-size: clamp(29px, 3.125vw, 45px);
     text-transform: uppercase;
 }
 .div4 {

@@ -5,6 +5,7 @@ body {
 
 :root,
 [data-project='zigzag-reverse'] {
+
   /* Fonts */
   --font-noto-sans: var(--font-family-noto-sans), 'Noto Sans', sans-serif;
   --font-noto-sans-kr: var(--font-family-noto-sans-kr), 'Noto Sans KR', sans-serif;
@@ -13,18 +14,18 @@ body {
   --font-noto-sans1: var(--font-family-noto-sans-display), 'Noto Sans Display', sans-serif;
 
   /* font sizes */
-  --font-size-mini: 15px;
-  --font-size-base: 16px;
-  --font-size-mid: 17px;
-  --font-size-lg: 18px;
-  --font-size-xl: 20px;
-  --font-size-2xl: 21px;
-  --font-size-5xl: 24px;
-  --font-size-6xl: 25px;
-  --font-size-7xl: 26px;
-  --font-size-10xl: 28.5px;
-  --font-size-11xl: 30px;
-  --font-size-16xl: 34px;
+  --font-size-mini: clamp(13px, 1.042vw, 15px);
+  --font-size-base: clamp(14px, 1.111vw, 16px);
+  --font-size-mid: clamp(14px, 1.181vw, 17px);
+  --font-size-lg: clamp(15px, 1.25vw, 18px);
+  --font-size-xl: clamp(16px, 1.389vw, 20px);
+  --font-size-2xl: clamp(17px, 1.458vw, 21px);
+  --font-size-5xl: clamp(19px, 1.667vw, 24px);
+  --font-size-6xl: clamp(20px, 1.736vw, 25px);
+  --font-size-7xl: clamp(21px, 1.806vw, 26px);
+  --font-size-10xl: clamp(23px, 1.979vw, 28.5px);
+  --font-size-11xl: clamp(24px, 2.083vw, 30px);
+  --font-size-16xl: clamp(27px, 2.361vw, 34px);
 
   /* Colors */
   --color-crimson: #ef4444;
@@ -69,3 +70,4 @@ body {
   --br-79xl: 98px;
   --br-41xl: 60px;
 }
+

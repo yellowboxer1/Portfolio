@@ -243,7 +243,7 @@
 }
 
 .researchChartValue {
-  font-size: 16px;
+  font-size: clamp(14px, 1.111vw, 16px);
   line-height: 1.2;
   color: var(--color-gray-100);
   font-family: var(--font-noto-sans);
@@ -288,7 +288,7 @@
 }
 
 .researchChartLabel {
-  font-size: 16px;
+  font-size: clamp(14px, 1.111vw, 16px);
   line-height: 1.35;
   font-family: var(--font-noto-sans-kr);
   color: var(--color-gray-100);
@@ -331,7 +331,7 @@
 }
 
 .researchReasonIndex {
-  font-size: 14px;
+  font-size: clamp(12px, 0.972vw, 14px);
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.45);
   font-family: var(--font-noto-sans);
@@ -383,7 +383,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-size: 13px;
+  font-size: clamp(12px, 0.903vw, 13px);
   line-height: 1;
   color: rgba(255, 255, 255, 0.65);
   font-family: var(--font-noto-sans);
@@ -420,7 +420,7 @@
   position: absolute;
   right: 5.5%;
   bottom: 28%;
-  font-size: 14px;
+  font-size: clamp(12px, 0.972vw, 14px);
   line-height: 1.4;
   color: #fff;
   font-family: var(--font-noto-sans-kr);
@@ -487,7 +487,7 @@
 .researchChurnRank,
 .researchChurnName,
 .researchChurnCount {
-  font-size: 16px;
+  font-size: clamp(14px, 1.111vw, 16px);
   line-height: 1.6;
   font-family: var(--font-noto-sans-kr);
   color: #fff;
@@ -506,7 +506,7 @@
   border-radius: 999px;
   background: var(--color-mistyrose);
   color: var(--color-crimson);
-  font-size: 15px;
+  font-size: clamp(13px, 1.042vw, 15px);
   line-height: 1.3;
   font-family: var(--font-noto-sans);
   font-weight: 500;
@@ -519,7 +519,7 @@
 
 .researchChurnNote {
   margin: 24px 0 0;
-  font-size: 14px;
+  font-size: clamp(12px, 0.972vw, 14px);
   line-height: 1.7;
   color: var(--color-gray-100);
   font-family: var(--font-noto-sans-kr);
@@ -634,7 +634,7 @@
   }
 
   .researchGraphDate {
-    font-size: 13px;
+    font-size: clamp(12px, 0.903vw, 13px);
   }
 
   .researchChurnHeaderIcon {
@@ -1420,12 +1420,12 @@
   }
 
   .b6 {
-    font-size: 30px;
+    font-size: clamp(22px, 2.083vw, 30px);
     letter-spacing: -0.033em;
   }
 
   .group {
-    font-size: 22px;
+    font-size: clamp(18px, 1.528vw, 22px);
     gap: 58px;
   }
 }
@@ -1489,7 +1489,7 @@
     top: 150px;
     left: 92px;
     right: 92px;
-    font-size: 32px;
+    font-size: clamp(23px, 2.222vw, 32px);
     line-height: 1.3;
     word-break: keep-all;
   }
@@ -1557,7 +1557,7 @@
 
   .tabletPage .chartLabel,
   .tabletPage .chartValue {
-    font-size: 16px;
+    font-size: clamp(14px, 1.111vw, 16px);
   }
 
   .tabletPage .page1RightHeader {
@@ -1568,7 +1568,7 @@
   }
 
   .tabletPage .b6 {
-    font-size: 32px;
+    font-size: clamp(23px, 2.222vw, 32px);
   }
 
   .tabletPage .reasonSection {
@@ -1591,7 +1591,7 @@
     width: 100%;
     max-width: 520px;
     margin: 0 auto;
-    font-size: 24px;
+    font-size: clamp(19px, 1.667vw, 24px);
     gap: 34px;
     align-items: center;
     text-align: center;
@@ -1679,7 +1679,7 @@
     top: -230px;
     margin-top: -200px;
     margin-left: min(64vw, 724px);
-    font-size: 16px;
+    font-size: clamp(14px, 1.111vw, 16px);
   }
 
   .tabletPage .child1 {
@@ -1696,7 +1696,7 @@
   .tabletPage .b15 {
     position: relative;
     margin: 0 0 34px 0;
-    font-size: 32px;
+    font-size: clamp(23px, 2.222vw, 32px);
     letter-spacing: -0.03em;
     text-align: center;
   }

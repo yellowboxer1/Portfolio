@@ -11,7 +11,7 @@
     position: absolute;
     top: 159px;
     left: 106px;
-    font-size: 29px;
+    font-size: clamp(23px, 2.014vw, 29px);
     letter-spacing: -0.03em;
     font-weight: 600;
     font-family: var(--font-noto-sans);
@@ -26,7 +26,7 @@
     position: absolute;
     top: 248px;
     left: 106px;
-    font-size: 35px;
+    font-size: clamp(25px, 2.431vw, 35px);
     font-family: var(--font-noto-sans-kr);
     font-weight: 600;
     letter-spacing: -0.03em;
@@ -42,7 +42,7 @@
     position: absolute;
     top: 313px;
     left: 111px;
-    font-size: 18px;
+    font-size: clamp(15px, 1.25vw, 18px);
     letter-spacing: -0.03em;
     line-height: 34px;
     font-family: var(--font-noto-sans);
@@ -70,7 +70,7 @@
     width: 561px;
     height: 1407.2px;
     text-align: center;
-    font-size: 60px;
+    font-size: clamp(36px, 4.167vw, 60px);
     color: var(--color-violet);
     font-family: var(--font-noto-sans);
 }
@@ -150,7 +150,7 @@
 .sectionLabel {
     position: relative;
     display: block;
-    font-size: 28.5px;
+    font-size: clamp(22px, 1.979vw, 28.5px);
     line-height: 38px;
     letter-spacing: -0.03em;
     font-family: var(--font-noto-sans);
@@ -160,7 +160,7 @@
 
 .sectionTitle {
     margin: 0 0 28px;
-    font-size: 32px;
+    font-size: clamp(23px, 2.222vw, 32px);
     line-height: 1.4;
     letter-spacing: -0.03em;
     font-family: var(--font-noto-sans-kr);
@@ -184,12 +184,14 @@
 }
 
 .sectionDescription {
-    font-size: 18px;
+    font-size: clamp(15px, 1.25vw, 18px);
     line-height: 34px;
     letter-spacing: -0.03em;
     font-family: var(--font-noto-sans-kr);
     font-weight: 350;
     color: rgba(255, 255, 255, 0.92);
+    word-break: keep-all;
+
 }
 
 .sectionDescription p {
@@ -260,5 +262,14 @@
         max-width: 604px;
         font-size: clamp(15px, calc(0.6vw + 13px), 19px);
         line-height: clamp(28px, calc(0.9vw + 25px), 34px);
+    }
+
+    .personaStageSection {
+        width: calc(100% + 50px);
+        margin-left: -50px;
+    }
+
+    .needs {
+        transform: translateX(150px);
     }
 }

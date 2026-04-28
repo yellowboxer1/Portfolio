@@ -171,7 +171,7 @@
     width: 642px;
     height: 336px;
     text-align: right;
-    font-size: 18px;
+    font-size: clamp(15px, 1.25vw, 18px);
     color: var(--color-white);
     font-weight: 350;
 }

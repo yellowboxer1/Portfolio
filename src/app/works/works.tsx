@@ -39,7 +39,7 @@ const portfolioItems: PortfolioItem[] = [
     category: "AI Mobility",
     role: "Founder · Lead Planner",
     meta: "2026.01ㅣ2천만 원",
-    filter: "개인 프로젝트",
+    filter: "B2B",
     isReady: false,
   },
   {

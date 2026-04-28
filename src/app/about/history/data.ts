@@ -37,8 +37,8 @@ export const HISTORY_ENTRIES: HistoryEntry[] = [
       "농어촌 지역개발 프로젝트를 총괄하며 사업 제안과 전략 설계를 수행했습니다. <br/>사업 선정으로 국비 62억 원 규모 프로젝트를 수주하며 첫 대형 성과를 만들었습니다.",
     mPoster: "",
     pcPoster: "",
-    videoWebm: undefined,
-    videoMp4: "/screen/up.webm",
+    videoWebm: "/screen/up.webm",
+    videoMp4: "/screen/up.mp4",
     videoWidthPercent: 84,
     videoHeightPercent: 84,
     videoAspectRatio: 16 / 9,
@@ -61,7 +61,7 @@ export const HISTORY_ENTRIES: HistoryEntry[] = [
   },
   {
     year: "2023",
-    title: "스마트빌리지 사업 수주 · 장관상 수상",
+    title: "스마트빌리지 사업 수주 ·<br/>장관상 수상",
     description:
       "스마트빌리지 보급 및 확산 사업 제안과 PM을 맡았습니다. <br/>주관기관 기준 연 15억 규모 사업비를 확보했고, 우수사례로 선정되어 장관상을 수상했습니다.",
     mPoster: "",
@@ -76,7 +76,7 @@ export const HISTORY_ENTRIES: HistoryEntry[] = [
   },
   {
     year: "2023",
-    title: "30억 규모 사업 수주 · 매출 150% 성장 · 흑자 전환",
+    title: "30억 규모 사업 수주 ·<br/>매출 150% 성장 · 흑자 전환",
     description:
       "재직 중 5건 이상의 프로젝트를 수주하며 연간 30억 규모 사업 성과를 만들었고, 근무 기간 내 매출 150% 성장과 영업이익 최초 흑자 전환을 견인했습니다.",
     mPoster: "",
@@ -90,13 +90,13 @@ export const HISTORY_ENTRIES: HistoryEntry[] = [
   },
   {
     year: "2024",
-    title: "미래교육 플랫폼 PM · 혁신융합대학 운영",
+    title: "미래교육 플랫폼 PM ·<br/>혁신융합대학 운영",
     description:
       "엔에스데블에서 바이오헬스 COSS와 HUSS 프로젝트를 운영했습니다. <br/>미래교육 플랫폼 사업 관리와 운영, 신규 제안까지 맡으며 교육·공공 도메인 PM 경험을 확장했습니다.",
       mPoster: "",
       pcPoster: "",
-      videoWebm: undefined,
-      videoMp4: "/screen/etc.webm",
+      videoWebm: "/screen/etc.webm",
+      videoMp4: "/screen/etc.mp4",
       videoWidthPercent: 100,
       videoHeightPercent: 100,
       videoAspectRatio: 16 / 9,
@@ -104,7 +104,7 @@ export const HISTORY_ENTRIES: HistoryEntry[] = [
   },
   {
     year: "2025",
-    title: "가치가개 런칭 · 부산광역시장상 수상",
+    title: "가치가개 런칭 ·<br/>부산광역시장상 수상",
     description:
       "AI 보행보조 서비스 '가치가개'를 런칭하며 비즈니스 전반에 대한 창업가적 인사이트를 확보했습니다. <br/> 예비창업패키지를 통해 모델의 실효성을 검증했으며, 그 성과를 인정받아 시장상을 수상했습니다.",
       mPoster: "",

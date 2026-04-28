@@ -1,4 +1,5 @@
-.journeyMapChild {
+.journeyMapChild,
+.desktopCardScroll {
     position: absolute;
     top: 420px;
     left: 96px;
@@ -9,6 +10,222 @@
     width: 1751px;
     height: 900px;
 }
+
+.desktopCardScroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.28) rgba(255, 255, 255, 0.08);
+}
+
+.desktopCardScroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.desktopCardScroll::-webkit-scrollbar-track {
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.desktopCardScroll::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.28);
+}
+
+.desktopCardCanvas {
+    position: relative;
+    width: 1751px;
+    min-width: 1751px;
+    height: 900px;
+}
+
+.desktopGridShell {
+    position: absolute;
+    top: 420px;
+    left: 96px;
+    width: min(1751px, calc(100vw - 168px));
+    height: 900px;
+    box-sizing: border-box;
+    border-radius: 30px;
+    background-color: rgba(22, 22, 22, 0.8);
+    border: 2px solid #4f4f4f;
+    padding: 28px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.28) rgba(255, 255, 255, 0.08);
+}
+
+.desktopGridShell::-webkit-scrollbar {
+    height: 6px;
+}
+
+.desktopGridShell::-webkit-scrollbar-track {
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.desktopGridShell::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.28);
+}
+
+.desktopGridTable {
+    display: grid;
+    grid-template-columns: repeat(18, minmax(0, 1fr));
+    grid-template-rows: 112px 158px 158px 243px 168px;
+    width: 1692px;
+    min-width: 1692px;
+    height: 839px;
+    color: var(--color-white);
+    font-family: var(--font-noto-sans-kr);
+    text-align: center;
+}
+
+.desktopGridTitle,
+.desktopGridEmotionSpace,
+.desktopStageGrid,
+.desktopEmotionLabels,
+.desktopEmotionGraphArea {
+    box-sizing: border-box;
+}
+
+.desktopGridTitle,
+.desktopGridEmotionSpace,
+.desktopStageGrid {
+    border-bottom: 1px solid var(--color-darkgray);
+}
+
+.desktopGridTitle {
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+    padding-left: 29px;
+    text-align: left;
+    font-size: var(--font-size-10xl);
+    line-height: 34px;
+    letter-spacing: -0.03em;
+    font-family: var(--font-noto-sans);
+    font-weight: 600;
+}
+
+.desktopGridTitleAccent {
+    color: var(--color-violet);
+}
+
+.desktopGridEmotionSpace {
+    grid-column: span 1;
+    border-right: 1px solid var(--color-darkgray);
+}
+
+.desktopStageGrid {
+    grid-column: span 15;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.desktopStageGrid .desktopGridCell {
+    border-right: 1px solid var(--color-darkgray);
+}
+
+.desktopStageGrid .desktopGridCell:last-child {
+    border-right: 0;
+}
+
+.desktopGridCell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 0;
+    font-size: 19px;
+    line-height: 34px;
+    letter-spacing: -0.03em;
+    word-break: keep-all;
+}
+
+.desktopGridCell .p {
+    white-space: nowrap;
+}
+
+.desktopGridTitle.desktopGridCell {
+    font-size: var(--font-size-10xl);
+}
+
+.desktopGridHeader {
+    font-size: var(--font-size-10xl);
+    line-height: 34px;
+    font-weight: 500;
+}
+
+.desktopEmotionLabels {
+    grid-column: span 1;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    align-items: center;
+    border-right: 1px solid var(--color-darkgray);
+    border-bottom: 1px solid var(--color-darkgray);
+    font-size: 19px;
+    line-height: 34px;
+    letter-spacing: -0.03em;
+}
+
+.desktopEmotionLabels > div {
+    display: grid;
+    align-content: center;
+    justify-items: center;
+}
+
+.desktopEmotionEmoji {
+    font-size: var(--font-size-11xl);
+    line-height: 1;
+    font-family: var(--font-inter);
+}
+
+.desktopEmotionGraphArea {
+    grid-column: span 15;
+    position: relative;
+    overflow: hidden;
+}
+
+.desktopEmotionLine {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    border-top: 1px dashed var(--color-darkgray);
+}
+
+.desktopEmotionLine:nth-child(1) {
+    top: 33.333%;
+}
+
+.desktopEmotionLine:nth-child(2) {
+    top: 66.666%;
+}
+
+.desktopEmotionLine:nth-child(3) {
+    bottom: 0;
+    border-top-style: solid;
+}
+
+.desktopEmotionGraph {
+    position: absolute;
+    left: 10%;
+    bottom: 0;
+    width: 80%;
+    max-width: none;
+    height: auto;
+    animation: journeyFloat 1.5s ease-in-out infinite;
+    will-change: transform;
+}
+
+.desktopGridTable > :nth-last-child(-n + 3) {
+    border-bottom: 0;
+}
+
 .journeyMapItem {
     position: absolute;
     top: 159px;
@@ -35,7 +252,7 @@
     position: absolute;
     top: 248px;
     left: 106px;
-    font-size: 35px;
+    font-size: clamp(25px, 2.431vw, 35px);
     color: var(--color-white);
     font-family: var(--font-noto-sans-kr);
     font-weight: 600;
@@ -46,7 +263,7 @@
     position: absolute;
     top: 313px;
     left: 106px;
-    font-size: 18px;
+    font-size: clamp(15px, 1.25vw, 18px);
     letter-spacing: -0.03em;
     font-weight: 350;
     line-height: 34px;
@@ -54,8 +271,8 @@
 }
 .journeyMapInner {
     position: absolute;
-    top: 441px;
-    left: 124px;
+    top: 21px;
+    left: 28px;
     width: 1692px;
     height: 112px;
 }
@@ -64,22 +281,22 @@
 }
 .div {
     position: absolute;
-    top: 1149px;
-    left: 436px;
+    top: 729px;
+    left: 340px;
     letter-spacing: -0.03em;
     line-height: 34px;
 }
 .uiUx {
     position: absolute;
-    top: 1132px;
-    left: 980px;
+    top: 712px;
+    left: 884px;
     letter-spacing: -0.03em;
     line-height: 34px;
 }
 .div1 {
     position: absolute;
-    top: 1132px;
-    left: 716px;
+    top: 712px;
+    left: 620px;
     letter-spacing: -0.03em;
     line-height: 34px;
 }
@@ -518,16 +735,16 @@
 }
 .parent {
     position: absolute;
-    top: 446px;
-    left: 126px;
+    top: 26px;
+    left: 30px;
     width: 1692px;
     height: 838px;
     font-size: var(--font-size-10xl);
 }
 .groupIcon {
     position: absolute;
-    top: 959px;
-    left: 536px;
+    top: 539px;
+    left: 440px;
     width: 1152px;
     height: 157px;
     animation: journeyFloat 1.5s ease-in-out infinite;
@@ -555,22 +772,22 @@
 }
 .group {
     position: absolute;
-    top: 879px;
-    left: 322px;
+    top: 459px;
+    left: 226px;
     width: 50px;
     height: 74px;
 }
 .container {
     position: absolute;
-    top: 957px;
-    left: 322px;
+    top: 537px;
+    left: 226px;
     width: 50px;
     height: 74px;
 }
 .groupDiv {
     position: absolute;
-    top: 1034px;
-    left: 322px;
+    top: 614px;
+    left: 226px;
     width: 50px;
     height: 74px;
 }
@@ -584,6 +801,373 @@
     font-size: var(--font-size-xl);
     color: var(--color-white);
     font-family: var(--font-noto-sans-kr);
+}
+
+.tabletShell,
+.mobileShell {
+    width: 100%;
+    background-color: #070503;
+    color: var(--color-white);
+}
+
+.responsiveInner {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.sectionHeader {
+    max-width: 760px;
+    margin-bottom: 56px;
+}
+
+.sectionLabelRow {
+    position: relative;
+    display: inline-block;
+    min-height: 38px;
+    margin-bottom: 30px;
+}
+
+.sectionDot {
+    position: absolute;
+    top: 0;
+    left: -14px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: var(--color-violet);
+}
+
+.sectionLabel {
+    position: relative;
+    display: block;
+    font-size: clamp(22px, 1.979vw, 28.5px);
+    line-height: 38px;
+    letter-spacing: -0.03em;
+    font-family: var(--font-noto-sans);
+    font-weight: 600;
+}
+
+.sectionTitle {
+    margin: 0 0 28px;
+    font-size: clamp(23px, 2.222vw, 32px);
+    line-height: 1.4;
+    letter-spacing: -0.03em;
+    font-family: var(--font-noto-sans-kr);
+    font-weight: 600;
+    color: var(--color-white);
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.sectionTitleAccent {
+    color: var(--color-violet);
+}
+
+.sectionDescription {
+    margin: 0;
+    font-size: clamp(15px, 1.25vw, 18px);
+    line-height: 34px;
+    letter-spacing: -0.03em;
+    font-family: var(--font-noto-sans-kr);
+    font-weight: 350;
+    color: rgba(255, 255, 255, 0.92);
+    word-break: keep-all;
+}
+
+.journeyTableShell {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 30px;
+    background: rgba(22, 22, 22, 0.8);
+    border: 2px solid #4f4f4f;
+    padding: 26px 28px;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.desktopJourneyTableShell {
+    position: absolute;
+    top: 420px;
+    left: 96px;
+    width: min(1751px, calc(100vw - 192px));
+    height: 900px;
+}
+
+.desktopJourneyTableShell .journeyTableScroll {
+    height: 100%;
+}
+
+.journeyTableScroll {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.28) rgba(255, 255, 255, 0.08);
+}
+
+.journeyTableScroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.journeyTableScroll::-webkit-scrollbar-track {
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.journeyTableScroll::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.28);
+}
+
+.journeyTable {
+    --emotion-row-height: 78px;
+
+    width: 1240px;
+    min-width: 1240px;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    color: var(--color-white);
+    text-align: center;
+    font-family: var(--font-noto-sans-kr);
+    word-break: keep-all;
+}
+
+.desktopJourneyTableShell .journeyTable {
+    width: 1692px;
+    min-width: 1692px;
+}
+
+.desktopJourneyTableShell .journeyTable th,
+.desktopJourneyTableShell .journeyTable td {
+    height: 158px;
+}
+
+.desktopJourneyTableShell .journeyTable thead th {
+    height: 112px;
+}
+
+.desktopJourneyTableShell .emotionBandRow th,
+.desktopJourneyTableShell .emotionBandRow td {
+    height: 81px;
+}
+
+.desktopJourneyTableShell .labelCol {
+    width: 11%;
+}
+
+.desktopJourneyTableShell .emotionLabelCol {
+    width: 5.65%;
+}
+
+.desktopJourneyTableShell .stageCol {
+    width: 16.67%;
+}
+
+.journeyTable th,
+.journeyTable td {
+    height: 136px;
+    box-sizing: border-box;
+    border-right: 1px solid var(--color-darkgray);
+    border-bottom: 1px solid var(--color-darkgray);
+    padding: 24px 18px;
+    vertical-align: middle;
+}
+
+.labelCol {
+    width: 10.5%;
+}
+
+.emotionLabelCol {
+    width: 6.2%;
+}
+
+.stageCol {
+    width: 16.66%;
+}
+
+.journeyTable tr > *:last-child {
+    border-right: 0;
+}
+
+.journeyTable tbody tr:last-child > * {
+    border-bottom: 0;
+}
+
+.journeyTable th {
+    font-size: clamp(16px, 1.8vw, 22px);
+    line-height: 1.45;
+    letter-spacing: -0.03em;
+    font-family: var(--font-noto-sans);
+    font-weight: 600;
+}
+
+.journeyTable td {
+    font-size: clamp(13px, 1.35vw, 18px);
+    line-height: 1.75;
+    letter-spacing: -0.03em;
+    overflow-wrap: break-word;
+}
+
+.rowHeading,
+.rowHeadingAccent {
+    text-align: left;
+    color: var(--color-white);
+}
+
+.rowHeadingAccent {
+    color: var(--color-violet);
+}
+
+.cellAccent {
+    color: var(--color-violet);
+}
+
+.emotionBandRow th,
+.emotionBandRow td {
+    height: var(--emotion-row-height);
+    border-bottom-style: dashed;
+}
+
+.emotionBandRow > .rowHeading {
+    border-right: 0;
+}
+
+.emotionBandRow:nth-of-type(5) > th,
+.emotionBandRow:nth-of-type(5) > td {
+    border-bottom-style: solid;
+}
+
+.emotionBandRow:nth-of-type(3) > .rowHeading {
+    border-bottom-style: solid;
+}
+
+.emotionBandRow > .emotionLabel {
+    border-bottom-color: transparent;
+}
+
+.emotionBandRow:nth-of-type(5) > .emotionLabel {
+    border-bottom-color: var(--color-darkgray);
+}
+
+.emotionLabel {
+    color: var(--color-white);
+    text-align: center;
+}
+
+.emotionLabel span {
+    display: block;
+}
+
+.emotionGraphBand {
+    position: relative;
+    padding: 0;
+    overflow: visible;
+}
+
+.emotionGraph {
+    position: absolute;
+    left: 44px;
+    bottom: calc(var(--emotion-row-height) * -2);
+    z-index: 2;
+    display: block;
+    width: calc(100% - 88px);
+    min-width: 720px;
+    max-width: 960px;
+    height: auto;
+    animation: journeyFloat 1.5s ease-in-out infinite;
+    will-change: transform;
+    pointer-events: none;
+}
+
+@media (max-width: 1330px) and (min-width: 768px) {
+    .responsiveInner {
+        padding: 128px 92px 100px 106px;
+    }
+
+    .journeyTableShell {
+        margin-top: 10px;
+    }
+
+    .journeyTable {
+        --emotion-row-height: 76px;
+    }
+
+    .journeyTable thead th {
+        height: 104px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .responsiveInner {
+        padding: 129px 16px 100px 30px;
+    }
+
+    .sectionHeader {
+        max-width: 604px;
+        margin-bottom: 32px;
+    }
+
+    .sectionLabelRow {
+        min-height: 38px;
+    }
+
+    .sectionTitle {
+        font-size: clamp(24px, calc(0.8vw + 21px), 28.5px);
+        line-height: 1.45;
+    }
+
+    .sectionDescription {
+        max-width: 604px;
+        font-size: clamp(15px, calc(0.6vw + 13px), 19px);
+        line-height: clamp(28px, calc(0.9vw + 25px), 34px);
+    }
+
+    .journeyTableShell {
+        border-radius: 24px;
+        padding: 18px;
+    }
+
+    .journeyTable {
+        --emotion-row-height: 72px;
+
+        width: 1120px;
+        min-width: 1120px;
+    }
+
+    .journeyTable th,
+    .journeyTable td {
+        height: 132px;
+        padding: 20px 14px;
+    }
+
+    .journeyTable thead th {
+        height: 88px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .emotionBandRow th,
+    .emotionBandRow td {
+        height: var(--emotion-row-height);
+    }
+
+    .emotionBandRow .rowHeading {
+        border-right: 0;
+      }
+
+    .emotionGraph {
+        left: 32px;
+        bottom: calc(var(--emotion-row-height) * -2);
+        width: calc(100% - 64px);
+        min-width: 680px;
+    }
 }
 
 @keyframes journeyFloat {

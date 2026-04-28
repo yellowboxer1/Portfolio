@@ -3,12 +3,18 @@
 import styles from './styles/DesignGuide.module.css';
 import { withBasePath } from '../lib/asset';
 
-const DesignGuide1 = withBasePath('/portfolio/zigzag-reverse/assets/image/Design Guide@3x.png');
+const guide = withBasePath('/portfolio/zigzag-reverse/assets/image/Guide@3x.png');
+const icons = withBasePath('/portfolio/zigzag-reverse/assets/image/icons@3x.png');
 
 const DesignGuide = () => {
     return (
           <div className={styles.designGuide}>
-                <img className={styles.designGuideIcon} src={DesignGuide1} />
+                <header className={styles.guideHeader}>
+                    <span className={styles.guideDot} />
+                    <span className={styles.guideTitle}>Design Guide</span>
+                </header>
+                <img className={styles.guideIcon} src={guide} />
+                <img className={styles.iconsIcon} src={icons} />
           </div>);
 };
 

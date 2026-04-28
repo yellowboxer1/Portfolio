@@ -18,7 +18,7 @@
     position: absolute;
     top: 229px;
     left: 111px;
-    font-size: 18px;
+    font-size: clamp(15px, 1.25vw, 18px);
     letter-spacing: -0.03em;
     font-family: var(--font-noto-sans-kr);
     font-weight: 350;
@@ -41,14 +41,14 @@
 }
 .ellipseGroup {
     position: absolute;
-    top: 352px;
-    left: 1104px;
+    color: var(--color-deeppink);
+    top: 10px;
+    left: 1027px;
     width: 658px;
     height: 220px;
-    color: var(--color-white);
     font-family: var(--font-noto-sans-kr);
 }
-.adobeExpressFile51Parent {
+.problemVisualCanvas {
     position: absolute;
     top: 342px;
     left: 77px;
@@ -56,13 +56,16 @@
     height: 318px;
     font-size: var(--font-size-11xl);
     color: var(--color-deeppink);
+    transform-origin: top left;
 }
 .problemSolutionItem {
     position: absolute;
-    top: 452px;
-    left: 931px;
+    top: 110px;
+    left: 854px;
     width: 176.5px;
     height: 25px;
+    object-fit: cover;
+    object-position: center;
 }
 .problemSolution {
     width: 100%;
@@ -71,7 +74,235 @@
     height: 703px;
     overflow: hidden;
     text-align: left;
-    font-size: 29px;
+    font-size: clamp(23px, 2.014vw, 29px);
     color: var(--color-white);
     font-family: var(--font-noto-sans);
+}
+
+@media (max-width: 1919px) and (min-width: 1331px) {
+    .problemVisualCanvas {
+        width: calc(100vw - 154px);
+        max-width: 1688px;
+    }
+
+    .ellipseGroup {
+        left: max(854px, calc(100% - 661px));
+    }
+
+    .problemSolutionItem {
+        width: clamp(45px, calc(100% - 1511px), 176.5px);
+    }
+}
+
+@media (max-width: 1710px) and (min-width: 1331px) {
+    .problemVisualCanvas {
+        width: 1556px;
+    }
+}
+
+@media (max-width: 1640px) and (min-width: 1331px) {
+    .problemVisualCanvas {
+        transform: scale(0.94);
+    }
+}
+
+@media (max-width: 1560px) and (min-width: 1331px) {
+    .problemVisualCanvas {
+        transform: scale(0.88);
+    }
+}
+
+@media (max-width: 1480px) and (min-width: 1331px) {
+    .problemVisualCanvas {
+        transform: scale(0.82);
+    }
+}
+
+@media (max-width: 1400px) and (min-width: 1331px) {
+    .problemVisualCanvas {
+        transform: scale(0.76);
+    }
+}
+
+@media (max-width: 1330px) and (min-width: 768px) {
+    .problemSolution {
+        height: auto;
+        padding: 128px 92px 100px 106px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .problemSolutionChild {
+        top: 126px;
+        left: 92px;
+    }
+
+    .problemSolution1 {
+        position: relative;
+        top: auto;
+        left: auto;
+        display: block;
+        margin-bottom: 30px;
+        line-height: 38px;
+    }
+
+    .div {
+        position: relative;
+        top: auto;
+        left: auto;
+        max-width: min(680px, calc(100vw - 212px));
+        margin-bottom: 56px;
+    }
+
+    .problemVisualCanvas {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        aspect-ratio: 1359 / 318;
+        height: auto;
+        box-sizing: border-box;
+        overflow: hidden;
+        transform: none;
+    }
+
+    .adobeExpressFile51 {
+        display: none;
+    }
+
+    .ellipseParent {
+        top: 3.15%;
+        left: 0;
+        width: 48.42%;
+        height: auto;
+    }
+
+    .ellipseGroup {
+        top: 3.15%;
+        left: 51.58%;
+        width: 48.42%;
+        height: auto;
+    }
+
+    .problemSolutionItem {
+        top: 34.59%;
+        left: 48.34%;
+        width: 3.31%;
+        height: 7.86%;
+    }
+}
+
+@media (max-width: 1100px) and (min-width: 768px) {
+    .problemVisualCanvas {
+        transform: none;
+    }
+}
+
+@media (max-width: 900px) and (min-width: 768px) {
+    .problemVisualCanvas {
+        transform: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .problemSolution {
+        height: auto;
+        padding: 129px 16px 100px 30px;
+        box-sizing: border-box;
+        font-size: clamp(22px, 1.979vw, 28.5px);
+        overflow: hidden;
+    }
+
+    .problemSolutionChild {
+        top: 129px;
+        left: 16px;
+        width: 38px;
+        height: 38px;
+    }
+
+    .problemSolution1 {
+        position: relative;
+        top: auto;
+        left: auto;
+        display: block;
+        margin-bottom: 30px;
+        font-size: clamp(22px, 1.979vw, 28.5px);
+        line-height: 38px;
+    }
+
+    .div {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: calc(100vw - 64px);
+        margin-bottom: 32px;
+        font-size: clamp(15px, calc(0.8vw + 13px), 18px);
+        line-height: 1.8;
+        word-break: keep-all;
+    }
+
+    .problemVisualCanvas {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        display: grid;
+        grid-template-rows: auto auto auto auto;
+        justify-items: center;
+        align-items: center;
+        row-gap: 0;
+        height: auto;
+        box-sizing: border-box;
+        overflow: visible;
+        font-size: clamp(20px, 6vw, 28px);
+    }
+
+    .adobeExpressFile51 {
+        position: relative;
+        grid-row: 1;
+        display: block;
+        top: 0;
+        left: auto;
+        width: clamp(118px, 34vw, 156px);
+        height: auto;
+        transform: none;
+        z-index: 1;
+        margin: 0;
+    }
+
+    .ellipseParent,
+    .ellipseGroup {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: clamp(260px, 78vw, 420px);
+        height: auto;
+        transform: none;
+        z-index: 2;
+    }
+
+    .ellipseParent {
+        grid-row: 2;
+        margin-top: clamp(-30px, -6vw, -16px);
+    }
+
+    .ellipseGroup {
+        grid-row: 4;
+        margin: 0;
+    }
+
+    .problemSolutionItem {
+        position: relative;
+        grid-row: 3;
+        top: auto;
+        left: auto;
+        width: 100px;
+        height: 25px;
+        rotate: 90deg;
+        scale: clamp(0.75, 20vw / 100, 1.08);
+        transform: none;
+        transform-origin: center;
+        z-index: 3;
+        margin: 37.5px 0;
+    }
 }

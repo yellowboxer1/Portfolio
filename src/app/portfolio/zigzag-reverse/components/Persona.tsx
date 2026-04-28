@@ -106,7 +106,7 @@ function PersonaVisualStage({ scale }: { scale: number }) {
 }
 
 function ResponsivePersona({ mobile }: { mobile?: boolean }) {
-  const scale = useViewportScale(1920);
+  const scale = useViewportScale(mobile ? 1580 : 1920);
 
   return (
     <div className={mobile ? styles.mobileShell : styles.tabletShell}>

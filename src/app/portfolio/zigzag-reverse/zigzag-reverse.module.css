@@ -2,9 +2,16 @@
   background: #070503;
   color: #eee;
   isolation: isolate;
-  overflow-x: visible;
-  width: 100%;
+  overflow-x: hidden;
+  width: 100vw;
+  max-width: 100vw;
   --zigzag-scale: 1;
+}
+
+@supports (overflow: clip) {
+  .pageScope {
+    overflow-x: clip;
+  }
 }
 
 .projectBackButton {
