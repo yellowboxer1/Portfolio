@@ -12,6 +12,7 @@ const Store = () => {
     		<div className={styles.store}>
       			<img className={styles.image325Icon} src={i325} />
       			<div className={styles.parent}>
+        				<img className={styles.storeSave} src={store2} />
         				<div className={styles.div}>
           					<p className={styles.p}>{`인기 스토어 랭킹과 사용자가 찜한 스토어를 한곳에서 확인하세요. `}</p>
           					<p className={styles.p}>맞춤형 추천과 아이템 모아보기로 더욱 효율적인 쇼핑 경험을 제공합니다.</p>
@@ -19,7 +20,6 @@ const Store = () => {
         				<div className={styles.div1}>03</div>
         				<img className={styles.store1Icon} src={store} />
       			</div>
-      			<img className={styles.storeSave} src={store2} />
     		</div>);
 };
 

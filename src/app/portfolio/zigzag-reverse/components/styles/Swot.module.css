@@ -1177,8 +1177,8 @@
   }
 
   .sectionDescription {
-    font-size: clamp(15px, 1.25vw, 18px);
-    line-height: 34px;
+    font-size: clamp(15px, 0.6vw + 13px, 16px);
+    line-height: 28px;
   }
 }
 
@@ -1220,8 +1220,8 @@
 
   .sectionDescription {
     max-width: 604px;
-    font-size: clamp(15px, calc(0.6vw + 13px), 19px);
-    line-height: clamp(28px, calc(0.9vw + 25px), 34px);
+    font-size: clamp(14px, calc(0.6vw + 12px), 15px);
+    line-height: 27px;
   }
 
   .tabletPositioningSection,

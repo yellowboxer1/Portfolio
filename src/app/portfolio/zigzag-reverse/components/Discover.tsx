@@ -3,6 +3,7 @@
 import styles from './styles/Discover.module.css';
 import { withBasePath } from '../lib/asset';
 import AutoPlayVideo from './AutoPlayVideo';
+import { CSSProperties, useEffect, useState } from 'react';
 
 const epick = withBasePath('/portfolio/zigzag-reverse/assets/image/epick@3x.png');
 const talkLounge = withBasePath('/portfolio/zigzag-reverse/assets/image/talk lounge@3x.png');
@@ -19,8 +20,27 @@ const video1 = withBasePath('/portfolio/zigzag-reverse/assets/video/detail.mp4')
 const video2 = withBasePath('/portfolio/zigzag-reverse/assets/video/size.mp4');
 
 const Discover = () => {
+	const [desktopScale, setDesktopScale] = useState(1);
+
+	useEffect(() => {
+		const updateScale = () => {
+			const width = window.innerWidth;
+			setDesktopScale(width < 1920 && width > 1331 ? width / 1920 : 1);
+		};
+
+		updateScale();
+		window.addEventListener('resize', updateScale);
+		return () => window.removeEventListener('resize', updateScale);
+	}, []);
+
+	const discoverStyle = {
+		'--discover-scale': desktopScale,
+		'--discover-height': `${5315 * desktopScale}px`,
+	} as CSSProperties;
+
   	return (
-    		<div className={styles.discover}>
+    		<div className={styles.discover} style={discoverStyle}>
+				<div className={styles.desktopDiscover}>
       			<div className={styles.discoverChild} />
       			<img className={styles.epick3x1Icon} src={epick} />
       			<img className={styles.detail1Icon} src={detail} />
@@ -28,13 +48,13 @@ const Discover = () => {
       			<img className={styles.imageFx101} src={image1} />
       			<div className={styles.discoverItem} />
       			<div className={styles.parent}>
+        				<div className={styles.div1}>04</div>
+      					<img className={styles.discoverAll3x1} src={discoverall} />
         				<div className={styles.div}>
           					<p className={styles.p}>{`다양한 상품 카테고리부터 개성 넘치는 스타일링 샷, 활발한 커뮤니티까지 한눈에 만나보세요. `}</p>
           					<p className={styles.p}>카테고리, 에픽, 톡라운지를 통해 패션의 모든 영역을 탐색할 수 있는 공간입니다.</p>
         				</div>
-        				<div className={styles.div1}>04</div>
       			</div>
-      			<img className={styles.discoverAll3x1} src={discoverall} />
       			<div className={styles.imageParent}>
         				<img className={styles.imageIcon} src={category} />
         				<div className={styles.image50} />
@@ -84,6 +104,7 @@ const Discover = () => {
             						<img className={styles.icon} src={frame} />
             						<div className={styles.image50} />
           					</div>
+				</div>
           					</div>);
         				};
         				

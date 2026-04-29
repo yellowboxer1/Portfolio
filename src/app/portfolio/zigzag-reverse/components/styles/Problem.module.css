@@ -236,8 +236,8 @@
         left: auto;
         width: calc(100vw - 64px);
         margin-bottom: 32px;
-        font-size: clamp(15px, calc(0.8vw + 13px), 18px);
-        line-height: 1.8;
+        font-size: clamp(14px, calc(0.6vw + 12px), 15px);
+        line-height: 27px;
         word-break: keep-all;
     }
 

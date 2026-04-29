@@ -80,8 +80,8 @@
 }
 .discoverAll3x1 {
     position: absolute;
-    top: 327px;
-    left: 1306px;
+    top: 74px;
+    left: 191px;
     width: 469.3px;
     height: 74px;
     object-fit: cover;
@@ -258,3 +258,558 @@
     font-family: var(--font-noto-sans-kr);
 }
 
+.desktopDiscover {
+    position: absolute;
+    inset: 0;
+}
+
+@media (max-width: 1919px) and (min-width: 1332px) {
+    .discover {
+        width: 100vw;
+        max-width: 100vw;
+        height: var(--discover-height);
+        overflow: hidden;
+    }
+
+    .desktopDiscover {
+        width: 1920px;
+        height: 5315px;
+        left: 0;
+        right: auto;
+        transform: scale(var(--discover-scale));
+        transform-origin: top left;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 1331px) {
+    .discover {
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        height: auto;
+        min-height: 1000px;
+        padding: 128px 92px 0 106px;
+        overflow: hidden;
+        background: #fff;
+        font-size: clamp(15px, 0.6vw + 13px, 16px);
+        color: var(--main);
+        --discover-padding-left: 106px;
+        --discover-padding-right: 92px;
+    }
+
+    .desktopDiscover {
+        display: contents;
+    }
+
+    .imageFx101 {
+        position: absolute;
+        inset: 0 auto auto 0;
+        z-index: 0;
+        width: 100%;
+        height: clamp(620px, 76vw, 920px);
+        object-fit: cover;
+        object-position: center top;
+    }
+
+    .discoverItem {
+        position: absolute;
+        inset: 0 auto auto 0;
+        z-index: 1;
+        width: 100%;
+        height: clamp(620px, 76vw, 920px);
+        background-color: rgba(0, 0, 0, 0.34);
+    }
+
+    .discoverChild {
+        display: none;
+    }
+
+    .parent {
+        position: relative;
+        top: auto;
+        left: auto;
+        z-index: 2;
+        order: 1;
+        display: grid;
+        box-sizing: border-box;
+        width: 100vw;
+        height: auto;
+        margin-left: calc(-1 * var(--discover-padding-left));
+        padding-right: var(--discover-padding-right);
+        padding-left: var(--discover-padding-left);
+        margin-bottom: clamp(72px, 9vw, 112px);
+        color: var(--color-white);
+        text-align: right;
+        font-size: clamp(15px, 0.6vw + 13px, 16px);
+    }
+
+    .div1 {
+        position: relative;
+        top: auto;
+        left: auto;
+        justify-self: end;
+        margin-bottom: 28px;
+        font-size: clamp(22px, 1.979vw, 28.5px);
+        line-height: 38px;
+    }
+
+    .discoverAll3x1 {
+        position: relative;
+        top: auto;
+        left: auto;
+        z-index: 2;
+        order: 2;
+        align-self: flex-end;
+        width: min(469px, 54vw);
+        height: auto;
+        justify-self: end;
+        margin: 0 0 clamp(26px, 3.2vw, 38px);
+    }
+
+    .div {
+        position: relative;
+        top: auto;
+        left: auto;
+        order: 3;
+        max-width: 720px;
+        justify-self: end;
+        line-height: 28px;
+        word-break: keep-all;
+    }
+
+    .imageParent,
+    .imageGroup,
+    .imageContainer {
+        position: relative;
+        top: auto;
+        left: auto;
+        z-index: 2;
+        width: var(--discover-phone-width, clamp(240px, 28vw, 360px));
+        height: auto;
+        aspect-ratio: 414 / 849;
+    }
+
+    .imageParent {
+        order: 3;
+        align-self: flex-start;
+        margin: 0 0 0 clamp(80px, 12vw, 170px);
+    }
+
+    .imageGroup {
+        order: 4;
+        align-self: flex-end;
+        margin: calc(-1 * clamp(250px, 32vw, 420px)) clamp(96px, 15vw, 210px) clamp(96px, 11vw, 150px) 0;
+    }
+
+    .imageContainer {
+        order: 11;
+        align-self: center;
+        margin-top: clamp(64px, 8vw, 96px);
+    }
+
+    .imageIcon,
+    .imageIcon1,
+    .image50,
+    .icon {
+        position: absolute;
+    }
+
+    .imageIcon {
+        top: 1.53%;
+        left: 3.14%;
+        width: 93.67%;
+        height: 97.06%;
+        border-radius: clamp(32px, 4vw, var(--br-41xl));
+    }
+
+    .imageIcon1,
+    .image50 {
+        top: 1.53%;
+        left: 4.35%;
+        width: 91.79%;
+        height: 97.06%;
+        border-radius: clamp(32px, 4vw, var(--br-41xl));
+    }
+
+    .icon {
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .epick3x1Icon,
+    .detail1Icon,
+    .talkLounge3x1 {
+        position: relative;
+        top: auto;
+        left: auto;
+        z-index: 2;
+        display: block;
+        width: min(384px, 32vw);
+        height: auto;
+        object-fit: contain;
+        box-shadow: 20px 20px 50px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .epick3x1Icon {
+        order: 5;
+        align-self: flex-start;
+        margin-left: clamp(120px, 18vw, 240px);
+    }
+
+    .detail1Icon {
+        order: 8;
+        align-self: flex-end;
+        margin-top: calc(-1 * clamp(320px, 40vw, 520px));
+        margin-right: clamp(80px, 13vw, 190px);
+    }
+
+    .talkLounge3x1 {
+        order: 7;
+        align-self: flex-start;
+        margin-top: clamp(96px, 12vw, 150px);
+        margin-left: clamp(120px, 18vw, 240px);
+    }
+
+    .discoverInner,
+    .vectorIcon,
+    .discoverChild1,
+    .groupIcon,
+    .discoverChild2,
+    .discoverChild3 {
+        display: none;
+    }
+
+    .epickMain,
+    .talkLounge,
+    .sizeRecommendation {
+        position: relative;
+        top: auto;
+        left: auto;
+        z-index: 2;
+        color: #222;
+        font-size: clamp(22px, 1.979vw, 28.5px);
+        line-height: 38px;
+        text-transform: uppercase;
+    }
+
+    .div2,
+    .div3,
+    .aiContainer {
+        position: relative;
+        top: auto;
+        left: auto;
+        z-index: 2;
+        color: var(--color-dimgray);
+        font-size: clamp(15px, 0.6vw + 13px, 16px);
+        line-height: 28px;
+        text-transform: uppercase;
+        word-break: keep-all;
+    }
+
+    .epickMain {
+        order: 6;
+        align-self: flex-start;
+        margin: clamp(32px, 5vw, 56px) 0 0 clamp(120px, 18vw, 240px);
+    }
+
+    .div2 {
+        order: 6;
+        align-self: flex-start;
+        margin: 12px 0 0 clamp(120px, 18vw, 240px);
+    }
+
+    .talkLounge {
+        order: 13;
+        align-self: flex-start;
+        margin: clamp(32px, 5vw, 56px) 0 0 clamp(120px, 18vw, 240px);
+    }
+
+    .div3 {
+        order: 14;
+        align-self: flex-start;
+        margin: 12px 0 0 clamp(120px, 18vw, 240px);
+    }
+
+    .sizeRecommendation {
+        order: 9;
+        align-self: flex-end;
+        margin: clamp(80px, 10vw, 130px) clamp(120px, 18vw, 240px) 0 0;
+    }
+
+    .aiContainer {
+        order: 10;
+        align-self: flex-end;
+        margin: 12px clamp(120px, 18vw, 240px) 0 0;
+    }
+}
+
+@media (max-width: 1331px) and (min-width: 768px) {
+    .discover {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, max-content));
+        justify-content: center;
+        align-items: start;
+        column-gap: clamp(48px, 8vw, 120px);
+        row-gap: 0;
+        padding: 128px 92px 0 106px;
+        --discover-phone-width: clamp(240px, 28vw, 360px);
+    }
+
+    .parent {
+        grid-column: 1 / -1;
+        justify-self: start;
+        width: 100vw;
+        margin-bottom: clamp(72px, 9vw, 112px);
+    }
+
+    .imageParent,
+    .imageGroup,
+    .imageContainer,
+    .epick3x1Icon,
+    .detail1Icon,
+    .talkLounge3x1,
+    .epickMain,
+    .div2,
+    .talkLounge,
+    .div3,
+    .sizeRecommendation,
+    .aiContainer {
+        align-self: start;
+        justify-self: center;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .imageParent {
+        grid-column: 1;
+        order: 3;
+        margin-top: clamp(90px, 13vw, 160px);
+    }
+
+    .imageGroup {
+        grid-column: 2;
+        order: 3;
+        z-index: 4;
+        margin-top: clamp(54px, 8vw, 96px);
+        margin-bottom: 0;
+    }
+
+    .epick3x1Icon {
+        grid-column: 1;
+        order: 4;
+        width: min(26.2vw, 320px);
+        margin-top: 100px;
+    }
+
+    .epickMain,
+    .div2 {
+        grid-column: 1;
+        justify-self: start;
+        width: min(26.2vw, 320px);
+    }
+
+    .epickMain {
+        order: 5;
+        margin-top: clamp(24px, 3.2vw, 36px);
+    }
+
+    .div2 {
+        order: 6;
+        margin-top: 12px;
+        font-size: clamp(14px, 0.6vw + 12px, 15px);
+        line-height: 28px;
+    }
+
+    .talkLounge3x1 {
+        grid-column: 1;
+        order: 12;
+        width: min(32vw, 384px);
+        margin-top: clamp(96px, 12vw, 150px);
+    }
+
+    .talkLounge,
+    .div3 {
+        grid-column: 1;
+        justify-self: start;
+        width: min(32vw, 384px);
+    }
+
+    .talkLounge {
+        order: 13;
+        margin-top: clamp(32px, 5vw, 56px);
+    }
+
+    .div3 {
+        order: 14;
+        margin-top: 12px;
+    }
+
+    .detail1Icon {
+        grid-column: 2;
+        order: 4;
+        z-index: 2;
+        width: min(26.2vw, 320px);
+        margin-top: calc(-1 * clamp(20px, 8vw, 100px));
+    }
+
+    .sizeRecommendation,
+    .aiContainer,
+    .imageContainer {
+        grid-column: 2;
+        width: min(32vw, 384px);
+    }
+
+    .sizeRecommendation {
+        order: 9;
+        justify-self: start;
+        margin-top: clamp(80px, 10vw, 130px);
+    }
+
+    .aiContainer {
+        order: 10;
+        justify-self: start;
+        margin-top: 12px;
+    }
+
+    .imageContainer {
+        order: 11;
+        width: var(--discover-phone-width);
+        margin-top: clamp(64px, 8vw, 96px);
+    }
+}
+
+@media (max-width: 767px) {
+    .discover {
+        padding: 129px 16px 0 30px;
+        font-size: clamp(14px, 0.6vw + 12px, 15px);
+        --discover-phone-width: min(64vw, 300px);
+        --discover-padding-left: 30px;
+        --discover-padding-right: 16px;
+    }
+
+    .imageFx101,
+    .discoverItem {
+        height: clamp(560px, 128vw, 760px);
+    }
+
+    .parent {
+        width: 100vw;
+        margin-bottom: 48px;
+        font-size: clamp(14px, 0.6vw + 12px, 15px);
+        text-align: right;
+    }
+
+    .div1 {
+        margin-bottom: 28px;
+    }
+
+    .discoverAll3x1 {
+        align-self: flex-end;
+        justify-self: end;
+        margin: 0 0 34px;
+    }
+
+    .div,
+    .div2,
+    .div3,
+    .aiContainer {
+        font-size: clamp(14px, 0.6vw + 12px, 15px);
+        line-height: 27px;
+    }
+
+    .imageParent,
+    .imageGroup,
+    .imageContainer,
+    .epick3x1Icon,
+    .detail1Icon,
+    .talkLounge3x1,
+    .epickMain,
+    .div2,
+    .talkLounge,
+    .div3,
+    .sizeRecommendation,
+    .aiContainer {
+        align-self: center;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .imageParent {
+        order: 3;
+        margin-top: 36px;
+    }
+
+    .epick3x1Icon {
+        order: 4;
+    }
+
+    .epickMain {
+        order: 5;
+    }
+
+    .div2 {
+        order: 6;
+    }
+
+    .imageGroup {
+        order: 7;
+        margin-top: 72px;
+        margin-bottom: 0;
+    }
+
+    .detail1Icon {
+        order: 8;
+        margin-top: 24px;
+    }
+
+    .sizeRecommendation {
+        order: 9;
+    }
+
+    .aiContainer {
+        order: 10;
+    }
+
+    .imageContainer {
+        order: 11;
+    }
+
+    .talkLounge3x1 {
+        order: 12;
+    }
+
+    .talkLounge {
+        order: 13;
+    }
+
+    .div3 {
+        order: 14;
+    }
+
+    .epick3x1Icon,
+    .talkLounge3x1,
+    .detail1Icon {
+        width: min(57vw, 280px);
+    }
+
+    .talkLounge3x1,
+    .sizeRecommendation,
+    .imageContainer {
+        margin-top: 72px;
+    }
+
+    .epickMain,
+    .talkLounge,
+    .sizeRecommendation {
+        width: min(57vw, 280px);
+    }
+
+    .div2,
+    .div3,
+    .aiContainer {
+        width: min(57vw, 280px);
+    }
+}

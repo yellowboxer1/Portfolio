@@ -186,3 +186,447 @@
     font-family: var(--font-noto-sans-kr);
 }
 
+.desktopHome {
+    position: absolute;
+    inset: 0;
+}
+
+.responsiveHome {
+    display: none;
+}
+
+@media (max-width: 1919px) and (min-width: 1332px) {
+    .home {
+        width: 100vw;
+        max-width: 100vw;
+        height: var(--home-height);
+        overflow: hidden;
+    }
+
+    .desktopHome {
+        width: 1920px;
+        height: 2957px;
+        left: 0;
+        right: auto;
+        transform: scale(var(--home-scale));
+        transform-origin: top left;
+    }
+}
+
+@media (max-width: 1331px) {
+    .home {
+        height: auto;
+        overflow: hidden;
+        background: #fff;
+        color: var(--main);
+    }
+
+    .desktopHome {
+        display: none;
+    }
+
+    .responsiveHome {
+        display: block;
+        --responsive-phone-width: clamp(240px, 28vw, 360px);
+        --responsive-phone-half-height: calc(var(--responsive-phone-width) * 849 / 414 / 2);
+        --responsive-home-bg-height: calc(clamp(420px, 61vw, 600px) + var(--responsive-phone-half-height));
+    }
+
+    .responsiveHero {
+        position: relative;
+        isolation: isolate;
+        box-sizing: border-box;
+        padding: clamp(178px, 24vw, 260px) 92px 0 106px;
+        background-color: #fff;
+    }
+
+    .responsiveHero::before {
+        position: absolute;
+        inset: 0 auto auto 0;
+        z-index: -1;
+        width: 100%;
+        height: var(--responsive-home-bg-height);
+        background-image: var(--responsive-home-bg);
+        background-position: center top;
+        background-repeat: no-repeat;
+        background-size: cover;
+        content: "";
+    }
+
+    .responsiveHeroBg {
+        display: none;
+    }
+
+    .responsiveIntro {
+        position: relative;
+        z-index: 2;
+        margin-left: auto;
+        max-width: 760px;
+        color: var(--color-white);
+        text-align: right;
+    }
+
+    .responsiveIntroNumber {
+        margin-bottom: 28px;
+        font-family: var(--font-noto-sans);
+        font-size: clamp(22px, 1.979vw, 28.5px);
+        line-height: 38px;
+        letter-spacing: -0.03em;
+    }
+
+    .responsiveIntroTitle {
+        display: block;
+        width: min(630px, 62vw);
+        height: auto;
+        margin-left: auto;
+        margin-bottom: clamp(26px, 3.2vw, 38px);
+    }
+
+    .responsiveIntroText {
+        font-size: clamp(15px, 0.6vw + 13px, 16px);
+        line-height: 28px;
+        letter-spacing: -0.03em;
+        font-weight: 350;
+        word-break: keep-all;
+    }
+
+    .responsivePhone {
+        position: relative;
+        width: var(--responsive-phone-width);
+        aspect-ratio: 414 / 849;
+    }
+
+    .responsiveMainPhone {
+        z-index: 2;
+        margin: 0 auto;
+    }
+
+    .responsivePhoneScreen,
+    .responsivePhoneOverlay,
+    .responsivePhoneFrame {
+        position: absolute;
+    }
+
+    .responsivePhoneScreen,
+    .responsivePhoneOverlay {
+        top: 1.53%;
+        left: 4.35%;
+        width: 91.79%;
+        height: 97.06%;
+        border-radius: clamp(32px, 4vw, var(--br-41xl));
+        object-fit: cover;
+    }
+
+    .responsivePhoneScreen {
+        z-index: 1;
+    }
+
+    .responsivePhoneOverlay {
+        z-index: 2;
+        background: linear-gradient(-5.99deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.03));
+        pointer-events: none;
+    }
+
+    .responsivePhoneFrame {
+        inset: 0;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .responsiveFeatureStage {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, max-content));
+        justify-content: center;
+        align-items: start;
+        gap: clamp(64px, 10vw, 150px);
+        box-sizing: border-box;
+        padding: clamp(64px, 6vw, 96px) 92px 96px 106px;
+        background: #fff;
+    }
+
+    .responsiveFeatureStage > .responsiveSet:first-child {
+        grid-column: 1 / -1;
+        justify-self: center;
+        position: relative;
+        display: block;
+    }
+
+    .responsiveMainVisual {
+        display: grid;
+        justify-items: center;
+        gap: 0;
+    }
+
+    .responsiveStyleCopySet {
+        position: absolute;
+        top: 50%;
+        left: calc(50% + var(--responsive-phone-width) / 2 + clamp(36px, 5vw, 72px));
+        transform: translateY(-50%);
+        padding-top: clamp(30px, 3vw, 46px);
+    }
+
+    .responsiveVectorIcon {
+        display: none;
+        width: clamp(110px, 13vw, 174px);
+        height: auto;
+        margin: 0 0 clamp(28px, 4vw, 48px);
+    }
+
+    .responsiveStyleCopySet::before {
+        position: absolute;
+        top: 0;
+        right: calc(100% - 2px);
+        width: clamp(96px, 12vw, 164px);
+        border-top: 1px dashed #141414;
+        content: "";
+    }
+
+    .responsiveSecondaryGrid {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: center;
+        align-items: start;
+        justify-items: center;
+        width: 100%;
+    }
+
+    .responsiveSet {
+        display: grid;
+        justify-items: center;
+        gap: 0;
+    }
+
+    .responsiveSecondaryGrid .responsiveSet {
+        position: relative;
+        display: block;
+        justify-self: center;
+    }
+
+    .responsiveImageWrap {
+        position: relative;
+        width: min(26.2vw, 320px);
+        box-shadow: 20px 20px 50px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .responsiveFeatureStage > .responsiveSet:first-child .responsiveImageWrap {
+        transform: translate(0px, -25px);
+    }
+
+    .responsiveScreenImage,
+    .responsiveSubImage {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .responsiveOverlapImage {
+        position: absolute;
+        top: 22px;
+        left: 0;
+        z-index: 2;
+        animation: homeOverlapFade 6s ease-in-out infinite;
+        pointer-events: none;
+    }
+
+    .responsiveImageWrap .responsiveScreenImage:first-child {
+        position: relative;
+        z-index: 1;
+    }
+
+    .responsiveFeatureStage > .responsiveSet:first-child .responsiveImageWrap .responsiveScreenImage:first-child {
+        animation: homeBaseFade 6s ease-in-out infinite;
+    }
+
+    .responsiveSecondaryGrid .responsiveCopyBlock {
+        position: absolute;
+        top: 50%;
+        left: calc(100% + clamp(36px, 5vw, 72px));
+        transform: translateY(-50%);
+    }
+
+    .responsiveSecondaryGrid .responsiveCopyBlock::before {
+        position: absolute;
+        top: calc(-1 * clamp(30px, 3vw, 46px));
+        right: calc(100% - 2px);
+        width: clamp(96px, 12vw, 164px);
+        border-top: 1px dashed #141414;
+        content: "";
+    }
+
+    .responsiveCopyBlock {
+        position: relative;
+        width: min(32vw, 384px);
+    }
+
+    .responsiveDot {
+        position: absolute;
+        top: calc(-1 * clamp(30px, 3vw, 46px) - 8px);
+        left: -8px;
+        width: 17px;
+        height: 17px;
+    }
+
+    .responsiveFeatureTitle {
+        color: #222;
+        font-size: clamp(22px, 1.979vw, 28.5px);
+        line-height: 38px;
+        text-transform: uppercase;
+    }
+
+    .responsiveFeatureText {
+        margin-top: 12px;
+        color: var(--color-dimgray);
+        font-size: clamp(14px, 0.6vw + 12px, 15px);
+        line-height: 28px;
+        text-transform: uppercase;
+        word-break: keep-all;
+    }
+
+    .responsiveSubImage {
+        margin-top: clamp(32px, 4vw, 56px);
+    }
+
+    @keyframes homeBaseFade {
+        0%, 42%, 100% {
+            opacity: 1;
+        }
+
+        50%, 92% {
+            opacity: 0;
+        }
+    }
+
+    @keyframes homeOverlapFade {
+        0%, 42%, 100% {
+            opacity: 0;
+        }
+
+        50%, 92% {
+            opacity: 1;
+        }
+    }
+}
+
+@media (max-width: 1331px) and (min-width: 768px) {
+    .responsiveStyleCopySet {
+        left: min(
+            calc(50% + var(--responsive-phone-width) / 2 + clamp(24px, 3vw, 42px)),
+            calc(100vw - 92px - min(26vw, 320px))
+        );
+        right: auto;
+        box-sizing: border-box;
+        width: min(26vw, 320px);
+    }
+
+    .responsiveStyleCopySet .responsiveCopyBlock {
+        width: 100%;
+    }
+
+    .responsiveSecondaryGrid .responsiveImageWrap {
+        margin-inline: auto;
+    }
+
+    .responsiveSecondaryGrid .responsiveCopyBlock {
+        right: auto;
+        box-sizing: border-box;
+        width: min(26vw, 320px);
+    }
+
+    .responsiveStyleCopySet::before,
+    .responsiveSecondaryGrid .responsiveCopyBlock::before {
+        width: clamp(56px, 8vw, 96px);
+    }
+}
+
+@media (max-width: 767px) {
+    .responsiveHome {
+        --responsive-phone-width: min(64vw, 300px);
+        --responsive-phone-half-height: calc(var(--responsive-phone-width) * 849 / 414 / 2);
+        --responsive-home-bg-height: calc(clamp(430px, 92vw, 560px) + var(--responsive-phone-half-height));
+    }
+
+    .responsiveHero {
+        padding: clamp(148px, 34vw, 216px) 16px 0 30px;
+    }
+
+    .responsiveIntroTitle {
+        margin-bottom: clamp(24px, 8vw, 34px);
+    }
+
+    .responsiveIntroText {
+        font-size: clamp(14px, .6vw + 12px, 15px);
+        line-height: 27px;
+    }
+
+    .responsiveFeatureText {
+        font-size: clamp(14px, .6vw + 12px, 15px);
+        line-height: 27px;
+    }
+
+    .responsiveFeatureStage {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 48px;
+        padding: 48px 16px 72px 30px;
+    }
+
+    .responsiveFeatureStage > .responsiveSet:first-child {
+        display: grid;
+        justify-items: center;
+        row-gap: 32px;
+    }
+
+    .responsiveStyleCopySet {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        justify-self: center;
+        width: min(72vw, 330px);
+        padding-top: 0;
+    }
+
+    .responsiveStyleCopySet::before {
+        display: none;
+    }
+
+    .responsiveVectorIcon {
+        width: clamp(96px, 28vw, 132px);
+    }
+
+    .responsiveSecondaryGrid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .responsiveSecondaryGrid .responsiveCopyBlock {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin-top: 30px;
+    }
+
+    .responsiveSecondaryGrid .responsiveCopyBlock::before {
+        display: none;
+    }
+
+    .responsiveImageWrap,
+    .responsiveCopyBlock {
+        width: min(57vw, 280px);
+    }
+
+    .responsiveStyleCopySet,
+    .responsiveSecondaryGrid .responsiveCopyBlock {
+        justify-self: start;
+        margin-left: calc((100% - min(57vw, 280px)) / 2);
+    }
+
+    .responsiveDot {
+        display: none;
+    }
+}

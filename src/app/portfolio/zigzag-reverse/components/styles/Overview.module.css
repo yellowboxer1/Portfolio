@@ -381,8 +381,8 @@
 
     .aiContainer,
     .aiContainer2 {
-        font-size: clamp(15px, 0.6vw + 13px, 19px);
-        line-height: clamp(28px, 0.9vw + 25px, 34px);
+        font-size: clamp(14px, 0.6vw + 12px, 15px);
+        line-height: 27px;
     }
 
     .b,

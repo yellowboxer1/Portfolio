@@ -42,8 +42,8 @@
 }
 .storeSave {
     position: absolute;
-    top: 328px;
-    left: 148px;
+    top: 203px;
+    left: 0px;
     width: 547px;
     height: 74px;
     object-fit: cover;
@@ -59,3 +59,101 @@
     font-family: var(--font-noto-sans-kr);
 }
 
+@media (max-width: 1331px) {
+    .store {
+        box-sizing: border-box;
+        height: auto;
+        min-height: 1000px;
+        padding: 128px 92px 0 106px;
+        background: #061726;
+        font-size: clamp(15px, 0.6vw + 13px, 16px);
+    }
+
+    .image325Icon {
+        inset: 0 0 -2px 0;
+        width: 100%;
+        height: calc(100% + 2px);
+        object-fit: cover;
+        object-position: center top;
+    }
+
+    .parent {
+        position: relative;
+        top: auto;
+        left: auto;
+        z-index: 1;
+        display: grid;
+        width: 100%;
+        height: auto;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .div1 {
+        position: relative;
+        top: auto;
+        left: auto;
+        order: 1;
+        margin-bottom: 28px;
+        font-size: clamp(22px, 1.979vw, 28.5px);
+        line-height: 38px;
+    }
+
+    .storeSave {
+        position: relative;
+        top: auto;
+        left: auto;
+        z-index: 1;
+        order: 2;
+        display: block;
+        width: min(547px, 58vw);
+        height: auto;
+        margin: 0 0 clamp(26px, 3.2vw, 38px);
+    }
+
+    .div {
+        position: relative;
+        top: auto;
+        left: auto;
+        z-index: 1;
+        order: 3;
+        max-width: 720px;
+        margin-bottom: clamp(56px, 8vw, 92px);
+        font-size: clamp(15px, 0.6vw + 13px, 16px);
+        line-height: 28px;
+        word-break: keep-all;
+    }
+
+    .store1Icon {
+        position: relative;
+        top: auto;
+        left: auto;
+        order: 4;
+        display: block;
+        justify-self: center;
+        width: min(100%, 1018px);
+        height: auto;
+        object-fit: contain;
+    }
+}
+
+@media (max-width: 767px) {
+    .store {
+        min-height: auto;
+        padding: 129px 16px 0 30px;
+        font-size: clamp(14px, 0.6vw + 12px, 15px);
+    }
+
+    .image325Icon {
+        height: calc(100% + 2px);
+    }
+
+    .storeSave {
+        margin-bottom: clamp(24px, 8vw, 34px);
+    }
+
+    .div {
+        width: calc(100vw - 64px);
+        font-size: clamp(14px, 0.6vw + 12px, 15px);
+        line-height: 27px;
+    }
+}

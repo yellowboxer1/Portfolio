@@ -163,7 +163,7 @@
     text-transform: uppercase;
     font-weight: 600;
     display: inline-block;
-    width: 196px;
+    width: 200px;
     height: 59px;
     color: #FF3390;
     transform:  rotate(-90deg);
@@ -223,3 +223,360 @@
     font-family: var(--font-noto-sans-kr);
 }
 
+.desktopOnboarding {
+    position: absolute;
+    inset: 0;
+}
+
+.responsiveOnboarding {
+    display: none;
+}
+
+@media (max-width: 1919px) and (min-width: 1332px) {
+    .onboardingPage {
+        width: 100vw;
+        max-width: 100vw;
+        height: var(--onboarding-height);
+        overflow: hidden;
+        overflow-x: hidden;
+    }
+
+    .desktopOnboarding {
+        width: 1920px;
+        height: 6397px;
+        left: 0;
+        right: auto;
+        transform: scale(var(--onboarding-scale));
+        transform-origin: top left;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 1331px) {
+    .onboardingPage {
+        height: auto;
+        overflow: hidden;
+        background: #070503;
+        color: var(--color-white);
+    }
+
+    .desktopOnboarding {
+        display: none;
+    }
+
+    .responsiveOnboarding {
+        display: block;
+        --responsive-phone-width: clamp(240px, 28vw, 360px);
+        --responsive-phone-half-height: calc(var(--responsive-phone-width) * 849 / 414 / 2);
+        --responsive-feature-bg-height: calc(clamp(420px, 61vw, 600px) + var(--responsive-phone-half-height));
+    }
+
+    .responsiveHero {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: auto;
+        padding-top: 128px;
+        overflow: visible;
+        background: #070503;
+    }
+
+    .responsiveHeroBg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+    }
+
+    .responsiveHeroDim {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.7);
+        pointer-events: none;
+    }
+
+    .responsiveHeroTitle {
+        position: relative;
+        z-index: 2;
+        width: min(529px, 44vw);
+        height: auto;
+        margin-top: 0;
+    }
+
+    .responsivePhone {
+        position: relative;
+        width: var(--responsive-phone-width);
+        aspect-ratio: 414 / 849;
+    }
+
+    .responsiveHeroPhone {
+        position: relative;
+        z-index: 5;
+        left: auto;
+        bottom: auto;
+        transform: none;
+        margin-top: clamp(64px, 6vw, 96px);
+        margin-bottom: clamp(-152px, -12vw, -88px);
+    }
+
+    .responsivePhoneScreen,
+    .responsivePhoneScreenAlt,
+    .responsiveOnboardingVideo,
+    .responsivePhoneOverlay,
+    .responsivePhoneOverlayLight,
+    .responsivePhoneFrame {
+        position: absolute;
+    }
+
+    .responsivePhoneScreen,
+    .responsiveOnboardingVideo,
+    .responsivePhoneOverlay,
+    .responsivePhoneOverlayLight {
+        top: 1.53%;
+        left: 4.35%;
+        width: 91.79%;
+        height: 97.06%;
+        border-radius: clamp(32px, 4vw, var(--br-41xl));
+        object-fit: cover;
+    }
+
+    .responsivePhoneScreen,
+    .responsivePhoneScreenAlt,
+    .responsiveOnboardingVideo {
+        z-index: 1;
+    }
+
+    .responsivePhoneScreenAlt {
+        top: 1.53%;
+        left: 3.14%;
+        width: 93.72%;
+        height: 97.06%;
+        border-radius: clamp(32px, 4vw, var(--br-41xl));
+        object-fit: cover;
+    }
+
+    .responsivePhoneOverlay {
+        z-index: 2;
+        background: linear-gradient(-5.99deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.02));
+        pointer-events: none;
+    }
+
+    .responsivePhoneOverlayLight {
+        z-index: 2;
+        background: linear-gradient(-5.99deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.01));
+        pointer-events: none;
+    }
+
+    .responsivePhoneFrame {
+        inset: 0;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .responsiveFeatureStage {
+        position: relative;
+        isolation: isolate;
+        background-color: #070503;
+    }
+
+    .responsiveFeatureStage::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: var(--responsive-feature-bg-height);
+        background-image: var(--responsive-intro-bg);
+        background-position: center top;
+        background-repeat: no-repeat;
+        background-size: cover;
+        content: "";
+    }
+
+    .responsiveIntro {
+        position: relative;
+        z-index: 2;
+        box-sizing: border-box;
+        padding: clamp(178px, 24vw, 260px) 92px 54px 106px;
+    }
+
+    .responsiveIntroNumber {
+        margin-bottom: 28px;
+        font-family: var(--font-noto-sans);
+        font-size: clamp(22px, 1.979vw, 28.5px);
+        line-height: 38px;
+        letter-spacing: -0.03em;
+    }
+
+    .responsiveIntroTitle {
+        display: block;
+        width: min(758px, 74vw);
+        height: auto;
+        margin-bottom: clamp(26px, 3.2vw, 38px);
+    }
+
+    .responsiveIntroText {
+        max-width: 720px;
+        font-size: clamp(15px, 0.6vw + 13px, 16px);
+        line-height: 28px;
+        letter-spacing: -0.03em;
+        font-weight: 350;
+        word-break: keep-all;
+    }
+
+    .responsivePhones {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, max-content));
+        justify-content: center;
+        align-items: start;
+        gap: clamp(48px, 8vw, 120px);
+        padding: 0 92px 48px 106px;
+    }
+
+    .responsiveSet {
+        display: grid;
+        justify-items: center;
+        gap: 0;
+    }
+
+    .responsiveSet:nth-child(2) {
+        margin-top: clamp(54px, 8vw, 96px);
+    }
+
+    .responsiveSideLabel {
+        position: absolute;
+        top: 24px;
+        left: -42px;
+        z-index: 4;
+        color: #FF3390;
+        font-family: var(--font-noto-sans-kr);
+        font-size: clamp(13px, 1.25vw, 18px);
+        font-weight: 600;
+        line-height: 1;
+        text-transform: uppercase;
+        white-space: nowrap;
+        transform: rotate(-90deg) translateX(-100%);
+        transform-origin: left top;
+    }
+
+    .responsiveLongImageWrap {
+        position: relative;
+        width: min(32vw, 503px);
+    }
+
+    .responsiveLongImage {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .responsiveSet:nth-child(2) .responsiveLongImageWrap {
+        margin-top: clamp(220px, 35vw, 520px);
+    }
+
+    .responsiveSet:nth-child(1) .responsiveLongImageWrap {
+        transform: translate(15px, -50px);
+    }
+
+    .responsiveSet:nth-child(2) .responsiveLongImageWrap {
+        transform: translate(15px, 30px);
+    }
+
+    .responsiveSet:nth-child(2) .responsiveLongImageWrap .responsiveSideLabel {
+        top: 24px;
+        left: -35px;
+    }
+}
+
+@media (max-width: 1331px) and (min-width: 768px) {
+    .responsiveFeatureStage {
+        background-color: #fff;
+    }
+
+    .responsivePhones {
+        padding-bottom: 0;
+    }
+
+    .responsiveSet:nth-child(2) .responsiveLongImageWrap {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .responsiveOnboarding {
+        --responsive-phone-width: min(64vw, 300px);
+        --responsive-phone-half-height: calc(var(--responsive-phone-width) * 849 / 414 / 2);
+        --responsive-feature-bg-height: calc(clamp(430px, 92vw, 560px) + var(--responsive-phone-half-height));
+    }
+
+    .responsiveHero {
+        padding-top: 129px;
+    }
+
+    .responsiveHeroTitle {
+        width: min(72vw, 360px);
+        margin-top: 129px;
+    }
+
+    .responsivePhone {
+        width: var(--responsive-phone-width);
+    }
+
+    .responsiveHeroPhone {
+        margin-top: 48px;
+        margin-bottom: clamp(-120px, -22vw, -84px);
+    }
+
+    .responsiveIntro {
+        padding: clamp(148px, 34vw, 216px) 16px 44px 30px;
+    }
+
+    .responsiveIntroTitle {
+        margin-bottom: clamp(24px, 8vw, 34px);
+    }
+
+    .responsiveIntroText {
+        font-size: clamp(14px, .6vw + 12px, 15px);
+        line-height: 27px;
+    }
+
+    .responsivePhones {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 36px;
+        padding: 0 16px 72px 30px;
+    }
+
+    .responsiveFeatureStage {
+        background-color: #fff;
+    }
+
+    .responsiveSet:nth-child(2) {
+        margin-top: 0;
+    }
+
+    .responsiveSideLabel {
+        left: -28px;
+        font-size: clamp(12px, 3.2vw, 14px);
+    }
+
+    .responsiveLongImageWrap {
+        width: min(72vw, 330px);
+    }
+
+    .responsiveLongImage {
+        width: 100%;
+    }
+
+    .responsiveSet:nth-child(2) .responsiveLongImageWrap {
+        margin-top: 0;
+    }
+}
