@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import {
   Bacasime_Antique,
   Inter,
@@ -58,6 +59,18 @@ export default function RootLayout({
       lang="ko"
       className={`dark ${notoSans.variable} ${notoSansKr.variable} ${inter.variable} ${bacasimeAntique.variable} ${notoSansDisplay.variable}`}
     >
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-B1V0PHCS95"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-B1V0PHCS95');
+        `}
+      </Script>
       <ClientBody>{children}</ClientBody>
     </html>
   );

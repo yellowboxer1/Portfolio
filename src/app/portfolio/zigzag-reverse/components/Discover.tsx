@@ -71,34 +71,40 @@ const Discover = () => {
       			<img className={styles.groupIcon} src={g35} />
       			<img className={styles.discoverChild2} src={g35}  />
       			<img className={styles.discoverChild3} src={g35}  />
-      			<div className={styles.epickMain}>
-        				<span className={styles.epick}>{`EPICK `}</span>
-        				<span>MAIN</span>
-      			</div>
-      			<div className={styles.div2}>
-        				<p className={styles.p2}>{`나만을 위한 맞춤 코디와 스타일링 영감을 만나보세요.  `}</p>
-        				<p className={styles.p}>트렌디한 해시태그별 스타일링 제안으로</p>
-        				<p className={styles.p}>당신의 패션 감각을 한 층 업그레이드 합니다.</p>
-      			</div>
-      			<div className={styles.talkLounge}>
-        				<span className={styles.epick}>{`tALK `}</span>
-        				<span>LOUNGE</span>
-      			</div>
-      			<div className={styles.div3}>
-        				<p className={styles.p}>취향이 통하는 사람들과 자유롭게 소통하는 커뮤니티, 톡 라운지.</p>
-        				<p className={styles.p}> 관심 있는 주제로 이야기 나누며 트렌드를 함께 만들어보세요.</p>
-      			</div>
-				  <div className={styles.sizeRecommendation}>
-					<p className={styles.p}>
-						<span className={styles.size}>{`Size `}</span>
-						<span>recommendation</span>
-					</p>
+      			<div className={styles.epickCopySet}>
+					<div className={styles.epickMain}>
+							<span className={styles.epick}>{`EPICK `}</span>
+							<span>MAIN</span>
+					</div>
+					<div className={styles.div2}>
+							<p className={styles.p2}>{`나만을 위한 맞춤 코디와 스타일링 영감을 만나보세요.  `}</p>
+							<p className={styles.p}>트렌디한 해시태그별 스타일링 제안으로</p>
+							<p className={styles.p}>당신의 패션 감각을 한 층 업그레이드 합니다.</p>
+					</div>
 				</div>
-      			<div className={styles.aiContainer}>
-        				<p className={styles.p}>리뷰 찾아 다니느라 힘드셨죠?</p>
-          					<p className={styles.p}> AI 분석 기반 추천으로, 나에게 꼭 맞는 사이즈와</p>
-          					<p className={styles.p}> 완벽한 핏을 바로 추천해드려요</p>
-          					</div>
+      			<div className={styles.talkCopySet}>
+					<div className={styles.talkLounge}>
+							<span className={styles.epick}>{`tALK `}</span>
+							<span>LOUNGE</span>
+					</div>
+					<div className={styles.div3}>
+							<p className={styles.p}>취향이 통하는 사람들과 자유롭게 소통하는 커뮤니티, 톡 라운지.</p>
+							<p className={styles.p}> 관심 있는 주제로 이야기 나누며 트렌드를 함께 만들어보세요.</p>
+					</div>
+				</div>
+				  <div className={styles.sizeCopySet}>
+					<div className={styles.sizeRecommendation}>
+						<p className={styles.p}>
+							<span className={styles.size}>{`Size `}</span>
+							<span>recommendation</span>
+						</p>
+					</div>
+					<div className={styles.aiContainer}>
+						<p className={styles.p}>리뷰 찾아 다니느라 힘드셨죠?</p>
+						<p className={styles.p}> AI 분석 기반 추천으로, 나에게 꼭 맞는 사이즈와</p>
+						<p className={styles.p}> 완벽한 핏을 바로 추천해드려요</p>
+					</div>
+				</div>
           					<div className={styles.imageContainer}>
             						<AutoPlayVideo className={styles.imageIcon1} src={video2} />
             						<img className={styles.icon} src={frame} />

@@ -92,6 +92,11 @@
 .fittingRoom {
     font-weight: 500;
 }
+.fittingCopySet,
+.priceCopySet,
+.myFittingCopySet {
+    display: contents;
+}
 .fittingRoomBannerContainer {
     position: absolute;
     top: 939px;
@@ -257,3 +262,462 @@
     font-family: var(--font-noto-sans-kr);
 }
 
+.desktopCloset {
+    position: absolute;
+    inset: 0;
+}
+
+@media (max-width: 1919px) and (min-width: 1332px) {
+    .closet {
+        width: 100vw;
+        max-width: 100vw;
+        height: var(--closet-height);
+        overflow: hidden;
+    }
+
+    .desktopCloset {
+        width: 1920px;
+        height: 4734px;
+        left: 0;
+        right: auto;
+        transform: scale(var(--closet-scale));
+        transform-origin: top left;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 1331px) {
+    .closet {
+        display: grid;
+        grid-template-columns: repeat(2, var(--closet-phone-width));
+        justify-content: center;
+        align-items: start;
+        column-gap: clamp(64px, 9vw, 128px);
+        row-gap: 0;
+        box-sizing: border-box;
+        height: auto;
+        min-height: 1000px;
+        padding: 128px 92px 0 106px;
+        overflow: hidden;
+        background-color: #f5f5ec;
+        color: var(--color-black-100);
+        font-size: clamp(15px, 0.6vw + 13px, 16px);
+        text-align: right;
+        --closet-phone-width: clamp(240px, 28vw, 360px);
+        --closet-column-gap: clamp(64px, 9vw, 128px);
+        --closet-padding-left: 106px;
+        --closet-padding-right: 92px;
+    }
+
+    .desktopCloset {
+        display: contents;
+    }
+
+    .closetChild {
+        display: none;
+    }
+
+    .parent,
+    .imageParent,
+    .imageGroup,
+    .imageContainer,
+    .fit3x1Icon,
+    .price1Icon,
+    .image338Icon,
+    .closing3x1Icon,
+    .fittingCopySet,
+    .priceCopySet,
+    .myFittingCopySet,
+    .mobilePortfoloZigzagRePlanContainer,
+    .gunhoDaeun202504 {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        z-index: 1;
+    }
+
+    .image339 {
+        display: block;
+        position: relative;
+        top: auto;
+        left: auto;
+        grid-column: 1 / -1;
+        grid-row: 9 / 13;
+        justify-self: center;
+        width: calc(100vw + var(--closet-padding-left) + var(--closet-padding-right));
+        height: auto;
+        min-height: clamp(620px, 56vw, 913px);
+        margin-top: 0;
+        border-radius: 50% 50% 0 0 / 50% 50% 0 0;
+        background-color: var(--color-black-200);
+        z-index: 1;
+    }
+
+    .parent {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        display: flex;
+        flex-direction: column;
+        justify-self: start;
+        width: calc(100vw - var(--closet-padding-left) - var(--closet-padding-right));
+        min-height: clamp(330px, 38vw, 450px);
+        margin-bottom: 0;
+        margin-left: 0;
+        transform: translateX(calc((100vw - var(--closet-padding-left) - var(--closet-padding-right) - ((var(--closet-phone-width) * 2) + var(--closet-column-gap))) / -2));
+        text-align: left;
+        z-index: 2;
+    }
+
+    .div1,
+    .wishStyling3x1,
+    .div {
+        position: relative;
+        top: auto;
+        left: auto;
+    }
+
+    .div1 {
+        order: 1;
+        margin-bottom: 28px;
+        font-size: clamp(22px, 1.979vw, 28.5px);
+        line-height: 38px;
+    }
+
+    .wishStyling3x1 {
+        order: 2;
+        display: block;
+        width: min(726px, 70vw);
+        height: auto;
+        margin-bottom: clamp(26px, 3.2vw, 38px);
+        object-fit: contain;
+    }
+
+    .div {
+        order: 3;
+        max-width: 760px;
+        font-size: clamp(15px, 0.6vw + 13px, 16px);
+        line-height: 28px;
+        word-break: keep-all;
+    }
+
+    .imageParent,
+    .imageGroup,
+    .imageContainer {
+        width: var(--closet-phone-width);
+        aspect-ratio: 414 / 849;
+    }
+
+    .imageIcon,
+    .icon,
+    .image50 {
+        position: absolute;
+    }
+
+    .imageIcon,
+    .image50 {
+        top: 1.53%;
+        left: 4.35%;
+        width: 91.79%;
+        height: 97.06%;
+        border-radius: clamp(32px, 4vw, var(--br-41xl));
+    }
+
+    .icon {
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .imageParent {
+        grid-column: 2;
+        grid-row: 2 / span 2;
+        justify-self: center;
+        z-index: 2;
+        margin-top: clamp(12px, 3vw, 42px);
+    }
+
+    .fittingCopySet {
+        display: block;
+        grid-column: 1;
+        grid-row: 3;
+        justify-self: start;
+        width: 100%;
+        margin-top: clamp(150px, 18vw, 230px);
+    }
+
+    .fit3x1Icon {
+        grid-column: 1 / -1;
+        grid-row: 4;
+        justify-self: center;
+        width: min(100%, 720px);
+        margin-top: clamp(64px, 8vw, 104px);
+        object-fit: contain;
+    }
+
+    .fittingRoomBannerContainer,
+    .priceDropAlertContainer,
+    .myFittingRoomContainer,
+    .div2,
+    .div3,
+    .div4 {
+        position: relative;
+        top: auto;
+        left: auto;
+        text-align: left;
+    }
+
+    .fittingRoomBannerContainer,
+    .priceDropAlertContainer,
+    .myFittingRoomContainer {
+        font-size: clamp(22px, 1.979vw, 28.5px);
+        line-height: 38px;
+    }
+
+    .div2,
+    .div3,
+    .div4 {
+        margin-top: 12px;
+        font-size: clamp(14px, 0.6vw + 12px, 15px);
+        line-height: 28px;
+        color: var(--color-dimgray);
+        word-break: keep-all;
+    }
+
+    .imageGroup {
+        grid-column: 1;
+        grid-row: 5 / span 2;
+        justify-self: center;
+        margin-top: clamp(100px, 12vw, 160px);
+    }
+
+    .priceCopySet {
+        display: block;
+        grid-column: 2;
+        grid-row: 5;
+        justify-self: start;
+        width: 100%;
+        margin-top: clamp(150px, 18vw, 230px);
+    }
+
+    .price1Icon {
+        grid-column: 2;
+        grid-row: 6;
+        width: 100%;
+        margin-top: clamp(28px, 4vw, 48px);
+        object-fit: contain;
+    }
+
+    .imageContainer {
+        grid-column: 2;
+        grid-row: 7 / span 2;
+        justify-self: center;
+        margin-top: clamp(100px, 12vw, 160px);
+    }
+
+    .myFittingCopySet {
+        display: block;
+        grid-column: 1;
+        grid-row: 7;
+        justify-self: start;
+        width: 100%;
+        margin-top: clamp(132px, 16vw, 220px);
+    }
+
+    .image338Icon {
+        grid-column: 1;
+        grid-row: 8;
+        width: 100%;
+        margin-top: clamp(28px, 4vw, 52px);
+        object-fit: contain;
+    }
+
+    .closing3x1Icon {
+        grid-column: 1 / -1;
+        grid-row: 9;
+        justify-self: center;
+        width: min(100%, 720px);
+        margin-top: clamp(96px, 12vw, 160px);
+        object-fit: contain;
+        z-index: 2;
+    }
+
+
+
+    .mobilePortfoloZigzagRePlanContainer,
+    .gunhoDaeun202504 {
+        grid-column: 1 / -1;
+        color: var(--color-white);
+        line-height: 28px;
+        text-align: center;
+    }
+
+    .mobilePortfoloZigzagRePlanContainer {
+        grid-row: 10;
+        margin-top: clamp(48px, 6vw, 80px);
+        z-index: 2;
+    }
+
+    .gunhoDaeun202504 {
+        grid-row: 11;
+        margin-top: 24px;
+        z-index: 2;
+    }
+
+    .closetItem,
+    .closetInner,
+    .vectorIcon,
+    .groupIcon,
+    .closetChild1,
+    .closetChild2 {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .closet {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        row-gap: 0;
+        padding: 129px 16px 0 30px;
+        font-size: clamp(14px, 0.6vw + 12px, 15px);
+        --closet-phone-width: min(82vw, 300px);
+        --closet-column-gap: 0px;
+        --closet-padding-left: 30px;
+        --closet-padding-right: 16px;
+    }
+
+    .parent {
+        grid-row: 1;
+        width: calc(100vw - var(--closet-padding-left) - var(--closet-padding-right));
+        max-width: calc(100vw - var(--closet-padding-left) - var(--closet-padding-right));
+        justify-self: start;
+        margin-bottom: 48px;
+        transform: none;
+        overflow: hidden;
+    }
+
+    .wishStyling3x1 {
+        width: min(100%, 420px);
+        max-width: 100%;
+        object-fit: contain;
+        object-position: left center;
+    }
+
+    .div,
+    .div2,
+    .div3,
+    .div4 {
+        font-size: clamp(14px, 0.6vw + 12px, 15px);
+        line-height: 27px;
+    }
+
+    .imageParent,
+    .fittingCopySet,
+    .fit3x1Icon,
+    .imageGroup,
+    .priceCopySet,
+    .price1Icon,
+    .imageContainer,
+    .myFittingCopySet,
+    .image338Icon,
+    .closing3x1Icon {
+        grid-column: 1;
+        width: var(--closet-phone-width);
+        justify-self: center;
+    }
+
+    .fittingCopySet,
+    .priceCopySet,
+    .myFittingCopySet {
+        justify-self: start;
+        width: var(--closet-phone-width);
+        margin-left: calc((100% - var(--closet-phone-width)) / 2);
+    }
+
+    .imageParent {
+        grid-row: 2;
+        margin-top: 36px;
+        z-index: 2;
+    }
+
+    .fit3x1Icon {
+        grid-row: 2;
+        align-self: end;
+        width: min(85vw, 440px);
+        z-index: 3;
+    }
+
+    .fittingCopySet {
+        grid-row: 3;
+        margin-top: 30px;
+    }
+
+    .imageGroup {
+        grid-row: 4;
+        margin-top: 72px;
+        z-index: 2;
+    }
+
+    .price1Icon {
+        grid-row: 4;
+        align-self: end;
+        width: min(82vw, 420px);
+        margin-top: 0;
+        margin-bottom: 18px;
+        z-index: 3;
+    }
+
+    .priceCopySet {
+        grid-row: 5;
+        margin-top: 30px;
+    }
+
+    .imageContainer {
+        grid-row: 6;
+        margin-top: 72px;
+    }
+
+    .image338Icon {
+        grid-row: 7;
+        width: min(94vw, 320px);
+        transform: translateX(5%) translateY(-14%);
+        z-index: 0;
+    }
+
+    .myFittingCopySet {
+        grid-row: 8;
+        margin-top: -30px;
+        margin-bottom: 30px;
+    }
+
+    .closing3x1Icon {
+        grid-column: 1;
+        grid-row: 9;
+        width: min(82vw, 420px);
+        margin-top: 200px;
+    }
+
+    .image339 {
+        grid-column: 1 / -1;
+        grid-row: 8.5 / 12;
+        width: 100vw;
+        margin-left: calc(var(--closet-padding-left) * -1);
+        margin-right: calc(var(--closet-padding-right) * -1);
+        min-height: clamp(560px, 128vw, 760px);
+        border-radius: 50% 50% 0 0 / 25% 25% 0 0;
+        z-index: 0;
+
+    }
+
+    .mobilePortfoloZigzagRePlanContainer {
+        grid-row: 10;
+        margin-top: 42px;
+    }
+
+    .gunhoDaeun202504 {
+        grid-row: 11;
+    }
+}

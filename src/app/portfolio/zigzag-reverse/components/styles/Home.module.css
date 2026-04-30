@@ -480,7 +480,7 @@
     .responsiveFeatureText {
         margin-top: 12px;
         color: var(--color-dimgray);
-        font-size: clamp(14px, 0.6vw + 12px, 15px);
+        font-size: clamp(13px, 0.6vw + 11px, 15px);
         line-height: 28px;
         text-transform: uppercase;
         word-break: keep-all;

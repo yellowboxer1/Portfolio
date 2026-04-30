@@ -3,6 +3,7 @@
 import styles from './styles/Closet.module.css';
 import { withBasePath } from '../lib/asset';
 import AutoPlayVideo from './AutoPlayVideo';
+import { CSSProperties, useEffect, useState } from 'react';
 
 const wish = withBasePath('/portfolio/zigzag-reverse/assets/image/WISH & STYLING@3x.png');
 const i49 = withBasePath('/portfolio/zigzag-reverse/assets/image/image 49@3x.png');
@@ -19,8 +20,27 @@ const i338 = withBasePath('/portfolio/zigzag-reverse/assets/image/image 338@3x.p
 const fitting = withBasePath('/portfolio/zigzag-reverse/assets/video/fitting.mp4');
 
 const Closet = () => {
+    const [desktopScale, setDesktopScale] = useState(1);
+
+    useEffect(() => {
+        const updateScale = () => {
+            const width = window.innerWidth;
+            setDesktopScale(width < 1920 && width > 1331 ? width / 1920 : 1);
+        };
+
+        updateScale();
+        window.addEventListener('resize', updateScale);
+        return () => window.removeEventListener('resize', updateScale);
+    }, []);
+
+    const closetStyle = {
+        '--closet-scale': desktopScale,
+        '--closet-height': `${4734 * desktopScale}px`,
+    } as CSSProperties;
+
     return (
-    <div className={styles.closet}>
+    <div className={styles.closet} style={closetStyle}>
+    <div className={styles.desktopCloset}>
     <div className={styles.closetChild} />
     <div className={styles.parent}>
     <div className={styles.div}>
@@ -41,6 +61,7 @@ const Closet = () => {
     <div className={styles.image50} />
     </div>
     <img className={styles.fit3x1Icon} src={fit} />
+    <div className={styles.fittingCopySet}>
     <div className={styles.fittingRoomBannerContainer}>
     <span className={styles.fittingRoom}>{`fitting room `}</span>
     <span>BANNER</span>
@@ -49,8 +70,10 @@ const Closet = () => {
     <p className={styles.p}>피팅룸 이동 버튼을 배너의 형태로 상단에 크게 배치하여</p>
     <p className={styles.p}>사용자들의 참여도를 높이고 누구나 접근하기 쉽게하였습니다.</p>
     </div>
+    </div>
     <img className={styles.closetItem} src={v40} />
     <img className={styles.closetInner} src={g35} />
+    <div className={styles.priceCopySet}>
     <div className={styles.priceDropAlertContainer}>
     <span className={styles.fittingRoom}>{`price drop `}</span>
     <span>alert</span>
@@ -59,11 +82,13 @@ const Closet = () => {
     <p className={styles.p}>{`찜한 상품의 가격이 내려가면 즉시 알림을 제공하고, `}</p>
     <p className={styles.p}>실시간 가격 하락 정보를 직관적으로 확인할 수 있게 구성하였습니다.</p>
     </div>
+    </div>
     <img className={styles.vectorIcon} src={v87} />
     <img className={styles.groupIcon} src={g35} />
     <img className={styles.price1Icon} src={price} />
     <img className={styles.closetChild1} src={v41} />
     <img className={styles.closetChild2} src={g35} />
+    <div className={styles.myFittingCopySet}>
     <div className={styles.myFittingRoomContainer}>
     <span className={styles.fittingRoom}>{`my `}</span>
     <span>fitting room</span>
@@ -71,6 +96,7 @@ const Closet = () => {
     <div className={styles.div4}>
     <p className={styles.p}>나만의 옷장에서 스타일을 시뮬레이션하며</p>
     <p className={styles.p}>코디한 옷의 정보도 보고, 원하는 옷을 바로 구매도 할 수 있어요</p>
+    </div>
     </div>
     <div className={styles.imageContainer}>
     <AutoPlayVideo className={styles.imageIcon} src={fitting} />
@@ -87,6 +113,7 @@ const Closet = () => {
     <div className={styles.gunhoDaeun202504}>
     <p className={styles.p}>GUNHO PARK</p>
     <p className={styles.p}>2025.04</p>
+    </div>
     </div>
     </div>);
     };

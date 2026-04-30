@@ -184,6 +184,15 @@
 .epick {
     font-weight: 500;
 }
+.epickCopySet {
+    display: contents;
+}
+.talkCopySet {
+    display: contents;
+}
+.sizeCopySet {
+    display: contents;
+}
 .epickMain {
     position: absolute;
     top: 2336px;
@@ -296,6 +305,7 @@
         color: var(--main);
         --discover-padding-left: 106px;
         --discover-padding-right: 92px;
+        --discover-column-gap: clamp(64px, 9vw, 128px);
     }
 
     .desktopDiscover {
@@ -333,15 +343,17 @@
         order: 1;
         display: grid;
         box-sizing: border-box;
-        width: 100vw;
+        width: calc(100vw - var(--discover-padding-left) - var(--discover-padding-right));
+        max-width: calc(100vw - var(--discover-padding-left) - var(--discover-padding-right));
         height: auto;
-        margin-left: calc(-1 * var(--discover-padding-left));
-        padding-right: var(--discover-padding-right);
-        padding-left: var(--discover-padding-left);
+        margin-left: 0;
+        padding-right: 0;
+        padding-left: 0;
         margin-bottom: clamp(72px, 9vw, 112px);
         color: var(--color-white);
         text-align: right;
         font-size: clamp(15px, 0.6vw + 13px, 16px);
+        overflow: hidden;
     }
 
     .div1 {
@@ -361,10 +373,13 @@
         z-index: 2;
         order: 2;
         align-self: flex-end;
-        width: min(469px, 54vw);
+        width: min(469px, 100%);
+        max-width: 100%;
         height: auto;
         justify-self: end;
         margin: 0 0 clamp(26px, 3.2vw, 38px);
+        object-fit: contain;
+        object-position: right center;
     }
 
     .div {
@@ -372,7 +387,7 @@
         top: auto;
         left: auto;
         order: 3;
-        max-width: 720px;
+        max-width: min(720px, 100%);
         justify-self: end;
         line-height: 28px;
         word-break: keep-all;
@@ -549,10 +564,10 @@
 @media (max-width: 1331px) and (min-width: 768px) {
     .discover {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, max-content));
+        grid-template-columns: repeat(2, var(--discover-phone-width));
         justify-content: center;
         align-items: start;
-        column-gap: clamp(48px, 8vw, 120px);
+        column-gap: clamp(64px, 9vw, 128px);
         row-gap: 0;
         padding: 128px 92px 0 106px;
         --discover-phone-width: clamp(240px, 28vw, 360px);
@@ -561,8 +576,12 @@
     .parent {
         grid-column: 1 / -1;
         justify-self: start;
-        width: 100vw;
+        width: min(
+            calc(100vw - var(--discover-padding-left) - var(--discover-padding-right)),
+            calc((var(--discover-phone-width) * 2) + var(--discover-column-gap))
+        );
         margin-bottom: clamp(72px, 9vw, 112px);
+        transform: none;
     }
 
     .imageParent,
@@ -571,6 +590,9 @@
     .epick3x1Icon,
     .detail1Icon,
     .talkLounge3x1,
+    .epickCopySet,
+    .talkCopySet,
+    .sizeCopySet,
     .epickMain,
     .div2,
     .talkLounge,
@@ -585,109 +607,199 @@
 
     .imageParent {
         grid-column: 1;
+        grid-row: 2;
         order: 3;
-        margin-top: clamp(90px, 13vw, 160px);
+        margin-top: clamp(120px, 15vw, 190px);
     }
 
     .imageGroup {
         grid-column: 2;
+        grid-row: 2 / span 3;
         order: 3;
         z-index: 4;
-        margin-top: clamp(54px, 8vw, 96px);
+        margin-top: clamp(36px, 6vw, 72px);
         margin-bottom: 0;
     }
 
     .epick3x1Icon {
         grid-column: 1;
+        grid-row: 3;
         order: 4;
-        width: min(26.2vw, 320px);
-        margin-top: 100px;
+        width: 100%;
+        margin-top: clamp(82px, 10vw, 120px);
     }
 
     .epickMain,
     .div2 {
         grid-column: 1;
+        grid-row: auto;
         justify-self: start;
-        width: min(26.2vw, 320px);
+        width: 100%;
     }
 
     .epickMain {
+        grid-row: 4;
         order: 5;
-        margin-top: clamp(24px, 3.2vw, 36px);
+        margin-top: clamp(22px, 3vw, 34px);
     }
 
     .div2 {
+        grid-row: 5;
         order: 6;
         margin-top: 12px;
-        font-size: clamp(14px, 0.6vw + 12px, 15px);
+        font-size: clamp(13px, 0.6vw + 11px, 15px);
         line-height: 28px;
+    }
+
+    .epickCopySet {
+        display: block;
+        grid-column: 1;
+        grid-row: 4;
+        justify-self: start;
+        width: 100%;
+        margin-top: clamp(22px, 3vw, 34px);
+    }
+
+    .epickCopySet .epickMain,
+    .epickCopySet .div2 {
+        grid-column: auto;
+        grid-row: auto;
+        justify-self: auto;
+        width: 100%;
+    }
+
+    .epickCopySet .epickMain {
+        margin-top: 0;
+    }
+
+    .epickCopySet .div2 {
+        margin-top: 12px;
     }
 
     .talkLounge3x1 {
         grid-column: 1;
+        grid-row: 5;
         order: 12;
-        width: min(32vw, 384px);
-        margin-top: clamp(96px, 12vw, 150px);
+        width: 100%;
+        margin-top: clamp(56px, 7vw, 88px);
     }
 
     .talkLounge,
     .div3 {
         grid-column: 1;
         justify-self: start;
-        width: min(32vw, 384px);
+        width: 100%;
     }
 
     .talkLounge {
+        grid-row: 7;
         order: 13;
-        margin-top: clamp(32px, 5vw, 56px);
+        margin-top: clamp(22px, 3vw, 34px);
     }
 
     .div3 {
+        grid-row: 8;
         order: 14;
+        margin-top: 12px;
+    }
+
+    .talkCopySet {
+        display: block;
+        grid-column: 1;
+        grid-row: 6;
+        justify-self: start;
+        width: 100%;
+        margin-top: clamp(22px, 3vw, 34px);
+    }
+
+    .talkCopySet .talkLounge,
+    .talkCopySet .div3 {
+        grid-column: auto;
+        grid-row: auto;
+        justify-self: auto;
+        width: 100%;
+    }
+
+    .talkCopySet .talkLounge {
+        margin-top: 0;
+    }
+
+    .talkCopySet .div3 {
         margin-top: 12px;
     }
 
     .detail1Icon {
         grid-column: 2;
+        grid-row: 3 / span 5;
         order: 4;
         z-index: 2;
-        width: min(26.2vw, 320px);
-        margin-top: calc(-1 * clamp(20px, 8vw, 100px));
+        width: 100%;
+        margin-top: calc(-1 * clamp(24px, 5vw, 72px));
     }
 
     .sizeRecommendation,
-    .aiContainer,
-    .imageContainer {
+    .aiContainer {
         grid-column: 2;
-        width: min(32vw, 384px);
+        width: 100%;
     }
 
     .sizeRecommendation {
+        grid-row: 9;
         order: 9;
         justify-self: start;
-        margin-top: clamp(80px, 10vw, 130px);
+        margin-top: clamp(22px, 3vw, 34px);
     }
 
     .aiContainer {
+        grid-row: 10;
         order: 10;
         justify-self: start;
         margin-top: 12px;
     }
 
     .imageContainer {
+        grid-column: 1;
+        grid-row: 7;
         order: 11;
         width: var(--discover-phone-width);
-        margin-top: clamp(64px, 8vw, 96px);
+        margin-top: clamp(56px, 7vw, 88px);
+    }
+
+    .sizeCopySet {
+        display: block;
+        grid-column: 1;
+        grid-row: 8;
+        justify-self: start;
+        width: 100%;
+        margin-top: clamp(22px, 3vw, 34px);
+        margin-bottom: clamp(44px, 6vw, 68px);
+    }
+
+    .sizeCopySet .sizeRecommendation,
+    .sizeCopySet .aiContainer {
+        grid-column: auto;
+        grid-row: auto;
+        justify-self: auto;
+        width: 100%;
+    }
+
+    .sizeCopySet .sizeRecommendation {
+        margin-top: 0;
+    }
+
+    .sizeCopySet .aiContainer {
+        margin-top: 12px;
     }
 }
 
 @media (max-width: 767px) {
     .discover {
         padding: 129px 16px 0 30px;
-        font-size: clamp(14px, 0.6vw + 12px, 15px);
+        font-size: clamp(13px, 0.6vw + 11px, 15px);
         --discover-phone-width: min(64vw, 300px);
         --discover-padding-left: 30px;
         --discover-padding-right: 16px;
+        --discover-column-gap: 0px;
     }
 
     .imageFx101,
@@ -696,10 +808,11 @@
     }
 
     .parent {
-        width: 100vw;
+        width: calc(100vw - var(--discover-padding-left) - var(--discover-padding-right));
         margin-bottom: 48px;
-        font-size: clamp(14px, 0.6vw + 12px, 15px);
+        font-size: clamp(13px, 0.6vw + 11px, 15px);
         text-align: right;
+        transform: none;
     }
 
     .div1 {
@@ -716,7 +829,7 @@
     .div2,
     .div3,
     .aiContainer {
-        font-size: clamp(14px, 0.6vw + 12px, 15px);
+        font-size: clamp(13px, 0.6vw + 11px, 15px);
         line-height: 27px;
     }
 
@@ -744,6 +857,8 @@
 
     .epick3x1Icon {
         order: 4;
+        transform: translateY(-4%);
+        z-index: 0;
     }
 
     .epickMain {
@@ -762,19 +877,21 @@
 
     .detail1Icon {
         order: 8;
-        margin-top: 24px;
+        margin-top: 0px;
+        transform: translateY(-1.2%);
+        z-index: 0;
     }
 
     .sizeRecommendation {
-        order: 9;
-    }
-
-    .aiContainer {
         order: 10;
     }
 
-    .imageContainer {
+    .aiContainer {
         order: 11;
+    }
+
+    .imageContainer {
+        order: 9;
     }
 
     .talkLounge3x1 {
@@ -787,6 +904,7 @@
 
     .div3 {
         order: 14;
+        margin-bottom: clamp(44px, 6vw, 68px);
     }
 
     .epick3x1Icon,
