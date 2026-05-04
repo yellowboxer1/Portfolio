@@ -32,7 +32,7 @@ export default function PreparingPortfolioPage() {
           준비중입니다
         </h1>
         <p className={styles.description}>
-          해당 프로젝트 상세 페이지는 현재 정리 중입니다.
+          해당 프로젝트 상세 페이지는 현재 준비 중입니다.
           <br />
           곧 더 완성도 있는 내용으로 업데이트하겠습니다.
         </p>

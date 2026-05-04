@@ -1,0 +1,475 @@
+.page {
+  min-height: 100vh;
+  background: #f4f4f4;
+  color: #111;
+  font-family: var(--font-family-noto-sans-kr), var(--font-family-noto-sans), "Noto Sans KR", "Noto Sans", sans-serif;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.deck {
+  width: 100%;
+}
+
+.slide {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #fff;
+  background-image: var(--bg-image);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.slide::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.slide::after {
+  z-index: 1;
+}
+
+.element {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  background-image: var(--element-image);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  pointer-events: none;
+}
+
+.cover {
+  background-color: #ffd816;
+}
+
+.cover::after {
+  inset: 0 auto 0 0;
+  width: 34.5%;
+  background: #ffd816;
+}
+
+.feature::after {
+  inset: 0 auto 0 0;
+  width: 31.5%;
+  background: #fff;
+}
+
+.textLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  padding: 5.4svh 5.8vw;
+}
+
+.coverLogo {
+  top: 29.1%;
+  left: 7.5%;
+  width: 9.9%;
+  aspect-ratio: 1;
+}
+
+.coverTutorial {
+  top: 13.6%;
+  left: 46.4%;
+  width: 21.5%;
+  aspect-ratio: 980 / 1045;
+}
+
+.coverObstacle {
+  top: 51.4%;
+  left: 34.4%;
+  width: 21.4%;
+  aspect-ratio: 971 / 935;
+}
+
+.coverRoute {
+  top: 56.6%;
+  left: 57.8%;
+  width: 13.8%;
+  aspect-ratio: 1237 / 1003;
+}
+
+.brandLogo {
+  top: 4.7%;
+  right: 4.6%;
+  width: 6.1%;
+  aspect-ratio: 118 / 76;
+}
+
+.signGuide {
+  top: 24.8%;
+  left: 33.5%;
+  width: 25%;
+  aspect-ratio: 208 / 324;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #333;
+  font-size: clamp(16px, 1.55vw, 31px);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.cover .eyebrow {
+  font-size: clamp(13px, 1.05vw, 22px);
+  font-weight: 700;
+}
+
+.textLayer h1 {
+  margin: clamp(54px, 10svh, 126px) 0 0;
+  color: #000;
+  font-size: clamp(34px, 4.35vw, 86px);
+  font-weight: 800;
+  line-height: 1.14;
+  letter-spacing: -0.05em;
+}
+
+.cover .textLayer h1 {
+  margin-top: clamp(150px, 23vw, 440px);
+  font-size: clamp(22px, 2.55vw, 48px);
+  line-height: 1.15;
+}
+
+.description {
+  max-width: 410px;
+  margin: clamp(22px, 4svh, 42px) 0 0;
+  color: #111;
+  font-size: clamp(15px, 1.16vw, 22px);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.cover .description {
+  max-width: min(31vw, 590px);
+  font-size: clamp(10px, 1.16vw, 22px);
+}
+
+.toolRow {
+  display: flex;
+  gap: 9px;
+  margin-top: 0;
+}
+
+.toolRow span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 6px;
+  color: #005ecb;
+  font-size: 12px;
+  font-weight: 800;
+  border: 2px solid #005ecb;
+  border-radius: 7px;
+}
+
+.metaList {
+  display: grid;
+  gap: 14px;
+  margin: clamp(12px, 1.45vw, 28px) 0 0;
+  color: #111;
+}
+
+.metaList div {
+  display: flex;
+  gap: 20px;
+  align-items: baseline;
+}
+
+.metaList dt,
+.metaList dd {
+  margin: 0;
+  font-size: clamp(15px, 1.18vw, 22px);
+  font-weight: 700;
+}
+
+.coverMeta {
+  position: absolute;
+  bottom: 5.8%;
+  left: 5.8vw;
+}
+
+.cover .metaList {
+  gap: clamp(4px, 0.55vw, 11px);
+}
+
+.cover .metaList dt,
+.cover .metaList dd {
+  font-size: clamp(10px, 1.05vw, 20px);
+}
+
+.overview .textLayer h1 {
+  margin-top: clamp(48px, 7svh, 90px);
+  color: #888;
+  font-size: clamp(28px, 2.35vw, 45px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.overview .blockList {
+  position: absolute;
+  top: 34%;
+  left: 6.8%;
+  width: 31%;
+  display: grid;
+  gap: clamp(18px, 4svh, 46px);
+}
+
+.overview .blockList section {
+  margin: 0;
+}
+
+.blockList h2 {
+  margin: 0 0 0.62em;
+  color: #000;
+  font-size: clamp(17px, 1.25vw, 25px);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.blockList p {
+  margin: 0;
+  color: #000;
+  font-size: clamp(13px, 0.98vw, 19px);
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.blockList small {
+  display: block;
+  margin-top: 0.35em;
+  color: #111;
+  font-size: clamp(11px, 0.78vw, 15px);
+  line-height: 1.35;
+}
+
+.stateGrid {
+  position: absolute;
+  top: 34.5%;
+  left: 43.4%;
+  width: 48%;
+  display: grid;
+  gap: 6.5svh;
+}
+
+.stateGrid h2 {
+  margin: 0 0 1.1em;
+  color: #000;
+  font-size: clamp(20px, 1.75vw, 35px);
+  font-weight: 800;
+}
+
+.stateGrid p {
+  max-width: 460px;
+  margin: 0 0 0.85em;
+  color: #000;
+  font-size: clamp(12px, 0.86vw, 17px);
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.circleRow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+}
+
+.circleRow span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(86px, 9vw, 170px);
+  height: clamp(86px, 9vw, 170px);
+  margin-left: -8px;
+  color: #444;
+  font-size: clamp(12px, 1vw, 20px);
+  font-weight: 800;
+  text-align: center;
+  border: 1.4px solid #222;
+  border-radius: 999px;
+}
+
+.blueCircles {
+  top: auto;
+  bottom: 0;
+}
+
+.blueCircles span {
+  color: #fff;
+  background: rgba(0, 119, 238, 0.58);
+  border-color: transparent;
+}
+
+.feature .textLayer {
+  padding-top: clamp(58px, 8.8svh, 98px);
+  padding-left: 5.85vw;
+}
+
+.feature .textLayer h1 {
+  margin-top: clamp(144px, 22svh, 250px);
+  font-size: clamp(36px, 3.05vw, 60px);
+  line-height: 1.18;
+}
+
+.feature .description {
+  max-width: 420px;
+  font-size: clamp(16px, 1.2vw, 24px);
+  line-height: 1.55;
+}
+
+.feature .blockList {
+  width: min(28vw, 450px);
+  margin-top: clamp(48px, 8svh, 88px);
+  display: grid;
+  gap: clamp(20px, 3.6svh, 44px);
+}
+
+.feature .blockList section {
+  margin: 0;
+}
+
+.backButton {
+  position: fixed;
+  top: 72px;
+  left: 24px;
+  z-index: 80;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  background: rgba(17, 17, 17, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.22);
+  backdrop-filter: blur(12px);
+  font-family: var(--font-family-noto-sans), "Noto Sans", sans-serif;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.backButton span {
+  max-width: 0;
+  margin-left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  transition:
+    max-width 0.3s ease,
+    margin-left 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.backButton:hover {
+  background: #111;
+  border-color: rgba(255, 255, 255, 0.34);
+  transform: translateX(-2px);
+}
+
+.backButton:hover span {
+  max-width: 120px;
+  margin-left: 8px;
+  opacity: 1;
+}
+
+.backIcon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
+@media (min-width: 768px) {
+  .backButton {
+    left: 48px;
+    width: auto;
+    min-width: 38px;
+    height: 38px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  .backIcon {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .cover::after,
+  .feature::after {
+    width: 44%;
+  }
+
+  .feature .blockList {
+    width: 38vw;
+  }
+}
+
+@media (max-width: 767px) {
+  .slide {
+    aspect-ratio: auto;
+    min-height: 76svh;
+    background-size: auto 100%;
+  }
+
+  .textLayer {
+    padding: 88px 22px 32px;
+  }
+
+  .cover::after,
+  .feature::after {
+    width: 54%;
+  }
+
+  .overview::after {
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .overview .blockList,
+  .stateGrid {
+    position: static;
+    width: min(100%, 380px);
+    margin-top: 28px;
+  }
+
+  .stateGrid {
+    gap: 28px;
+  }
+
+  .circleRow {
+    position: static;
+    margin-top: 14px;
+  }
+
+  .circleRow span {
+    width: 82px;
+    height: 82px;
+    font-size: 11px;
+  }
+
+  .feature .textLayer h1 {
+    margin-top: 84px;
+  }
+
+  .feature .blockList {
+    width: min(100%, 310px);
+    margin-top: 30px;
+  }
+}

@@ -47,7 +47,7 @@ export default function Hero() {
       const minutes = String(now.getMinutes()).padStart(2, "0");
       const seconds = String(now.getSeconds()).padStart(2, "0");
       const milliseconds = String(
-        Math.floor(now.getMilliseconds() / 10)
+        Math.floor(now.getMilliseconds() / 10),
       ).padStart(2, "0");
 
       setTime(`${hours}:${minutes}:${seconds}:${milliseconds}`);
@@ -75,10 +75,10 @@ export default function Hero() {
         day === 1 || day === 21 || day === 31
           ? "st"
           : day === 2 || day === 22
-          ? "nd"
-          : day === 3 || day === 23
-          ? "rd"
-          : "th";
+            ? "nd"
+            : day === 3 || day === 23
+              ? "rd"
+              : "th";
 
       setDate(`${month} ${day}${suffix} ${year}`);
     };
@@ -171,7 +171,7 @@ export default function Hero() {
     currentProgressRef.current = targetProgressRef.current;
     applyScrollStyles(targetProgressRef.current);
 
-    const timeInterval = setInterval(updateTime, 250);
+    const timeInterval = setInterval(updateTime, 60);
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
@@ -225,144 +225,145 @@ export default function Hero() {
     <>
       <link rel="preload" href={heroVideo} as="video" type="video/mp4" />
       <section ref={sectionRef} className="relative h-[200vh] bg-black">
-      <div className="sticky top-0 h-screen overflow-hidden bg-black">
-        {/* Intro guide lines */}
-        <div
-          ref={guideLinesRef}
-          className="pointer-events-none absolute inset-0 z-10 grid [grid-template-rows:repeat(11,minmax(0,0fr))]"
-        >
-          {Array.from({ length: 11 }).map((_, index) => (
-            <div
-              key={index}
-              className={
-                index === 0 || index === 10 ? "" : "border-b border-white/12"
-              }
-            />
-          ))}
-        </div>
+        <div className="sticky top-0 h-screen overflow-hidden bg-black">
+          {/* Intro guide lines */}
+          <div
+            ref={guideLinesRef}
+            className="pointer-events-none absolute inset-0 z-10 grid [grid-template-rows:repeat(11,minmax(0,0fr))]"
+          >
+            {Array.from({ length: 11 }).map((_, index) => (
+              <div
+                key={index}
+                className={
+                  index === 0 || index === 10 ? "" : "border-b border-white/12"
+                }
+              />
+            ))}
+          </div>
 
-        {/* Intro page */}
-        <div
-          ref={introPageRef}
-          className="absolute inset-0 z-30 grid w-full [grid-template-rows:repeat(11,minmax(0,1fr))]"
-        >
-          <div className="row-start-5 row-end-6 flex items-center">
-            <div className="mx-auto grid w-full max-w-[1440px] grid-cols-[85px_minmax(0,1fr)_85px] items-center gap-4 px-4 md:px-12 lg:px-20 xl:px-24">
-              <div className="text-left font-mono text-[12px] font-medium tracking-wider whitespace-nowrap text-white/80 md:text-sm lg:text-base">
-                {time}
+          {/* Intro page */}
+          <div
+            ref={introPageRef}
+            className="absolute inset-0 z-30 grid w-full [grid-template-rows:repeat(11,minmax(0,1fr))]"
+          >
+            <div className="row-start-5 row-end-6 flex items-center">
+              <div className="mx-auto grid w-full max-w-[1440px] grid-cols-[85px_minmax(0,1fr)_85px] items-center gap-4 px-4 md:px-12 lg:px-20 xl:px-24">
+                <div className="text-left font-mono text-[12px] font-medium tracking-wider whitespace-nowrap text-white/80 md:text-sm lg:text-base">
+                  {time}
+                </div>
+
+                <div className="relative flex h-[48px] min-w-0 items-center justify-center overflow-hidden text-center sm:h-[56px] md:h-[64px] lg:h-[72px]">
+                  {!isIntroFinal &&
+                    introTitles.map((word, index) => {
+                      const isActive = index === introWordIndex;
+
+                      return (
+                        <div
+                          key={word}
+                          className={`absolute inset-0 flex items-center justify-center whitespace-nowrap text-white transition-all duration-[1000ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,opacity,filter] ${
+                            isActive
+                              ? "opacity-100 translate-y-0 scale-100 blur-0"
+                              : "opacity-0 -translate-y-[8px] scale-[0.992] blur-[6px]"
+                          } text-[18px] font-medium tracking-[0.02em] sm:text-[20px] md:text-[26px] lg:text-[34px] xl:text-[39px]`}
+                        >
+                          {word}
+                        </div>
+                      );
+                    })}
+
+                  {isIntroFinal && (
+                    <div className="absolute inset-0 flex items-center justify-center whitespace-nowrap text-white">
+                      {finalChars.map((char, index) => (
+                        <span
+                          key={`${char}-${index}`}
+                          className={`inline-block text-[18px] font-semibold transition-all duration-[1400ms] ease-[cubic-bezier(0.19,1,0.22,1)] will-change-[transform,opacity,filter] sm:text-[20px] md:text-[26px] lg:text-[34px] xl:text-[39px] ${
+                            finalReveal
+                              ? "opacity-100 translate-y-0 scale-100 blur-0"
+                              : "opacity-0 translate-y-[8px] scale-100 blur-[6px]"
+                          } ${char === " " ? "w-[0.28em]" : ""}`}
+                          style={{
+                            transitionDelay: `${index * 220}ms`,
+                            letterSpacing: "0.02em",
+                          }}
+                        >
+                          {char === " " ? "\u00A0" : char}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <div className="text-right font-mono font-medium text-[12px] tracking-wider whitespace-nowrap text-white/80 md:text-sm lg:text-base">
+                  {date}
+                </div>
               </div>
+            </div>
 
-              <div className="relative flex h-[48px] min-w-0 items-center justify-center overflow-hidden text-center sm:h-[56px] md:h-[64px] lg:h-[72px]">
-                {!isIntroFinal &&
-                  introTitles.map((word, index) => {
-                    const isActive = index === introWordIndex;
-
-                    return (
-                      <div
-                        key={word}
-                        className={`absolute inset-0 flex items-center justify-center whitespace-nowrap text-white transition-all duration-[1000ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,opacity,filter] ${
-                          isActive
-                            ? "opacity-100 translate-y-0 scale-100 blur-0"
-                            : "opacity-0 -translate-y-[8px] scale-[0.992] blur-[6px]"
-                        } text-[18px] font-medium tracking-[0.02em] sm:text-[20px] md:text-[26px] lg:text-[34px] xl:text-[39px]`}
-                      >
-                        {word}
-                      </div>
-                    );
-                  })}
-
-                {isIntroFinal && (
-                  <div className="absolute inset-0 flex items-center justify-center whitespace-nowrap text-white">
-                    {finalChars.map((char, index) => (
-                      <span
-                        key={`${char}-${index}`}
-                        className={`inline-block text-[18px] font-semibold transition-all duration-[1400ms] ease-[cubic-bezier(0.19,1,0.22,1)] will-change-[transform,opacity,filter] sm:text-[20px] md:text-[26px] lg:text-[34px] xl:text-[39px] ${
-                          finalReveal
-                            ? "opacity-100 translate-y-0 scale-100 blur-0"
-                            : "opacity-0 translate-y-[8px] scale-100 blur-[6px]"
-                        } ${char === " " ? "w-[0.28em]" : ""}`}
-                        style={{
-                          transitionDelay: `${index * 220}ms`,
-                          letterSpacing: "0.02em",
-                        }}
-                      >
-                        {char === " " ? "\u00A0" : char}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              <div className="text-right font-mono font-medium text-[12px] tracking-wider whitespace-nowrap text-white/80 md:text-sm lg:text-base">
-                {date}
+            {/* Scroll indicator - 하단 row 안에서 중앙정렬 */}
+            <div className="row-start-11 row-end-12 flex items-end justify-center">
+              <div className="flex flex-col items-center justify-center pb-4 md:pb-5">
+                <span className="mb-3 text-xs uppercase tracking-[0.24em] text-white/70">
+                  Scroll
+                </span>
+                <div className="flex h-10 items-start justify-center overflow-hidden">
+                  <div className="animate-scroll-line w-px bg-white/60" />
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Scroll indicator - 하단 row 안에서 중앙정렬 */}
-          <div className="row-start-11 row-end-12 flex items-end justify-center">
-            <div className="flex flex-col items-center justify-center pb-4 md:pb-5">
-              <span className="mb-3 text-xs uppercase tracking-[0.24em] text-white/70">
-                Scroll
-              </span>
-              <div className="flex h-10 items-start justify-center overflow-hidden">
-                <div className="animate-scroll-line w-px bg-white/60" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Main headline page */}
-        <div
-          ref={headlinePageRef}
-          className="absolute inset-0 z-20 flex items-center justify-center px-6"
-        >
-          <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center justify-center text-center">
-            <div ref={headlineInnerRef}>
-              <p
-                className="font-semibold leading-[1.05] text-white
+          {/* Main headline page */}
+          <div
+            ref={headlinePageRef}
+            className="absolute inset-0 z-20 flex items-center justify-center px-6"
+          >
+            <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center justify-center text-center">
+              <div ref={headlineInnerRef}>
+                <p
+                  className="font-semibold leading-[1.05] text-white
                 text-[40px] sm:text-[52px] md:text-[64px] lg:text-[84px] xl:text-[110px]"
+                >
+                  PLANNING
+                  <br />
+                  USER EXPERIENCES
+                  <br />
+                  FROM A TO Z
+                </p>
+              </div>
+
+              <p
+                ref={paragraphRef}
+                className="mt-8 max-w-[800px] text-base leading-relaxed text-white/70 md:text-lg lg:text-xl break-keep"
               >
-                PLANNING
+                서비스 기획부터 R&D 사업기획까지 전 과정을 책임지는 PM
+                박건호입니다.
                 <br />
-                USER EXPERIENCES
-                <br />
-                FROM A TO Z
+                기획에서 끝내지 않고, 직접 실행하고 결과로 증명합니다.
               </p>
             </div>
-
-            <p
-              ref={paragraphRef}
-              className="mt-8 max-w-[800px] text-base leading-relaxed text-white/70 md:text-lg lg:text-xl break-keep"
-            >
-              서비스 기획부터 R&D 사업기획까지 전 과정을 책임지는 PM 박건호입니다.
-              <br /> 
-              기획에서 끝내지 않고, 직접 실행하고 결과로 증명합니다.
-            </p>
           </div>
-        </div>
 
-        {/* Video object */}
-        <div
-          ref={videoObjectRef}
-          className="absolute z-0 h-[320px] w-[260px] overflow-hidden bg-transparent will-change-transform transform-gpu
+          {/* Video object */}
+          <div
+            ref={videoObjectRef}
+            className="absolute z-0 h-[320px] w-[260px] overflow-hidden bg-transparent will-change-transform transform-gpu
                      sm:h-[380px] sm:w-[300px]
                      md:h-[420px] md:w-[340px]
                      lg:h-[520px] lg:w-[460px]"
-          style={{ left: "50%", top: "50%" }}
-        >
-          <video
-            muted
-            playsInline
-            autoPlay
-            loop
-            preload="auto"
-            className="absolute inset-0 h-full w-full object-cover bg-transparent opacity-60 transition-none md:opacity-80"
+            style={{ left: "50%", top: "50%" }}
           >
-            <source src={heroVideo} type="video/mp4" />
-          </video>
+            <video
+              muted
+              playsInline
+              autoPlay
+              loop
+              preload="auto"
+              className="absolute inset-0 h-full w-full object-cover bg-transparent opacity-60 transition-none md:opacity-80"
+            >
+              <source src={heroVideo} type="video/mp4" />
+            </video>
+          </div>
         </div>
-      </div>
       </section>
     </>
   );
