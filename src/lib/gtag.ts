@@ -9,13 +9,16 @@ declare global {
 }
 
 export function pageview(url: string) {
-  if (
-    !GA_MEASUREMENT_ID ||
-    typeof window === "undefined" ||
-    typeof window.gtag !== "function"
-  ) {
+  if (!GA_MEASUREMENT_ID || typeof window === "undefined") {
     return;
   }
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag =
+    window.gtag ||
+    function gtag() {
+      window.dataLayer?.push(arguments);
+    };
 
   window.gtag("config", GA_MEASUREMENT_ID, {
     page_path: url,
