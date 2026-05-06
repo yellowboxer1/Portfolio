@@ -19,7 +19,7 @@ export function GoogleAnalytics() {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: false });
+          gtag('config', '${GA_MEASUREMENT_ID}');
         `}
       </Script>
       <Suspense fallback={null}>
