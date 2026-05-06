@@ -19,6 +19,7 @@ export function pageview(url: string) {
 
   window.gtag("config", GA_MEASUREMENT_ID, {
     page_path: url,
+    page_location: window.location.href,
+    page_title: document.title,
   });
 }
-
