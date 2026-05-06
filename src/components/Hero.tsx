@@ -223,7 +223,13 @@ export default function Hero() {
 
   return (
     <>
-      <link rel="preload" href={heroVideo} as="video" type="video/mp4" />
+      <link
+        rel="preload"
+        href={heroVideo}
+        as="video"
+        type="video/mp4"
+        fetchPriority="high"
+      />
       <section ref={sectionRef} className="relative h-[200vh] bg-black">
         <div className="sticky top-0 h-screen overflow-hidden bg-black">
           {/* Intro guide lines */}

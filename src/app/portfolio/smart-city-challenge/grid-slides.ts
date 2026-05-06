@@ -1,11 +1,11 @@
 type CoverSlide = {
   type: "cover";
-  eyebrow: string;
   title: string;
   description: string;
   meta: { label: string; value: string }[];
   images: {
     logo: string;
+    toolIcons: string;
     tutorial: string;
     obstacle: string;
     userType: string;
@@ -22,7 +22,10 @@ type OverviewSlide = {
   logo: string;
   goals: { title: string; body: string }[];
   comparison: {
+    marker: string;
+    asisBody: string[];
     asis: string[];
+    tobeBody: string[];
     tobe: string[];
   };
 };
@@ -56,7 +59,6 @@ const media = (file: string) => `/portfolio/smart-city-challenge/media/${file}`;
 export const smartCityGridSlides: SmartCityGridSlide[] = [
   {
     type: "cover",
-    eyebrow: "PROJECT 01",
     title: "다가치나란히\n실내 내비게이션 앱",
     description:
       "부산시 도시철도를 중심으로 실내·외 길안내 내비게이션 서비스를 제공하며, 교통약자뿐만 아니라 비교통약자까지 모두를 배려한 배리어프리 플랫폼입니다.",
@@ -65,7 +67,8 @@ export const smartCityGridSlides: SmartCityGridSlide[] = [
       { label: "기여도", value: "50%" },
     ],
     images: {
-      logo: media("image9.png"),
+      logo: media("image1.png"),
+      toolIcons: media("image10.png"),
       tutorial: media("image5.png"),
       obstacle: media("image6.png"),
       userType: media("image7.png"),
@@ -82,11 +85,11 @@ export const smartCityGridSlides: SmartCityGridSlide[] = [
     goals: [
       {
         title: "서비스 대상 확대",
-        body: "예비사업 당시 한정적인 의미에서의 교통약자를 대상으로 서비스를 제공하였으나, 본사업에서는 외국인, 고령자로 교통약자의 범위를 넓혔고 비교통약자까지 포괄한 범용적인 서비스를 개발했습니다.",
+        body: "예비사업 당시 한정적인 의미에서의 교통약자를 대상으로 서비스를 제공 하였으나, 본사업에서는 외국인, 고령자로 교통약자의 범위를 넓혔고 비교통약자까지 포괄한 범용적인 서비스를 개발했습니다.",
       },
       {
         title: "서비스 지역 확대",
-        body: "부산역 중심의 서비스를 부산도시철도 1호선, 2·3·4호선까지 확장하여 시민이 직접 체험하고 활용할 수 있는 내비게이션 앱으로 고도화했습니다.",
+        body: "부산역에 한정되었던 서비스를 부산도시철도 1~4호선 전 역사로 단계적으로 확장하여, 시민이 직접 체험하고 활용할 수 있는 내비게이션 앱으로 고도화했습니다.",
       },
       {
         title: "서비스 영역 확대",
@@ -94,7 +97,17 @@ export const smartCityGridSlides: SmartCityGridSlide[] = [
       },
     ],
     comparison: {
+      marker: media("image0.png"),
+      asisBody: [
+        "예비사업을 위해 하나의 역사를 대상으로 만들어진 단순한 기능과 디자인으로 구성된 내비게이션 앱",
+        "도시철도 역사 내부가 아니면 작동되지 않아 실용성이 떨어지고 교통약자 배려요소가 부족함",
+      ],
       asis: ["실내 한정", "배려요소 부족", "낮은 실용성"],
+      tobeBody: [
+        "이용자가 역사 내부에서 최종목적지(외부)까지 앱을 이탈하지 않고 서비스 이용 가능",
+        "모든 서비스 이용자가 도시철도와 주변교통을 편리하게 이용할 수 있도록 제작",
+        "교통약자를 배려한 UI/UX 디자인과 목적지 설정을 위한 다양한 경로 제공",
+      ],
       tobe: ["실내 + 실외", "배려요소 보완", "활용률 증대"],
     },
   },

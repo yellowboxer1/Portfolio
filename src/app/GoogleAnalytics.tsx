@@ -19,7 +19,27 @@ export function GoogleAnalytics() {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${GA_MEASUREMENT_ID}');
+
+          const searchParams = new URLSearchParams(window.location.search);
+          const referrer = document.referrer;
+          const campaignSource =
+            searchParams.get('utm_source') ||
+            (referrer.includes('saramin.co.kr') ? 'saramin' : undefined);
+          const campaignMedium =
+            searchParams.get('utm_medium') ||
+            (referrer.includes('saramin.co.kr') ? 'profile' : undefined);
+          const campaignName =
+            searchParams.get('utm_campaign') ||
+            (referrer.includes('saramin.co.kr') ? 'portfolio' : undefined);
+          const config = campaignSource
+            ? {
+                campaign_source: campaignSource,
+                campaign_medium: campaignMedium,
+                campaign_name: campaignName,
+              }
+            : undefined;
+
+          gtag('config', '${GA_MEASUREMENT_ID}', config);
         `}
       </Script>
       <Suspense fallback={null}>

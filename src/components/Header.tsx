@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 type HeaderProps = {
@@ -21,6 +21,14 @@ export default function Header({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const isLight = variant === "light";
+
+  useEffect(() => {
+    document.documentElement.toggleAttribute("data-mobile-menu-open", isMenuOpen);
+
+    return () => {
+      document.documentElement.removeAttribute("data-mobile-menu-open");
+    };
+  }, [isMenuOpen]);
 
   return (
     <header
@@ -119,12 +127,14 @@ export default function Header({
         {/* Mobile Menu Button */}
         <button
           type="button"
-          className="md:hidden flex flex-col space-y-1.5 p-2"
+          className="relative flex h-10 w-10 items-center justify-center md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMenuOpen}
         >
-          <span className={`w-6 h-0.5 transition-transform ${isLight ? "bg-black" : "bg-white"} ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-          <span className={`w-6 h-0.5 transition-opacity ${isLight ? "bg-black" : "bg-white"} ${isMenuOpen ? 'opacity-0' : ''}`} />
-          <span className={`w-6 h-0.5 transition-transform ${isLight ? "bg-black" : "bg-white"} ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+          <span className={`absolute h-0.5 w-6 rounded-full transition-transform duration-200 ${isLight ? "bg-black" : "bg-white"} ${isMenuOpen ? 'translate-y-0 rotate-45' : '-translate-y-2'}`} />
+          <span className={`absolute h-0.5 w-6 rounded-full transition-opacity duration-150 ${isLight ? "bg-black" : "bg-white"} ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`} />
+          <span className={`absolute h-0.5 w-6 rounded-full transition-transform duration-200 ${isLight ? "bg-black" : "bg-white"} ${isMenuOpen ? 'translate-y-0 -rotate-45' : 'translate-y-2'}`} />
         </button>
       </div>
 

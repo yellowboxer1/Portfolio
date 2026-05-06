@@ -24,6 +24,15 @@ import Store from './components/Store';
 import Discover from './components/Discover';
 import Closet from './components/Closet';
 
+const preloadVideos = [
+  '/portfolio/zigzag-reverse/assets/video/all.mp4',
+  '/portfolio/zigzag-reverse/assets/video/onboarding.mp4',
+  '/portfolio/zigzag-reverse/assets/video/main1.mp4',
+  '/portfolio/zigzag-reverse/assets/video/detail.mp4',
+  '/portfolio/zigzag-reverse/assets/video/size.mp4',
+  '/portfolio/zigzag-reverse/assets/video/fitting.mp4',
+];
+
 const Deskresearch = dynamic(() => import('./components/Deskresearch'), {
   ssr: false,
   loading: () => <div className={styles.loading}>Loading research section...</div>,
@@ -36,6 +45,10 @@ export default function ZigzagReverseExperience() {
 
   return (
     <article className={styles.pageScope} data-project="zigzag-reverse">
+      {preloadVideos.map((src) => (
+        <link key={src} rel="preload" href={src} as="video" type="video/mp4" />
+      ))}
+
       <Header aboutHref="/#about" onAboutClick={handleAbout} />
 
       <Link

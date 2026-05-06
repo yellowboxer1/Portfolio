@@ -105,6 +105,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  height: 42px;
   border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.94);
@@ -112,7 +113,7 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
-  padding: 14px 20px;
+  padding: 0 20px;
   box-shadow: 0 14px 32px rgba(15, 23, 42, 0.1);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -167,6 +168,26 @@
   height: 150px;
   flex: 0 0 auto;
   object-fit: cover;
+}
+
+.profileInfoTable {
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 15px;
+}
+
+.profileInfoLabel {
+  width: 96px;
+  padding: 0 22px 6px 0;
+  color: #6b7280;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.profileInfoValue {
+  padding: 0 0 6px 8px;
+  color: #333333;
+  white-space: nowrap;
 }
 
 .experienceHeader {
@@ -292,8 +313,16 @@
   .downloadButton {
     top: 84px;
     right: 16px;
-    padding: 12px 16px;
+    height: 34px;
+    padding: 0 16px;
     font-size: 0.8125rem;
+  }
+
+  :global(html[data-mobile-menu-open]) .projectBackButton,
+  :global(html[data-mobile-menu-open]) .downloadButton {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
   }
 
   .contentColumn {
@@ -319,6 +348,19 @@
   .profilePhoto {
     width: 96px;
     height: 125px;
+  }
+
+  .profileInfoTable {
+    font-size: 14px;
+  }
+
+  .profileInfoLabel {
+    width: 82px;
+    padding-right: 18px;
+  }
+
+  .profileInfoValue {
+    padding-left: 10px;
   }
 
   .experiencePeriod {

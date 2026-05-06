@@ -531,14 +531,14 @@ body {
   transform: translate(var(--history-video-offset-x, 0px), var(--history-video-offset-y, 0px));
 }
 
-@media (max-width: 1023.98px) {
+@media (max-width: 1913.98px) {
   .history-video-frame {
-    width: var(--history-video-fixed-width, var(--history-video-fluid-width, 100vw));
-    height: var(--history-video-fixed-height, var(--history-video-fluid-height, 70.3125vw));
+    width: var(--history-video-scaled-width, var(--history-video-fixed-width, 100vw));
+    height: var(--history-video-scaled-height, var(--history-video-fixed-height, 70.3125vw));
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1914px) {
   .history-video-frame {
     width: var(--history-video-width, 100%);
     height: var(--history-video-height, 100%);

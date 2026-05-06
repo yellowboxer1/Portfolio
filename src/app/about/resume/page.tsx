@@ -269,25 +269,31 @@ const Resume = () => {
                     박건호
                   </h1>
 
-                  <table className="border-collapse text-left text-[15px]">
+                  <table className={styles.profileInfoTable}>
                     <tbody>
                       <tr>
-                        <td className="w-24 pb-1.5 font-medium text-gray-500">
+                        <td className={styles.profileInfoLabel}>
                           인적사항
                         </td>
-                        <td className="pb-1.5">남성 (1995년생)</td>
+                        <td className={styles.profileInfoValue}>
+                          남성 (1995년생)
+                        </td>
                       </tr>
                       <tr>
-                        <td className="w-24 pb-1.5 font-medium text-gray-500">
+                        <td className={styles.profileInfoLabel}>
                           전화번호
                         </td>
-                        <td className="pb-1.5">01054756150</td>
+                        <td className={styles.profileInfoValue}>
+                          01054756150
+                        </td>
                       </tr>
                       <tr>
-                        <td className="w-24 pb-1.5 font-medium text-gray-500">
+                        <td className={styles.profileInfoLabel}>
                           이메일
                         </td>
-                        <td className="pb-1.5">yellowboxer1@naver.com</td>
+                        <td className={styles.profileInfoValue}>
+                          yellowboxer1@naver.com
+                        </td>
                       </tr>
                     </tbody>
                   </table>

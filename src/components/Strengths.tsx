@@ -191,7 +191,7 @@ function VideoVisual({
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="auto"
         className={cn(
           "w-full h-full object-cover rounded-[22px] transition-all duration-700 will-change-transform",
           isActive ? "opacity-100 scale-100" : "opacity-35 scale-[0.95]"

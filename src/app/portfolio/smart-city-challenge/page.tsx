@@ -56,8 +56,12 @@ export default function SmartCityChallengePage() {
                     alt=""
                     aria-hidden="true"
                   />
-                  <p className={styles.eyebrow}>{slide.eyebrow}</p>
                   <h1>{slide.title}</h1>
+                  <img
+                    className={styles.toolIcons}
+                    src={slide.images.toolIcons}
+                    alt="Figma, Photoshop, Illustrator"
+                  />
                   <p className={styles.description}>{slide.description}</p>
                   <dl className={styles.metaList}>
                     {slide.meta.map((item) => (
@@ -78,7 +82,6 @@ export default function SmartCityChallengePage() {
                     <img src={slide.images.obstacle} alt="" />
                   </figure>
                   <figure className={styles.visualCardSmall}>
-                    <figcaption>사용자 유형 선택</figcaption>
                     <img src={slide.images.userType} alt="" />
                   </figure>
                   <figure className={styles.visualCardSmall}>
@@ -111,6 +114,7 @@ export default function SmartCityChallengePage() {
                   <p className={styles.kicker}>{slide.kicker}</p>
                   <h2>{slide.title}</h2>
                 </div>
+                <h3 className={styles.goalHeading}>목적</h3>
                 <div className={styles.goalList}>
                   {slide.goals.map((goal) => (
                     <section key={goal.title}>
@@ -120,16 +124,32 @@ export default function SmartCityChallengePage() {
                   ))}
                 </div>
                 <div className={styles.comparison}>
-                  <div>
-                    <h3>AS IS</h3>
+                  <img
+                    className={styles.comparisonMarker}
+                    src={slide.comparison.marker}
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  <div className={styles.comparisonRow}>
+                    <div className={styles.comparisonCopy}>
+                      <h3>AS IS (예비사업)</h3>
+                      {slide.comparison.asisBody.map((item) => (
+                        <p key={item}>{item}</p>
+                      ))}
+                    </div>
                     <ul>
                       {slide.comparison.asis.map((item) => (
                         <li key={item}>{item}</li>
                       ))}
                     </ul>
                   </div>
-                  <div>
-                    <h3>TO BE</h3>
+                  <div className={styles.comparisonRow}>
+                    <div className={styles.comparisonCopy}>
+                      <h3>TO BE (본사업)</h3>
+                      {slide.comparison.tobeBody.map((item) => (
+                        <p key={item}>{item}</p>
+                      ))}
+                    </div>
                     <ul>
                       {slide.comparison.tobe.map((item) => (
                         <li key={item}>{item}</li>

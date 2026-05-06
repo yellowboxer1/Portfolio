@@ -22,7 +22,7 @@
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #fff;
-  color: #172338;
+  color: #404040;
   font-family:
     var(--font-family-noto-sans-kr),
     var(--font-family-noto-sans),
@@ -49,27 +49,27 @@
   max-width: 100%;
 }
 
-.eyebrow,
 .kicker,
 .sectionTitle {
-  font-size: clamp(10px, 0.72vw, 14px);
-  font-weight: 700;
-  color: rgba(23, 35, 56, 0.7);
+  font-size: clamp(12px, 1.042vw, 20px);
+  font-weight: 500;
+  color:#333;
 }
 
 .description {
-  font-size: clamp(12px, 1.02vw, 18px);
+  font-size: clamp(12px, 1.042vw, 20px);
+  color:#404040;
   font-weight: 500;
   line-height: 1.52;
   white-space: pre-line;
 }
 
 .cover {
-  grid-template-columns: minmax(280px, 31vw) 1fr;
+  grid-template-columns: minmax(260px, 27vw) 1fr;
   align-items: center;
   column-gap: 3.8vw;
   padding: 6.3vw 4.8vw 4.8vw 6vw;
-  background: #fedc21;
+  background: #FFDA00;
 }
 
 .coverCopy {
@@ -80,22 +80,33 @@
 }
 
 .coverLogo {
-  width: clamp(82px, 8.9vw, 150px);
-  filter: drop-shadow(0 1.4vw 1.7vw rgba(63, 71, 31, 0.18));
+  width: clamp(82px, 9.167vw, 176px);
+  filter: drop-shadow(0 1.3vw 1.5vw rgba(63, 71, 31, 0.18));
+  height: auto;
+  display: block;
+}
+
+.toolIcons {
+  width: clamp(54px, 6.7vw, 126px);
+  height: auto;
 }
 
 .coverCopy h1 {
-  font-size: clamp(28px, 3vw, 56px);
-  font-weight: 500;
-  line-height: 1.22;
+  font-size: clamp(24px, 2.344vw, 48px);
+
+  line-height: 1.27;
+  letter-spacing: clamp(-0.03em, -0.015vw, -0.01em);
+  color: #262626;
+  font-weight: 600;
   white-space: pre-line;
+  word-break: keep-all;
 }
 
 .metaList {
   display: grid;
   gap: 0.75vw;
-  font-size: clamp(12px, 1vw, 17px);
-  font-weight: 700;
+  font-size: clamp(12px, 1.042vw, 20px);
+  font-weight: 600;
 }
 
 .metaList div {
@@ -105,29 +116,27 @@
 }
 
 .metaList dt {
-  color: rgba(23, 35, 56, 0.72);
+  color: #404040;
 }
 
 .metaList dd {
-  color: #1b4d82;
+  color: #404040;
+  font-weight: 500;
 }
 
 .coverVisuals {
   position: relative;
-  display: grid;
-  grid-template-columns: 1.08fr 0.85fr 0.8fr;
-  grid-template-rows: 1fr 0.75fr;
-  align-items: center;
-  gap: 1.4vw;
-  min-height: 38vw;
+  min-height: 40vw;
 }
 
 .visualCard,
 .visualCardSmall,
 .signPlayer {
-  display: grid;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
   gap: 0.45vw;
-  color: #58a2c5;
+  color: #909090;
   font-size: clamp(9px, 0.62vw, 12px);
 }
 
@@ -136,43 +145,49 @@
 .signPlayer img {
   width: 100%;
   border-radius: 0.35vw;
-  filter: drop-shadow(0 1.1vw 1.8vw rgba(51, 57, 68, 0.14));
 }
 
 .visualCard:first-child {
-  grid-column: 1 / 3;
-  align-self: start;
-  width: 58%;
-  justify-self: center;
+  top: 0;
+  left: 16%;
+  z-index: 2;
+  width: 36%;
 }
 
 .visualCard:nth-child(2) {
-  grid-column: 1 / 2;
-  grid-row: 2;
-  align-self: end;
-  width: 86%;
-  justify-self: end;
+  bottom: 3.3%;
+  left: -6%;
+  z-index: 4;
+  width: 36%;
 }
 
 .visualCardSmall:nth-child(3) {
-  grid-column: 2 / 3;
-  grid-row: 2;
-  align-self: start;
-  width: 82%;
-  transform: translateY(-18%);
+  top: 35%;
+  left: 48%;
+  z-index: 5;
+  width: 30.5%;
 }
 
 .visualCardSmall:nth-child(4) {
-  grid-column: 2 / 3;
-  grid-row: 2;
-  align-self: end;
-  width: 98%;
+  right: 31%;
+  bottom: 16%;
+  z-index: 5;
+  width: 32%;
+}
+
+.visualCardSmall:nth-child(4) figcaption {
+  position: absolute;
+  right: 0%;
+  bottom: -1.1vw;
+  white-space: nowrap;
 }
 
 .signPlayer {
-  grid-column: 3 / 4;
-  grid-row: 1 / 3;
-  align-self: center;
+  top: 50%;
+  right: 0;
+  z-index: 1;
+  width: 36%;
+  transform: translateY(-50%);
 }
 
 .signPlayer img {
@@ -180,11 +195,11 @@
 }
 
 .overview {
-  grid-template-columns: 40% 1fr;
-  grid-template-rows: auto 1fr;
-  gap: 2vw 5vw;
+  grid-template-columns: minmax(280px, 32.2%) 1fr;
+  grid-template-rows: auto auto 1fr;
+  gap: 2vw 8vw;
+  align-content: center;
   padding: 5.2vw 6.8vw;
-  background: #dbefff;
 }
 
 .overviewBackground {
@@ -205,6 +220,7 @@
 }
 
 .overviewHeader,
+.goalHeading,
 .goalList,
 .comparison {
   position: relative;
@@ -212,70 +228,139 @@
 }
 
 .overviewHeader {
-  grid-column: 1 / -1;
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .overviewHeader h2 {
   margin-top: 2.2vw;
-  font-size: clamp(36px, 4.2vw, 78px);
+  margin-bottom: 3vw;
+  font-size: clamp(18px, 1.771vw, 34px);
+  line-height: 1.18;
+  letter-spacing: clamp(-0.03em, -0.015vw, -0.01em);
   font-weight: 500;
-  color: rgba(32, 48, 70, 0.56);
+  color: #7F7F7F;
+}
+
+.goalHeading {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+  margin: 0;
+  color: #111;
+  font-size: clamp(18px, 1.667vw, 32px);
+  font-weight: 700;
 }
 
 .goalList {
+  grid-column: 1;
+  grid-row: 3;
   display: grid;
-  gap: 2vw;
-  align-content: end;
+  gap: 2.1vw;
+  align-content: start;
+  align-self: stretch;
 }
 
 .goalList h3,
 .serviceItems h3,
 .noteGrid h3 {
-  font-size: clamp(14px, 1.4vw, 24px);
-  font-weight: 800;
+  font-size: clamp(14px, 1.042vw, 24px);
+  font-weight: 700;
+  color: #111;
 }
 
 .goalList p,
 .serviceItems p,
 .noteGrid p {
-  margin-top: 1vw;
-  font-size: clamp(11px, 0.9vw, 16px);
-  font-weight: 500;
+  margin-top: 0.5vw;
+  font-size: clamp(11px, 0.938vw, 18px);
+  font-weight: 450;
   line-height: 1.7;
 }
 
 .comparison {
+  position: relative;
+  grid-column: 2;
+  grid-row: 2 / 4;
   display: grid;
   grid-template-rows: 1fr 1fr;
-  gap: 2.4vw;
+  gap: 3vw;
   align-self: stretch;
+  justify-self: end;
+  width: 100%;
+  color: #111;
+}
+
+.comparisonMarker {
+  position: absolute;
+  top: 50%;
+  right: 16.8%;
+  z-index: 1;
+  width: clamp(24px, 3.1vw, 82px);
+  height: auto;
+  transform: translate(50%, -50%);
+  pointer-events: none;
+}
+
+.comparisonRow {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr);
+  align-items: start;
+  gap: 6vw;
+  min-height: 0;
+}
+
+.comparisonCopy {
+  display: grid;
+  gap: 0.7vw;
 }
 
 .comparison h3 {
-  font-size: clamp(18px, 2vw, 34px);
-  font-weight: 900;
+  font-size: clamp(18px, 1.667vw, 32px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.comparisonCopy p {
+  font-size: clamp(10.5px, 0.885vw, 17px);
+  font-weight: 450;
+  line-height: 1.65;
+  color:#404040;
+}
+
+.comparisonCopy p:first-of-type {
+  margin-top: 1.3vw;
 }
 
 .comparison ul {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
-  gap: 1vw;
+  gap: 0;
   padding: 0;
-  margin: 1.5vw 0 0;
+  margin: 0;
   list-style: none;
 }
 
 .comparison li {
   display: grid;
   place-items: center;
-  width: clamp(86px, 10vw, 170px);
+  width: clamp(70px, 7.8vw, 168px);
   aspect-ratio: 1;
   padding: 1vw;
-  border: 1px solid rgba(23, 35, 56, 0.45);
+  margin-left: -0.5vw;
+  border: 1px solid rgba(17, 17, 17, 0.58);
   border-radius: 50%;
   text-align: center;
-  font-size: clamp(11px, 1vw, 17px);
+  font-size: clamp(11px, 0.9vw, 17px);
   line-height: 1.35;
+}
+
+.comparisonRow:last-of-type li {
+  color: #fff;
+  background: rgba(44, 158, 255, 0.72);
+  border-color: rgba(44, 158, 255, 0.72);
 }
 
 .preview {
@@ -472,31 +557,63 @@
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     gap: 28px;
+    align-content: start;
     padding: 78px 20px 42px;
   }
 
-  .coverVisuals,
   .previewImages,
   .serviceImages {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    min-height: auto;
   }
 
-  .visualCard:first-child,
-  .visualCard:nth-child(2),
-  .visualCardSmall:nth-child(3),
-  .visualCardSmall:nth-child(4),
-  .signPlayer {
-    grid-column: auto;
-    grid-row: auto;
+  .coverVisuals {
+    min-height: 0;
+    aspect-ratio: 1.08;
     width: 100%;
-    transform: none;
+    max-width: 560px;
+    justify-self: center;
+  }
+
+  .visualCard,
+  .visualCardSmall,
+  .signPlayer {
+    gap: 5px;
+    font-size: 9px;
+  }
+
+  .visualCard:first-child {
+    top: 5%;
+    left: 10%;
+    width: 42%;
+  }
+
+  .visualCard:nth-child(2) {
+    bottom: 10%;
+    left: 0;
+    width: 42%;
+  }
+
+  .visualCardSmall:nth-child(3) {
+    top: 47%;
+    left: 33%;
+    width: 32%;
+  }
+
+  .visualCardSmall:nth-child(4) {
+    right: 25%;
+    bottom: 15%;
+    width: 35%;
+  }
+
+  .visualCardSmall:nth-child(4) figcaption {
+    bottom: -14px;
   }
 
   .signPlayer {
-    grid-column: 1 / -1;
-    width: 58%;
-    justify-self: center;
+    top: 55%;
+    right: 0;
+    width: 39%;
+    transform: translateY(-50%);
   }
 
   .overviewHeader h2,
@@ -512,12 +629,36 @@
     gap: 20px;
   }
 
+  .overviewHeader,
+  .goalHeading,
+  .goalList,
+  .comparison {
+    grid-column: 1;
+    grid-row: auto;
+    width: auto;
+    justify-self: stretch;
+  }
+
   .comparison ul {
     flex-wrap: wrap;
   }
 
+  .comparisonRow {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .comparisonCopy {
+    gap: 14px;
+  }
+
+  .comparisonMarker {
+    display: none;
+  }
+
   .comparison li {
     width: 92px;
+    margin-left: 0;
   }
 
   .previewImages img,

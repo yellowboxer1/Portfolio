@@ -54,7 +54,7 @@ export default function AutoPlayVideo({
         }
       },
       {
-        rootMargin: '240px 0px',
+        rootMargin: '1200px 0px',
         threshold: 0.05,
       },
     );

@@ -4,6 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import type { HistoryEntry } from "../data";
 
 const HISTORY_FADE_MS = 1200;
+const HISTORY_REFERENCE_WIDTH = 1914;
+const HISTORY_REFERENCE_HEIGHT = 900;
+const HISTORY_MIN_SCALE_WIDTH = 1024;
 
 type Props = {
   activeIndex: number;
@@ -45,13 +48,23 @@ export const HistoryMediaGallery = ({ activeIndex, entries, onNext }: Props) => 
     const heightPercent = entry.videoHeightPercent ?? 100;
     const baseBoxWidth = 1280 * (widthPercent / 100);
     const baseBoxHeight = 900 * (heightPercent / 100);
+    const referenceBoxWidth = HISTORY_REFERENCE_WIDTH * (widthPercent / 100);
+    const referenceBoxHeight = HISTORY_REFERENCE_HEIGHT * (heightPercent / 100);
     const aspectRatio = entry.videoAspectRatio ?? 16 / 9;
     const isCover = entry.videoFit === "cover";
     const containedWidth = Math.min(baseBoxWidth, baseBoxHeight * aspectRatio);
     const containedHeight = containedWidth / aspectRatio;
+    const referenceContainedWidth = Math.min(
+      referenceBoxWidth,
+      referenceBoxHeight * aspectRatio,
+    );
+    const referenceContainedHeight = referenceContainedWidth / aspectRatio;
     const fluidWidth = isCover ? baseBoxWidth : containedWidth;
     const fluidHeight = isCover ? baseBoxHeight : containedHeight;
     const fixedBelowLgRatio = 1024 / 1280;
+    const referenceWidth = isCover ? referenceBoxWidth : referenceContainedWidth;
+    const referenceHeight = isCover ? referenceBoxHeight : referenceContainedHeight;
+    const minScale = HISTORY_MIN_SCALE_WIDTH / HISTORY_REFERENCE_WIDTH;
 
     return {
       "--history-video-width": `${widthPercent}%`,
@@ -60,6 +73,8 @@ export const HistoryMediaGallery = ({ activeIndex, entries, onNext }: Props) => 
       "--history-video-fluid-height": `${(fluidHeight / 1280) * 100}vw`,
       "--history-video-fixed-width": `${fluidWidth * fixedBelowLgRatio}px`,
       "--history-video-fixed-height": `${fluidHeight * fixedBelowLgRatio}px`,
+      "--history-video-scaled-width": `clamp(${referenceWidth * minScale}px, ${(referenceWidth / HISTORY_REFERENCE_WIDTH) * 100}vw, ${referenceWidth}px)`,
+      "--history-video-scaled-height": `clamp(${referenceHeight * minScale}px, ${(referenceHeight / HISTORY_REFERENCE_WIDTH) * 100}vw, ${referenceHeight}px)`,
       "--history-video-offset-x": entry.videoOffsetX ?? "0px",
       "--history-video-offset-y": entry.videoOffsetY ?? "0px",
     } as React.CSSProperties;
