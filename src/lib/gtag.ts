@@ -16,8 +16,8 @@ export function pageview(url: string) {
   window.dataLayer = window.dataLayer || [];
   window.gtag =
     window.gtag ||
-    function gtag() {
-      window.dataLayer?.push(arguments);
+    function gtag(...args: unknown[]) {
+      window.dataLayer?.push(args);
     };
 
   window.gtag("config", GA_MEASUREMENT_ID, {
