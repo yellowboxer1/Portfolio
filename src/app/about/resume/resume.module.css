@@ -1,6 +1,6 @@
 @page {
   size: A4;
-  margin: 18mm 0 15mm;
+  margin: 10mm 0 10mm;
 }
 
 .page {
@@ -170,7 +170,11 @@
 }
 
 .experienceHeader {
-  margin-bottom: 20px;
+  margin-bottom: 28px;
+}
+
+.experienceTitleRow {
+  display: flex;
 }
 
 .experiencePeriod {
@@ -206,8 +210,19 @@
 }
 
 .section {
+  display: flex;
   page-break-inside: avoid;
   break-inside: avoid;
+}
+
+.sectionLabel {
+  flex: 0 0 150px;
+  width: 150px;
+}
+
+.sectionContent {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .experienceItem {
@@ -296,6 +311,11 @@
     margin-bottom: 40px;
   }
 
+  .sectionLabel {
+    flex-basis: auto;
+    width: 100%;
+  }
+
   .profilePhoto {
     width: 96px;
     height: 125px;
@@ -368,6 +388,58 @@
     margin: 0;
     border-radius: 0;
     box-shadow: none;
-    padding: 0 20mm;
+    padding: 0 15mm;
+  }
+
+  .section {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0 !important;
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .sectionLabel {
+    flex: 0 0 150px !important;
+    width: 150px !important;
+  }
+
+  .sectionContent {
+    flex: 1 1 auto !important;
+    min-width: 0;
+  }
+
+  .experienceTitleRow {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 20px !important;
+  }
+
+  .experiencePeriod {
+    align-self: flex-start !important;
+    min-width: 110px !important;
+    text-align: right !important;
+    white-space: nowrap;
+  }
+
+  .experienceRoleRow {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 20px !important;
+  }
+
+  .experienceRoleRow > div:last-child {
+    min-width: 110px !important;
+    text-align: right !important;
+    white-space: nowrap;
+  }
+
+  .experienceItem {
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 }

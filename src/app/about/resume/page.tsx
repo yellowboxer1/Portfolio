@@ -45,13 +45,15 @@ const formatDuration = (totalMonths: number) => {
   return `${months}개월`;
 };
 
-const experiencePeriods = [
-  "2025.04 ~ 재직 중",
-  "2025.06 ~ 재직 중",
-  "2024.07 ~ 2024.12",
-  "2022.03 ~ 2023.10",
-  "2020.10 ~ 2022.01",
-];
+const experiencePeriodMap = {
+  partnerit: "2025.04 ~ 재직 중",
+  gati: "2025.06 ~ 재직 중",
+  nsdevil: "2024.07 ~ 2024.12",
+  zeroweb: "2022.03 ~ 2023.10",
+  laoncomes: "2020.10 ~ 2022.01",
+} as const;
+
+const experiencePeriods = Object.values(experiencePeriodMap);
 
 const getPeriodRange = (period: string) => {
   const [startText, endText] = period.split("~").map((value) => value.trim());
@@ -101,7 +103,7 @@ const calculateDurationMonths = (period: string) => {
 const calculateDuration = (period: string) =>
   formatDuration(calculateDurationMonths(period));
 
-const calculateTotalExperience = () => {
+const calculateTotalExperienceMonths = () => {
   const ranges = experiencePeriods
     .map(getPeriodRange)
     .filter((range): range is NonNullable<typeof range> => Boolean(range))
@@ -119,19 +121,26 @@ const calculateTotalExperience = () => {
     return merged;
   }, []);
 
-  const totalMonths = mergedRanges.reduce(
+  return mergedRanges.reduce(
     (total, range) => total + range.endExclusive - range.startIndex,
     0,
   );
+};
 
-  return formatDuration(totalMonths);
+const calculateTotalExperience = () =>
+  formatDuration(calculateTotalExperienceMonths());
+
+const calculateCareerYear = () => {
+  const totalMonths = calculateTotalExperienceMonths();
+
+  return Math.max(Math.floor(totalMonths / 12) + 1, 1);
 };
 
 const Section = ({ title, subtitle, children }: SectionProps) => (
   <section
-    className={`${styles.section} mb-12 flex border-t-[2px] border-black pt-8 max-md:flex-col max-md:gap-5`}
+    className={`${styles.section} mb-12 flex border-t-[1.5px] border-[#333] pt-12 max-md:flex-col max-md:gap-5`}
   >
-    <div className="w-[150px] shrink-0 max-md:w-full">
+    <div className={`${styles.sectionLabel} w-[150px] shrink-0 max-md:w-full`}>
       <h2 className="text-[20px] font-bold leading-tight">{title}</h2>
       {subtitle && (
         <div className="mt-2 text-[14px] font-medium text-gray-500">
@@ -139,7 +148,7 @@ const Section = ({ title, subtitle, children }: SectionProps) => (
         </div>
       )}
     </div>
-    <div className="flex-1">{children}</div>
+    <div className={`${styles.sectionContent} flex-1`}>{children}</div>
   </section>
 );
 
@@ -149,9 +158,11 @@ const ExperienceItem = ({
   period,
   children,
 }: ExperienceItemProps) => (
-  <div className={`${styles.experienceItem} mb-12 last:mb-0`}>
+  <div className={`${styles.experienceItem} mb-8 last:mb-0`}>
     <div className={styles.experienceHeader}>
-      <div className="mb-1 flex items-start justify-between gap-5 max-md:flex-col max-md:gap-1">
+      <div
+        className={`${styles.experienceTitleRow} mb-1 flex items-start justify-between gap-5 max-md:flex-col max-md:gap-1`}
+      >
         <h3 className="text-[20px] font-bold">{company}</h3>
         <div className={styles.experiencePeriod}>{period}</div>
       </div>
@@ -203,6 +214,8 @@ const ProjectItem = ({
 );
 
 const Resume = () => {
+  const careerYear = calculateCareerYear();
+
   const handleBack = () => {
     window.location.href = "/#about";
   };
@@ -289,10 +302,10 @@ const Resume = () => {
                 />
               </header>
 
-              <div className="mb-12 text-[15px] leading-7 tracking-[-0.01em]">
+              <div className="mb-12 text-[15px] leading-6.5 tracking-[-0.01em]">
                 <p>
-                  5년 차 기획자로 스타트업에서 웹과 앱 서비스를 기획/운영
-                  하였습니다.
+                  {careerYear}년 차 기획자로 스타트업에서 웹과 앱 서비스를
+                  기획/운영 하였습니다.
                 </p>
                 <p>
                   R&amp;D 사업 운영/기획을 주로 담당했으며, 필요에 따라
@@ -311,7 +324,7 @@ const Resume = () => {
                 <ExperienceItem
                   company="(주)파트너잇"
                   role="수석연구원 / 연구개발전담부서"
-                  period="2025.04 ~ 재직 중"
+                  period={experiencePeriodMap.partnerit}
                 >
                   <p className="mb-2 text-[15px] font-semibold">
                     AI 기반 정부지원사업 매칭서비스 파트너잇 TPM 및 서비스 기획
@@ -338,7 +351,7 @@ const Resume = () => {
                 <ExperienceItem
                   company="같이가치(GATI)"
                   role="대표"
-                  period="2025.06 ~ 재직 중"
+                  period={experiencePeriodMap.gati}
                 >
                   <p className="mb-2 text-[15px] font-semibold">
                     AI 및 빅데이터기반 시각장애인 보행보조서비스
@@ -362,7 +375,7 @@ const Resume = () => {
                 <ExperienceItem
                   company="엔에스데블"
                   role="팀원/대리 / 미래교육 플랫폼 사업팀"
-                  period="2024.07 ~ 2024.12"
+                  period={experiencePeriodMap.nsdevil}
                 >
                   <p className="mb-2 text-[15px] font-bold">
                     혁신융합대학 프로젝트 관리 및 서비스기획
@@ -379,7 +392,7 @@ const Resume = () => {
                 <ExperienceItem
                   company="(주)제로웹"
                   role="선임/사업전략부"
-                  period="2022.03 ~ 2023.10"
+                  period={experiencePeriodMap.zeroweb}
                 >
                   <div className="mb-4 space-y-1 text-[13.5px]">
                     <p>
@@ -426,7 +439,7 @@ ADL 추출, 특허 출원 등 R&D 과제 운영`}
                 <ExperienceItem
                   company="라온코메스(주)"
                   role="대리/지역개발부"
-                  period="2020.10 ~ 2022.01"
+                  period={experiencePeriodMap.laoncomes}
                 >
                   <div className="mb-4 space-y-1 text-[13.5px]">
                     <p>

@@ -316,9 +316,18 @@ export default function Hero() {
           <div
             ref={headlinePageRef}
             className="absolute inset-0 z-20 flex items-center justify-center px-6"
+            style={{
+              opacity: 0,
+              transform: "translate3d(0%, 48px, 0) scale(0.965)",
+            }}
           >
             <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center justify-center text-center">
-              <div ref={headlineInnerRef}>
+              <div
+                ref={headlineInnerRef}
+                style={{
+                  transform: "translate3d(0, 18px, 0) scale(1)",
+                }}
+              >
                 <p
                   className="font-semibold leading-[1.05] text-white
                 text-[40px] sm:text-[52px] md:text-[64px] lg:text-[84px] xl:text-[110px]"
@@ -334,6 +343,10 @@ export default function Hero() {
               <p
                 ref={paragraphRef}
                 className="mt-8 max-w-[800px] text-base leading-relaxed text-white/70 md:text-lg lg:text-xl break-keep"
+                style={{
+                  opacity: 0,
+                  transform: "translate3d(0, 30px, 0)",
+                }}
               >
                 서비스 기획부터 R&D 사업기획까지 전 과정을 책임지는 PM
                 박건호입니다.
