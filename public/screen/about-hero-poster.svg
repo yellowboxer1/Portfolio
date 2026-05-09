@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="About hero video poster">
+  <defs>
+    <radialGradient id="a" cx="72%" cy="34%" r="42%">
+      <stop offset="0%" stop-color="#5f6f94" stop-opacity=".55"/>
+      <stop offset="52%" stop-color="#1e2738" stop-opacity=".42"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="b" x1="0%" x2="100%" y1="0%" y2="0%">
+      <stop offset="0%" stop-color="#000"/>
+      <stop offset="48%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#000"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#b)"/>
+  <rect width="1600" height="900" fill="url(#a)"/>
+  <rect width="1600" height="900" fill="#000" opacity=".32"/>
+</svg>

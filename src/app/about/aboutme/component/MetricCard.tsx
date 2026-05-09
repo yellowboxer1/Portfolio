@@ -15,6 +15,7 @@ export type MetricCardProps = {
   iconSrc?: string;
   iconAlt?: string;
   backgroundVariant?: string;
+  posterSrc?: string;
   videoWebmSrc?: string;
   videoMp4Src?: string;
   /** @deprecated Use videoWebmSrc/videoMp4Src instead */
@@ -31,6 +32,7 @@ export default function MetricCard({
   iconSrc,
   iconAlt,
   backgroundVariant,
+  posterSrc,
   videoWebmSrc,
   videoMp4Src,
   videoSrc,
@@ -103,6 +105,7 @@ export default function MetricCard({
               loop
               playsInline
               preload="metadata"
+              poster={posterSrc}
             >
               {videoWebmSrc && <source type="video/webm" src={videoWebmSrc} />}
               {videoMp4Src && <source type="video/mp4" src={videoMp4Src} />}

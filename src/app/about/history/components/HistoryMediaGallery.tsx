@@ -112,7 +112,7 @@ export const HistoryMediaGallery = ({ activeIndex, entries, onNext }: Props) => 
                   className="pointer-events-none absolute left-0 top-0 h-full w-full bg-cover bg-center bg-no-repeat"
                   style={entry.pcPoster ? { backgroundImage: `url('${entry.pcPoster}')` } : undefined}
                 />
-                {entry.videoMp4 && (
+                {(entry.videoWebm || entry.videoMp4) && (
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div
                       className="history-video-frame relative z-[1]"
@@ -123,13 +123,13 @@ export const HistoryMediaGallery = ({ activeIndex, entries, onNext }: Props) => 
                       playsInline
                       loop
                       muted
-                      preload="auto"
+                      preload="metadata"
                       className={`h-full w-full ${
                         entry.videoFit === "cover" ? "object-cover" : "object-contain"
                       }`}
                     >
                       {entry.videoWebm && <source type="video/webm" src={entry.videoWebm} />}
-                      <source type="video/mp4" src={entry.videoMp4} />
+                      {entry.videoMp4 && <source type="video/mp4" src={entry.videoMp4} />}
                     </video>
                     </div>
                   </div>

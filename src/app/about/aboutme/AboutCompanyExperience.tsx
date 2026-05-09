@@ -10,7 +10,9 @@ type MetricGroup = {
   tabLabel: string;
   eyebrow: string;
   title: string;
-  videoSrc: string;
+  videoMp4Src?: string;
+  videoWebmSrc?: string;
+  posterSrc: string;
   items: MetricItem[];
 };
 
@@ -23,8 +25,11 @@ type Capability = {
   }>;
 };
 
-const aboutHeroVideo = "/screen/bg-2.mp4";
-const coreCapabilityVideo = "/screen/bg-5.mp4";
+const aboutHeroVideoWebm = "/screen/bg-2.webm";
+const coreCapabilityVideoWebm = "/screen/bg-5.webm";
+const aboutHeroPoster = "/screen/about-hero-poster.svg";
+const metricsPoster = "/screen/metrics-poster.svg";
+const coreCapabilityPoster = "/screen/core-capability-poster.svg";
 
 const aboutParagraphs = [
   "아이디어를 실현하는 과정은 시간, 비용, 수많은 선택의 결과입니다.\n하지만 시장의 선택을 받는 것은 전혀 다른 문제입니다.",
@@ -39,7 +44,8 @@ const metricGroups: MetricGroup[] = [
     tabLabel: "B2G Business Impact",
     eyebrow: "B2G Business Impact",
     title: "B2G Business\nImpact",
-    videoSrc: "/screen/bg-3.webm",
+    videoWebmSrc: "/screen/bg-3.webm",
+    posterSrc: metricsPoster,
     items: [
       {
         value: "447억+",
@@ -62,7 +68,8 @@ const metricGroups: MetricGroup[] = [
     tabLabel: "R&D PROJECT EXECUTION",
     eyebrow: "R&D PROJECT EXECUTION",
     title: "R&D PROJECT\nEXECUTION",
-    videoSrc: "/screen/bg-1.mp4",
+    videoMp4Src: "/screen/bg-1.mp4",
+    posterSrc: metricsPoster,
     items: [
       {
         value: "31억+",
@@ -85,7 +92,8 @@ const metricGroups: MetricGroup[] = [
     tabLabel: "BUSINESS STRATEGY & GROWTH",
     eyebrow: "BUSINESS STRATEGY & GROWTH",
     title: "BUSINESS STRATEGY\n& GROWTH",
-    videoSrc: "/screen/bg-4.mp4",
+    videoWebmSrc: "/screen/bg-4.webm",
+    posterSrc: metricsPoster,
     items: [
       {
         value: "150%+",
@@ -371,7 +379,6 @@ export function MetricsSection() {
 
   return (
     <>
-      <link rel="preload" href={aboutHeroVideo} as="video" type="video/mp4" />
       <div
         ref={viewportRef}
         className="h-[var(--viewport-height,100vh)] max-h-[100svh] touch-none overflow-hidden bg-black text-white [--about-gnb-height:64px]"
@@ -437,13 +444,15 @@ export function MetricsSection() {
         >
           <video
             className="absolute inset-0 h-full w-full object-cover opacity-85"
-            src={aboutHeroVideo}
             autoPlay
             muted
             loop
             playsInline
-            preload="auto"
-          />
+            preload="metadata"
+            poster={aboutHeroPoster}
+          >
+            <source src={aboutHeroVideoWebm} type="video/webm" />
+          </video>
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_35%,rgba(255,255,255,0.10),transparent_32%),linear-gradient(90deg,rgba(0,0,0,0.66),rgba(0,0,0,0.34)_48%,rgba(0,0,0,0.58))]" />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.08),rgba(0,0,0,0.36))]" />
@@ -506,7 +515,9 @@ export function MetricsSection() {
                     key={group.tabLabel}
                     title={group.title}
                     eyebrow={group.eyebrow}
-                    videoSrc={group.videoSrc}
+                    videoWebmSrc={group.videoWebmSrc}
+                    videoMp4Src={group.videoMp4Src}
+                    posterSrc={group.posterSrc}
                     isMediaEnabled={shouldLoadMetricVideos}
                     items={group.items}
                     index={index}
@@ -526,13 +537,19 @@ export function MetricsSection() {
           <div className="pointer-events-none absolute inset-0 isolate bg-black">
             <video
               className="absolute inset-0 z-0 h-full w-full object-cover"
-              src={shouldLoadCoreVideo ? coreCapabilityVideo : undefined}
               autoPlay
               muted
               loop
               playsInline
-              preload={shouldLoadCoreVideo ? "auto" : "none"}
-            />
+              preload={shouldLoadCoreVideo ? "metadata" : "none"}
+              poster={coreCapabilityPoster}
+            >
+              {shouldLoadCoreVideo && (
+                <>
+                  <source src={coreCapabilityVideoWebm} type="video/webm" />
+                </>
+              )}
+            </video>
             <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.75),rgba(0,0,0,0.40)_46%,rgba(0,0,0,0.70)),radial-gradient(circle_at_78%_42%,rgba(120,140,255,0.14),transparent_26%),linear-gradient(180deg,rgba(0,0,0,0.18),rgba(0,0,0,0.72))]" />
           </div>
 
@@ -618,13 +635,19 @@ export function MetricsSection() {
           <div className="pointer-events-none absolute inset-0">
             <video
               className="absolute inset-0 h-full w-full object-cover"
-              src={shouldLoadProjectsVideo ? aboutHeroVideo : undefined}
               autoPlay
               muted
               loop
               playsInline
-              preload={shouldLoadProjectsVideo ? "auto" : "none"}
-            />
+              preload={shouldLoadProjectsVideo ? "metadata" : "none"}
+              poster={aboutHeroPoster}
+            >
+              {shouldLoadProjectsVideo && (
+                <>
+                  <source src={aboutHeroVideoWebm} type="video/webm" />
+                </>
+              )}
+            </video>
             <div className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-white/[0.035] shadow-[0_0_120px_rgba(120,140,255,0.22)] blur-[1px] md:h-[720px] md:w-[720px]" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(255,255,255,0.08),transparent_32%),linear-gradient(90deg,rgba(0,0,0,0.86),rgba(0,0,0,0.34)_50%,rgba(0,0,0,0.86)),linear-gradient(180deg,rgba(0,0,0,0.28),#000)]" />
           </div>
