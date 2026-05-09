@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "bunx next dev --turbopack",
-    "build": "bunx next build",
-    "build:local": "bun scripts/next-cli.cjs build",
-    "start": "bunx next start",
-    "start:local": "bun scripts/next-cli.cjs start",
+    "dev": "node scripts/next-cli.cjs dev --turbopack",
+    "build": "node scripts/next-cli.cjs build",
+    "build:local": "node scripts/next-cli.cjs build",
+    "start": "node scripts/next-cli.cjs start",
+    "start:local": "node scripts/next-cli.cjs start",
     "typecheck": "bunx tsc --noEmit",
     "lint": "bun run typecheck && bunx eslint src next.config.ts postcss.config.mjs tailwind.config.ts eslint.config.mjs --ignore-pattern .next --ignore-pattern .next-build --ignore-pattern node_modules",
     "format": "bunx biome format --write ."

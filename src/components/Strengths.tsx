@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/src/lib/utils";
 
 type StrengthType = "video" | "execution" | "precision" | "default";
@@ -104,31 +104,61 @@ function TiltVisual({
   const frameRef = useRef<number | null>(null);
   const currentRef = useRef({ rx: 0, ry: 0 });
   const targetRef = useRef({ rx: 0, ry: 0 });
-  const [style, setStyle] = useState({
-    transform:
-      "perspective(1400px) rotateX(0deg) rotateY(0deg) translateZ(0px)",
-  });
+  const isMovingRef = useRef(false);
 
-  useEffect(() => {
+  const stopAnimation = useCallback(() => {
+    isMovingRef.current = false;
+    if (frameRef.current) {
+      cancelAnimationFrame(frameRef.current);
+      frameRef.current = null;
+    }
+  }, []);
+
+  const startAnimation = useCallback(() => {
+    if (isMovingRef.current || !isActive) return;
+
+    isMovingRef.current = true;
+
     const animate = () => {
+      const el = wrapRef.current;
       const current = currentRef.current;
       const target = targetRef.current;
 
       current.rx += (target.rx - current.rx) * 0.1;
       current.ry += (target.ry - current.ry) * 0.1;
 
-      const next = `perspective(1400px) rotateX(${current.rx}deg) rotateY(${current.ry}deg) translateZ(0px)`;
-      setStyle({ transform: next });
+      if (el) {
+        el.style.transform = `perspective(1400px) rotateX(${current.rx}deg) rotateY(${current.ry}deg) translateZ(0px)`;
+      }
 
-      frameRef.current = requestAnimationFrame(animate);
+      if (
+        Math.abs(target.rx - current.rx) < 0.01 &&
+        Math.abs(target.ry - current.ry) < 0.01
+      ) {
+        stopAnimation();
+        return;
+      }
+
+      if (isMovingRef.current) {
+        frameRef.current = requestAnimationFrame(animate);
+      }
     };
 
     frameRef.current = requestAnimationFrame(animate);
+  }, [isActive, stopAnimation]);
 
-    return () => {
-      if (frameRef.current) cancelAnimationFrame(frameRef.current);
-    };
-  }, []);
+  useEffect(() => stopAnimation, [stopAnimation]);
+
+  useEffect(() => {
+    if (!isActive) {
+      targetRef.current = { rx: 0, ry: 0 };
+      if (wrapRef.current) {
+        wrapRef.current.style.transform =
+          "perspective(1400px) rotateX(0deg) rotateY(0deg) translateZ(0px)";
+      }
+      stopAnimation();
+    }
+  }, [isActive, stopAnimation]);
 
   const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!isActive || !wrapRef.current) return;
@@ -144,10 +174,12 @@ function TiltVisual({
       rx,
       ry,
     };
+    startAnimation();
   };
 
   const handleLeave = () => {
     targetRef.current = { rx: 0, ry: 0 };
+    startAnimation();
   };
 
   return (
@@ -156,7 +188,10 @@ function TiltVisual({
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
       className={cn("relative w-full h-full", className)}
-      style={style}
+      style={{
+        transform:
+          "perspective(1400px) rotateX(0deg) rotateY(0deg) translateZ(0px)",
+      }}
     >
       {children}
     </div>
@@ -191,7 +226,7 @@ function VideoVisual({
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
         className={cn(
           "w-full h-full object-cover rounded-[22px] transition-all duration-700 will-change-transform",
           isActive ? "opacity-100 scale-100" : "opacity-35 scale-[0.95]"
@@ -343,6 +378,8 @@ function StrengthVisual({
 
 export default function Strengths() {
   const [activeId, setActiveId] = useState<number>(strengths[0].id);
+  const activeIdRef = useRef(strengths[0].id);
+  const scrollFrameRef = useRef<number | null>(null);
   const itemRefs = useRef<Record<number, HTMLLIElement | null>>({});
 
   const strengthIds = useMemo(() => strengths.map((item) => item.id), []);
@@ -368,17 +405,30 @@ export default function Strengths() {
         }
       });
 
-      setActiveId(closestId);
+      if (closestId !== activeIdRef.current) {
+        activeIdRef.current = closestId;
+        setActiveId(closestId);
+      }
+    };
+
+    const scheduleUpdate = () => {
+      if (scrollFrameRef.current) return;
+
+      scrollFrameRef.current = requestAnimationFrame(() => {
+        scrollFrameRef.current = null;
+        updateActiveItem();
+      });
     };
 
     updateActiveItem();
 
-    window.addEventListener("scroll", updateActiveItem, { passive: true });
-    window.addEventListener("resize", updateActiveItem);
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
 
     return () => {
-      window.removeEventListener("scroll", updateActiveItem);
-      window.removeEventListener("resize", updateActiveItem);
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      if (scrollFrameRef.current) cancelAnimationFrame(scrollFrameRef.current);
     };
   }, [strengthIds]);
 

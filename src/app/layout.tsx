@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {
   Bacasime_Antique,
   Inter,
+  Manrope,
   Noto_Sans,
   Noto_Sans_Display,
   Noto_Sans_KR,
@@ -25,6 +26,12 @@ const notoSansKr = Noto_Sans_KR({
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-family-inter",
+  display: "swap",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-family-manrope",
   display: "swap",
 });
 
@@ -57,7 +64,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`dark ${notoSans.variable} ${notoSansKr.variable} ${inter.variable} ${bacasimeAntique.variable} ${notoSansDisplay.variable}`}
+      className={`dark ${notoSans.variable} ${notoSansKr.variable} ${inter.variable} ${manrope.variable} ${bacasimeAntique.variable} ${notoSansDisplay.variable}`}
     >
       <GoogleAnalytics />
       <ClientBody>{children}</ClientBody>

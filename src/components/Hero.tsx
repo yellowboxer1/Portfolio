@@ -32,45 +32,57 @@ export default function Hero() {
   const headlineInnerRef = useRef<HTMLDivElement | null>(null);
   const paragraphRef = useRef<HTMLParagraphElement | null>(null);
   const videoObjectRef = useRef<HTMLDivElement | null>(null);
+  const timeRef = useRef<HTMLDivElement | null>(null);
+  const dateRef = useRef<HTMLDivElement | null>(null);
+  const timeRafRef = useRef<number | null>(null);
+  const lastClockTextRef = useRef("");
+  const lastDateKeyRef = useRef("");
 
-  const [time, setTime] = useState("");
-  const [date, setDate] = useState("");
   const [introWordIndex, setIntroWordIndex] = useState(0);
   const [isIntroFinal, setIsIntroFinal] = useState(false);
   const [finalReveal, setFinalReveal] = useState(false);
 
   useEffect(() => {
-    const updateTime = () => {
+    const months = [
+      "JAN",
+      "FEB",
+      "MAR",
+      "APR",
+      "MAY",
+      "JUN",
+      "JUL",
+      "AUG",
+      "SEP",
+      "OCT",
+      "NOV",
+      "DEC",
+    ];
+
+    const updateClock = () => {
       const now = new Date();
 
       const hours = String(now.getHours()).padStart(2, "0");
       const minutes = String(now.getMinutes()).padStart(2, "0");
       const seconds = String(now.getSeconds()).padStart(2, "0");
-      const milliseconds = String(
-        Math.floor(now.getMilliseconds() / 10),
-      ).padStart(2, "0");
+      const centiseconds = String(Math.floor(now.getMilliseconds() / 10)).padStart(
+        2,
+        "0",
+      );
+      const clockText = `${hours}:${minutes}:${seconds}:${centiseconds}`;
 
-      setTime(`${hours}:${minutes}:${seconds}:${milliseconds}`);
+      if (timeRef.current && clockText !== lastClockTextRef.current) {
+        timeRef.current.textContent = clockText;
+        lastClockTextRef.current = clockText;
+      }
+    };
 
-      const months = [
-        "JAN",
-        "FEB",
-        "MAR",
-        "APR",
-        "MAY",
-        "JUN",
-        "JUL",
-        "AUG",
-        "SEP",
-        "OCT",
-        "NOV",
-        "DEC",
-      ];
+    const updateDate = () => {
+      const now = new Date();
+      const dateKey = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`;
 
-      const month = months[now.getMonth()];
+      if (dateKey === lastDateKeyRef.current) return;
+
       const day = now.getDate();
-      const year = now.getFullYear();
-
       const suffix =
         day === 1 || day === 21 || day === 31
           ? "st"
@@ -80,7 +92,16 @@ export default function Hero() {
               ? "rd"
               : "th";
 
-      setDate(`${month} ${day}${suffix} ${year}`);
+      if (dateRef.current) {
+        dateRef.current.textContent = `${months[now.getMonth()]} ${day}${suffix} ${now.getFullYear()}`;
+        lastDateKeyRef.current = dateKey;
+      }
+    };
+
+    const runClock = () => {
+      updateClock();
+      updateDate();
+      timeRafRef.current = requestAnimationFrame(runClock);
     };
 
     const readScrollProgress = () => {
@@ -166,21 +187,21 @@ export default function Hero() {
       }
     };
 
-    updateTime();
+    updateClock();
+    updateDate();
+    timeRafRef.current = requestAnimationFrame(runClock);
     readScrollProgress();
     currentProgressRef.current = targetProgressRef.current;
     applyScrollStyles(targetProgressRef.current);
-
-    const timeInterval = setInterval(updateTime, 60);
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
 
     return () => {
-      clearInterval(timeInterval);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
       if (scrollRafRef.current) cancelAnimationFrame(scrollRafRef.current);
+      if (timeRafRef.current) cancelAnimationFrame(timeRafRef.current);
     };
   }, []);
 
@@ -223,13 +244,6 @@ export default function Hero() {
 
   return (
     <>
-      <link
-        rel="preload"
-        href={heroVideo}
-        as="video"
-        type="video/mp4"
-        fetchPriority="high"
-      />
       <section ref={sectionRef} className="relative h-[200vh] bg-black">
         <div className="sticky top-0 h-screen overflow-hidden bg-black">
           {/* Intro guide lines */}
@@ -254,9 +268,11 @@ export default function Hero() {
           >
             <div className="row-start-5 row-end-6 flex items-center">
               <div className="mx-auto grid w-full max-w-[1440px] grid-cols-[85px_minmax(0,1fr)_85px] items-center gap-4 px-4 md:px-12 lg:px-20 xl:px-24">
-                <div className="text-left font-mono text-[12px] font-medium tracking-wider whitespace-nowrap text-white/80 md:text-sm lg:text-base">
-                  {time}
-                </div>
+                <div
+                  ref={timeRef}
+                  className="text-left font-mono text-[12px] font-medium tracking-wider whitespace-nowrap text-white/80 md:text-sm lg:text-base"
+                  aria-label="Current time"
+                />
 
                 <div className="relative flex h-[48px] min-w-0 items-center justify-center overflow-hidden text-center sm:h-[56px] md:h-[64px] lg:h-[72px]">
                   {!isIntroFinal &&
@@ -299,9 +315,11 @@ export default function Hero() {
                   )}
                 </div>
 
-                <div className="text-right font-mono font-medium text-[12px] tracking-wider whitespace-nowrap text-white/80 md:text-sm lg:text-base">
-                  {date}
-                </div>
+                <div
+                  ref={dateRef}
+                  className="text-right font-mono font-medium text-[12px] tracking-wider whitespace-nowrap text-white/80 md:text-sm lg:text-base"
+                  aria-label="Current date"
+                />
               </div>
             </div>
 
@@ -376,7 +394,7 @@ export default function Hero() {
               playsInline
               autoPlay
               loop
-              preload="auto"
+              preload="metadata"
               className="absolute inset-0 h-full w-full object-cover bg-transparent opacity-60 transition-none md:opacity-80"
             >
               <source src={heroVideo} type="video/mp4" />

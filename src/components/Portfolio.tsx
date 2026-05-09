@@ -1,8 +1,8 @@
 "use client";
 
-import type { CSSProperties } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 type PortfolioItem = {
@@ -234,10 +234,14 @@ function MobileCarousel() {
             href={`/portfolio/${item.slug}`}
             className="group relative min-w-[92%] snap-center overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04]"
           >
-            <div
-              className="relative aspect-[4/6.15] bg-cover bg-center"
-              style={{ backgroundImage: `url('${item.image}')` }}
-            >
+            <div className="relative aspect-[4/6.15]">
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                sizes="92vw"
+                className="object-cover"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/5" />
 
               <div className="mobile-card-content absolute inset-x-0 bottom-0 p-5">
@@ -575,7 +579,6 @@ const SpiralContent = () => {
                 <div
                   className="spiral-gallery-front"
                   style={{ 
-                    backgroundImage: `url('${item.image}')`,
                     filter: motionRef.current.hoveredIndex !== null && motionRef.current.hoveredIndex !== index ? 'brightness(0.5) blur(2px)' : 'none',
                     transition: 'filter 0.4s ease'
                   }}
@@ -588,6 +591,13 @@ const SpiralContent = () => {
                     }
                   }}
                 >
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    sizes="(min-width: 1024px) 500px, 380px"
+                    className="spiral-gallery-image"
+                  />
                   <Link
                     href={`/portfolio/${item.slug}`}
                     className="gallery-link"
