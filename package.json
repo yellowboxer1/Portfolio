@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "node scripts/next-cli.cjs dev --turbopack",
-    "build": "node scripts/next-cli.cjs build",
+    "build": "bunx next build",
     "build:local": "node scripts/next-cli.cjs build",
-    "start": "node scripts/next-cli.cjs start",
+    "start": "bunx next start",
     "start:local": "node scripts/next-cli.cjs start",
     "typecheck": "bunx tsc --noEmit",
     "lint": "bun run typecheck && bunx eslint src next.config.ts postcss.config.mjs tailwind.config.ts eslint.config.mjs --ignore-pattern .next --ignore-pattern .next-build --ignore-pattern node_modules",
