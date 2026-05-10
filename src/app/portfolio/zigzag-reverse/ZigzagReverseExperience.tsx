@@ -5,6 +5,7 @@ import Link from 'next/link';
 import './zigzag-reverse.tokens.css';
 import styles from './zigzag-reverse.module.css';
 import Header from '../../../components/Header';
+import ProjectIntroSection from '../../../components/ProjectIntroSection';
 
 import Main from './components/Main';
 import Spacer from './components/Spacer';
@@ -32,6 +33,27 @@ const preloadVideos = [
   '/portfolio/zigzag-reverse/assets/video/size.mp4',
   '/portfolio/zigzag-reverse/assets/video/fitting.mp4',
 ];
+
+const zigzagIntro = {
+  badge: '개인 프로젝트',
+  title: '커머스 플랫폼 지그재그(ZigZag) 서비스 리뉴얼',
+  meta: [
+    { label: '발주처', value: '개인 프로젝트' },
+    { label: '프로젝트유형', value: 'UX Strategy · Reverse Planning' },
+    { label: '사업비', value: '해당 없음' },
+  ],
+  techStack: ['React', 'Framer', 'Figma', 'Photoshop', 'Illustrator', 'UX Research', 'Service Flow'],
+  features: [
+    'AI 기반 퍼스널 컬러 진단',
+    '체형별 스타일링 팁 제공',
+    '나만의 옷장 기능',
+    '개인 맞춤 스타일 추천',
+    '모바일 탐색 구조 개선',
+    '관심 상품 중심 구매 흐름 재설계',
+  ],
+  overview:
+    '지그재그 모바일 앱의 탐색 흐름과 개인화 경험을 분석하고, 퍼스널 컬러·체형·옷장 데이터를 기반으로 맞춤 스타일링을 제안하는 리뉴얼 방향을 설계한 개인 프로젝트입니다. 복잡한 커머스 탐색 구조를 줄이고, 사용자가 자신의 취향과 조건에 맞는 상품을 더 빠르게 발견할 수 있도록 서비스 구조와 주요 화면을 재구성했습니다.',
+};
 
 const Deskresearch = dynamic(() => import('./components/Deskresearch'), {
   ssr: false,
@@ -73,6 +95,7 @@ export default function ZigzagReverseExperience() {
 
       <Main />
       <Spacer />
+      <ProjectIntroSection {...zigzagIntro} />
       <Overview />
       <Spacer2 />
 

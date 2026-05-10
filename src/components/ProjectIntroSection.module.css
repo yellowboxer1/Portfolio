@@ -1,0 +1,254 @@
+.section {
+  background: #1a1a1a;
+  color: #fff;
+  font-family: var(--font-noto-sans-kr, var(--font-family-noto-sans-kr), sans-serif);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.inner {
+  width: min(100%, 1440px);
+  margin: 0 auto;
+  padding: 150px clamp(24px, 5vw, 80px) 118px;
+}
+
+.topRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 20px;
+  border: 1px solid #c9ff00;
+  border-radius: 999px;
+  color: #c9ff00;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.title {
+  max-width: 1060px;
+  margin: 32px 0 0;
+  font-size: clamp(30px, 3.15vw, 48px);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+  word-break: keep-all;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 0 0 auto;
+}
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 204px;
+  height: 64px;
+  padding: 0 24px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.action:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateY(-1px);
+}
+
+.metaGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px 44px;
+  margin-top: 48px;
+}
+
+.metaItem {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.metaLabel,
+.stackLabel {
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.metaValue,
+.stackItem {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.resultBadge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 22px;
+  border-radius: 999px;
+  background: #c9ff00;
+  color: #050505;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.stackRow {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.stackList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 12px;
+}
+
+.stackItem {
+  display: inline-flex;
+  align-items: center;
+}
+
+.stackItem:not(:last-child)::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin-left: 12px;
+  border-radius: 999px;
+  background: #c9ff00;
+}
+
+.divider {
+  height: 1px;
+  margin: 46px 0 44px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sectionBlock + .sectionBlock {
+  margin-top: 56px;
+}
+
+.sectionTitle {
+  margin: 0 0 24px;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.featureList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.featureItem {
+  display: inline;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.8;
+  letter-spacing: -0.04em;
+  word-break: keep-all;
+}
+
+.featureItem:not(:last-child)::after {
+  content: "|";
+  margin: 0 14px;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.overview {
+  max-width: 1180px;
+  margin: 0;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.9;
+  letter-spacing: -0.04em;
+  word-break: keep-all;
+}
+
+@media (max-width: 900px) {
+  .inner {
+    padding: 104px 24px 86px;
+  }
+
+  .topRow {
+    display: block;
+  }
+
+  .actions {
+    margin-top: 28px;
+  }
+
+  .action {
+    width: 100%;
+  }
+
+  .title {
+    margin-top: 26px;
+  }
+
+  .metaGrid,
+  .stackRow {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .metaItem {
+    display: grid;
+    grid-template-columns: minmax(76px, auto) 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 560px) {
+  .inner {
+    padding: 84px 20px 74px;
+  }
+
+  .badge {
+    min-height: 38px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .metaValue,
+  .stackItem,
+  .featureItem,
+  .overview {
+    font-size: 15px;
+  }
+
+  .sectionTitle {
+    font-size: 22px;
+  }
+}

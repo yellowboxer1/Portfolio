@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import Link from "next/link";
 import Header from "@/src/components/Header";
+import ProjectIntroSection from "@/src/components/ProjectIntroSection";
 import { smartCityGridSlides } from "./grid-slides";
 import styles from "./smart-city-challenge.module.css";
 
@@ -8,6 +10,30 @@ export const metadata: Metadata = {
   title: "Smart City Challenge | Portfolio",
   description:
     "부산 도시철도 배리어프리 실내·외 내비게이션 앱 다가치나란히 서비스 기획 포트폴리오",
+};
+
+const smartCityIntro = {
+  badge: "B2G",
+  title: "2021 스마트시티 챌린지 사업",
+  meta: [
+    { label: "발주처", value: "국토교통부, 부산교통공사" },
+    { label: "프로젝트유형", value: "Service Planning · Smart Mobility" },
+    { label: "사업비", value: "29억 5,410만 원 (총 사업비 300억)" },
+  ],
+  resultBadge: "114개 역사 현장 적용",
+  techStack: ["Figma", "Photoshop", "Illustrator", "Service Planning", "IA", "User Flow"],
+  features: [
+    "교통약자 유형별 튜토리얼",
+    "실내·외 통합 길안내",
+    "엘리베이터 중심 경로 안내",
+    "무장애 키오스크 연계",
+    "장애물 지도 및 팝업 안내",
+    "실내 비콘 기반 위치 안내",
+    "수어 플레이어",
+    "주변 교통·역내시설 정보 제공",
+  ],
+  overview:
+    "부산 도시철도 이용자를 위한 배리어프리 실내·외 내비게이션 앱입니다. 예비사업의 제한적인 실내 안내 기능을 확장해 도시철도 1~4호선과 주요 실외 목적지까지 연결하고, 교통약자와 비교통약자 모두가 사용할 수 있도록 사용자 유형, 경로 안내, 주변 정보, 장애물 안내 흐름을 기획했습니다.",
 };
 
 export default function SmartCityChallengePage() {
@@ -42,11 +68,11 @@ export default function SmartCityChallengePage() {
         aria-label="다가치나란히 실내 내비게이션 앱 포트폴리오"
       >
         {smartCityGridSlides.map((slide, index) => (
-          <section
-            key={`${slide.type}-${index}`}
-            className={`${styles.slide} ${styles[slide.type]}`}
-            aria-label={`포트폴리오 ${index + 2}페이지`}
-          >
+          <Fragment key={`${slide.type}-${index}`}>
+            <section
+              className={`${styles.slide} ${styles[slide.type]}`}
+              aria-label={`포트폴리오 ${index + 2}페이지`}
+            >
             {slide.type === "cover" && (
               <>
                 <div className={styles.coverCopy}>
@@ -210,7 +236,9 @@ export default function SmartCityChallengePage() {
                 </div>
               </>
             )}
-          </section>
+            </section>
+            {index === 0 && <ProjectIntroSection {...smartCityIntro} />}
+          </Fragment>
         ))}
       </article>
     </main>

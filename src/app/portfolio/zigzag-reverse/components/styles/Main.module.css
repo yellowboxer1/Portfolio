@@ -111,7 +111,7 @@
   transform-origin: top left;
 }
 
-.moblieAppDesign {
+.mobileAppDesign {
   font-size: clamp(23px, 2.222vw, 32px);
   line-height: 1.15;
   font-weight: 600;
@@ -415,7 +415,7 @@
   }
 
   /* 💡 수정됨: 시작 폰트/이미지 사이즈를 이전 구간의 scale(0.86) 적용 값으로 변경 */
-  .moblieAppDesign {
+  .mobileAppDesign {
     /* 기존 32px -> 1350px에서 27.5px (32 * 0.86) 로 자연스럽게 연결 */
     font-size: calc(25px + (27.5px - 25px) * ((100vw - 583px) / 767px));
   }
@@ -505,7 +505,7 @@
     transform: scale(calc(583px / 100vw));
   }
 
-  .moblieAppDesign {
+  .mobileAppDesign {
     font-size: clamp(20px, 1.736vw, 25px);
   }
 

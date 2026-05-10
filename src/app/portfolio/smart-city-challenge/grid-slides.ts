@@ -63,7 +63,7 @@ export const smartCityGridSlides: SmartCityGridSlide[] = [
     description:
       "부산시 도시철도를 중심으로 실내·외 길안내 내비게이션 서비스를 제공하며, 교통약자뿐만 아니라 비교통약자까지 모두를 배려한 배리어프리 플랫폼입니다.",
     meta: [
-      { label: "작업기간", value: "2022.03 – 2022.09" },
+      { label: "작업기간", value: "2022.04 - 2023.07" },
       { label: "기여도", value: "50%" },
     ],
     images: {

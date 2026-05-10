@@ -19,6 +19,29 @@ type PortfolioItem = {
   isReady?: boolean;
 };
 
+const impactSummary = [
+  {
+    value: "89억+",
+    label: "사업비 운영 규모",
+    detail: "연평균 약 20억 규모 사업비·연구비 운영",
+  },
+  {
+    value: "26.7억+",
+    label: "제안·수주 사업비",
+    detail: "스마트빌리지·과기부 등 사업계획서 작성 및 수주",
+  },
+  {
+    value: "150%+",
+    label: "매출 성장 기여",
+    detail: "사업 제안, 운영 고도화, 수익성 개선 연결",
+  },
+  {
+    value: "14건",
+    label: "완수한 프로젝트",
+    detail: "서비스 기획, PM, 사업 전략 전 과정 참여",
+  },
+];
+
 const portfolioItems: PortfolioItem[] = [
   {
     id: 1,
@@ -129,12 +152,62 @@ function FilterBadge({ filter }: { filter: FilterKey }) {
   );
 }
 
+function RecruitingImpact() {
+  return (
+    <section
+      className="mb-[64px] border-y border-white/12 py-9 md:mb-[86px] md:py-12"
+      aria-labelledby="works-impact-title"
+    >
+      <div>
+        <div>
+          <h3
+            id="works-impact-title"
+            className="break-keep text-[44px] font-semibold leading-[1.12] tracking-[-0.04em] text-white md:text-[68px] lg:text-[82px]"
+          >
+            기획은
+            <br />
+            <span className="text-lime-300">결과로 증명합니다</span>
+          </h3>
+          <p className="mt-8 max-w-[840px] break-keep text-[19px] font-semibold leading-[1.45] tracking-[-0.03em] text-white md:text-[27px] lg:text-[32px]">
+            수많은 프로젝트를 성공시킨 경험으로
+            <br />
+            기획부터 개발까지 전 과정을 증명합니다.
+          </p>
+        </div>
+
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+          {impactSummary.map((item, index) => (
+            <div
+              key={item.label}
+              className={`border-white/10 px-3 py-6 md:min-h-[180px] md:px-6 md:py-8 xl:border-l xl:px-7 ${
+                index < impactSummary.length - 1 ? "border-b md:border-b-0" : ""
+              } ${index % 2 === 0 ? "md:border-r xl:border-r-0" : ""} ${
+                index === impactSummary.length - 1 ? "xl:border-r" : ""
+              }`}
+            >
+              <strong className="block whitespace-nowrap text-[42px] font-semibold leading-none tracking-[-0.04em] text-white md:text-[52px] lg:text-[58px]">
+                {item.value}
+              </strong>
+              <p className="mt-5 break-keep text-[15px] font-semibold leading-snug text-white md:text-[18px]">
+                {item.label}
+              </p>
+              <p className="mt-4 break-keep text-[13px] leading-5 text-white/52 md:text-[15px] md:leading-6">
+                {item.detail}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function WorkCard({ item, offsetDown }: { item: PortfolioItem; offsetDown: boolean }) {
   const tags = item.role.split("·").map((t) => t.trim()).filter(Boolean);
 
   const inner = (
     <div className="group flex flex-col gap-4">
-      <div className="relative overflow-hidden rounded-[40px] bg-black/[0.04]" style={{ aspectRatio: "1/0.8" }}>
+      <div className="relative overflow-hidden rounded-[40px] border border-white/[0.06] bg-black/[0.04]" style={{ aspectRatio: "1/0.8" }}>
         <Image
           src={item.image}
           alt={item.title}
@@ -143,7 +216,7 @@ function WorkCard({ item, offsetDown }: { item: PortfolioItem; offsetDown: boole
           sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 580px"
         />
         {!item.isReady && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/60 backdrop-blur-[2px]">
+          <div className="absolute inset-0 rounded-[inherit] flex items-center justify-center bg-black/60 backdrop-blur-[2px]">
             <span className="rounded-full border border-white/20 px-4 py-1.5 text-sm font-medium text-white/55">
               준비 중
             </span>
@@ -242,7 +315,7 @@ export default function WorksPage() {
       <div className="relative z-10 mx-auto" style={{ maxWidth: "1840px" }}>
 
         {/* 헤더 */}
-        <div className="relative mb-[60px] flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div className="relative mb-[34px] flex flex-col gap-6 md:mb-[44px] md:flex-row md:items-end md:justify-between">
           <div>
 
             <span className="mb-4 block text-sm uppercase tracking-widest text-white/50">
@@ -252,23 +325,24 @@ export default function WorksPage() {
               Selected Works
             </h2>
           </div>
+        </div>
 
+        <RecruitingImpact />
 
-          <div className="flex flex-wrap gap-[5px]">
-            {FILTERS.map((f) => (
-              <button
-                key={f}
-                onClick={() => handleFilter(f)}
-                className={`h-[42px] rounded-full border px-5 text-[15px] font-medium tracking-wide transition-colors duration-200 ${
-                  activeFilter === f
-                    ? "border-white bg-white text-black"
-                    : "border-white/25 bg-transparent text-white/55 hover:border-white/50 hover:text-white"
-                }`}
-              >
-                {f}
-              </button>
-            ))}
-          </div>
+        <div className="mb-[60px] flex flex-wrap gap-[5px] md:justify-end">
+          {FILTERS.map((f) => (
+            <button
+              key={f}
+              onClick={() => handleFilter(f)}
+              className={`h-[42px] rounded-full border px-5 text-[15px] font-medium tracking-wide transition-colors duration-200 ${
+                activeFilter === f
+                  ? "border-white bg-white text-black"
+                  : "border-white/25 bg-transparent text-white/55 hover:border-white/50 hover:text-white"
+              }`}
+            >
+              {f}
+            </button>
+          ))}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-10 lg:grid-cols-3 lg:gap-x-10 xl:gap-x-[60px] md:gap-y-[60px]">
