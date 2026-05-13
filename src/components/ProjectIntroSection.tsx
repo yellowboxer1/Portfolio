@@ -11,6 +11,12 @@ type ProjectIntroAction = {
   download?: boolean;
 };
 
+type ProjectNarrativeItem = {
+  label: string;
+  title: string;
+  body: string;
+};
+
 type ProjectIntroSectionProps = {
   badge: string;
   title: string;
@@ -18,6 +24,7 @@ type ProjectIntroSectionProps = {
   techStack: string[];
   features: string[];
   overview: string;
+  narrative?: ProjectNarrativeItem[];
   resultBadge?: string;
   actions?: ProjectIntroAction[];
 };
@@ -29,6 +36,7 @@ export default function ProjectIntroSection({
   techStack,
   features,
   overview,
+  narrative = [],
   resultBadge,
   actions = [],
 }: ProjectIntroSectionProps) {
@@ -103,6 +111,26 @@ export default function ProjectIntroSection({
           </h3>
           <p className={styles.overview}>{overview}</p>
         </section>
+
+        {narrative.length > 0 && (
+          <section
+            className={styles.sectionBlock}
+            aria-labelledby="project-narrative-title"
+          >
+            <h3 id="project-narrative-title" className={styles.sectionTitle}>
+              문제 해결 과정
+            </h3>
+            <div className={styles.narrativeGrid}>
+              {narrative.map((item) => (
+                <article key={item.label} className={styles.narrativeItem}>
+                  <span>{item.label}</span>
+                  <h4>{item.title}</h4>
+                  <p>{item.body}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </section>
   );
