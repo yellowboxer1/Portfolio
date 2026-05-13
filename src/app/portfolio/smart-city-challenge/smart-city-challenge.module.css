@@ -21,7 +21,6 @@
   width: 100vw;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: #fff;
   color: #404040;
   font-family:
     var(--font-family-noto-sans-kr),
@@ -215,7 +214,10 @@
   position: absolute;
   top: 4vw;
   right: 5.4vw;
+  z-index: 2;
+  display: block;
   width: clamp(42px, 4.7vw, 86px);
+  height: auto;
   opacity: 0.82;
 }
 
@@ -296,7 +298,7 @@
   top: 50%;
   right: calc(25% - (var(--comparison-row-gap) / 4));
   z-index: 1;
-  width: clamp(14px, 1.2vw, 30px);
+  width: clamp(7px, 0.6vw, 15px);
   height: auto;
   transform: translate(50%, -50%);
   pointer-events: none;
@@ -379,6 +381,13 @@
   background: #f6f8fb;
 }
 
+.previewBackground,
+.previewLogo,
+.previewTabs,
+.previewMascot {
+  display: none;
+}
+
 .previewCopy {
   display: grid;
   align-content: center;
@@ -422,6 +431,194 @@
 .serviceItems section {
   padding-top: 1.2vw;
   border-top: 1px solid rgba(23, 35, 56, 0.2);
+}
+
+.preview-main {
+  grid-template-columns: 26.9vw 1fr;
+  grid-template-rows: 1fr auto;
+  gap: 0 3.5vw;
+  padding: 5vw 6.1vw 3.7vw;
+  background: #f5f5f5;
+}
+
+.preview-main .previewBackground {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.3;
+}
+
+.preview-main .previewLogo {
+  display: block;
+}
+
+.preview-main .previewTabs {
+  position: absolute;
+  top: 8.5vw;
+  right: 10.2vw;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 5.2vw;
+  color: #fff;
+  font-size: clamp(12px, 0.96vw, 19px);
+  font-weight: 700;
+}
+
+.preview-main .previewTabs span {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: clamp(86px, 7.5vw, 145px);
+  min-height: clamp(28px, 2.15vw, 42px);
+  padding: 0 1.1vw;
+  background: #087bf2;
+  border-radius: 999px;
+  line-height: 1;
+}
+
+.preview-main .previewTabs span::after {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 0.8vw);
+  width: 4.5vw;
+  height: 2px;
+  background:
+    radial-gradient(circle, #087bf2 0 3px, transparent 3.5px) left center / 0.8vw
+      0.8vw no-repeat,
+    radial-gradient(circle, #087bf2 0 3px, transparent 3.5px) right center / 0.8vw
+      0.8vw no-repeat,
+    linear-gradient(#087bf2, #087bf2) center / 100% 2px no-repeat;
+  content: "";
+  transform: translateY(-50%);
+}
+
+.preview-main .previewTabs span:last-child::after {
+  display: none;
+}
+
+.preview-main .previewCopy,
+.preview-main .previewImages,
+.preview-main .noteGrid {
+  position: relative;
+  z-index: 1;
+}
+
+.preview-main .previewCopy {
+  align-content: center;
+  gap: 1.45vw;
+  padding-top: 1.2vw;
+}
+
+.preview-main .kicker {
+  color: #111;
+  font-size: clamp(14px, 1.5vw, 29px);
+  font-weight: 500;
+}
+
+.preview-main .sectionTitle {
+  margin-top: 1.7vw;
+  color: #8a8a8a;
+  font-size: clamp(17px, 1.7vw, 33px);
+  font-weight: 500;
+}
+
+.preview-main .previewMascot {
+  display: block;
+  width: clamp(86px, 11.6vw, 225px);
+  height: auto;
+  margin-top: 0.6vw;
+  border-radius: 50%;
+}
+
+.preview-main .previewCopy h2 {
+  color: #000;
+  font-size: clamp(28px, 3vw, 58px);
+  font-weight: 800;
+  line-height: 1.24;
+}
+
+.preview-main .description {
+  max-width: 24.7vw;
+  color: #5f5f5f;
+  font-size: clamp(12px, 0.89vw, 17px);
+  font-weight: 500;
+  line-height: 1.67;
+}
+
+.preview-main .previewImages {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 2.2vw;
+  padding-top: 9.4vw;
+  min-width: 0;
+}
+
+.preview-main .previewImages img {
+  flex: 0 0 auto;
+  width: auto;
+  max-height: none;
+  object-fit: contain;
+  filter: none;
+}
+
+.preview-main .previewImages img:nth-child(1) {
+  width: 25.6vw;
+  align-self: end;
+  margin-bottom: -3.7vw;
+}
+
+.preview-main .previewImages img:nth-child(2) {
+  display: none;
+}
+
+.preview-main .previewImages img:nth-child(3) {
+  width: 15.5vw;
+}
+
+.preview-main .previewImages img:nth-child(4) {
+  width: 15.5vw;
+}
+
+.preview-main .noteGrid {
+  position: absolute;
+  right: 5.7vw;
+  bottom: 3vw;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 15.5vw));
+  justify-content: start;
+  gap: 2.2vw;
+}
+
+.preview-main .noteGrid section {
+  padding-top: 0.7vw;
+  border-top: 0;
+}
+
+.preview-main .noteGrid h3 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.preview-main .noteGrid p {
+  margin-top: 0;
+  color: #5c5c5c;
+  font-size: clamp(11px, 0.73vw, 14px);
+  font-weight: 500;
+  line-height: 1.55;
+  text-align: center;
 }
 
 .service {
@@ -677,6 +874,91 @@
   .previewImages img,
   .serviceImages img {
     max-height: 64vh;
+  }
+
+  .preview-main {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 28px;
+    padding: 78px 20px 42px;
+  }
+
+  .preview-main .previewLogo {
+    width: 46px;
+  }
+
+  .preview-main .previewTabs {
+    position: relative;
+    top: auto;
+    right: auto;
+    grid-row: 1;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 18px;
+  }
+
+  .preview-main .previewTabs span::after {
+    display: none;
+  }
+
+  .preview-main .previewCopy {
+    padding-top: 0;
+  }
+
+  .preview-main .sectionTitle {
+    margin-top: 10px;
+  }
+
+  .preview-main .description {
+    max-width: none;
+  }
+
+  .preview-main .previewMascot {
+    width: 118px;
+    margin-top: 4px;
+  }
+
+  .preview-main .previewImages {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    padding-top: 0;
+  }
+
+  .preview-main .previewImages img {
+    width: 100% !important;
+    max-height: 64vh;
+  }
+
+  .preview-main .previewImages img:nth-child(1) {
+    grid-column: 1 / -1;
+    width: min(100%, 320px) !important;
+    justify-self: center;
+    margin-bottom: 0;
+  }
+
+  .preview-main .previewImages img:nth-child(2) {
+    display: none;
+  }
+
+  .preview-main .previewImages img:nth-child(3),
+  .preview-main .previewImages img:nth-child(4) {
+    display: block;
+  }
+
+  .preview-main .noteGrid {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    grid-column: 1;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding-left: 0;
+  }
+
+  .preview-main .noteGrid p {
+    text-align: left;
   }
 
   .previewMainImage {

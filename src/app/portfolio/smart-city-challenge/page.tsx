@@ -70,7 +70,11 @@ export default function SmartCityChallengePage() {
         {smartCityGridSlides.map((slide, index) => (
           <Fragment key={`${slide.type}-${index}`}>
             <section
-              className={`${styles.slide} ${styles[slide.type]}`}
+              className={`${styles.slide} ${styles[slide.type]} ${
+                slide.type === "preview" && slide.variant
+                  ? styles[`preview-${slide.variant}`]
+                  : ""
+              }`}
               aria-label={`포트폴리오 ${index + 2}페이지`}
             >
             {slide.type === "cover" && (
@@ -188,9 +192,40 @@ export default function SmartCityChallengePage() {
 
             {slide.type === "preview" && (
               <>
+                {slide.background && (
+                  <img
+                    className={styles.previewBackground}
+                    src={slide.background}
+                    alt=""
+                    aria-hidden="true"
+                  />
+                )}
+                {slide.logo && (
+                  <img
+                    className={`${styles.slideLogo} ${styles.previewLogo}`}
+                    src={slide.logo}
+                    alt=""
+                    aria-hidden="true"
+                  />
+                )}
+                {slide.tabs && (
+                  <div className={styles.previewTabs} aria-hidden="true">
+                    {slide.tabs.map((tab) => (
+                      <span key={tab}>{tab}</span>
+                    ))}
+                  </div>
+                )}
                 <div className={styles.previewCopy}>
                   <p className={styles.kicker}>{slide.kicker}</p>
                   <p className={styles.sectionTitle}>{slide.title}</p>
+                  {slide.mascot && (
+                    <img
+                      className={styles.previewMascot}
+                      src={slide.mascot}
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  )}
                   <h2>{slide.headline}</h2>
                   <p className={styles.description}>{slide.body}</p>
                 </div>

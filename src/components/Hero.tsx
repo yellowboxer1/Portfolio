@@ -37,6 +37,7 @@ export default function Hero() {
   const timeRafRef = useRef<number | null>(null);
   const lastClockTextRef = useRef("");
   const lastDateKeyRef = useRef("");
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const [introWordIndex, setIntroWordIndex] = useState(0);
   const [isIntroFinal, setIsIntroFinal] = useState(false);
@@ -125,9 +126,15 @@ export default function Hero() {
       const pushProgress = clamp((progressValue - 0.18) / 0.5, 0, 1);
       const paragraphOpacity = clamp((progressValue - 0.16) / 0.42, 0, 1);
 
-      const videoX = lerp(0, 24, eased);
-      const videoY = lerp(30, 0, eased);
-      const videoScale = lerp(0.24, 1, eased);
+      const videoProgress = clamp(progressValue / 0.68, 0, 1);
+      const videoEased =
+        videoProgress *
+        videoProgress *
+        videoProgress *
+        (videoProgress * (videoProgress * 6 - 15) + 10);
+      const videoX = lerp(0, 24, videoEased);
+      const videoY = lerp(30, 0, videoEased);
+      const videoScale = lerp(0.24, 1, videoEased);
       const headlineY = lerp(48, 0, headlineOpacity);
       const headlineScale = lerp(0.965, 1, headlineOpacity);
       const headlinePushY = lerp(18, -10, pushProgress);
@@ -157,7 +164,7 @@ export default function Hero() {
       }
 
       if (videoObjectRef.current) {
-        videoObjectRef.current.style.opacity = `${lerp(0.72, 1, eased)}`;
+        videoObjectRef.current.style.opacity = `${lerp(0.72, 1, videoEased)}`;
         videoObjectRef.current.style.transform = `translate3d(calc(-50% + ${videoX}vw), calc(-50% + ${videoY}vh), 0) scale(${videoScale})`;
       }
     };
@@ -203,6 +210,18 @@ export default function Hero() {
       if (scrollRafRef.current) cancelAnimationFrame(scrollRafRef.current);
       if (timeRafRef.current) cancelAnimationFrame(timeRafRef.current);
     };
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.preload = "auto";
+    video.load();
+    video.play().catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -387,14 +406,21 @@ export default function Hero() {
                      sm:h-[380px] sm:w-[300px]
                      md:h-[420px] md:w-[340px]
                      lg:h-[520px] lg:w-[460px]"
-            style={{ left: "50%", top: "50%" }}
+            style={{
+              left: "50%",
+              top: "50%",
+              opacity: 0.72,
+              transform:
+                "translate3d(calc(-50% + 0vw), calc(-50% + 30vh), 0) scale(0.24)",
+            }}
           >
             <video
+              ref={videoRef}
               muted
               playsInline
               autoPlay
               loop
-              preload="metadata"
+              preload="auto"
               className="absolute inset-0 h-full w-full object-cover bg-transparent opacity-60 transition-none md:opacity-80"
             >
               <source src={heroVideo} type="video/mp4" />

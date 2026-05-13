@@ -66,6 +66,15 @@ export default function RootLayout({
       lang="ko"
       className={`dark ${notoSans.variable} ${notoSansKr.variable} ${inter.variable} ${manrope.variable} ${bacasimeAntique.variable} ${notoSansDisplay.variable}`}
     >
+      <head>
+        <link
+          rel="preload"
+          href="/screen/main_object_video.mp4"
+          as="video"
+          type="video/mp4"
+          fetchPriority="high"
+        />
+      </head>
       <GoogleAnalytics />
       <ClientBody>{children}</ClientBody>
     </html>
