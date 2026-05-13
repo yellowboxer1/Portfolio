@@ -20,7 +20,6 @@ const smartCityIntro = {
     { label: "프로젝트유형", value: "Service Planning · Smart Mobility" },
     { label: "사업비", value: "29억 5,410만 원 (총 사업비 300억)" },
   ],
-  resultBadge: "114개 역사 현장 적용",
   techStack: ["Figma", "Photoshop", "Illustrator", "Service Planning", "IA", "User Flow"],
   features: [
     "교통약자 유형별 튜토리얼",
@@ -132,12 +131,16 @@ export default function SmartCityChallengePage() {
                   className={styles.overviewBackground}
                   src={slide.background}
                   alt=""
+                  loading="lazy"
+                  decoding="async"
                   aria-hidden="true"
                 />
                 <img
                   className={styles.slideLogo}
                   src={slide.logo}
                   alt=""
+                  loading="lazy"
+                  decoding="async"
                   aria-hidden="true"
                 />
                 <div className={styles.overviewHeader}>
@@ -158,6 +161,8 @@ export default function SmartCityChallengePage() {
                     className={styles.comparisonMarker}
                     src={slide.comparison.marker}
                     alt=""
+                    loading="lazy"
+                    decoding="async"
                     aria-hidden="true"
                   />
                   <div className={styles.comparisonRow}>
@@ -197,6 +202,8 @@ export default function SmartCityChallengePage() {
                     className={styles.previewBackground}
                     src={slide.background}
                     alt=""
+                    loading="lazy"
+                    decoding="async"
                     aria-hidden="true"
                   />
                 )}
@@ -205,6 +212,8 @@ export default function SmartCityChallengePage() {
                     className={`${styles.slideLogo} ${styles.previewLogo}`}
                     src={slide.logo}
                     alt=""
+                    loading="lazy"
+                    decoding="async"
                     aria-hidden="true"
                   />
                 )}
@@ -223,6 +232,8 @@ export default function SmartCityChallengePage() {
                       className={styles.previewMascot}
                       src={slide.mascot}
                       alt=""
+                      loading="lazy"
+                      decoding="async"
                       aria-hidden="true"
                     />
                   )}
@@ -236,6 +247,8 @@ export default function SmartCityChallengePage() {
                       className={imageIndex === 0 ? styles.previewMainImage : ""}
                       src={image}
                       alt=""
+                      loading="lazy"
+                      decoding="async"
                     />
                   ))}
                 </div>
@@ -258,7 +271,13 @@ export default function SmartCityChallengePage() {
                 </div>
                 <div className={styles.serviceImages} aria-hidden="true">
                   {slide.images.map((image) => (
-                    <img key={image} src={image} alt="" />
+                    <img
+                      key={image}
+                      src={image}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
                   ))}
                 </div>
                 <div className={styles.serviceItems}>

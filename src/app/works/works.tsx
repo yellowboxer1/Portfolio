@@ -162,13 +162,13 @@ function RecruitingImpact() {
         <div>
           <h3
             id="works-impact-title"
-            className="break-keep text-[44px] font-semibold leading-[1.12] tracking-[-0.04em] text-white md:text-[68px] lg:text-[82px]"
+            className="break-keep text-[32px] font-semibold leading-[1.12] tracking-[-0.04em] text-white md:text-[44px] lg:text-[68px]"
           >
             기획은
             <br />
             <span className="text-lime-300">결과로 증명합니다</span>
           </h3>
-          <p className="mt-8 max-w-[840px] break-keep text-[19px] font-semibold leading-[1.45] tracking-[-0.03em] text-white md:text-[27px] lg:text-[32px]">
+          <p className="mt-8 max-w-[840px] break-keep text-[15px] font-semibold leading-[1.45] tracking-[-0.03em] text-white md:text-[20px] lg:text-[28px]">
             수많은 프로젝트를 성공시킨 경험으로
             <br />
             기획부터 개발까지 전 과정을 증명합니다.

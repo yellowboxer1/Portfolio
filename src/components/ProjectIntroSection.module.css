@@ -18,6 +18,10 @@
   gap: 40px;
 }
 
+.topRow > div:first-child {
+  min-width: 0;
+}
+
 .badge {
   display: inline-flex;
   align-items: center;
@@ -34,10 +38,12 @@
 .title {
   max-width: 1060px;
   margin: 32px 0 0;
-  font-size: clamp(30px, 3.15vw, 48px);
+  font-size: 48px;
   font-weight: 800;
   line-height: 1.25;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
+  white-space: pre-line;
+  overflow-wrap: break-word;
   word-break: keep-all;
 }
 
@@ -87,7 +93,7 @@
   color: rgba(255, 255, 255, 0.48);
   font-size: 16px;
   font-weight: 700;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 .metaValue,
@@ -95,7 +101,8 @@
   color: #fff;
   font-size: 17px;
   font-weight: 700;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
 }
 
 .resultBadge {
@@ -152,7 +159,7 @@
   margin: 0 0 24px;
   font-size: 26px;
   font-weight: 800;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 
 .featureList {
@@ -170,7 +177,8 @@
   font-size: 17px;
   font-weight: 500;
   line-height: 1.8;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
+  overflow-wrap: break-word;
   word-break: keep-all;
 }
 
@@ -184,11 +192,44 @@
   max-width: 1180px;
   margin: 0;
   color: #fff;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 500;
   line-height: 1.9;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
+  overflow-wrap: break-word;
   word-break: keep-all;
+}
+
+@media (max-width: 1200px) {
+  .inner {
+    padding-top: 128px;
+    padding-bottom: 104px;
+  }
+
+  .title {
+    max-width: 820px;
+    font-size: 42px;
+  }
+
+  .metaLabel,
+  .stackLabel {
+    font-size: 15px;
+  }
+
+  .metaValue,
+  .stackItem,
+  .featureItem,
+  .overview {
+    font-size: 16px;
+  }
+
+  .sectionTitle {
+    font-size: 24px;
+  }
+
+  .metaGrid {
+    gap: 20px 34px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -210,6 +251,25 @@
 
   .title {
     margin-top: 26px;
+    max-width: 100%;
+    font-size: 28px;
+    line-height: 1.28;
+  }
+
+  .metaLabel,
+  .stackLabel {
+    font-size: 12px;
+  }
+
+  .metaValue,
+  .stackItem,
+  .featureItem,
+  .overview {
+    font-size: 13px;
+  }
+
+  .sectionTitle {
+    font-size: 19px;
   }
 
   .metaGrid,
@@ -223,6 +283,11 @@
     display: grid;
     grid-template-columns: minmax(76px, auto) 1fr;
     gap: 12px;
+    min-width: 0;
+  }
+
+  .stackList {
+    align-items: flex-start;
   }
 }
 
@@ -232,23 +297,84 @@
   }
 
   .badge {
-    min-height: 38px;
-    padding: 0 16px;
-    font-size: 14px;
+    min-height: 34px;
+    padding: 0 14px;
+    font-size: 12px;
   }
 
   .title {
-    font-size: 26px;
+    margin-top: 20px;
+    font-size: 22px;
+    line-height: 1.32;
+  }
+
+  .metaItem {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .metaLabel,
+  .stackLabel {
+    font-size: 11px;
   }
 
   .metaValue,
   .stackItem,
   .featureItem,
   .overview {
-    font-size: 15px;
+    font-size: 12px;
   }
 
   .sectionTitle {
-    font-size: 22px;
+    font-size: 17px;
+  }
+
+  .featureList {
+    gap: 8px;
+  }
+
+  .featureItem {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    line-height: 1.35;
+  }
+
+  .featureItem:not(:last-child)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .inner {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .metaLabel,
+  .stackLabel {
+    font-size: 10px;
+  }
+
+  .metaValue,
+  .stackItem,
+  .featureItem,
+  .overview {
+    font-size: 11px;
+  }
+
+  .sectionTitle {
+    font-size: 16px;
+  }
+
+  .overview {
+    line-height: 1.75;
   }
 }

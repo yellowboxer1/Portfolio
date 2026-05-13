@@ -85,7 +85,7 @@ export const smartCityGridSlides: SmartCityGridSlide[] = [
     type: "overview",
     kicker: "개요",
     title: "배리어프리 내비게이션 앱",
-    background: media("image11.png"),
+    background: media("image11-bg.jpg"),
     logo: media("image12.png"),
     goals: [
       {
@@ -123,7 +123,7 @@ export const smartCityGridSlides: SmartCityGridSlide[] = [
     title: "주요기능 - 메인",
     headline: "이용자 모두가 편리한\n배리어프리 APP",
     body: "교통약자를 배려한 내비게이션 앱으로 사용자가 직접 선택한 유형에 따라 유형별 서비스 이용 튜토리얼을 보여주며, 3D로 구현된 메인 페이지에서는 편의시설을 확인하여 목적지 설정으로 바로가기 기능과 상단메뉴를 통한 사용자 유형 선택·변경 및 주변 교통 정보 파악하는 기능을 제공함. 각 기능 간의 높은 연계성 확보를 위해 다양한 기능을 손쉽게 접근할 수 있도록 배치",
-    background: media("image13.png"),
+    background: media("image13-bg.jpg"),
     logo: media("image12.png"),
     mascot: media("image1.png"),
     tabs: ["수어 안내", "편의시설", "상단메뉴"],
