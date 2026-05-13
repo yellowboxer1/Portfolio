@@ -10,6 +10,7 @@ import {
 import "./globals.css";
 import { ClientBody } from "./ClientBody";
 import { GoogleAnalytics } from "./GoogleAnalytics";
+import { MicrosoftClarity } from "./MicrosoftClarity";
 
 const notoSans = Noto_Sans({
   subsets: ["latin"],
@@ -76,6 +77,7 @@ export default function RootLayout({
         />
       </head>
       <GoogleAnalytics />
+      <MicrosoftClarity />
       <ClientBody>{children}</ClientBody>
     </html>
   );
