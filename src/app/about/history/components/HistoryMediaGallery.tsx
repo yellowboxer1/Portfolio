@@ -85,9 +85,9 @@ export const HistoryMediaGallery = ({ activeIndex, entries, onNext }: Props) => 
       role="button"
       aria-label="Next History"
       onClick={onNext}
-      className="relative z-0 mx-auto flex w-full max-w-none cursor-pointer flex-col justify-start bg-transparent box-border caret-transparent outline-[3px] md:max-w-[1920px]"
+      className="relative z-0 mx-auto flex w-full max-w-none cursor-pointer flex-col justify-start bg-transparent box-border caret-transparent md:max-w-[1920px]"
     >
-      <div className="relative h-[1000px] w-full shrink-0 overflow-hidden bg-transparent box-border caret-transparent outline-[3px]">
+      <div className="relative h-[1000px] w-full shrink-0 overflow-hidden bg-transparent box-border caret-transparent">
         {entries.map((entry, index) => {
           const isActive = index === displayIndex;
           const isLeaving = index === leavingIndex;
@@ -146,7 +146,7 @@ export const HistoryMediaGallery = ({ activeIndex, entries, onNext }: Props) => 
 
         <div className="pointer-events-none absolute inset-0 z-[3] bg-gradient-to-t from-black/60 via-transparent to-black/30" />
 
-        <div className="pointer-events-none absolute bottom-6 right-6 z-[5] flex select-none items-center gap-2 text-sm text-white/40 md:bottom-10 md:right-10">
+        {/* <div className="pointer-events-none absolute bottom-6 right-6 z-[5] flex select-none items-center gap-2 text-sm text-white/40 md:bottom-10 md:right-10">
           <span className="font-suit text-xs uppercase tracking-wider">다음</span>
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
             <path
@@ -157,7 +157,7 @@ export const HistoryMediaGallery = ({ activeIndex, entries, onNext }: Props) => 
               strokeLinejoin="round"
             />
           </svg>
-        </div>
+        </div> */}
       </div>
     </div>
   );
