@@ -1,40 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<p align="center">
+  <img src="./public/favicon.svg" width="96" alt="Gun Ho Park portfolio logo" />
+</p>
 
-## Getting Started
+<h1 align="center">건호의 포트폴리오</h1>
 
-First, run the development server:
+<p align="center">
+  Next.js와 TypeScript로 제작한 개인 웹 포트폴리오입니다.
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<p align="center">
+  <a href="https://gunho-park.vercel.app">gunho-park.vercel.app</a>
+</p>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 소개
 
-## Analytics
+Figma를 통해 화면 구조와 시각 디자인을 설계한 후, Tailwind CSS를 활용해 전체 UI 스타일을 구성하였습니다.
 
-Set `NEXT_PUBLIC_CLARITY_PROJECT_ID` in your deployment environment to enable Microsoft Clarity heatmaps and session recordings.
+프로젝트 상세 페이지는 TSX와 CSS Module을 사용해 페이지별 레이아웃과 스타일을 구현했습니다. 프로젝트별 상세 페이지는 현재 추가 중이며, 완료된 프로젝트는 Zigzag입니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 작업 툴
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Figma, VS Code, Vercel
 
-## Learn More
+## 프로젝트 링크
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Portfolio](https://gunho-park.vercel.app)
+- [Zigzag](https://gunho-park.vercel.app/portfolio/zigzag-reverse)

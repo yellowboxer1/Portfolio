@@ -4,7 +4,13 @@ import { useEffect, useRef } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { pageview } from "@/src/lib/gtag";
 
-export function GoogleAnalyticsPageView() {
+type GoogleAnalyticsPageViewProps = {
+  measurementId: string;
+};
+
+export function GoogleAnalyticsPageView({
+  measurementId,
+}: GoogleAnalyticsPageViewProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const hasSkippedInitialPageView = useRef(false);
@@ -18,8 +24,8 @@ export function GoogleAnalyticsPageView() {
     const queryString = searchParams.toString();
     const url = queryString ? `${pathname}?${queryString}` : pathname;
 
-    pageview(url);
-  }, [pathname, searchParams]);
+    pageview(measurementId, url);
+  }, [measurementId, pathname, searchParams]);
 
   return null;
 }

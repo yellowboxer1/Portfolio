@@ -1,5 +1,5 @@
 import Script from "next/script";
-import { CLARITY_PROJECT_ID } from "@/src/lib/clarity";
+import { CLARITY_PROJECT_ID } from "@/src/lib/analytics-config";
 
 export function MicrosoftClarity() {
   if (!CLARITY_PROJECT_ID) {

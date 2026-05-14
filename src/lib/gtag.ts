@@ -1,6 +1,3 @@
-export const GA_MEASUREMENT_ID =
-  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-B1V0PHCS95";
-
 declare global {
   interface Window {
     dataLayer?: unknown[];
@@ -8,8 +5,8 @@ declare global {
   }
 }
 
-export function pageview(url: string) {
-  if (!GA_MEASUREMENT_ID || typeof window === "undefined") {
+export function pageview(measurementId: string, url: string) {
+  if (!measurementId || typeof window === "undefined") {
     return;
   }
 
@@ -20,7 +17,7 @@ export function pageview(url: string) {
       window.dataLayer?.push(args);
     };
 
-  window.gtag("config", GA_MEASUREMENT_ID, {
+  window.gtag("config", measurementId, {
     page_path: url,
     page_location: window.location.href,
     page_title: document.title,

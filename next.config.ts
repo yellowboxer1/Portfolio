@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  distDir: process.env.NEXT_DIST_DIR || '.next',
+  distDir: process.env.NEXT_DIST_DIR || ".next",
+  productionBrowserSourceMaps: false,
   redirects: async () => [
     {
       source: "/profile",
@@ -19,10 +20,10 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'ext.same-assets.com',
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "ext.same-assets.com",
+        port: "",
+        pathname: "/**",
       },
     ],
   },
