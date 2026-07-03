@@ -14,6 +14,7 @@ type PortfolioItem = {
   role: string;
   meta: string;
   summary: string;
+  isReady?: boolean;
 };
 
 const portfolioItems: PortfolioItem[] = [
@@ -27,6 +28,7 @@ const portfolioItems: PortfolioItem[] = [
     meta: "2026.04ㅣ누적 투자 10억 원",
     summary:
       "가중 적합도 알고리즘 기반 매칭 엔진 총괄 및 특허 출원, 디딤돌 R&D 및 청년창업사관학교 수주",
+    isReady: false,
   },
   {
     id: 2,
@@ -49,6 +51,7 @@ const portfolioItems: PortfolioItem[] = [
     meta: "2025.04",
     summary:
       "커머스 플랫폼 인터페이스 구조 분석 및 사용자 경험 최적화를 위한 시스템 역기획 수행",
+    isReady: true,
   },
   {
     id: 4,
@@ -82,6 +85,7 @@ const portfolioItems: PortfolioItem[] = [
     meta: "2023.07ㅣ29억 5,410만 원(총 사업비:300억)",
     summary:
       "부산 도시철도 내 교통약자 배리어 프리 실내 내비게이션 구축 실무 및 교통약자 데이터 분석",
+    isReady: true,
   },
   {
     id: 7,
@@ -106,6 +110,9 @@ const portfolioItems: PortfolioItem[] = [
       "지역 자산 및 민간조직을 활용한 지역 특화 산업 고도화 및 발전 전략 수립 총괄",
   },
 ];
+
+const getPortfolioHref = (item: PortfolioItem) =>
+  item.isReady ? `/portfolio/${item.slug}` : "/portfolio/preparing";
 
 type SpiralConfig = {
   radius: number;
@@ -231,7 +238,7 @@ function MobileCarousel() {
         {portfolioItems.map((item) => (
           <Link
             key={item.id}
-            href={`/portfolio/${item.slug}`}
+            href={getPortfolioHref(item)}
             className="group relative min-w-[92%] snap-center overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04]"
           >
             <div className="relative aspect-[4/6.15]">
@@ -599,7 +606,7 @@ const SpiralContent = () => {
                     className="spiral-gallery-image"
                   />
                   <Link
-                    href={`/portfolio/${item.slug}`}
+                    href={getPortfolioHref(item)}
                     className="gallery-link"
                     onClick={(e) => {
                       if (dragRef.current.moved) e.preventDefault();

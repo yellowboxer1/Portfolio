@@ -13,7 +13,7 @@ export default function PreparingPortfolioPage() {
     <main className={styles.page}>
       <Header aboutHref="/#about" />
 
-      <Link href="/#selected-works" className={styles.backButton} aria-label="Back to selected works">
+      <Link href="/works#project-cards" className={styles.backButton} aria-label="Back to project cards">
         <svg className={styles.backIcon} viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <path
             d="M13 8H3.5M7.5 4L3.5 8L7.5 12"
@@ -36,7 +36,7 @@ export default function PreparingPortfolioPage() {
           <br />
           곧 더 완성도 있는 내용으로 업데이트하겠습니다.
         </p>
-        <Link href="/#selected-works" className={styles.cta}>
+        <Link href="/works#project-cards" className={styles.cta}>
           프로젝트 목록으로 돌아가기
         </Link>
       </section>

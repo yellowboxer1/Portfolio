@@ -107,7 +107,7 @@ const portfolioItems: PortfolioItem[] = [
     role: "Service Planner",
     meta: "2023.07ㅣ29억 5,410만 원(총 사업비:300억)",
     filter: "B2G",
-    isReady: false,
+    isReady: true,
   },
   {
     id: 7,
@@ -345,7 +345,10 @@ export default function WorksPage() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-10 lg:grid-cols-3 lg:gap-x-10 xl:gap-x-[60px] md:gap-y-[60px]">
+        <div
+          id="project-cards"
+          className="grid scroll-mt-28 grid-cols-1 gap-x-4 gap-y-10 md:grid-cols-2 md:gap-y-[60px] lg:grid-cols-3 lg:gap-x-10 xl:gap-x-[60px]"
+        >
           {visible.map((item, i) => (
             <WorkCard
               key={item.id}
