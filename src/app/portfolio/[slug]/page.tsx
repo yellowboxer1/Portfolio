@@ -36,9 +36,14 @@ export default function PreparingPortfolioPage() {
           <br />
           곧 더 완성도 있는 내용으로 업데이트하겠습니다.
         </p>
-        <Link href="/works#project-cards" className={styles.cta}>
-          프로젝트 목록으로 돌아가기
-        </Link>
+        <div className={styles.ctaRow}>
+          <Link href="/works#project-cards" className={styles.cta}>
+            프로젝트 목록으로 돌아가기
+          </Link>
+          <Link href="/portfolio/zigzag-reverse" className={styles.secondaryCta}>
+            완성된 프로젝트 구경하기
+          </Link>
+        </div>
       </section>
     </main>
   );

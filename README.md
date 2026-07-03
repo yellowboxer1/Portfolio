@@ -41,3 +41,4 @@ Tailwind CSS로 전체 UI 스타일을 구성했으며, 프로젝트 상세 페�
 | --- | --- | --- |
 | Portfolio | 운영 중 | [바로가기](https://gunho-park.vercel.app) |
 | Zigzag | 완료 | [상세 페이지](https://gunho-park.vercel.app/portfolio/zigzag-reverse) |
+| 스마트시티 챌린지 | 완료 | [상세 페이지](https://gunho-park.vercel.app/portfolio/smart-city-challenge) |

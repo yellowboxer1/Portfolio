@@ -114,23 +114,48 @@
   word-break: keep-all;
 }
 
-.cta {
-  width: fit-content;
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
   margin-top: clamp(36px, 4vw, 58px);
+}
+
+.cta,
+.secondaryCta {
+  width: fit-content;
   padding: 14px 22px;
   font-size: 14px;
   font-weight: 600;
-  color: #111;
+  line-height: 1;
   text-decoration: none;
-  background: #f4f4f4;
+  border: 1px solid transparent;
   border-radius: 999px;
   transition:
     transform 0.28s ease,
-    background-color 0.28s ease;
+    background-color 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.cta {
+  color: #111;
+  background: #f4f4f4;
 }
 
 .cta:hover {
   background: #fff;
+  transform: translateY(-2px);
+}
+
+.secondaryCta {
+  color: #fff;
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.72);
+}
+
+.secondaryCta:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #fff;
   transform: translateY(-2px);
 }
 
