@@ -76,9 +76,11 @@ export default function RootLayout({
           fetchPriority="high"
         />
       </head>
-      <GoogleAnalytics />
-      <MicrosoftClarity />
-      <ClientBody>{children}</ClientBody>
+      <ClientBody>
+        <GoogleAnalytics />
+        <MicrosoftClarity />
+        {children}
+      </ClientBody>
     </html>
   );
 }

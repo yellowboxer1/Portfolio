@@ -12,15 +12,16 @@ export function GoogleAnalytics() {
     <>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-        strategy="lazyOnload"
+        strategy="afterInteractive"
       />
-      <Script id="google-analytics" strategy="lazyOnload">
+      <Script id="google-analytics" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
           const searchParams = new URLSearchParams(window.location.search);
+          const pagePath = window.location.pathname + window.location.search;
           const referrer = document.referrer;
           const campaignSource =
             searchParams.get('utm_source') ||
@@ -31,13 +32,17 @@ export function GoogleAnalytics() {
           const campaignName =
             searchParams.get('utm_campaign') ||
             (referrer.includes('saramin.co.kr') ? 'portfolio' : undefined);
-          const config = campaignSource
-            ? {
-                campaign_source: campaignSource,
-                campaign_medium: campaignMedium,
-                campaign_name: campaignName,
-              }
-            : undefined;
+          const config = {
+            page_path: pagePath,
+            page_location: window.location.href,
+            page_title: document.title,
+          };
+
+          if (campaignSource) {
+            config.campaign_source = campaignSource;
+            config.campaign_medium = campaignMedium;
+            config.campaign_name = campaignName;
+          }
 
           gtag('config', '${GA_MEASUREMENT_ID}', config);
         `}
