@@ -17,6 +17,7 @@ type PortfolioItem = {
   meta: string;
   filter: FilterKey;
   isReady?: boolean;
+  statusLabel?: string;
 };
 
 const impactSummary = [
@@ -43,6 +44,18 @@ const impactSummary = [
 ];
 
 const portfolioItems: PortfolioItem[] = [
+  {
+    id: 9,
+    slug: "habit",
+    title: "내 손안의 귀여운 습관메이트 해빗",
+    image: "/habit.png",
+    category: "Habit App",
+    role: "Service Planner · Product Owner",
+    meta: "2026.07ㅣ플레이스토어/앱스토어 운영 중",
+    filter: "개인 프로젝트",
+    isReady: false,
+    statusLabel: "현재 운영중",
+  },
   {
     id: 1,
     slug: "partnerit",
@@ -204,6 +217,7 @@ function RecruitingImpact() {
 
 function WorkCard({ item, offsetDown }: { item: PortfolioItem; offsetDown: boolean }) {
   const tags = item.role.split("·").map((t) => t.trim()).filter(Boolean);
+  const href = item.isReady || item.slug === "habit" ? `/portfolio/${item.slug}` : null;
 
   const inner = (
     <div className="group flex flex-col gap-4">
@@ -218,7 +232,7 @@ function WorkCard({ item, offsetDown }: { item: PortfolioItem; offsetDown: boole
         {!item.isReady && (
           <div className="absolute inset-0 rounded-[inherit] flex items-center justify-center bg-black/60 backdrop-blur-[2px]">
             <span className="rounded-full border border-white/20 px-4 py-1.5 text-sm font-medium text-white/55">
-              준비 중
+              {item.statusLabel ?? "준비 중"}
             </span>
           </div>
         )}
@@ -251,12 +265,12 @@ function WorkCard({ item, offsetDown }: { item: PortfolioItem; offsetDown: boole
 
   const offset = offsetDown ? "md:translate-y-[60px]" : "";
 
-  if (!item.isReady) {
+  if (!href) {
     return <div className={`cursor-default ${offset}`}>{inner}</div>;
   }
 
   return (
-    <Link href={`/portfolio/${item.slug}`} className={`block ${offset}`}>
+    <Link href={href} className={`block ${offset}`}>
       {inner}
     </Link>
   );

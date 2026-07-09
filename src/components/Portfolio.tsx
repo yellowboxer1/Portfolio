@@ -19,6 +19,17 @@ type PortfolioItem = {
 
 const portfolioItems: PortfolioItem[] = [
   {
+    id: 9,
+    slug: "habit",
+    title: "내 손안의 귀여운 습관메이트 해빗",
+    image: "/habit-selected.png",
+    category: "Habit App",
+    role: "Service Planner · Product Owner",
+    meta: "2026.07ㅣ플레이스토어/앱스토어 운영 중",
+    summary:
+      "좋은 습관과 줄일 습관을 나눠 기록 흐름을 설계하고, 보상·위젯·알림·통계로 꾸준한 사용을 유도한 습관 관리 서비스",
+  },
+  {
     id: 1,
     slug: "partnerit",
     title: "AI 기반 지원사업 매칭 서비스 파트너잇",
@@ -112,7 +123,15 @@ const portfolioItems: PortfolioItem[] = [
 ];
 
 const getPortfolioHref = (item: PortfolioItem) =>
-  item.isReady ? `/portfolio/${item.slug}` : "/portfolio/preparing";
+  item.isReady || item.slug === "habit"
+    ? `/portfolio/${item.slug}`
+    : "/portfolio/preparing";
+
+const getImageFrameClassName = (item: PortfolioItem) =>
+  item.slug === "habit" ? "habit-feature-image-frame" : "";
+
+const getImageClassName = (item: PortfolioItem, baseClassName: string) =>
+  `${baseClassName} ${item.slug === "habit" ? "habit-feature-image" : ""}`;
 
 type SpiralConfig = {
   radius: number;
@@ -241,13 +260,15 @@ function MobileCarousel() {
             href={getPortfolioHref(item)}
             className="group relative min-w-[92%] snap-center overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04]"
           >
-            <div className="relative aspect-[4/6.15]">
+            <div
+              className={`relative aspect-[4/6.15] ${getImageFrameClassName(item)}`}
+            >
               <Image
                 src={item.image}
                 alt={item.title}
                 fill
                 sizes="92vw"
-                className="object-cover"
+                className={getImageClassName(item, "object-cover")}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/5" />
 
@@ -405,7 +426,7 @@ const SpiralContent = () => {
 
     motionRef.current.introPlayed = true;
     const startAngle = 200;
-    const endAngle = -34;
+    const endAngle = 2;
     const duration = 1800;
     const startTime = performance.now();
 
@@ -584,7 +605,7 @@ const SpiralContent = () => {
                 }}
               >
                 <div
-                  className="spiral-gallery-front"
+                  className={`spiral-gallery-front ${getImageFrameClassName(item)}`}
                   style={{ 
                     filter: motionRef.current.hoveredIndex !== null && motionRef.current.hoveredIndex !== index ? 'brightness(0.5) blur(2px)' : 'none',
                     transition: 'filter 0.4s ease'
@@ -603,7 +624,7 @@ const SpiralContent = () => {
                     alt={item.title}
                     fill
                     sizes="(min-width: 1024px) 500px, 380px"
-                    className="spiral-gallery-image"
+                    className={getImageClassName(item, "spiral-gallery-image")}
                   />
                   <Link
                     href={getPortfolioHref(item)}

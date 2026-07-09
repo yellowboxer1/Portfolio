@@ -89,6 +89,21 @@
   padding: clamp(120px, 12vw, 180px) clamp(28px, 10vw, 160px);
 }
 
+.noticeWithQr {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
+  width: min(100%, 1920px);
+  column-gap: clamp(24px, 3vw, 56px);
+  row-gap: 56px;
+}
+
+.noticeCopy {
+  grid-column: 1 / span 2;
+  min-width: 0;
+  max-width: 640px;
+}
+
 .eyebrow {
   margin: 0 0 20px;
   font-size: clamp(13px, 0.9vw, 16px);
@@ -103,6 +118,11 @@
   font-weight: 700;
   line-height: 0.95;
   letter-spacing: -0.06em;
+  word-break: keep-all;
+}
+
+.noticeWithQr .title {
+  font-size: clamp(52px, 5.7vw, 104px);
 }
 
 .description {
@@ -159,6 +179,74 @@
   transform: translateY(-2px);
 }
 
+.qrPanel {
+  --qr-heading-gap: clamp(18px, 2vw, 32px);
+  --qr-caption-gap: clamp(14px, 1.8vw, 24px);
+  display: flex;
+  flex-direction: column;
+  grid-column: 4;
+  width: min(100%, 420px);
+  justify-self: start;
+  padding: 0;
+  color: #fff;
+  text-align: left;
+}
+
+.qrEyebrow {
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.48);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.qrTitle {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.04em;
+}
+
+.qrCodeWrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: clamp(140px, 13vw, 260px);
+  max-width: 100%;
+  margin-top: var(--qr-heading-gap);
+  padding: 0;
+}
+
+.qrCodeWrap img {
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.qrDescription {
+  margin: var(--qr-caption-gap) 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.68);
+  word-break: keep-all;
+}
+
+.qrLink {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.52);
+  text-decoration: none;
+}
+
+.qrLink:hover {
+  color: #fff;
+}
+
 @media (min-width: 768px) {
   .backButton {
     left: 48px;
@@ -193,5 +281,34 @@
   .notice {
     justify-content: flex-start;
     padding-top: 176px;
+  }
+
+  .noticeWithQr {
+    display: flex;
+    gap: 64px;
+    padding-right: clamp(28px, 7vw, 128px);
+    padding-left: clamp(28px, 7vw, 128px);
+  }
+
+  .qrPanel {
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .qrCodeWrap {
+    width: clamp(200px, 68vw, 320px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .noticeWithQr {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .noticeCopy,
+  .qrPanel {
+    grid-column: auto;
+    justify-self: start;
   }
 }

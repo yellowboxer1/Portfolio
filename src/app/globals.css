@@ -864,6 +864,16 @@ body {
   object-fit: cover;
 }
 
+.habit-feature-image-frame {
+  background: #dcebcf;
+}
+
+.habit-feature-image {
+  object-fit: cover !important;
+  object-position: center 42% !important;
+  transform: none;
+}
+
 .spiral-gallery-front::before {
   content: "";
   position: absolute;
