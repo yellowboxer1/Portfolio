@@ -54,7 +54,6 @@ const portfolioItems: PortfolioItem[] = [
     meta: "2026.07ㅣ플레이스토어/앱스토어 운영 중",
     filter: "개인 프로젝트",
     isReady: false,
-    statusLabel: "현재 운영중",
   },
   {
     id: 1,
