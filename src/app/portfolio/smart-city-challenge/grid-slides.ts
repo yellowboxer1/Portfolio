@@ -75,7 +75,7 @@ export const smartCityGridSlides: SmartCityGridSlide[] = [
       logo: media("image1.png"),
       toolIcons: media("image10.png"),
       tutorial: media("image5.png"),
-      obstacle: media("image6.png"),
+      obstacle: media("image6.webp"),
       userType: media("image7.png"),
       routeType: media("image8.png"),
       signPlayer: media("image4.png"),
@@ -153,7 +153,7 @@ export const smartCityGridSlides: SmartCityGridSlide[] = [
     images: [
       media("image18.png"),
       media("image19.png"),
-      media("image20.png"),
+      media("image20.webp"),
       media("image15.png"),
     ],
     notes: [
@@ -211,7 +211,7 @@ export const smartCityGridSlides: SmartCityGridSlide[] = [
     type: "service",
     kicker: "서비스 내용",
     title: "지하철 내비게이션\n실내 길안내",
-    images: [media("image27.jpg"), media("image28.png"), media("image29.jpg")],
+    images: [media("image27.jpg"), media("image28.webp"), media("image29.jpg")],
     items: [
       {
         title: "엘리베이터 경로 안내",
@@ -231,7 +231,7 @@ export const smartCityGridSlides: SmartCityGridSlide[] = [
     type: "service",
     kicker: "서비스 내용",
     title: "지하철 내비게이션\n발생 이슈",
-    images: [media("image30.png"), media("image31.png"), media("image32.png")],
+    images: [media("image30.png"), media("image31.webp"), media("image32.webp")],
     items: [
       {
         title: "새로운 경로 안내",
@@ -252,8 +252,8 @@ export const smartCityGridSlides: SmartCityGridSlide[] = [
     kicker: "서비스 내용",
     title: "지하철 내비게이션\n하단메뉴",
     images: [
-      media("image33.png"),
-      media("image34.png"),
+      media("image33.webp"),
+      media("image34.webp"),
       media("image35.png"),
       media("image36.png"),
     ],
@@ -296,7 +296,7 @@ export const smartCityGridSlides: SmartCityGridSlide[] = [
     type: "service",
     kicker: "서비스 내용",
     title: "지하철 내비게이션\n실외 길안내",
-    images: [media("image40.png"), media("image41.jpg"), media("image42.png")],
+    images: [media("image40.webp"), media("image41.jpg"), media("image42.webp")],
     items: [
       {
         title: "실외 메인",
@@ -316,7 +316,7 @@ export const smartCityGridSlides: SmartCityGridSlide[] = [
     type: "service",
     kicker: "서비스 내용",
     title: "지하철 내비게이션\n역 간 이동(환승)",
-    images: [media("image43.png"), media("image44.png"), media("image45.png")],
+    images: [media("image43.webp"), media("image44.png"), media("image45.png")],
     items: [
       {
         title: "역 간 이동(환승) 상세경로",

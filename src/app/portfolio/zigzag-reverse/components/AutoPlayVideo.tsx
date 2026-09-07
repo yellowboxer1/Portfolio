@@ -15,7 +15,8 @@ export default function AutoPlayVideo({
   loopStartSeconds = 0,
   muted = true,
   playsInline = true,
-  preload = 'auto',
+  preload = 'metadata',
+  src,
   ...props
 }: AutoPlayVideoProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -24,96 +25,36 @@ export default function AutoPlayVideo({
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) {
-      return;
-    }
+    if (!video || !src) return;
 
-    const tryPlay = () => {
-      if (!autoPlay) {
-        return;
-      }
-
-      const playPromise = video.play();
-
-      if (playPromise && typeof playPromise.catch === 'function') {
-        playPromise.catch(() => {});
-      }
-    };
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        if (!entry) {
-          return;
-        }
-
-        if (entry.isIntersecting) {
-          tryPlay();
-        } else {
-          video.pause();
-        }
-      },
-      {
-        rootMargin: '1200px 0px',
-        threshold: 0.05,
-      },
-    );
-
-    observer.observe(video);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [autoPlay]);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) {
-      return;
-    }
-
-    video.muted = true;
-    video.defaultMuted = true;
-    video.playsInline = true;
-    video.setAttribute('playsinline', 'true');
-    video.setAttribute('webkit-playsinline', 'true');
-
-    const tryPlay = () => {
-      if (!autoPlay) {
-        return;
-      }
-
-      const playPromise = video.play();
-
-      if (playPromise && typeof playPromise.catch === 'function') {
-        playPromise.catch(() => {});
-      }
-    };
-
-    const handleVisibilityChange = () => {
-      if (document.hidden) {
+    let nearby = false;
+    const syncPlayback = () => {
+      if (!nearby || document.hidden) {
         video.pause();
         return;
       }
-
-      tryPlay();
+      // Attach the source only when this video approaches the viewport.
+      if (!video.getAttribute('src')) video.src = src;
+      if (autoPlay) video.play().catch(() => {});
     };
 
-    video.preload = resolvedPreload;
-    video.load();
-    tryPlay();
-    video.addEventListener('loadedmetadata', tryPlay);
-    video.addEventListener('loadeddata', tryPlay);
-    video.addEventListener('canplay', tryPlay);
-    document.addEventListener('visibilitychange', handleVisibilityChange);
+    const observer = new IntersectionObserver(([entry]) => {
+      nearby = entry.isIntersecting;
+      syncPlayback();
+    }, { rootMargin: '200px 0px', threshold: 0.01 });
 
+    observer.observe(video);
+    video.addEventListener('canplay', syncPlayback);
+    document.addEventListener('visibilitychange', syncPlayback);
     return () => {
-      video.removeEventListener('loadedmetadata', tryPlay);
-      video.removeEventListener('loadeddata', tryPlay);
-      video.removeEventListener('canplay', tryPlay);
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      observer.disconnect();
+      video.removeEventListener('canplay', syncPlayback);
+      document.removeEventListener('visibilitychange', syncPlayback);
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
     };
-  }, [autoPlay, resolvedPreload]);
+  }, [autoPlay, src]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -146,7 +87,7 @@ export default function AutoPlayVideo({
   return (
     <video
       ref={videoRef}
-      autoPlay={autoPlay}
+      autoPlay={false}
       loop={loop}
       muted={muted}
       playsInline={playsInline}

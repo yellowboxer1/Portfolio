@@ -7,8 +7,8 @@ import { CSSProperties, useEffect, useState } from 'react';
 
 const wish = withBasePath('/portfolio/zigzag-reverse/assets/image/WISH & STYLING@3x.png');
 const i49 = withBasePath('/portfolio/zigzag-reverse/assets/image/image 49@3x.png');
-const wish1 = withBasePath('/portfolio/zigzag-reverse/assets/image/wish@3x.png');
-const pricedrop = withBasePath('/portfolio/zigzag-reverse/assets/image/pricedrop@3x.png');
+const wish1 = withBasePath('/portfolio/zigzag-reverse/assets/image/wish@3x.webp');
+const pricedrop = withBasePath('/portfolio/zigzag-reverse/assets/image/pricedrop@3x.webp');
 const fit = withBasePath('/portfolio/zigzag-reverse/assets/image/fit@3x.png');
 const v40 = withBasePath('/portfolio/zigzag-reverse/assets/image/Vector 40.svg');
 const v41 = withBasePath('/portfolio/zigzag-reverse/assets/image/Vector 41.svg');
@@ -16,7 +16,7 @@ const v87 = withBasePath('/portfolio/zigzag-reverse/assets/image/Vector 87.svg')
 const g35 = withBasePath('/portfolio/zigzag-reverse/assets/image/Group 1000003935.svg');
 const price = withBasePath('/portfolio/zigzag-reverse/assets/image/price.png');
 const closing = withBasePath('/portfolio/zigzag-reverse/assets/image/closing@3x.png');
-const i338 = withBasePath('/portfolio/zigzag-reverse/assets/image/image 338@3x.png');
+const i338 = withBasePath('/portfolio/zigzag-reverse/assets/image/image 338@3x.webp');
 const fitting = withBasePath('/portfolio/zigzag-reverse/assets/video/fitting.mp4');
 
 const Closet = () => {
@@ -47,20 +47,20 @@ const Closet = () => {
     <p className={styles.p}>{`찜한 상품들을 한 눈에 파악하고, 간편하게 구매까지 연결할 수 있습니다. `}</p>
     <p className={styles.p}>나만의 가상 피팅룸에서 다양한 아이템을 조합하여 개성있는 스타일을 코디해 보세요.</p>
     </div>
-    <img className={styles.wishStyling3x1} src={wish} />
+    <img loading="lazy" decoding="async" className={styles.wishStyling3x1} src={wish} />
     <div className={styles.div1}>05</div>
     </div>
     <div className={styles.imageParent}>
-    <img className={styles.imageIcon} src={wish1} />
-    <img className={styles.icon} src={i49} />
+    <img loading="lazy" decoding="async" className={styles.imageIcon} src={wish1} />
+    <img loading="lazy" decoding="async" className={styles.icon} src={i49} />
     <div className={styles.image50} />
     </div>
     <div className={styles.imageGroup}>
-    <img className={styles.imageIcon} src={pricedrop} />
-    <img className={styles.icon} src={i49} />
+    <img loading="lazy" decoding="async" className={styles.imageIcon} src={pricedrop} />
+    <img loading="lazy" decoding="async" className={styles.icon} src={i49} />
     <div className={styles.image50} />
     </div>
-    <img className={styles.fit3x1Icon} src={fit} />
+    <img loading="lazy" decoding="async" className={styles.fit3x1Icon} src={fit} />
     <div className={styles.fittingCopySet}>
     <div className={styles.fittingRoomBannerContainer}>
     <span className={styles.fittingRoom}>{`fitting room `}</span>
@@ -71,8 +71,8 @@ const Closet = () => {
     <p className={styles.p}>사용자들의 참여도를 높이고 누구나 접근하기 쉽게하였습니다.</p>
     </div>
     </div>
-    <img className={styles.closetItem} src={v40} />
-    <img className={styles.closetInner} src={g35} />
+    <img loading="lazy" decoding="async" className={styles.closetItem} src={v40} />
+    <img loading="lazy" decoding="async" className={styles.closetInner} src={g35} />
     <div className={styles.priceCopySet}>
     <div className={styles.priceDropAlertContainer}>
     <span className={styles.fittingRoom}>{`price drop `}</span>
@@ -83,11 +83,11 @@ const Closet = () => {
     <p className={styles.p}>실시간 가격 하락 정보를 직관적으로 확인할 수 있게 구성하였습니다.</p>
     </div>
     </div>
-    <img className={styles.vectorIcon} src={v87} />
-    <img className={styles.groupIcon} src={g35} />
-    <img className={styles.price1Icon} src={price} />
-    <img className={styles.closetChild1} src={v41} />
-    <img className={styles.closetChild2} src={g35} />
+    <img loading="lazy" decoding="async" className={styles.vectorIcon} src={v87} />
+    <img loading="lazy" decoding="async" className={styles.groupIcon} src={g35} />
+    <img loading="lazy" decoding="async" className={styles.price1Icon} src={price} />
+    <img loading="lazy" decoding="async" className={styles.closetChild1} src={v41} />
+    <img loading="lazy" decoding="async" className={styles.closetChild2} src={g35} />
     <div className={styles.myFittingCopySet}>
     <div className={styles.myFittingRoomContainer}>
     <span className={styles.fittingRoom}>{`my `}</span>
@@ -100,12 +100,12 @@ const Closet = () => {
     </div>
     <div className={styles.imageContainer}>
     <AutoPlayVideo className={styles.imageIcon} src={fitting} />
-    <img className={styles.icon} src={i49} />
+    <img loading="lazy" decoding="async" className={styles.icon} src={i49} />
     <div className={styles.image50} />
     </div>
-    <img className={styles.image338Icon} src={i338}/>
+    <img loading="lazy" decoding="async" className={styles.image338Icon} src={i338}/>
     <div className={styles.image339} />
-    <img className={styles.closing3x1Icon} src={closing} />
+    <img loading="lazy" decoding="async" className={styles.closing3x1Icon} src={closing} />
     <div className={styles.mobilePortfoloZigzagRePlanContainer}>
     <p className={styles.p}>MOBILE PORTFOLO</p>
     <p className={styles.p}>ZIGZAG-RE PLANNIG PROJECT</p>

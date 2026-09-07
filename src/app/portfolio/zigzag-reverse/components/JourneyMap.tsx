@@ -268,7 +268,7 @@ function JourneyContent({ className }: { className?: string }) {
                       <div className={styles.solution}>Solution</div>
                       <div className={styles.painPoint}>{`Pain Point `}</div>
                 </div>
-                <img className={styles.groupIcon} alt="" src={svgg} />
+                <img loading="lazy" decoding="async" className={styles.groupIcon} alt="" src={svgg} />
                 <div className={styles.group}>
                       <div className={styles.div18}>만족</div>
                       <div className={styles.div19}>😍</div>
@@ -383,7 +383,7 @@ function DesktopJourneyGrid() {
         <span className={styles.desktopEmotionLine} />
         <span className={styles.desktopEmotionLine} />
         <span className={styles.desktopEmotionLine} />
-        <img className={styles.desktopEmotionGraph} alt="" src={svgg} />
+        <img loading="lazy" decoding="async" className={styles.desktopEmotionGraph} alt="" src={svgg} />
       </div>
 
       <div className={`${styles.desktopGridTitle} ${styles.desktopGridTitleAccent} ${styles.desktopGridCell}`}>{solutionRow.label}</div>
@@ -466,7 +466,7 @@ function ResponsiveJourneyTable() {
               <span>만족</span>
             </td>
             <td colSpan={5} className={styles.emotionGraphBand}>
-              <img className={styles.emotionGraph} src={svgg} alt="감정 변화 그래프" />
+              <img loading="lazy" decoding="async" className={styles.emotionGraph} src={svgg} alt="감정 변화 그래프" />
             </td>
           </tr>
           <tr className={styles.emotionBandRow}>

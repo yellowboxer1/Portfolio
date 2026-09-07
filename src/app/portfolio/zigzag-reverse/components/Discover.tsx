@@ -5,12 +5,12 @@ import { withBasePath } from '../lib/asset';
 import AutoPlayVideo from './AutoPlayVideo';
 import { CSSProperties, useEffect, useState } from 'react';
 
-const epick = withBasePath('/portfolio/zigzag-reverse/assets/image/epick@3x.png');
+const epick = withBasePath('/portfolio/zigzag-reverse/assets/image/epick@3x.webp');
 const talkLounge = withBasePath('/portfolio/zigzag-reverse/assets/image/talk lounge@3x.png');
-const detail = withBasePath('/portfolio/zigzag-reverse/assets/image/detail.png');
-const image1 = withBasePath('/portfolio/zigzag-reverse/assets/image/image_fx_ (10) 1.png');
+const detail = withBasePath('/portfolio/zigzag-reverse/assets/image/detail.webp');
+const image1 = withBasePath('/portfolio/zigzag-reverse/assets/image/image_fx_ (10) 1.webp');
 const discoverall = withBasePath('/portfolio/zigzag-reverse/assets/image/Discover All@3x.png');
-const category = withBasePath('/portfolio/zigzag-reverse/assets/image/category@3x.png');
+const category = withBasePath('/portfolio/zigzag-reverse/assets/image/category@3x.webp');
 const frame = withBasePath('/portfolio/zigzag-reverse/assets/image/image 49@3x.png');
 const vec01 = withBasePath('/portfolio/zigzag-reverse/assets/image/Vector 01.svg');
 const vec02 = withBasePath('/portfolio/zigzag-reverse/assets/image/Vector 02.svg');
@@ -42,35 +42,35 @@ const Discover = () => {
     		<div className={styles.discover} style={discoverStyle}>
 				<div className={styles.desktopDiscover}>
       			<div className={styles.discoverChild} />
-      			<img className={styles.epick3x1Icon} src={epick} />
-      			<img className={styles.detail1Icon} src={detail} />
-      			<img className={styles.talkLounge3x1} src={talkLounge} />
-      			<img className={styles.imageFx101} src={image1} />
+            <img loading="lazy" decoding="async" className={styles.epick3x1Icon} src={epick} />
+            <img loading="lazy" decoding="async" className={styles.detail1Icon} src={detail} />
+            <img loading="lazy" decoding="async" className={styles.talkLounge3x1} src={talkLounge} />
+            <img loading="lazy" decoding="async" className={styles.imageFx101} src={image1} />
       			<div className={styles.discoverItem} />
       			<div className={styles.parent}>
         				<div className={styles.div1}>04</div>
-      					<img className={styles.discoverAll3x1} src={discoverall} />
+                <img loading="lazy" decoding="async" className={styles.discoverAll3x1} src={discoverall} />
         				<div className={styles.div}>
           					<p className={styles.p}>{`다양한 상품 카테고리부터 개성 넘치는 스타일링 샷, 활발한 커뮤니티까지 한눈에 만나보세요. `}</p>
           					<p className={styles.p}>카테고리, 에픽, 톡라운지를 통해 패션의 모든 영역을 탐색할 수 있는 공간입니다.</p>
         				</div>
       			</div>
       			<div className={styles.imageParent}>
-        				<img className={styles.imageIcon} src={category} />
+                <img loading="lazy" decoding="async" className={styles.imageIcon} src={category} />
         				<div className={styles.image50} />
-        				<img className={styles.icon} src={frame} />
+                <img loading="lazy" decoding="async" className={styles.icon} src={frame} />
       			</div>
       			<div className={styles.imageGroup}>
         				<AutoPlayVideo className={styles.imageIcon1} src={video1} />
-        				<img className={styles.icon} src={frame} />
+                <img loading="lazy" decoding="async" className={styles.icon} src={frame} />
         				<div className={styles.image50} />
       			</div>
-      			<img className={styles.discoverInner} src={vec01} />
-      			<img className={styles.vectorIcon} src={vec02} />
-      			<img className={styles.discoverChild1} src={v03} />
-      			<img className={styles.groupIcon} src={g35} />
-      			<img className={styles.discoverChild2} src={g35}  />
-      			<img className={styles.discoverChild3} src={g35}  />
+            <img loading="lazy" decoding="async" className={styles.discoverInner} src={vec01} />
+            <img loading="lazy" decoding="async" className={styles.vectorIcon} src={vec02} />
+            <img loading="lazy" decoding="async" className={styles.discoverChild1} src={v03} />
+            <img loading="lazy" decoding="async" className={styles.groupIcon} src={g35} />
+            <img loading="lazy" decoding="async" className={styles.discoverChild2} src={g35}  />
+            <img loading="lazy" decoding="async" className={styles.discoverChild3} src={g35}  />
       			<div className={styles.epickCopySet}>
 					<div className={styles.epickMain}>
 							<span className={styles.epick}>{`EPICK `}</span>
@@ -107,7 +107,7 @@ const Discover = () => {
 				</div>
           					<div className={styles.imageContainer}>
             						<AutoPlayVideo className={styles.imageIcon1} src={video2} />
-            						<img className={styles.icon} src={frame} />
+                        <img loading="lazy" decoding="async" className={styles.icon} src={frame} />
             						<div className={styles.image50} />
           					</div>
 				</div>

@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import {
-  Bacasime_Antique,
-  Inter,
   Manrope,
-  Noto_Sans,
-  Noto_Sans_Display,
   Noto_Sans_KR,
 } from "next/font/google";
 import "./globals.css";
@@ -12,40 +8,15 @@ import { ClientBody } from "./ClientBody";
 import { GoogleAnalytics } from "./GoogleAnalytics";
 import { MicrosoftClarity } from "./MicrosoftClarity";
 
-const notoSans = Noto_Sans({
-  subsets: ["latin"],
-  variable: "--font-family-noto-sans",
-  display: "swap",
-});
-
 const notoSansKr = Noto_Sans_KR({
   subsets: ["latin"],
   variable: "--font-family-noto-sans-kr",
   display: "swap",
 });
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-family-inter",
-  display: "swap",
-});
-
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-family-manrope",
-  display: "swap",
-});
-
-const bacasimeAntique = Bacasime_Antique({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-family-bacasime-antique",
-  display: "swap",
-});
-
-const notoSansDisplay = Noto_Sans_Display({
-  subsets: ["latin"],
-  variable: "--font-family-noto-sans-display",
   display: "swap",
 });
 
@@ -65,17 +36,8 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`dark ${notoSans.variable} ${notoSansKr.variable} ${inter.variable} ${manrope.variable} ${bacasimeAntique.variable} ${notoSansDisplay.variable}`}
+      className={`dark ${notoSansKr.variable} ${manrope.variable}`}
     >
-      <head>
-        <link
-          rel="preload"
-          href="/screen/main_object_video.mp4"
-          as="video"
-          type="video/mp4"
-          fetchPriority="high"
-        />
-      </head>
       <ClientBody>
         <GoogleAnalytics />
         <MicrosoftClarity />

@@ -5,10 +5,10 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './styles/Persona.module.css';
 import { withBasePath } from '../lib/asset';
 
-const g39 = withBasePath('/portfolio/zigzag-reverse/assets/image/Group 39.png');
-const p1 = withBasePath('/portfolio/zigzag-reverse/assets/image/p1@4x.png');
-const p2 = withBasePath('/portfolio/zigzag-reverse/assets/image/p2@4x.png');
-const p3 = withBasePath('/portfolio/zigzag-reverse/assets/image/p3@4x.png');
+const g39 = withBasePath('/portfolio/zigzag-reverse/assets/image/Group 39.webp');
+const p1 = withBasePath('/portfolio/zigzag-reverse/assets/image/p1@4x.webp');
+const p2 = withBasePath('/portfolio/zigzag-reverse/assets/image/p2@4x.webp');
+const p3 = withBasePath('/portfolio/zigzag-reverse/assets/image/p3@4x.webp');
 const PERSONA_STAGE_WIDTH = 1724;
 const PERSONA_STAGE_HEIGHT = 1450;
 const PERSONA_STAGE_OFFSET_TOP = 432;
@@ -92,12 +92,12 @@ function PersonaVisualStage({ scale }: { scale: number }) {
         <div className={styles.personaStageCanvas} style={canvasStyle}>
           <div className={styles.personaStageLayer}>
             <div className={styles.vectorParent}>
-              <img className={styles.groupChild} src={g39} alt="" aria-hidden="true" />
+              <img loading="lazy" decoding="async" className={styles.groupChild} src={g39} alt="" aria-hidden="true" />
               <b className={styles.needs}>Needs</b>
             </div>
-            <img className={styles.groupIcon} src={p1} alt="페르소나 1" />
-            <img className={styles.maskGroupIcon} src={p2} alt="페르소나 2" />
-            <img className={styles.maskGroupIcon1} src={p3} alt="페르소나 3" />
+            <img loading="lazy" decoding="async" className={styles.groupIcon} src={p1} alt="페르소나 1" />
+            <img loading="lazy" decoding="async" className={styles.maskGroupIcon} src={p2} alt="페르소나 2" />
+            <img loading="lazy" decoding="async" className={styles.maskGroupIcon1} src={p3} alt="페르소나 3" />
           </div>
         </div>
       </div>

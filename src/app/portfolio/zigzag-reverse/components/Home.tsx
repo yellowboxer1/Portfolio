@@ -8,12 +8,12 @@ import { CSSProperties, useEffect, useState } from 'react';
 const v37 = withBasePath('/portfolio/zigzag-reverse/assets/image/Vector 37.svg');
 const v38 = withBasePath('/portfolio/zigzag-reverse/assets/image/Vector 38.svg');
 const g35 = withBasePath('/portfolio/zigzag-reverse/assets/image/Group 1000003935.svg');
-const search = withBasePath('/portfolio/zigzag-reverse/assets/image/search@3x.png');
-const i324 = withBasePath('/portfolio/zigzag-reverse/assets/image/image 324.png');
+const search = withBasePath('/portfolio/zigzag-reverse/assets/image/search@3x.webp');
+const i324 = withBasePath('/portfolio/zigzag-reverse/assets/image/image 324.webp');
 const main = withBasePath('/portfolio/zigzag-reverse/assets/video/main1.mp4');
 const i49 = withBasePath('/portfolio/zigzag-reverse/assets/image/image 49@3x.png');
-const beauty = withBasePath('/portfolio/zigzag-reverse/assets/image/beauty@3x.png');
-const favor = withBasePath('/portfolio/zigzag-reverse/assets/image/favor@3x.png');
+const beauty = withBasePath('/portfolio/zigzag-reverse/assets/image/beauty@3x.webp');
+const favor = withBasePath('/portfolio/zigzag-reverse/assets/image/favor@3x.webp');
 const homeForYou = withBasePath('/portfolio/zigzag-reverse/assets/image/Home, For You@3x.png');
 
 const Home = () => {
@@ -40,17 +40,17 @@ const Home = () => {
     <div className={styles.home} style={homeStyle}>
     <div className={styles.desktopHome}>
     <div className={styles.homeChild} />
-    <img className={styles.homeItem} src={v38} />
-    <img className={styles.homeInner} src={g35} />
-    <img className={styles.searchIcon} src={search} />
-    <img className={styles.image325Icon} src={i324} />
+    <img loading="lazy" decoding="async" className={styles.homeItem} src={v38} />
+    <img loading="lazy" decoding="async" className={styles.homeInner} src={g35} />
+    <img loading="lazy" decoding="async" className={styles.searchIcon} src={search} />
+    <img loading="lazy" decoding="async" className={styles.image325Icon} src={i324} />
     <div className={styles.main1Parent}>
     <AutoPlayVideo className={styles.main1Icon} src={main} />
     <div className={styles.image50} />
-    <img className={styles.icon} src={i49} />
+    <img loading="lazy" decoding="async" className={styles.icon} src={i49} />
     </div>
-    <img className={styles.beautyIcon} src={beauty} />
-    <img className={styles.vectorIcon} src={v37} />
+    <img loading="lazy" decoding="async" className={styles.beautyIcon} src={beauty} />
+    <img loading="lazy" decoding="async" className={styles.vectorIcon} src={v37} />
     <div className={styles.styleForYouContainer}>
     <span className={styles.style}>{`STYLE `}</span>
     <span>FOR YOU</span>
@@ -69,8 +69,8 @@ const Home = () => {
     <p className={styles.p}>뷰티 영역을 독립적인 메뉴로 분리하고,</p>
     <p className={styles.p}>더욱 직관적인 접근성과 풍부한 콘텐츠를 제공합니다.</p>
     </div>
-    <img className={styles.groupIcon} src={g35} />
-    <img className={styles.favorIcon} src={favor} />
+    <img loading="lazy" decoding="async" className={styles.groupIcon} src={g35} />
+    <img loading="lazy" decoding="async" className={styles.favorIcon} src={favor} />
     <div className={styles.parent}>
     <div className={styles.div2}>
     <p className={styles.p}>2030세대는 다른 세대에 비해 개인의 취향, 자기 만족을 중요하게 생각합니다.</p>
@@ -78,15 +78,15 @@ const Home = () => {
     <p className={styles.p}>추천받을 수 있습니다.</p>
     </div>
     <div className={styles.div3}>02</div>
-    <img className={styles.homeForYou} src={homeForYou} />
+    <img loading="lazy" decoding="async" className={styles.homeForYou} src={homeForYou} />
     </div>
     </div>
     <div className={styles.responsiveHome}>
     <section className={styles.responsiveHero}>
-    <img className={styles.responsiveHeroBg} src={i324} />
+    <img loading="lazy" decoding="async" className={styles.responsiveHeroBg} src={i324} />
     <div className={styles.responsiveIntro}>
     <div className={styles.responsiveIntroNumber}>02</div>
-    <img className={styles.responsiveIntroTitle} src={homeForYou} />
+    <img loading="lazy" decoding="async" className={styles.responsiveIntroTitle} src={homeForYou} />
     <div className={styles.responsiveIntroText}>
     <p className={styles.p}>2030세대는 다른 세대에 비해 개인의 취향, 자기 만족을 중요하게 생각합니다.</p>
     <p className={styles.p}>이러한 소비자의 특성을 반영하여 홈(메인)을 제작하였으며, ‘개개인의 성향’에 맞는 제품을</p>
@@ -100,17 +100,17 @@ const Home = () => {
     <div className={`${styles.responsivePhone} ${styles.responsiveMainPhone}`}>
     <AutoPlayVideo className={styles.responsivePhoneScreen} src={main} />
     <div className={styles.responsivePhoneOverlay} />
-    <img className={styles.responsivePhoneFrame} src={i49} />
+    <img loading="lazy" decoding="async" className={styles.responsivePhoneFrame} src={i49} />
     </div>
     <div className={styles.responsiveImageWrap}>
-    <img className={styles.responsiveScreenImage} src={search} />
-    <img className={`${styles.responsiveScreenImage} ${styles.responsiveOverlapImage}`} src={favor} />
+    <img loading="lazy" decoding="async" className={styles.responsiveScreenImage} src={search} />
+    <img loading="lazy" decoding="async" className={`${styles.responsiveScreenImage} ${styles.responsiveOverlapImage}`} src={favor} />
     </div>
     </div>
     <div className={styles.responsiveStyleCopySet}>
-    <img className={styles.responsiveVectorIcon} src={v37} />
+    <img loading="lazy" decoding="async" className={styles.responsiveVectorIcon} src={v37} />
     <div className={styles.responsiveCopyBlock}>
-    <img className={styles.responsiveDot} src={g35} />
+    <img loading="lazy" decoding="async" className={styles.responsiveDot} src={g35} />
     <div className={styles.responsiveFeatureTitle}>
     <span className={styles.style}>STYLE </span>
     <span>FOR YOU</span>
@@ -126,10 +126,10 @@ const Home = () => {
     <div className={styles.responsiveSecondaryGrid}>
     <div className={styles.responsiveSet}>
     <div className={styles.responsiveImageWrap}>
-    <img className={styles.responsiveScreenImage} src={beauty} />
+    <img loading="lazy" decoding="async" className={styles.responsiveScreenImage} src={beauty} />
     </div>
     <div className={styles.responsiveCopyBlock}>
-    <img className={styles.responsiveDot} src={g35} />
+    <img loading="lazy" decoding="async" className={styles.responsiveDot} src={g35} />
     <div className={styles.responsiveFeatureTitle}>
     <span className={styles.style}>BEAUTY </span>
     <span>MAIN</span>

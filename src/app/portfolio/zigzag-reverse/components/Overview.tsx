@@ -5,9 +5,9 @@ import React from 'react';
 import { withBasePath } from '../lib/asset';
 
 const vector6 = withBasePath('/portfolio/zigzag-reverse/assets/image/Vector 6.svg');
-const image50 = withBasePath('/portfolio/zigzag-reverse/assets/image/image 50@3x.png');
+const image50 = withBasePath('/portfolio/zigzag-reverse/assets/image/image 50@3x.webp');
 const image49 = withBasePath('/portfolio/zigzag-reverse/assets/image/image 49@3x.png');
-const image48 = withBasePath('/portfolio/zigzag-reverse/assets/image/image 48@3x.png');
+const image48 = withBasePath('/portfolio/zigzag-reverse/assets/image/image 48@3x.webp');
 
 const Overview = () => {
   return (
@@ -44,7 +44,7 @@ const Overview = () => {
           <div className={styles.inner} />
           <div className={styles.service}>Service</div>
 
-          <img className={styles.vectorIcon} src={vector6} alt="vector" />
+          <img loading="lazy" decoding="async" className={styles.vectorIcon} src={vector6} alt="vector" />
 
           <div className={styles.ellipseDiv} />
           <div className={styles.product}>Product</div>
@@ -62,15 +62,15 @@ const Overview = () => {
 
       <div className={styles.phoneStage}>
         <div className={`${styles.image48Parent} ${styles.fadePhone1}`}>
-          <img className={styles.image48Icon} src={image48} alt="phone1" />
+          <img loading="lazy" decoding="async" className={styles.image48Icon} src={image48} alt="phone1" />
           <div className={styles.image50} />
-          <img className={styles.icon} src={image49} alt="frame" />
+          <img loading="lazy" decoding="async" className={styles.icon} src={image49} alt="frame" />
         </div>
 
         <div className={`${styles.imageParent} ${styles.fadePhone2}`}>
-          <img className={styles.image48Icon} src={image50} alt="phone2" />
+          <img loading="lazy" decoding="async" className={styles.image48Icon} src={image50} alt="phone2" />
           <div className={styles.image50} />
-          <img className={styles.icon} src={image49} alt="frame" />
+          <img loading="lazy" decoding="async" className={styles.icon} src={image49} alt="frame" />
         </div>
       </div>
     </div>

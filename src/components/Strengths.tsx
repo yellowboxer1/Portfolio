@@ -211,22 +211,36 @@ function VideoVisual({
     const video = videoRef.current;
     if (!video) return;
 
-    if (isActive) {
+    let visible = false;
+    const syncPlayback = () => {
+      if (!visible || !isActive || document.hidden) {
+        video.pause();
+        return;
+      }
+      if (!video.getAttribute("src")) video.src = src;
       video.play().catch(() => {});
-    } else {
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      syncPlayback();
+    }, { rootMargin: "200px 0px" });
+    observer.observe(video);
+    document.addEventListener("visibilitychange", syncPlayback);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", syncPlayback);
       video.pause();
-    }
-  }, [isActive]);
+    };
+  }, [isActive, src]);
 
   return (
     <TiltVisual isActive={isActive}>
       <video
         ref={videoRef}
-        src={src}
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="none"
         className={cn(
           "w-full h-full object-cover rounded-[22px] transition-all duration-700 will-change-transform",
           isActive ? "opacity-100 scale-100" : "opacity-35 scale-[0.95]"
@@ -250,6 +264,7 @@ function ExecutionVisual({
           src={strength.icon}
           alt={`${strength.title} icon 1`}
           fill
+          sizes="(max-width: 767px) 90vw, (max-width: 1279px) 45vw, 600px"
           className={cn(
             "object-contain transition-all duration-1000 will-change-transform",
             isActive
@@ -262,6 +277,7 @@ function ExecutionVisual({
           src={strength.iconAlt}
           alt={`${strength.title} icon 2`}
           fill
+          sizes="(max-width: 767px) 90vw, (max-width: 1279px) 45vw, 600px"
           className={cn(
             "object-contain transition-all duration-1000 will-change-transform",
             isActive
@@ -309,6 +325,7 @@ function PrecisionVisual({
           src={strength.icon}
           alt={strength.title}
           fill
+          sizes="(max-width: 767px) 90vw, (max-width: 1279px) 45vw, 600px"
           className="object-contain p-4"
         />
 
@@ -339,6 +356,7 @@ function DefaultVisual({
           src={strength.icon}
           alt={strength.title}
           fill
+          sizes="(max-width: 767px) 90vw, (max-width: 1279px) 45vw, 600px"
           className="object-contain"
         />
       </div>

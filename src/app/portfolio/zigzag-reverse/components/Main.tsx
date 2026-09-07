@@ -4,7 +4,7 @@ import styles from './styles/Main.module.css';
 import React from 'react';
 import { withBasePath } from '../lib/asset';
 
-const imageFx141 = withBasePath('/portfolio/zigzag-reverse/assets/image/image_fx_ (14) 1.png');
+const imageFx141 = withBasePath('/portfolio/zigzag-reverse/assets/image/image_fx_ (14) 1.webp');
 const vector3 = withBasePath('/portfolio/zigzag-reverse/assets/image/Vector 3.svg');
 const vector4 = withBasePath('/portfolio/zigzag-reverse/assets/image/Vector 4.svg');
 const group1 = withBasePath('/portfolio/zigzag-reverse/assets/image/Group 1.svg');
@@ -16,7 +16,16 @@ const Main = () => {
     <section className={styles.main4Responsive}>
       <div className={styles.main4}>
         {/* 배경 이미지 (최하단 고정 및 스케일 제어용) */}
-        <img className={styles.imageFx141} src={imageFx141} alt="Background" />
+        <img
+          className={styles.imageFx141}
+          src={imageFx141}
+          alt="Background"
+          width={1920}
+          height={1208}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
 
         {/* Vector 4 (스케일 유지, 양옆 크롭) */}
         <img className={styles.main4Inner} src={vector4} alt="Vector Graphic" />

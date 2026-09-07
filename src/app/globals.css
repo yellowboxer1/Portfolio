@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import "tailwindcss" source("../");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -1190,7 +1190,7 @@ body {
 .portfolio-bg-image {
   position: absolute;
   inset: -12%;
-  background-image: url("/gallery_bg.png");
+  background-image: url("/gallery_bg.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 58% center;

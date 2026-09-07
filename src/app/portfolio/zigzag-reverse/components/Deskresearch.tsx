@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState, memo } from 'react';
 import styles from './styles/Deskresearch.module.css';
 import { withBasePath } from '../lib/asset';
 
-const imageFx81 = withBasePath('/portfolio/zigzag-reverse/assets/image/image_fx_ (8) 1.png');
+const imageFx81 = withBasePath('/portfolio/zigzag-reverse/assets/image/image_fx_ (8) 1.webp');
 const zigzag = withBasePath('/portfolio/zigzag-reverse/assets/image/roundicon/zigzag@3x.png');
 const musinsa = withBasePath('/portfolio/zigzag-reverse/assets/image/roundicon/musinsa@3x.png');
 const ably = withBasePath('/portfolio/zigzag-reverse/assets/image/roundicon/ably@3x.png');
@@ -248,7 +248,7 @@ const ChurnSection = memo(function ChurnSection() {
 const Page1Desktop = memo(function Page1Desktop() {
   return (
     <div className={styles.div1}>
-      <img className={styles.imageFx81} src={imageFx81} alt="" decoding="async" />
+      <img loading="lazy" className={styles.imageFx81} src={imageFx81} alt="" decoding="async" />
       <div className={styles.imageFx82} />
       <div className={styles.child} />
       <div className={styles.background}>Background</div>
@@ -281,7 +281,7 @@ const Page1Desktop = memo(function Page1Desktop() {
 const Page2Desktop = memo(function Page2Desktop() {
   return (
     <div className={styles.div10}>
-      <img className={styles.imageFx81} src={imageFx81} alt="" decoding="async" />
+      <img loading="lazy" className={styles.imageFx81} src={imageFx81} alt="" decoding="async" />
       <div className={styles.imageFx821} />
       <div className={styles.child} />
       <div className={styles.background}>Background</div>
@@ -306,7 +306,7 @@ const TabletLayout = memo(function TabletLayout() {
   return (
     <div className={styles.tabletLayout}>
       <div className={styles.tabletPage}>
-        <img className={styles.imageFx81} src={imageFx81} alt="" decoding="async" />
+        <img loading="lazy" className={styles.imageFx81} src={imageFx81} alt="" decoding="async" />
         <div className={styles.imageFx82} />
         <div className={styles.child} />
         <div className={styles.background}>Background</div>
@@ -328,7 +328,7 @@ const TabletLayout = memo(function TabletLayout() {
       </div>
 
       <div className={`${styles.tabletPage} ${styles.tabletPageDark}`}>
-        <img className={styles.imageFx81} src={imageFx81} alt="" decoding="async" />
+        <img loading="lazy" className={styles.imageFx81} src={imageFx81} alt="" decoding="async" />
         <div className={styles.imageFx821} />
         <div className={styles.child} />
         <div className={styles.background}>Background</div>
@@ -388,7 +388,7 @@ const MobileLayout = memo(function MobileLayout() {
                     className={`${styles.mobileBar} ${item.active ? styles.mobileBarActive : ''}`}
                     style={{ height: `${Math.max(48, item.height * 0.62)}px` }}
                   />
-                  <img src={item.icon} alt={item.name} className={styles.mobileBarIcon} />
+                  <img loading="lazy" decoding="async" src={item.icon} alt={item.name} className={styles.mobileBarIcon} />
                   <div className={styles.mobileBarLabel}>{item.name}</div>
                 </div>
               ))}

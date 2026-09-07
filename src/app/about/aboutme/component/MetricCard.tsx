@@ -1,3 +1,4 @@
+import SceneVideo from "./SceneVideo";
 import { useEffect, useState } from "react";
 
 export type MetricItem = {
@@ -76,7 +77,7 @@ export default function MetricCard({
   };
 
   const hasVideo = videoWebmSrc || videoMp4Src || videoSrc;
-  const shouldLoadVideo = hasVideo && isMediaEnabled && distance <= 1;
+  const selectedVideo = videoWebmSrc || videoMp4Src || videoSrc;
 
   return (
     <article
@@ -97,23 +98,13 @@ export default function MetricCard({
           )}
 
           {/* Video background */}
-          {shouldLoadVideo && (
-            <video
+          {hasVideo && selectedVideo && (
+            <SceneVideo
               className="absolute inset-0 inline h-full w-full object-cover opacity-86"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
+              src={selectedVideo}
               poster={posterSrc}
-            >
-              {videoWebmSrc && <source type="video/webm" src={videoWebmSrc} />}
-              {videoMp4Src && <source type="video/mp4" src={videoMp4Src} />}
-              {/* Fallback for legacy single-source prop */}
-              {!videoWebmSrc && !videoMp4Src && videoSrc && (
-                <source src={videoSrc} />
-              )}
-            </video>
+              active={isMediaEnabled && isCurrent}
+            />
           )}
         </div>
       </div>

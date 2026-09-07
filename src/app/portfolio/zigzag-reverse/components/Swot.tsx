@@ -226,12 +226,12 @@ function PositioningMap({ mobile }: { mobile?: boolean }) {
               </div>
 
               <div className={styles.responsiveStatusContainer}>
-                <img className={styles.statusIcon} src={statusIcon} alt="지그재그 포지셔닝" />
-                <img className={styles.lightEffect} src={lightIcon} alt="" aria-hidden="true" />
+                <img loading="lazy" decoding="async" className={styles.statusIcon} src={statusIcon} alt="지그재그 포지셔닝" />
+                <img loading="lazy" decoding="async" className={styles.lightEffect} src={lightIcon} alt="" aria-hidden="true" />
               </div>
 
               {PLATFORM_MARKERS.map((marker) => (
-                <img
+                <img loading="lazy" decoding="async"
                   key={marker.alt}
                   className={`${styles.platformMarker} ${marker.className}`}
                   src={marker.src}
@@ -249,7 +249,7 @@ function PositioningMap({ mobile }: { mobile?: boolean }) {
 function BottomCallout() {
   return (
     <div className={styles.calloutWrap}>
-      <img className={styles.calloutArrow} src={group8} alt="" aria-hidden="true" />
+      <img loading="lazy" decoding="async" className={styles.calloutArrow} src={group8} alt="" aria-hidden="true" />
 
       <div className={styles.calloutCard}>
         <h3 className={styles.calloutTitle}>
@@ -370,12 +370,12 @@ function DesktopLayout() {
               </div>
 
               <div className={styles.statusContainer}>
-                <img className={styles.statusIcon} src={statusIcon} alt="지그재그 포지셔닝" />
-                <img className={styles.lightEffect} src={lightIcon} alt="" aria-hidden="true" />
+                <img loading="lazy" decoding="async" className={styles.statusIcon} src={statusIcon} alt="지그재그 포지셔닝" />
+                <img loading="lazy" decoding="async" className={styles.lightEffect} src={lightIcon} alt="" aria-hidden="true" />
               </div>
 
               {PLATFORM_MARKERS.map((marker) => (
-                <img
+                <img loading="lazy" decoding="async"
                   key={marker.alt}
                   className={`${styles.platformMarker} ${marker.desktopClassName}`}
                   src={marker.src}
@@ -384,7 +384,7 @@ function DesktopLayout() {
               ))}
             </div>
 
-            <img className={styles.groupIcon} src={group8} alt="" aria-hidden="true" />
+            <img loading="lazy" decoding="async" className={styles.groupIcon} src={group8} alt="" aria-hidden="true" />
             <div className={styles.swotChild1} />
             <div className={styles.swotChild2} />
 

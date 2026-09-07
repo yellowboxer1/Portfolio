@@ -220,7 +220,6 @@ export default function Hero() {
     video.defaultMuted = true;
     video.playsInline = true;
     video.preload = "auto";
-    video.load();
     video.play().catch(() => {});
   }, []);
 

@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import SceneVideo from "./component/SceneVideo";
 import Header from "@/src/components/Header";
 import MetricCard, { type MetricItem } from "./component/MetricCard";
 import { MetricsTabs } from "./component/MetricTabs";
@@ -372,7 +373,7 @@ export function MetricsSection() {
     transition: `transform ${transitionDuration}ms ${transitionEase}`,
   };
   const shouldLoadMetricVideos =
-    activeScene > 0 && activeScene <= metricGroups.length + 1;
+    activeScene > 0 && activeScene <= metricGroups.length;
   const shouldLoadCoreVideo =
     activeScene >= coreScene && activeScene <= coreEndScene;
   const shouldLoadProjectsVideo = activeScene === projectsScene;
@@ -442,17 +443,12 @@ export function MetricsSection() {
         className="relative flex h-full min-h-full items-center overflow-hidden bg-black px-6 pt-[var(--about-gnb-height)] md:px-12" // GNB 아래 남은 영역 기준으로 중앙 정렬
         aria-hidden={activeScene !== 0}
         >
-          <video
+          <SceneVideo
             className="absolute inset-0 h-full w-full object-cover opacity-85"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
+            src={aboutHeroVideoWebm}
             poster={aboutHeroPoster}
-          >
-            <source src={aboutHeroVideoWebm} type="video/webm" />
-          </video>
+            active={activeScene === 0}
+          />
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_35%,rgba(255,255,255,0.10),transparent_32%),linear-gradient(90deg,rgba(0,0,0,0.66),rgba(0,0,0,0.34)_48%,rgba(0,0,0,0.58))]" />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.08),rgba(0,0,0,0.36))]" />
@@ -535,21 +531,12 @@ export function MetricsSection() {
           aria-hidden={activeScene < coreScene || activeScene > coreEndScene}
         >
           <div className="pointer-events-none absolute inset-0 isolate bg-black">
-            <video
+            <SceneVideo
               className="absolute inset-0 z-0 h-full w-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload={shouldLoadCoreVideo ? "metadata" : "none"}
+              src={coreCapabilityVideoWebm}
               poster={coreCapabilityPoster}
-            >
-              {shouldLoadCoreVideo && (
-                <>
-                  <source src={coreCapabilityVideoWebm} type="video/webm" />
-                </>
-              )}
-            </video>
+              active={shouldLoadCoreVideo}
+            />
             <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.75),rgba(0,0,0,0.40)_46%,rgba(0,0,0,0.70)),radial-gradient(circle_at_78%_42%,rgba(120,140,255,0.14),transparent_26%),linear-gradient(180deg,rgba(0,0,0,0.18),rgba(0,0,0,0.72))]" />
           </div>
 
@@ -633,21 +620,12 @@ export function MetricsSection() {
           aria-hidden={activeScene !== projectsScene}
         >
           <div className="pointer-events-none absolute inset-0">
-            <video
+            <SceneVideo
               className="absolute inset-0 h-full w-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload={shouldLoadProjectsVideo ? "metadata" : "none"}
+              src={aboutHeroVideoWebm}
               poster={aboutHeroPoster}
-            >
-              {shouldLoadProjectsVideo && (
-                <>
-                  <source src={aboutHeroVideoWebm} type="video/webm" />
-                </>
-              )}
-            </video>
+              active={shouldLoadProjectsVideo}
+            />
             <div className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-white/[0.035] shadow-[0_0_120px_rgba(120,140,255,0.22)] blur-[1px] md:h-[720px] md:w-[720px]" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(255,255,255,0.08),transparent_32%),linear-gradient(90deg,rgba(0,0,0,0.86),rgba(0,0,0,0.34)_50%,rgba(0,0,0,0.86)),linear-gradient(180deg,rgba(0,0,0,0.28),#000)]" />
           </div>
