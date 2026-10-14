@@ -22,6 +22,9 @@ export function SmartCitySlide({ slide, index }: SmartCitySlideProps) {
             <img
               className={styles.coverLogo}
               src={slide.images.logo}
+              width={280}
+              height={279}
+              decoding="async"
               alt=""
               aria-hidden="true"
             />
@@ -29,6 +32,9 @@ export function SmartCitySlide({ slide, index }: SmartCitySlideProps) {
             <img
               className={styles.toolIcons}
               src={slide.images.toolIcons}
+              width={379}
+              height={100}
+              decoding="async"
               alt="Figma, Photoshop, Illustrator"
             />
             <p className={styles.description}>{slide.description}</p>
@@ -44,22 +50,22 @@ export function SmartCitySlide({ slide, index }: SmartCitySlideProps) {
           <div className={styles.coverVisuals} aria-hidden="true">
             <figure className={styles.visualCard}>
               <figcaption>튜토리얼 안내 유형 선택</figcaption>
-              <img src={slide.images.tutorial} alt="" />
+              <img src={slide.images.tutorial} width={603} height={617} loading="eager" decoding="async" fetchPriority="high" alt="" />
             </figure>
             <figure className={styles.visualCard}>
               <figcaption>장애물 지도</figcaption>
-              <img src={slide.images.obstacle} alt="" />
+              <img src={slide.images.obstacle} width={603} height={546} loading="eager" decoding="async" alt="" />
             </figure>
             <figure className={styles.visualCardSmall}>
-              <img src={slide.images.userType} alt="" />
+              <img src={slide.images.userType} width={518} height={295} loading="eager" decoding="async" alt="" />
             </figure>
             <figure className={styles.visualCardSmall}>
               <figcaption>사용자 유형 선택</figcaption>
-              <img src={slide.images.routeType} alt="" />
+              <img src={slide.images.routeType} width={603} height={339} loading="eager" decoding="async" alt="" />
             </figure>
             <figure className={styles.signPlayer}>
               <figcaption>수어 플레이어</figcaption>
-              <img src={slide.images.signPlayer} alt="" />
+              <img src={slide.images.signPlayer} width={603} height={952} loading="eager" decoding="async" alt="" />
             </figure>
           </div>
         </>

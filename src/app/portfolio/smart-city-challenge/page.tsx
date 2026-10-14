@@ -287,6 +287,10 @@ export default function SmartCityChallengePage() {
                     <div className={styles.screenFrame}>
                       <Image
                         src={media(screen.file)}
+                        unoptimized
+                        loading="eager"
+                        fetchPriority="low"
+                        decoding="async"
                         width={375}
                         height={812}
                         sizes="(max-width: 600px) 70vw, (max-width: 900px) 27vw, 280px"

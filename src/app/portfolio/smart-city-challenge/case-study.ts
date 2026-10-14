@@ -76,17 +76,17 @@ export const solutions = [
       {
         alt: "지하철내비 앱 시작 화면",
         caption: "앱 진입",
-        file: "image22.png",
+        file: "optimized/image22.webp",
       },
       {
         alt: "튜토리얼 시작 전 사용자 유형과 수어 선택 화면",
         caption: "안내 방식 선택",
-        file: "image23.jpg",
+        file: "optimized/image23.webp",
       },
       {
         alt: "재생과 일시정지를 제공하는 수어 튜토리얼",
         caption: "수어 튜토리얼",
-        file: "image21.jpg",
+        file: "optimized/image21.webp",
       },
     ],
     title: "사용자 유형 선택과 수어 튜토리얼",
@@ -112,17 +112,17 @@ export const solutions = [
       {
         alt: "현재 위치와 역사 내 시설을 보여주는 3D 지도",
         caption: "현재 위치와 시설 확인",
-        file: "image25.jpg",
+        file: "optimized/image25.webp",
       },
       {
         alt: "계단과 엘리베이터 경로 미리보기 화면",
         caption: "이동 조건에 맞는 경로",
-        file: "image28.webp",
+        file: "optimized/image28.webp",
       },
       {
         alt: "방향 안내와 음성 안내 조절 화면",
         caption: "이동 중 방향·음성 안내",
-        file: "image29.jpg",
+        file: "optimized/image29.webp",
       },
     ],
     title: "사용자 조건에 맞는 실내 길안내",
@@ -148,17 +148,17 @@ export const solutions = [
       {
         alt: "경로 이탈 후 새로운 경로를 안내하는 팝업",
         caption: "경로 이탈 → 경로 재설정",
-        file: "image31.webp",
+        file: "optimized/image31.webp",
       },
       {
         alt: "비콘 신호 재탐색 중임을 알리는 팝업",
         caption: "신호 유실 → 재탐색 안내",
-        file: "image32.webp",
+        file: "optimized/image32.webp",
       },
       {
         alt: "역사 안에서 실내 서비스를 이용하도록 안내하는 화면",
         caption: "역사 밖 → 서비스 범위 안내",
-        file: "image30.png",
+        file: "optimized/image30.webp",
       },
     ],
     title: "경로 이탈과 비콘 신호 유실 안내",
@@ -184,17 +184,17 @@ export const solutions = [
       {
         alt: "GPS 기반 실외 현재 위치 지도",
         caption: "실외 위치와 목적지 확인",
-        file: "image40.webp",
+        file: "optimized/image40.webp",
       },
       {
         alt: "실외 이동 경로의 장애물 정보와 주의사항",
         caption: "이동 경로의 장애물 정보",
-        file: "image42.webp",
+        file: "optimized/image42.webp",
       },
       {
         alt: "출발역부터 목적지까지 역 간 이동 상세 경로",
         caption: "역 간 이동과 환승 경로",
-        file: "image43.webp",
+        file: "optimized/image43.webp",
       },
     ],
     title: "실외 목적지와 환승 경로 안내",
