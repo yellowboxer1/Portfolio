@@ -44,6 +44,7 @@ export default function Hero() {
   const [finalReveal, setFinalReveal] = useState(false);
 
   useEffect(() => {
+    let introVisible = true;
     const months = [
       "JAN",
       "FEB",
@@ -100,6 +101,8 @@ export default function Hero() {
     };
 
     const runClock = () => {
+      timeRafRef.current = null;
+      if (!introVisible || document.hidden || targetProgressRef.current >= 1 / 1.55) return;
       updateClock();
       updateDate();
       timeRafRef.current = requestAnimationFrame(runClock);
@@ -188,7 +191,9 @@ export default function Hero() {
 
     const handleScroll = () => {
       readScrollProgress();
+      if (timeRafRef.current === null) runClock();
 
+      if (targetProgressRef.current === currentProgressRef.current) return;
       if (scrollRafRef.current === null) {
         scrollRafRef.current = requestAnimationFrame(animateScrollProgress);
       }
@@ -196,10 +201,21 @@ export default function Hero() {
 
     updateClock();
     updateDate();
-    timeRafRef.current = requestAnimationFrame(runClock);
     readScrollProgress();
     currentProgressRef.current = targetProgressRef.current;
     applyScrollStyles(targetProgressRef.current);
+
+    const syncClock = () => {
+      if (timeRafRef.current !== null) cancelAnimationFrame(timeRafRef.current);
+      timeRafRef.current = null;
+      if (introVisible && !document.hidden) runClock();
+    };
+    const clockObserver = new IntersectionObserver(([entry]) => {
+      introVisible = entry.isIntersecting;
+      syncClock();
+    });
+    if (timeRef.current) clockObserver.observe(timeRef.current);
+    document.addEventListener("visibilitychange", syncClock);
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
@@ -207,6 +223,8 @@ export default function Hero() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
+      clockObserver.disconnect();
+      document.removeEventListener("visibilitychange", syncClock);
       if (scrollRafRef.current) cancelAnimationFrame(scrollRafRef.current);
       if (timeRafRef.current) cancelAnimationFrame(timeRafRef.current);
     };
@@ -219,13 +237,28 @@ export default function Hero() {
     video.muted = true;
     video.defaultMuted = true;
     video.playsInline = true;
-    video.preload = "auto";
-    video.play().catch(() => {});
+    let visible = false;
+    const syncPlayback = () => {
+      if (visible && !document.hidden) video.play().catch(() => {});
+      else video.pause();
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      syncPlayback();
+    });
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    document.addEventListener("visibilitychange", syncPlayback);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", syncPlayback);
+      video.pause();
+    };
   }, []);
 
   useEffect(() => {
     let currentIndex = 0;
     let cycleCount = 0;
+    const revealTimers: ReturnType<typeof setTimeout>[] = [];
 
     const wordInterval = setInterval(() => {
       currentIndex += 1;
@@ -241,21 +274,24 @@ export default function Hero() {
       if (cycleCount >= 2) {
         clearInterval(wordInterval);
 
-        setTimeout(() => {
+        revealTimers.push(setTimeout(() => {
           setIntroWordIndex(introTitles.length - 1);
 
-          setTimeout(() => {
+          revealTimers.push(setTimeout(() => {
             setIsIntroFinal(true);
 
-            setTimeout(() => {
+            revealTimers.push(setTimeout(() => {
               setFinalReveal(true);
-            }, 520);
-          }, 520);
-        }, 520);
+            }, 520));
+          }, 520));
+        }, 520));
       }
     }, 700);
 
-    return () => clearInterval(wordInterval);
+    return () => {
+      clearInterval(wordInterval);
+      revealTimers.forEach(clearTimeout);
+    };
   }, []);
 
   const finalChars = "박 건 호".split("");
@@ -417,7 +453,6 @@ export default function Hero() {
               ref={videoRef}
               muted
               playsInline
-              autoPlay
               loop
               preload="auto"
               className="absolute inset-0 h-full w-full object-cover bg-transparent opacity-60 transition-none md:opacity-80"

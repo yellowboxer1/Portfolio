@@ -48,7 +48,7 @@ const portfolioItems: PortfolioItem[] = [
     id: 9,
     slug: "habit",
     title: "내 손안의 귀여운 습관메이트 해빗",
-    image: "/habit.png",
+    image: "/habit-cover.png",
     category: "Habit App",
     role: "Service Planner · Product Owner",
     meta: "2026.07ㅣ플레이스토어/앱스토어 운영 중",
@@ -226,6 +226,7 @@ function WorkCard({ item, offsetDown }: { item: PortfolioItem; offsetDown: boole
           alt={item.title}
           fill
           className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          style={item.slug === "habit" ? { objectPosition: "center 25%" } : undefined}
           sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 580px"
         />
         {!item.isReady && (

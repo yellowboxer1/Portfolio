@@ -64,18 +64,27 @@
 }
 
 .cover {
-  grid-template-columns: minmax(260px, 27vw) 1fr;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.6fr);
   align-items: center;
-  column-gap: 3.8vw;
-  padding: 6.3vw 4.8vw 4.8vw 6vw;
-  background: #FFDA00;
+  gap: clamp(40px, 5vw, 96px);
+  aspect-ratio: auto;
+  min-height: clamp(720px, 56.25vw, 1080px);
+  padding: clamp(112px, 6.3vw, 144px) clamp(24px, 6vw, 112px)
+    clamp(48px, 4.8vw, 92px);
+  background: #ffe229;
 }
 
 .coverCopy {
   display: grid;
   align-content: center;
-  gap: 1.9vw;
+  gap: clamp(20px, 1.9vw, 32px);
   min-width: 0;
+}
+
+.coverCopy .description {
+  max-width: 36ch;
+  font-size: clamp(14px, 1.042vw, 20px);
+  line-height: 1.7;
 }
 
 .coverLogo {
@@ -125,7 +134,10 @@
 
 .coverVisuals {
   position: relative;
-  min-height: 40vw;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: 1.4;
 }
 
 .visualCard,
@@ -155,7 +167,7 @@
 
 .visualCard:nth-child(2) {
   bottom: 3.3%;
-  left: -6%;
+  left: 0;
   z-index: 4;
   width: 36%;
 }
@@ -977,5 +989,38 @@
 
   .serviceItems {
     order: 3;
+  }
+}
+
+/* 두 영역이 좁아지는 태블릿 폭에서는 설명과 이미지를 세로로 배치합니다. */
+@media (max-width: 1000px) {
+  .cover {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+    gap: 56px;
+    padding: 140px clamp(24px, 6vw, 60px) 56px;
+  }
+
+  .coverCopy {
+    width: 100%;
+    max-width: 620px;
+    gap: 24px;
+  }
+
+  .coverVisuals {
+    max-width: 720px;
+    aspect-ratio: 1.4;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .cover {
+    gap: 40px;
+    padding: 140px 24px 48px;
+  }
+
+  .coverVisuals {
+    aspect-ratio: 1.08;
   }
 }

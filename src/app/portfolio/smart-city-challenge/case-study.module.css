@@ -1,0 +1,159 @@
+.page { --accent: #ffe229; --muted: #b4b4b4; background: rgb(26, 26, 26); color: rgb(247, 247, 247); font-family: var(--font-family-noto-sans-kr),sans-serif; isolation: isolate; overflow: clip; }
+.page *, .page ::after, .page ::before { box-sizing: border-box; }
+:where(.page) :where(h1, h2, h3, p, figure) { margin: 0px; }
+.page h1, .page h2, .page h3, .page p { word-break: keep-all; overflow-wrap: anywhere; }
+.page a { color: inherit; text-decoration: none; }
+.page a:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+.inner { width: min(100%, 1440px); margin-inline: auto; padding-inline: clamp(24px, 5vw, 80px); }
+.backButton { position: fixed; top: 80px; left: 24px; z-index: 60; display: flex; align-items: center; gap: 9px; padding: 10px 15px; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 30px; background: rgba(17, 17, 17, 0.8); backdrop-filter: blur(12px); font-size: 13px; }
+.chapterNav { background: rgb(22, 22, 22); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+.chapterNav > div { display: flex; flex-wrap: wrap; gap: 16px 40px; padding-block: 25px; }
+.chapterNav a { display: flex; gap: 10px; font-size: 13px; color: rgb(208, 208, 208); }
+.chapterNav a:hover { color: var(--accent); }
+.chapterNav a span { color: rgb(121, 121, 121); font-family: var(--font-family-manrope),sans-serif; font-size: 11px; }
+.section { padding-block: 120px; scroll-margin-top: 100px; }
+.alternate { background: rgb(21, 21, 21); }
+.sectionLabel { position: relative; z-index: 0; display: inline-block; font-family: var(--font-family-manrope),sans-serif; font-size: 20px; line-height: 32px; font-weight: 650; margin-bottom: 42px !important; }
+.sectionLabel::before { content: ""; position: absolute; z-index: -1; top: 0px; left: -12px; width: 32px; height: 32px; border-radius: 50%; background: rgba(255, 226, 41, 0.333); }
+.designDivider h2, .section h2 { font-size: clamp(28px, 2.5vw, 38px); font-weight: 700; line-height: 1.5; letter-spacing: -0.04em; white-space: pre-line; }
+.editorialGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: start; }
+.bodyCopy p { color: var(--muted); font-size: 16px; line-height: 1.95; }
+.bodyCopy p + p { margin-top: 20px; }
+.bodyCopy strong { font-weight: 600; color: rgb(245, 245, 245); }
+.lead { font-size: 16px; line-height: 1.95; color: var(--muted); margin-top: 24px !important; }
+.journey { display: grid; grid-template-columns: 1fr 1fr 1.6fr; gap: 20px; margin: 70px 0px 0px; padding: 0px; list-style: none; }
+.journey li { position: relative; padding: 30px; border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 8px; }
+.journey li + li::before { content: "→"; position: absolute; left: -19px; top: 45%; color: rgb(124, 124, 124); background: rgb(26, 26, 26); font-size: 20px; }
+.journey li > span { display: block; margin-bottom: 20px; font-size: 11px; color: rgb(136, 136, 136); letter-spacing: 0.06em; }
+.journey strong { font-size: 23px; font-weight: 650; }
+.journey p { margin-top: 12px; font-size: 14px; line-height: 1.7; color: rgb(165, 165, 165); }
+.journey .myScope { border-color: var(--accent); background: rgba(255, 226, 41, 0.035); }
+.myScope strong, .myScope > span { color: var(--accent) !important; }
+.scopeNote { display: flex; align-items: baseline; gap: 25px; padding-top: 28px; }
+.scopeNote > span { flex-shrink: 0; color: var(--accent); font-size: 13px; }
+.scopeNote p { color: rgb(180, 180, 180); font-size: 14px; line-height: 1.8; }
+.decisionList { margin-top: 60px; }
+.decisionRow { display: grid; grid-template-columns: 50px 1fr 1fr; gap: 26px 48px; padding: 40px 0px; border-top: 1px solid rgba(255, 255, 255, 0.125); }
+.number { color: rgb(104, 104, 104); font-family: var(--font-family-manrope),sans-serif; font-size: 28px; }
+.smallLabel { color: rgb(146, 146, 146) !important; font-size: 12px !important; margin-bottom: 14px !important; }
+.decisionRow h3 { font-size: 20px; font-weight: 650; line-height: 1.6; }
+.decisionRow p:not(.smallLabel) { margin-top: 18px; color: rgb(170, 170, 170); font-size: 15px; line-height: 1.9; }
+.decisionAnswer .smallLabel { color: var(--accent) !important; }
+.decisionAnswer h3 { color: rgb(255, 247, 176); }
+.fieldBoard { display: grid; grid-template-columns: 0.8fr 2fr; gap: 50px; margin-top: 65px; padding: 45px; border: 1px solid rgba(255, 255, 255, 0.125); border-radius: 8px; }
+.standard { display: flex; flex-direction: column; justify-content: center; }
+.standard > span { color: rgb(170, 170, 170); font-size: 13px; }
+.standard > strong { display: block; margin-block: 16px; color: var(--accent); font-family: var(--font-family-manrope),sans-serif; font-size: 96px; line-height: 1; letter-spacing: -0.08em; font-weight: 650; }
+.standard strong span { font-size: 30px; margin-left: 10px; letter-spacing: 0px; }
+.standard p { font-size: 13px; line-height: 1.8; color: rgb(170, 170, 170); }
+.fieldSteps { display: grid; gap: 24px; padding-left: 40px; border-left: 1px solid rgba(255, 255, 255, 0.125); }
+.fieldSteps > div > span { font-size: 11px; color: var(--accent); }
+.fieldSteps h3 { margin-top: 9px; font-size: 18px; font-weight: 600; }
+.fieldSteps p { margin-top: 8px; font-size: 14px; line-height: 1.8; color: rgb(170, 170, 170); }
+.designDivider { background: var(--accent); color: rgb(23, 23, 23); padding-block: 90px; }
+.designDivider p { margin-bottom: 24px; font-family: var(--font-family-manrope),sans-serif; font-size: 16px; font-weight: 700; }
+.designDivider > div > span { display: block; margin-top: 28px; font-size: 14px; line-height: 1.8; color: rgb(97, 86, 37); }
+.solution { border-bottom: 1px solid rgba(255, 255, 255, 0.082); }
+.question { font-weight: 550; color: rgb(255, 247, 176) !important; font-size: 17px !important; }
+.screenStage { display: grid; grid-template-columns: repeat(3, minmax(0px, 1fr)); gap: 45px; margin-top: 55px; padding: 50px 70px 36px; border-radius: 12px; background: rgb(241, 238, 230); color: rgb(34, 34, 34); }
+.screenStage figure { min-width: 0px; width: 100%; max-width: 280px; justify-self: center; }
+.screenFrame { border-radius: 20px; overflow: hidden; background: rgb(23, 27, 40); box-shadow: rgba(41, 38, 24, 0.125) 0px 14px 30px; }
+.screenFrame img { display: block; width: 100%; height: auto; }
+.screenStage figcaption { display: flex; gap: 10px; align-items: baseline; margin-top: 24px; font-size: 13px; font-weight: 550; line-height: 1.8; word-break: keep-all; }
+.screenStage figcaption span { font-family: var(--font-family-manrope),sans-serif; font-size: 11px; color: rgb(135, 130, 111); }
+.designNotes { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px; }
+.designNotes h3 { padding-left: 16px; border-left: 3px solid var(--accent); font-size: 18px; line-height: 1.6; font-weight: 600; }
+.designNotes p { margin-top: 16px; color: rgb(170, 170, 170); font-size: 15px; line-height: 1.9; }
+.reflectionGrid { display: grid; grid-template-columns: repeat(3, minmax(0px, 1fr)); gap: 40px; margin-top: 60px; }
+.reflectionGrid > div { padding-top: 25px; border-top: 1px solid rgba(255, 255, 255, 0.19); }
+.reflectionGrid span { color: var(--accent); font-size: 12px; }
+.reflectionGrid h3 { margin-top: 18px; font-size: 21px; line-height: 1.6; font-weight: 600; }
+.reflectionGrid p { margin-top: 18px; color: rgb(170, 170, 170); font-size: 15px; line-height: 1.95; }
+.nextProject { display: inline-flex; gap: 70px; align-items: center; margin-top: 75px; padding: 18px 26px; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 999px; font-size: 14px; }
+.nextProject:hover { background: rgba(255, 255, 255, 0.04); border-color: var(--accent); }
+@media (max-width: 1100px) {
+  .editorialGrid { gap: 40px; }
+  .decisionRow { gap: 24px; grid-template-columns: 40px 1fr 1fr; }
+  .screenStage { padding-inline: 40px; gap: 30px; }
+  .reflectionGrid { gap: 24px; }
+}
+@media (max-width: 800px) {
+  .section { padding-block: 80px; }
+  .editorialGrid { grid-template-columns: 1fr; gap: 28px; }
+  .sectionLabel { margin-bottom: 30px !important; font-size: 18px; }
+  .journey { gap: 14px; }
+  .journey li { padding: 22px 18px; }
+  .journey strong { font-size: 19px; }
+  .journey p { font-size: 12px; }
+  .fieldBoard { grid-template-columns: 1fr 1.5fr; padding: 30px; gap: 24px; }
+  .fieldSteps { padding-left: 24px; }
+  .screenStage { padding: 35px 26px; gap: 22px; }
+  .screenFrame { border-radius: 12px; }
+  .screenStage figcaption { flex-direction: column; gap: 4px; font-size: 12px; }
+  .designNotes { gap: 30px; }
+  .reflectionGrid { grid-template-columns: 1fr; gap: 30px; }
+  .reflectionGrid h3 { font-size: 20px; }
+}
+@media (max-width: 600px) {
+  .inner { padding-inline: 24px; }
+  .backButton { top: 76px; left: 16px; font-size: 12px; padding: 7px 12px; }
+  .chapterNav > div { gap: 16px 22px; padding-block: 24px; }
+  .chapterNav a { font-size: 11px; gap: 7px; }
+  .section { padding-block: 65px; }
+  .designDivider h2, .section h2 { font-size: 25px; }
+  .sectionLabel { font-size: 16px; margin-bottom: 25px !important; }
+  .sectionLabel::before { width: 28px; height: 28px; top: 2px; left: -10px; }
+  .bodyCopy p, .lead { font-size: 14px; line-height: 1.95; }
+  .journey { grid-template-columns: 1fr; margin-top: 35px; gap: 16px; }
+  .journey li { padding: 24px; }
+  .journey li > span { margin-bottom: 10px; }
+  .journey li + li::before { content: "↓"; left: auto; right: 24px; top: -23px; }
+  .journey p { font-size: 13px; }
+  .scopeNote { flex-direction: column; gap: 12px; padding-top: 22px; }
+  .scopeNote p { font-size: 13px; }
+  .decisionList { margin-top: 35px; }
+  .decisionRow { grid-template-columns: 28px 1fr; padding-block: 30px; gap: 20px; }
+  .number { font-size: 22px; }
+  .decisionRow h3 { font-size: 18px; }
+  .decisionAnswer { grid-column: 2; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.082); }
+  .decisionRow p:not(.smallLabel) { font-size: 13px; margin-top: 12px; }
+  .smallLabel { font-size: 11px !important; margin-bottom: 10px !important; }
+  .fieldBoard { grid-template-columns: 1fr; padding: 26px; margin-top: 35px; gap: 30px; }
+  .standard > strong { font-size: 76px; }
+  .fieldSteps { padding-left: 0px; padding-top: 26px; border-left: 0px; border-top: 1px solid rgba(255, 255, 255, 0.125); }
+  .fieldSteps p { font-size: 13px; }
+  .designDivider { padding-block: 55px; }
+  .designDivider > div > span { font-size: 12px; }
+  .question { font-size: 15px !important; }
+  .screenStage { grid-template-columns: repeat(3, minmax(160px, 1fr)); margin-top: 32px; padding: 28px 20px; gap: 20px; overflow-x: auto; overscroll-behavior-x: contain; }
+  .screenStage figure { max-width: 245px; }
+  .screenFrame { border-radius: 18px; }
+  .screenStage figcaption { flex-direction: row; gap: 10px; margin-top: 18px; font-size: 12px; }
+  .designNotes { grid-template-columns: 1fr; margin-top: 30px; gap: 26px; }
+  .designNotes h3 { font-size: 17px; }
+  .designNotes p { font-size: 13px; margin-top: 12px; }
+  .reflectionGrid { margin-top: 35px; }
+  .reflectionGrid h3 { font-size: 18px; }
+  .reflectionGrid p { font-size: 13px; }
+  .nextProject { margin-top: 45px; font-size: 13px; }
+}
+.positioning { scroll-margin-top: 100px; }
+.fieldApplication { margin-top: 64px; padding-top: 48px; border-top: 1px solid #ffffff20; }
+.positioningHeader h2 { font-size: 24px; line-height: 1.5; font-weight: 650; }
+.positioningHeader p { margin-top: 12px; color: #aaa; font-size: 15px; line-height: 1.9; }
+.positioningSteps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 3vw, 44px); margin: 32px 0 0; padding: 0; list-style: none; }
+.positioningSteps li { min-width: 0; padding-top: 20px; border-top: 2px solid #ffe22955; }
+.positioningSteps span { color: var(--accent); font-size: 12px; }
+.positioningSteps h3 { margin: 14px 0 0; font-family: var(--font-family-manrope), sans-serif; font-size: 19px; font-weight: 600; line-height: 1.5; overflow-wrap: anywhere; }
+.positioningSteps p { margin-top: 12px; color: #aaa; font-size: 14px; line-height: 1.9; }
+.positioningNote { margin-top: 32px !important; padding: 24px; background: #ffffff05; border-radius: 8px; color: #aaa; font-size: 14px; line-height: 1.9; }
+.positioningNote strong { display: block; margin-bottom: 8px; color: #f7f7f7; font-weight: 600; }
+@media (max-width: 800px) {
+  .positioningSteps { grid-template-columns: 1fr; gap: 24px; }
+}
+@media (max-width: 600px) {
+  .fieldApplication { margin-top: 40px; padding-top: 32px; }
+  .positioningHeader h2 { font-size: 20px; }
+  .positioningHeader p, .positioningSteps p, .positioningNote { font-size: 13px; }
+  .positioningNote { padding: 20px; }
+}
