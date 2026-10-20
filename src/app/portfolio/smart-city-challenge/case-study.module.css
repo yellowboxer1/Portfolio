@@ -5,7 +5,6 @@
 .page a { color: inherit; text-decoration: none; }
 .page a:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
 .inner { width: min(100%, 1440px); margin-inline: auto; padding-inline: clamp(24px, 5vw, 80px); }
-.backButton { position: fixed; top: 80px; left: 24px; z-index: 60; display: flex; align-items: center; gap: 9px; padding: 10px 15px; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 30px; background: rgba(17, 17, 17, 0.8); backdrop-filter: blur(12px); font-size: 13px; }
 .chapterNav { background: rgb(22, 22, 22); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
 .chapterNav > div { display: flex; flex-wrap: wrap; gap: 16px 40px; padding-block: 25px; }
 .chapterNav a { display: flex; gap: 10px; font-size: 13px; color: rgb(208, 208, 208); }
@@ -96,7 +95,6 @@
 }
 @media (max-width: 600px) {
   .inner { padding-inline: 24px; }
-  .backButton { top: 76px; left: 16px; font-size: 12px; padding: 7px 12px; }
   .chapterNav > div { gap: 16px 22px; padding-block: 24px; }
   .chapterNav a { font-size: 11px; gap: 7px; }
   .section { padding-block: 65px; }

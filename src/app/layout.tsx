@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import {
   Manrope,
   Noto_Sans_KR,
@@ -42,6 +44,8 @@ export default function RootLayout({
         <GoogleAnalytics />
         <MicrosoftClarity />
         {children}
+        <Analytics />
+        <SpeedInsights />
       </ClientBody>
     </html>
   );

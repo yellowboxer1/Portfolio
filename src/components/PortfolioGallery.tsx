@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import RegionalProjectShade from "./RegionalProjectShade";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 type PortfolioItem = {
@@ -34,11 +35,11 @@ const portfolioItems: PortfolioItem[] = [
     title: "AI 기반 지원사업 매칭 서비스 파트너잇",
     image: "/partnerit.png",
     category: "AI B2B SaaS",
-    role: "PM · Service Planner",
-    meta: "2026.04ㅣ누적 투자 10억 원",
+    role: "PM · Algorithm Research · Service Planning",
+    meta: "2025.04 – 현재ㅣ매칭 알고리즘 특허 출원",
     summary:
-      "가중 적합도 알고리즘 기반 매칭 엔진 총괄 및 특허 출원, 디딤돌 R&D 및 청년창업사관학교 수주",
-    isReady: false,
+      "공고·컨소시엄 매칭 알고리즘 연구와 개발 명세, 특허 출원, 서비스 기획과 IR을 수행한 PM 프로젝트",
+    isReady: true,
   },
   {
     id: 2,
@@ -66,6 +67,7 @@ const portfolioItems: PortfolioItem[] = [
   {
     id: 4,
     slug: "smart-village",
+    isReady: true,
     title: "2023 스마트 빌리지 지원사업",
     image: "/bell.png",
     category: "R&D Strategy",
@@ -112,7 +114,7 @@ const portfolioItems: PortfolioItem[] = [
     id: 8,
     slug: "public-regional-planning",
     title: "국책 과제 수행 및 지역 개발·도시 재생 프로젝트",
-    image: "https://ext.same-assets.com/334974529/2583647890.jpeg",
+    image: "/portfolio/public-regional-planning/agricultural-hub.webp",
     category: "Regional Strategy",
     role: "Strategy Planner",
     meta: "2022.01ㅣ4억 2천만 원(총 사업비 172억)",
@@ -269,6 +271,7 @@ function MobileCarousel() {
                 sizes="92vw"
                 className={getImageClassName(item, "object-cover")}
               />
+              {item.slug === "public-regional-planning" && <RegionalProjectShade />}
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/5" />
 
               <div className="mobile-card-content absolute inset-x-0 bottom-0 p-5">
@@ -643,6 +646,7 @@ export default function PortfolioGallery() {
                     sizes="(min-width: 1024px) 500px, 380px"
                     className={getImageClassName(item, "spiral-gallery-image")}
                   />
+                  {item.slug === "public-regional-planning" && <RegionalProjectShade />}
                   <Link
                     href={getPortfolioHref(item)}
                     className="gallery-link"

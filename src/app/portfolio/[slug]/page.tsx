@@ -4,16 +4,30 @@ import type { Metadata } from "next";
 import Header from "@/src/components/Header";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
-  title: "Preparing Project | Portfolio",
-  description: "This portfolio project detail page is currently being prepared.",
-};
-
 type PreparingPortfolioPageProps = {
   params: Promise<{
     slug: string;
   }>;
 };
+
+const projectNames: Record<string, string> = {
+  habit: "Habbit",
+  gachigagae: "가치가개",
+  "rnd-commercialization": "공공조달 연계 실증·사업화 R&D",
+  "la-premiere": "La Premiere",
+  "public-regional-planning": "국책 과제·지역 개발·도시 재생",
+};
+
+export async function generateMetadata({ params }: PreparingPortfolioPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const projectName = Object.prototype.hasOwnProperty.call(projectNames, slug)
+    ? projectNames[slug]
+    : "Preparing Project";
+  return {
+    title: projectName,
+    description: "This portfolio project detail page is currently being prepared.",
+  };
+}
 
 const HABIT_DOWNLOAD_URL = "https://gati00.web.app/invite/";
 

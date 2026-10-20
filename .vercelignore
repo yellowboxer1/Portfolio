@@ -1,0 +1,10 @@
+node_modules/
+.git/
+.next/
+.next-dev/
+.next-build/
+output/
+tmp/
+.env*
+*.tsbuildinfo
+.DS_Store

@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import { Bacasime_Antique, Inter, Noto_Sans, Noto_Sans_Display } from "next/font/google";
+
+export const metadata: Metadata = {
+  title: {
+    default: "Works",
+    template: "Works | %s",
+  },
+};
 
 const notoSans = Noto_Sans({
   subsets: ["latin"],

@@ -1,0 +1,205 @@
+{
+  "profile-current.webp": {
+    "src": "/portfolio/partnerit/optimized/profile-current-1920-d4ca868f95.webp",
+    "srcSet": "/portfolio/partnerit/optimized/profile-current-480-e8ba61e3bd.webp 480w, /portfolio/partnerit/optimized/profile-current-768-7c91f0d4f3.webp 768w, /portfolio/partnerit/optimized/profile-current-1280-52b605fad6.webp 1280w, /portfolio/partnerit/optimized/profile-current-1920-d4ca868f95.webp 1920w",
+    "variants": [
+      {
+        "width": 480,
+        "src": "/portfolio/partnerit/optimized/profile-current-480-e8ba61e3bd.webp",
+        "bytes": 10134
+      },
+      {
+        "width": 768,
+        "src": "/portfolio/partnerit/optimized/profile-current-768-7c91f0d4f3.webp",
+        "bytes": 21062
+      },
+      {
+        "width": 1280,
+        "src": "/portfolio/partnerit/optimized/profile-current-1280-52b605fad6.webp",
+        "bytes": 43016
+      },
+      {
+        "width": 1920,
+        "src": "/portfolio/partnerit/optimized/profile-current-1920-d4ca868f95.webp",
+        "bytes": 73398
+      }
+    ]
+  },
+  "notices-current.webp": {
+    "src": "/portfolio/partnerit/optimized/notices-current-1920-90474e58ef.webp",
+    "srcSet": "/portfolio/partnerit/optimized/notices-current-480-ad000c8596.webp 480w, /portfolio/partnerit/optimized/notices-current-768-911481999d.webp 768w, /portfolio/partnerit/optimized/notices-current-1280-035d34ddde.webp 1280w, /portfolio/partnerit/optimized/notices-current-1920-90474e58ef.webp 1920w",
+    "variants": [
+      {
+        "width": 480,
+        "src": "/portfolio/partnerit/optimized/notices-current-480-ad000c8596.webp",
+        "bytes": 19692
+      },
+      {
+        "width": 768,
+        "src": "/portfolio/partnerit/optimized/notices-current-768-911481999d.webp",
+        "bytes": 40512
+      },
+      {
+        "width": 1280,
+        "src": "/portfolio/partnerit/optimized/notices-current-1280-035d34ddde.webp",
+        "bytes": 86902
+      },
+      {
+        "width": 1920,
+        "src": "/portfolio/partnerit/optimized/notices-current-1920-90474e58ef.webp",
+        "bytes": 152322
+      }
+    ]
+  },
+  "report-current.webp": {
+    "src": "/portfolio/partnerit/optimized/report-current-1275-2f3cf42981.webp",
+    "srcSet": "/portfolio/partnerit/optimized/report-current-480-327eb50879.webp 480w, /portfolio/partnerit/optimized/report-current-768-1a2099e657.webp 768w, /portfolio/partnerit/optimized/report-current-1275-2f3cf42981.webp 1275w",
+    "variants": [
+      {
+        "width": 480,
+        "src": "/portfolio/partnerit/optimized/report-current-480-327eb50879.webp",
+        "bytes": 35594
+      },
+      {
+        "width": 768,
+        "src": "/portfolio/partnerit/optimized/report-current-768-1a2099e657.webp",
+        "bytes": 79182
+      },
+      {
+        "width": 1275,
+        "src": "/portfolio/partnerit/optimized/report-current-1275-2f3cf42981.webp",
+        "bytes": 156134
+      }
+    ]
+  },
+  "consortium-current.webp": {
+    "src": "/portfolio/partnerit/optimized/consortium-current-1920-f5b35af2b7.webp",
+    "srcSet": "/portfolio/partnerit/optimized/consortium-current-480-f18eb1578f.webp 480w, /portfolio/partnerit/optimized/consortium-current-768-7bdd071ef1.webp 768w, /portfolio/partnerit/optimized/consortium-current-1280-b2704224c8.webp 1280w, /portfolio/partnerit/optimized/consortium-current-1920-f5b35af2b7.webp 1920w",
+    "variants": [
+      {
+        "width": 480,
+        "src": "/portfolio/partnerit/optimized/consortium-current-480-f18eb1578f.webp",
+        "bytes": 12314
+      },
+      {
+        "width": 768,
+        "src": "/portfolio/partnerit/optimized/consortium-current-768-7bdd071ef1.webp",
+        "bytes": 25302
+      },
+      {
+        "width": 1280,
+        "src": "/portfolio/partnerit/optimized/consortium-current-1280-b2704224c8.webp",
+        "bytes": 51134
+      },
+      {
+        "width": 1920,
+        "src": "/portfolio/partnerit/optimized/consortium-current-1920-f5b35af2b7.webp",
+        "bytes": 86386
+      }
+    ]
+  },
+  "plan-diagnosis.webp": {
+    "src": "/portfolio/partnerit/optimized/plan-diagnosis-1920-67a13cb964.webp",
+    "srcSet": "/portfolio/partnerit/optimized/plan-diagnosis-480-086b4173a8.webp 480w, /portfolio/partnerit/optimized/plan-diagnosis-768-ddb66e2ca6.webp 768w, /portfolio/partnerit/optimized/plan-diagnosis-1280-7acc5c3c63.webp 1280w, /portfolio/partnerit/optimized/plan-diagnosis-1920-67a13cb964.webp 1920w",
+    "variants": [
+      {
+        "width": 480,
+        "src": "/portfolio/partnerit/optimized/plan-diagnosis-480-086b4173a8.webp",
+        "bytes": 18746
+      },
+      {
+        "width": 768,
+        "src": "/portfolio/partnerit/optimized/plan-diagnosis-768-ddb66e2ca6.webp",
+        "bytes": 38004
+      },
+      {
+        "width": 1280,
+        "src": "/portfolio/partnerit/optimized/plan-diagnosis-1280-7acc5c3c63.webp",
+        "bytes": 71036
+      },
+      {
+        "width": 1920,
+        "src": "/portfolio/partnerit/optimized/plan-diagnosis-1920-67a13cb964.webp",
+        "bytes": 108690
+      }
+    ]
+  },
+  "plan-comparison.webp": {
+    "src": "/portfolio/partnerit/optimized/plan-comparison-1920-c7f0cbde2f.webp",
+    "srcSet": "/portfolio/partnerit/optimized/plan-comparison-480-da433e6877.webp 480w, /portfolio/partnerit/optimized/plan-comparison-768-504d8158c1.webp 768w, /portfolio/partnerit/optimized/plan-comparison-1280-965e051e5c.webp 1280w, /portfolio/partnerit/optimized/plan-comparison-1920-c7f0cbde2f.webp 1920w",
+    "variants": [
+      {
+        "width": 480,
+        "src": "/portfolio/partnerit/optimized/plan-comparison-480-da433e6877.webp",
+        "bytes": 15612
+      },
+      {
+        "width": 768,
+        "src": "/portfolio/partnerit/optimized/plan-comparison-768-504d8158c1.webp",
+        "bytes": 32724
+      },
+      {
+        "width": 1280,
+        "src": "/portfolio/partnerit/optimized/plan-comparison-1280-965e051e5c.webp",
+        "bytes": 60086
+      },
+      {
+        "width": 1920,
+        "src": "/portfolio/partnerit/optimized/plan-comparison-1920-c7f0cbde2f.webp",
+        "bytes": 97478
+      }
+    ]
+  },
+  "collaboration-chat.webp": {
+    "src": "/portfolio/partnerit/optimized/collaboration-chat-713-465c316cdd.webp",
+    "srcSet": "/portfolio/partnerit/optimized/collaboration-chat-480-4e3442e338.webp 480w, /portfolio/partnerit/optimized/collaboration-chat-713-465c316cdd.webp 713w",
+    "variants": [
+      {
+        "width": 480,
+        "src": "/portfolio/partnerit/optimized/collaboration-chat-480-4e3442e338.webp",
+        "bytes": 33952
+      },
+      {
+        "width": 713,
+        "src": "/portfolio/partnerit/optimized/collaboration-chat-713-465c316cdd.webp",
+        "bytes": 55616
+      }
+    ]
+  },
+  "imgImgAiPc011.webp": {
+    "src": "/portfolio/partnerit/optimized/imgImgAiPc011-960-14129b7def.webp",
+    "bytes": 43354
+  },
+  "imgImgAiPc0121.webp": {
+    "src": "/portfolio/partnerit/optimized/imgImgAiPc0121-400-3a0262922c.webp",
+    "bytes": 18732
+  },
+  "imgImgAiPc0111.webp": {
+    "src": "/portfolio/partnerit/optimized/imgImgAiPc0111-240-9d7fb97b54.webp",
+    "bytes": 5484
+  },
+  "logo-glass-poster-v3.webp": {
+    "src": "/portfolio/partnerit/optimized/logo-glass-poster-v3-f4feafc3fc.webp",
+    "bytes": 42578
+  },
+  "wordmark.webp": {
+    "src": "/portfolio/partnerit/optimized/wordmark-e2218a35a2.webp",
+    "bytes": 5966
+  },
+  "service-matching-artwork.svg": {
+    "src": "/portfolio/partnerit/optimized/service-matching-artwork-33b5bfb7c2.svg",
+    "bytes": 44591
+  },
+  "service-data-artwork.svg": {
+    "src": "/portfolio/partnerit/optimized/service-data-artwork-4a5f39da13.svg",
+    "bytes": 57704
+  },
+  "service-meeting-artwork.svg": {
+    "src": "/portfolio/partnerit/optimized/service-meeting-artwork-8a94dafac7.svg",
+    "bytes": 75663
+  },
+  "service-collaboration-optimized.svg": {
+    "src": "/portfolio/partnerit/optimized/service-collaboration-optimized-bf59e283ee.svg",
+    "bytes": 234771
+  }
+}

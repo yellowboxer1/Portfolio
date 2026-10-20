@@ -3,7 +3,7 @@ import ZigzagReverseExperience from './ZigzagReverseExperience';
 import { withBasePath } from './lib/asset';
 
 export const metadata: Metadata = {
-  title: 'ZigZag Reverse Planning | Portfolio',
+  title: 'Zigzag Reverse Planning',
   description:
     'Reverse-Planning case study migrated into the portfolio route as a native experience.',
 };

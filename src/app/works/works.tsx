@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Header from "@/src/components/Header";
+import RegionalProjectShade from "@/src/components/RegionalProjectShade";
 
 type FilterKey = "ALL" | "R&D" | "B2G" | "B2B" | "개인 프로젝트";
 
@@ -61,10 +62,10 @@ const portfolioItems: PortfolioItem[] = [
     title: "AI 기반 지원사업 매칭 서비스 파트너잇",
     image: "/partnerit.png",
     category: "AI B2B SaaS",
-    role: "PM · Service Planner",
-    meta: "2026.04ㅣ누적 투자 10억 원",
+    role: "PM · Algorithm Research · Service Planning",
+    meta: "2025.04 – 현재ㅣ매칭 알고리즘 특허 출원",
     filter: "B2B",
-    isReady: false,
+    isReady: true,
   },
   {
     id: 2,
@@ -97,7 +98,7 @@ const portfolioItems: PortfolioItem[] = [
     role: "PM",
     meta: "2023.10ㅣ15억 원",
     filter: "R&D",
-    isReady: false,
+    isReady: true,
   },
   {
     id: 5,
@@ -136,7 +137,7 @@ const portfolioItems: PortfolioItem[] = [
     id: 8,
     slug: "public-regional-planning",
     title: "국책 과제 수행 및 지역 개발·도시 재생 프로젝트",
-    image: "https://ext.same-assets.com/334974529/2583647890.jpeg",
+    image: "/portfolio/public-regional-planning/agricultural-hub.webp",
     category: "Regional Strategy",
     role: "Strategy Planner",
     meta: "2022.01ㅣ4억 2천만 원(총 사업비 172억)",
@@ -229,6 +230,7 @@ function WorkCard({ item, offsetDown }: { item: PortfolioItem; offsetDown: boole
           style={item.slug === "habit" ? { objectPosition: "center 25%" } : undefined}
           sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 580px"
         />
+        {item.slug === "public-regional-planning" && <RegionalProjectShade />}
         {!item.isReady && (
           <div className="absolute inset-0 rounded-[inherit] flex items-center justify-center bg-black/60 backdrop-blur-[2px]">
             <span className="rounded-full border border-white/20 px-4 py-1.5 text-sm font-medium text-white/55">

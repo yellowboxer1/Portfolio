@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/src/components/Header";
+import ProjectBackButton from "@/src/components/ProjectBackButton";
 import ProjectIntroSection from "@/src/components/ProjectIntroSection";
 import { SmartCitySlide } from "./SmartCitySlide";
 import { smartCityGridSlides } from "./grid-slides";
@@ -9,7 +10,7 @@ import { planningDecisions, projectIntro, solutions } from "./case-study";
 import styles from "./case-study.module.css";
 
 export const metadata: Metadata = {
-  title: "스마트시티 챌린지 · 다가치나란히 | 박건호 포트폴리오",
+  title: "Smart city challenge",
   description:
     "부산 도시철도 배리어프리 내비게이션 기획. 사용자별 이동 경로, 역사별 비콘 신호 확인, 실내·외 길안내를 정리했습니다.",
 };
@@ -25,14 +26,7 @@ export default function SmartCityChallengePage() {
   return (
     <main className={styles.page}>
       <Header aboutHref="/#about" />
-      <Link
-        href="/#selected-works"
-        className={styles.backButton}
-        aria-label="선택한 프로젝트로 돌아가기"
-      >
-        <span aria-hidden="true">←</span>
-        <span>Back</span>
-      </Link>
+      <ProjectBackButton href="/#selected-works" />
       <article aria-label="다가치나란히 배리어프리 내비게이션 기획 사례">
         <SmartCitySlide slide={smartCityGridSlides[0]} index={0} />
         <ProjectIntroSection {...projectIntro} />

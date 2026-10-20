@@ -23,7 +23,11 @@ export default function Header({
   const isLight = variant === "light";
 
   useEffect(() => {
-    document.documentElement.toggleAttribute("data-mobile-menu-open", isMenuOpen);
+    if (isMenuOpen) {
+      document.documentElement.setAttribute("data-mobile-menu-open", "");
+    } else {
+      document.documentElement.removeAttribute("data-mobile-menu-open");
+    }
 
     return () => {
       document.documentElement.removeAttribute("data-mobile-menu-open");
